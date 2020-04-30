@@ -1,19 +1,13 @@
 <?php
-session_start();
+spl_autoload_register('autoload');
 
-spl_autoload_register('autoLoader');
-
-function autoLoader($className)
+function autoload($className)
 {
-    $models = str_replace('\\', '/', $className).'.php';
-    $controllers = str_replace('\\', '/', $className).'.php';
-    $config = str_replace('\\', '/', $className).'.php';
+    $class = str_replace('\\', '/', $className.'.php');
 
-    if (file_exists($models)) {
-        require_once $models;
-    } elseif (file_exists($controllers)) {
-        require_once $controllers;
-    } elseif (file_exists($config)) {
-        require_once $config;
+    if (file_exists($class)) {
+        require_once $class;
+    } else {
+        echo 'class not found';
     }
 }

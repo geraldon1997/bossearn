@@ -1,38 +1,31 @@
 <?php
 namespace App\Models;
 
-use App\Models\Model;
+use App\Core\Gateway;
 
-class User extends Model
+class User extends Gateway
 {
-    public static function usersTable()
+    public static function createTable()
     {
-        $data = "`id` INT PRIMARY KEY AUTO_INCREMENT,";
-        $data .= "`name` VARCHAR(50) NOT NULL, ";
-        $data .= "`email` VARCHAR(40) NOT NULL, ";
-        $data .= "`password` VARCHAR(50) NOT NULL, ";
-        $data .= "`is_email_verified` BOOLEAN NULL, ";
-        $data .= "`joined_at` DATE, ";
-        $data .= "`is_logged_in` BOOLEAN";
-        return self::create('users', $data);
+        $sql = "CREATE TABLE IF NOT EXISTS (
+            `id` INT PRIMARY KEY AUTO_INCREMENT,
+            `ref` INT UNIQUE NOT NULL,
+            `firstname` VARCHAR(20) NOT NULL,
+            `lastname` VARCHAR(20) NOT NULL,
+            `email` VARCHAR(40) NOT NULL,
+            `phone` VARCHAR(15) NOT NULL,
+            `username` VARCHAR(20) NOT NULL,
+            `password` VARCHAR(40) NOT NULL,
+            `date_joined` DATE
+            ) ";
+        self::runQuery($sql);
     }
-    public static function shares()
+    public static function register($values)
     {
-        return self::find('shares', $_SESSION['id']);
-    }
+        $val = implode("','", $values);
+        $val .= "'".$val."'";
 
-    public static function profile()
-    {
-        return self::find('users', $_SESSION['id']);
-    }
-
-    public static function allUsers()
-    {
-        return self::all('users');
-    }
-
-    public static function allShares()
-    {
-        return self::all('shares');
+        $sql = "INSERT INTO `users` (ref,firstname,lastname,email,phone,username,password) VALUES ($val) ";
+        return self::runQuery($sql);
     }
 }

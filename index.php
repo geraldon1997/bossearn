@@ -1,6 +1,6 @@
 <?php
 require_once 'autoload.php';
 
-use App\Models\User;
+use App\Controllers\UserController;
 
-User::usersTable();
+UserController::init(['name' => '', 'phone' => '09900990099', 'username' => '', 'email' => 'me@me.com']);
