@@ -14,9 +14,8 @@ class Config
         }
     }
 
-    public static function get($file, $conf)
+    public static function get($conf)
     {
-        self::load($file);
         self::$data = self::$file;
 
         if (strpos($conf, '.')) {
