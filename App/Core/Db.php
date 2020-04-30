@@ -4,14 +4,14 @@ namespace App\Core;
 use App\Core\Config;
 use mysqli;
 
-class Dbconnection
+class Db
 {
     public static $host;
     public static $user;
     public static $pass;
     public static $db;
 
-    public static function params()
+    public static function setParams()
     {
         Config::load('database');
         self::$host = Config::get('driver.mysql.dbhost');
@@ -27,7 +27,7 @@ class Dbconnection
 
     public static function init()
     {
-        self::params();
-        self::connect();
+        self::setParams();
+        return self::connect();
     }
 }

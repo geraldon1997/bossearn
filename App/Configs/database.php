@@ -3,8 +3,8 @@ return [
     'driver' => [
         'mysql' => [
             'dbhost' => 'localhost',
-            'dbuser' => 'bossearn',
-            'dbpass' => '',
+            'dbuser' => 'bossearnphp',
+            'dbpass' => 'bossearnphp',
             'dbname' => 'bossearnphp'
         ]
     ]
