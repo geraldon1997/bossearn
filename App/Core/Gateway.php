@@ -2,28 +2,19 @@
 namespace App\Core;
 
 use App\Core\Config;
-use mysqli;
 
 class Gateway
 {
-    public static function con()
-    {
-        Config::loadConfig('database');
-        $host = Config::getFile('driver.mysql.host');
-        $user = Config::getFile('driver.mysql.user');
-        $pass = Config::getFile('driver.mysql.pass');
-        $db = Config::getFile('driver.mysql.db');
+    public static $host;
+    public static $user;
+    public static $pass;
+    public static $db;
 
-        return new mysqli($host, $user, $pass, $db);
-    }
-
-    public static function runQuery($sql)
+    public static function params()
     {
-        return self::con()->query($sql);
-    }
-
-    public static function fetchData($sql)
-    {
-        return self::con()->query($sql);
+        echo self::$host = Config::get('database', 'driver.mysql.dbhost');
+        echo self::$user = Config::get('database', 'driver.mysql.dbuser');
+        echo self::$pass = Config::get('database', 'driver.mysql.dbpass');
+        echo self::$db = Config::get('database', 'driver.mysql.dbname');
     }
 }
