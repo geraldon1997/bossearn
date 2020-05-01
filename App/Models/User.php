@@ -15,7 +15,7 @@ class User
             `ref` INT UNIQUE NOT NULL,
             `firstname` VARCHAR(20) NOT NULL,
             `lastname` VARCHAR(20) NOT NULL,
-            `email` VARCHAR(40) NOT NULL,
+            `email` VARCHAR(40) UNIQUE NOT NULL,
             `phone` VARCHAR(15) NOT NULL,
             `username` VARCHAR(20) NOT NULL,
             `password` VARCHAR(40) NOT NULL,
