@@ -23,4 +23,10 @@ class Referral
         $sql = "INSERT INTO `referrals` (`ref_id`, `user_id`) VALUES ('$refid', '$id')";
         return Gateway::run($sql);
     }
+
+    public static function find($ref)
+    {
+        $sql = "SELECT * FROM `referrals`, `users` WHERE `ref_id` = '$ref'";
+        return Gateway::fetch($sql);
+    }
 }

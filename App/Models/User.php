@@ -40,36 +40,36 @@ class User
         Referral::addRef($refid, $id);
     }
 
-  public static function verifyemail($ref)
-  {
-    $sql = "UPDATE `users` SET `is_email_verified` = true WHERE `ref` = '$ref'";
-    return Gateway::run($sql);
-  }
+    public static function verifyemail($ref)
+    {
+        $sql = "UPDATE `users` SET `is_email_verified` = true WHERE `ref` = '$ref'";
+        return Gateway::run($sql);
+    }
 
-  public static function all()
-  {
-    $sql = "SELECT * FROM users ORDER BY firstname ASC";
-    return Gateway::fetch($sql);
-  }
+    public static function all()
+    {
+        $sql = "SELECT * FROM users ORDER BY firstname ASC";
+        return Gateway::fetch($sql);
+    }
 
-  public static function find($id)
-  {
-    $sql = "SELECT * FROM users WHERE `id` = '$id'";
-    return Gateway::fetch($sql);
-  }
+    public static function find($id)
+    {
+        $sql = "SELECT * FROM users WHERE `id` = '$id'";
+        return Gateway::fetch($sql);
+    }
 
-  public static function updatepwd($email, $pwd)
-  {
-    $sql = "UPDATE users SET `password` = '$pwd' WHERE `email` = '$email'";
-    return Gateway::fetch($sql);
-  }
+    public static function updatepwd($email, $pwd)
+    {
+        $sql = "UPDATE users SET `password` = '$pwd' WHERE `email` = '$email'";
+        return Gateway::fetch($sql);
+    }
 
-  public static function updateprofile($values)
-  {
-    $sql = "UPDATE users SET
+    public static function updateprofile($values)
+    {
+        $sql = "UPDATE users SET
       `firstname` = '$fn',
       `lastname` = '$ln',
       `phone` = '$ph' WHERE `id` = '$id'";
-    return Gateway::run($sql);
-  }
+        return Gateway::run($sql);
+    }
 }

@@ -12,12 +12,12 @@ class Gateway
 
     public static function fetch($sql)
     {
-      $data = [];
+        $data = [];
 
-      $result = Db::init()->query($sql);
-      while ($row = $result->fetch_assoc) {
-        $data = $row;
-      }
-      return $data;
+        $result = Db::init()->query($sql);
+        while ($row = $result->fetch_assoc) {
+            $data = $row;
+        }
+        return $data;
     }
 }
