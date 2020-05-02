@@ -52,9 +52,9 @@ class User
     return Gateway::fetch($sql);
   }
 
-  public static function find($id)
+  public static function find($col, $val)
   {
-    $sql = "SELECT * FROM users WHERE `id` = '$id'";
+    $sql = "SELECT * FROM users WHERE $col = '$val'";
     return Gateway::fetch($sql);
   }
 
@@ -70,6 +70,12 @@ class User
       `firstname` = '$fn',
       `lastname` = '$ln',
       `phone` = '$ph' WHERE `id` = '$id'";
+    return Gateway::run($sql);
+  }
+
+  public static function updateUserDetails($col, $val, $id)
+  {
+    $sql = "UPDATE `users` SET $col = $val WHERE `id` = '$id'";
     return Gateway::run($sql);
   }
 }
