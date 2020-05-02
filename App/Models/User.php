@@ -27,17 +27,18 @@ class User
 
     public static function register($refid, $values)
     {
+        self::createTable();
         $ref = rand(0, 999999);
 
         $val = implode("','", $values);
         $val = "'".$val."'";
 
-        $sql = "INSERT INTO users (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`)
-                VALUES ('$ref',$val)";
-
-        Gateway::run($sql);
-        $id = Db::init()->insert_id;
-        Referral::addRef($refid, $id);
+        $sql = "INSERT INTO users (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`,`is_email_verified`)
+                VALUES ('$ref',$val,false)";
+return $sql;
+        // Gateway::run($sql);
+        // $id = Db::init()->insert_id;
+        // Referral::addRef($refid, $id);
     }
 
     public static function verifyemail($ref)
@@ -55,7 +56,7 @@ class User
     public static function find($col, $val)
     {
         $sql = "SELECT * FROM users WHERE $col = '$val'";
-        return Gateway::fetch($sql);
+        return Gateway::run($sql);
     }
 
     public static function updatepwd($email, $pwd)
@@ -64,12 +65,12 @@ class User
         return Gateway::fetch($sql);
     }
 
-    public static function updateprofile($values)
+    public static function updateprofile($fn, $ln, $ph, $id)
     {
         $sql = "UPDATE users SET
-      `firstname` = '$fn',
-      `lastname` = '$ln',
-      `phone` = '$ph' WHERE `id` = '$id'";
+            `firstname` = '$fn',
+            `lastname` = '$ln',
+            `phone` = '$ph' WHERE `id` = '$id'";
         return Gateway::run($sql);
     }
 

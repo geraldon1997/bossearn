@@ -1,10 +1,15 @@
 <?php
 require_once 'autoload.php';
 
-<<<<<<< HEAD
-use App\Models\User;
+use App\Controllers\UserController;
 
-User::createTable();
-=======
-echo "<h1>hello world</h1>";
->>>>>>> f37d0073d3f933df44cd04a1fc0637217a46995d
+$_GET['ref'] = '345389';
+UserController::createUser(['firstname' => 'mosco', 'lastname' => 'gerald', 'email' => 'me@me.com', 'phone' => '09036924798', 'username' => 'geraldon', 'password' => 'pass']);
+
+$e = UserController::$errmsg;
+$d = UserController::$data;
+$s = UserController::$success;
+
+var_dump($e)."<br>";
+var_dump($d)."<br>";
+var_dump($s)."<br>";
