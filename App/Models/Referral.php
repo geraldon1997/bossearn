@@ -14,12 +14,11 @@ class Referral
             FOREIGN KEY('ref_id') REFERENCES users('ref'),
             FOREIGN KEY('user_id') REFERENCES users('id')
         ) ";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function addRef($refid, $id)
     {
-        self::createTable();
         $sql = "INSERT INTO `referrals` (`ref_id`, `user_id`) VALUES ('$refid', '$id')";
         return Gateway::run($sql);
     }

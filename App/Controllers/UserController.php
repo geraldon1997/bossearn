@@ -12,8 +12,8 @@ class UserController extends User
 
     public static function createUser(array $data)
     {
-        // self::$data = $data;
-        // self::cleanInput();
+        self::$data = $data;
+        self::cleanInput();
     }
 
     public static function cleanInput()
@@ -59,28 +59,33 @@ class UserController extends User
         $validPhone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
         if ($validPhone) {
             self::$data['phone'] = $validPhone;
-            self::sendToRegister();
         } else {
             $msg = $phone." is not valid";
             self::$errmsg['phone'] = $msg;
             unset(self::$data['phone']);
         }
+        self::sendToRegister();
     }
 
     public static function sendToRegister()
     {
-        // $ref_id = $_GET['ref'];
-        // if (!empty($ref_id) && $ref_id !== null && $ref_id !== '') {
-        //     $ref_id = trim(htmlspecialchars(stripslashes(strip_tags($_GET['ref']))));
-        //     $checkref = self::find('ref', $ref_id);
+        $ref = $_GET['ref'];
+        
+        $ref_id = trim(htmlspecialchars(stripslashes(strip_tags($ref))));
+        $checkref = self::find('ref', $ref_id);
             
-        //     if ($checkref->num_rows > 0) {
-        //         // self::register($ref_id, self::$data);
-        //         // self::$success = 'registration was successful';
-        //     } else {
-        //         $msg = "invalid referral code";
-        //         self::$errmsg['ref'] = $msg;
-        //     }
-        // }
+        
+            User::register($ref_id, self::$data);
+            self::$success['success'] = 'registration was successful';
+    }
+
+    public static function sendVerificationMail()
+    {
+        $to = self::$data['email'];
+        $subject = "Email Verification";
+        $message = "";
+        $headers = "";
+
+        $mail = mail($to, $subject, $message, $headers);
     }
 }

@@ -14,8 +14,9 @@ class Gateway
     {
         $result = Db::init()->query($sql);
         $data = [];
+
         while ($row = $result->fetch_assoc) {
-            $data[] = $row;
+            $data = $row;
         }
         return $data;
     }

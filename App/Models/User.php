@@ -22,21 +22,22 @@ class User
             `is_email_verified` BOOLEAN NOT NULL,
             `date_joined` TIMESTAMP NOT NULL
         ) ";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function register($refid, $values)
     {
-        self::createTable();
         $ref = rand(0, 999999);
 
         $val = implode("','", $values);
         $val = "'".$val."'";
 
-        $sql = "INSERT INTO users (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`,`is_email_verified`)
-                VALUES ('$ref',$val,false)";
-return $sql;
-        // Gateway::run($sql);
+        $sql = "INSERT INTO users 
+                    (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`,`is_email_verified`)
+                VALUES 
+                    ('$ref',$val,false)";
+        
+        return Gateway::run($sql);
         // $id = Db::init()->insert_id;
         // Referral::addRef($refid, $id);
     }
@@ -55,7 +56,7 @@ return $sql;
 
     public static function find($col, $val)
     {
-        $sql = "SELECT * FROM users WHERE $col = '$val'";
+        $sql = "SELECT * FROM users WHERE $col = '$val' ";
         return Gateway::run($sql);
     }
 
