@@ -38,8 +38,8 @@ class User extends Gateway
                     ('$ref',$val,false)";
 
         self::run($sql);
-        $id = self::getLastId();
-        Referral::addRef($refid, $id);
+        echo $id = self::getLastId();
+        // Referral::addRef($refid, $id);
     }
 
     public static function verifyemail($ref)

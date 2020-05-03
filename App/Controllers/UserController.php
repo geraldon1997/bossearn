@@ -69,7 +69,8 @@ class UserController extends User
 
     public static function sendToRegister()
     {
-        self::register(123456, self::$data);
+        $_GET['ref'] = 345389;
+        self::register($_GET['ref'], self::$data);
     }
 
     public static function sendVerificationMail()
