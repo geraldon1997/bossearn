@@ -11,7 +11,7 @@ class User
     public static function createTable()
     {
         $sql = "CREATE TABLE IF NOT EXISTS `users` (
-            `id` INT PRIMARY KEY AUTO_INCREMENT,
+            `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
             `ref` INT UNIQUE NOT NULL,
             `firstname` VARCHAR(20) NOT NULL,
             `lastname` VARCHAR(20) NOT NULL,
@@ -37,8 +37,9 @@ class User
                 VALUES 
                     ('$ref',$val,false)";
         
-        return Gateway::run($sql);
-        // $id = Db::init()->insert_id;
+        $register = Gateway::run($sql);
+        echo Db::init()->mysql_insert_id;
+        
         // Referral::addRef($refid, $id);
     }
 
@@ -79,5 +80,11 @@ class User
     {
         $sql = "UPDATE `users` SET $col = $val WHERE `id` = '$id'";
         return Gateway::run($sql);
+    }
+
+    public static function getLastId()
+    {
+        $sql = "SELECT LAST_INSERT_ID() ";
+        Gateway::run($sql);
     }
 }

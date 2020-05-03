@@ -15,7 +15,7 @@ class Bank
         `data_filled` TIMESTAMP NOT NULL,
         FOREIGN KEY(`user_id`) REFERENCES users(`id`)
     )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function add($id, $bank, $acct)

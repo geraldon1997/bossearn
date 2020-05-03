@@ -13,7 +13,7 @@ class Coupon
         `is_sold` BOOLEAN NOT NULL,
         `date_gen` TIMESTAMP NOT NULL
         )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function createVendorCoupon()
@@ -27,7 +27,7 @@ class Coupon
         FOREIGN KEY(`vendor_id`) REFERENCES vendors(`id`),
         FOREIGN KEY(`coupon_id`) REFERENCES coupons(`id`)
     )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function createUserCoupon()
@@ -41,7 +41,7 @@ class Coupon
         FOREIGN KEY(`user_id`) REFERENCES users(`id`),
         FOREIGN KEY(`vc_id`) REFERENCES vendor_coupons(`id`)
     )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function genCoupon($coupon)

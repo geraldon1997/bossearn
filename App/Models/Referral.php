@@ -11,10 +11,10 @@ class Referral
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `ref_id` INT NOT NULL,
             `user_id` INT NOT NULL,
-            FOREIGN KEY('ref_id') REFERENCES users('ref'),
-            FOREIGN KEY('user_id') REFERENCES users('id')
+            FOREIGN KEY(`ref_id`) REFERENCES users(`ref`),
+            FOREIGN KEY(`user_id`) REFERENCES users(`id`)
         ) ";
-        Gateway::run($sql);
+        return Gateway::run($sql);
     }
 
     public static function addRef($refid, $id)

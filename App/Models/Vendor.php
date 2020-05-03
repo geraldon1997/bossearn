@@ -15,7 +15,7 @@ class Vendor
         `acctnum` VARCHAR(15) NOT NULL,
         `date_joined` TIMESTAMP NOT NULL
     )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function register($values)
