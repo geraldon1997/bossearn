@@ -3,21 +3,27 @@ namespace App\Models;
 
 use App\Core\Db;
 
-class Gateway
+class Gateway extends Db
 {
     public static function run($sql)
     {
-        return Db::init()->query($sql);
+        $result = self::init()->query($sql);
+
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
     }
 
     public static function fetch($sql)
     {
-        $result = Db::init()->query($sql);
-        $data = [];
+        $result = self::init()->query($sql);
+        $datas = [];
 
-        while ($row = $result->fetch_assoc) {
-            $data = $row;
+        while ($row = $result->fetch_assoc()) {
+            $datas[] = $row;
         }
-        return $data;
+        return $datas;
     }
 }

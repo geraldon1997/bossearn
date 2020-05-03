@@ -27,7 +27,7 @@ class Db
 
     public static function init()
     {
-        self::setParams();
+        self::setParams()
         return self::connect();
     }
 }

@@ -6,7 +6,7 @@ use App\Models\Gateway;
 use App\Models\Referral;
 use App\Models\Coupon;
 
-class User
+class User extends Gateway
 {
     public static function createTable()
     {
@@ -22,7 +22,7 @@ class User
             `is_email_verified` BOOLEAN NOT NULL,
             `date_joined` TIMESTAMP NOT NULL
         ) ";
-        Gateway::run($sql);
+        self::run($sql);
     }
 
     public static function register($refid, $values)
@@ -32,39 +32,38 @@ class User
         $val = implode("','", $values);
         $val = "'".$val."'";
 
-        $sql = "INSERT INTO users 
+        $sql = "INSERT INTO users
                     (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`,`is_email_verified`)
-                VALUES 
+                VALUES
                     ('$ref',$val,false)";
-        
-        $register = Gateway::run($sql);
-        echo Db::init()->mysql_insert_id;
-        
-        // Referral::addRef($refid, $id);
+
+        self::run($sql);
+        $id = self::getLastId();
+        Referral::addRef($refid, $id);
     }
 
     public static function verifyemail($ref)
     {
         $sql = "UPDATE `users` SET `is_email_verified` = true WHERE `ref` = '$ref'";
-        return Gateway::run($sql);
+        return self::run($sql);
     }
 
     public static function all()
     {
-        $sql = "SELECT * FROM users ORDER BY firstname ASC";
-        return Gateway::fetch($sql);
+        $sql = "SELECT * FROM users";
+        return self::fetch($sql);
     }
 
     public static function find($col, $val)
     {
         $sql = "SELECT * FROM users WHERE $col = '$val' ";
-        return Gateway::run($sql);
+        return self::run($sql);
     }
 
     public static function updatepwd($email, $pwd)
     {
         $sql = "UPDATE users SET `password` = '$pwd' WHERE `email` = '$email'";
-        return Gateway::fetch($sql);
+        return self::fetch($sql);
     }
 
     public static function updateprofile($fn, $ln, $ph, $id)
@@ -73,18 +72,22 @@ class User
             `firstname` = '$fn',
             `lastname` = '$ln',
             `phone` = '$ph' WHERE `id` = '$id'";
-        return Gateway::run($sql);
+        return self::run($sql);
     }
 
     public static function updateUserDetails($col, $val, $id)
     {
         $sql = "UPDATE `users` SET $col = $val WHERE `id` = '$id'";
-        return Gateway::run($sql);
+        return self::run($sql);
     }
 
     public static function getLastId()
     {
-        $sql = "SELECT LAST_INSERT_ID() ";
-        Gateway::run($sql);
+        $sql = "SELECT * FROM `users` ORDER BY `id` DESC LIMIT 1";
+        $result = self::fetch($sql);
+
+        foreach ($result as $key => $value) {
+            return $value['id'];
+        }
     }
 }
