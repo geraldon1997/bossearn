@@ -7,17 +7,23 @@ class Gateway
 {
     public static function run($sql)
     {
-        return Db::init()->query($sql);
+      $result = Db::init()->query($query);
+
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
     }
 
     public static function fetch($sql)
     {
-        $result = Db::init()->query($sql);
-        $data = [];
+      $result = self::run($sql);
+      $datas = [];
 
-        while ($row = $result->fetch_assoc) {
-            $data = $row;
-        }
-        return $data;
+      while ($row = $result->fetch_assoc()) {
+        $datas[] = $row;
+      }
+      return $datas;
     }
 }

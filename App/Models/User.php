@@ -32,14 +32,14 @@ class User
         $val = implode("','", $values);
         $val = "'".$val."'";
 
-        $sql = "INSERT INTO users 
+        $sql = "INSERT INTO users
                     (`ref`,`firstname`,`lastname`,`email`,`phone`,`username`,`password`,`is_email_verified`)
-                VALUES 
+                VALUES
                     ('$ref',$val,false)";
-        
-        return Gateway::run($sql);
-        // $id = Db::init()->insert_id;
-        // Referral::addRef($refid, $id);
+
+        Gateway::run($sql);
+        $id = self::getLastId();
+        Referral::addRef($refid, $id);
     }
 
     public static function verifyemail($ref)
@@ -50,8 +50,9 @@ class User
 
     public static function all()
     {
-        $sql = "SELECT * FROM users ORDER BY firstname ASC";
-        return Gateway::fetch($sql);
+        $sql = "SELECT * FROM users";
+        $g = Gateway::fetch($sql);
+      var_dump($g);
     }
 
     public static function find($col, $val)
@@ -80,4 +81,14 @@ class User
         $sql = "UPDATE `users` SET $col = $val WHERE `id` = '$id'";
         return Gateway::run($sql);
     }
+
+  public static function getLastId()
+  {
+$sql = "SELECT * FROM `users` ORDER BY `id` DESC LIMIT 1";
+        $result = self::fetch($sql);
+
+        foreach ($result as $key => $value) {
+            return $value['id'];
+        }
+  }
 }

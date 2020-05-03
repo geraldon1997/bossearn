@@ -22,12 +22,12 @@ class Db
 
     public static function connect()
     {
-        return new mysqli(self::$host, self::$user, self::$pass, self::$db);
+      return new mysqli(self::$host, self::$user, self::$pass, self::$db);
     }
 
     public static function init()
     {
-        self::setParams();
-        return self::connect();
+      self::setParams()
+      return self::connect();
     }
 }
