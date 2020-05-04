@@ -6,28 +6,28 @@ class Config
     public static $file;
     public static $data;
 
-    public static function load($file)
+    public static function loadConfFile($confFile)
     {
-        $fileName = 'App/Configs/'.$file.'.php';
-        if (file_exists($fileName)) {
-            self::$file = require_once $fileName;
+        $conf = "App/Config/".$confFile.".php";
+        if (file_exists($conf)) {
+            self::$file = require_once $conf;
         }
     }
 
-    public static function get($conf)
+    public static function get($path)
     {
         self::$data = self::$file;
 
-        if (strpos($conf, '.')) {
-            $confArray = explode('.', $conf);
-            foreach ($confArray as $key) {
+        if (strpos($path, '.')) {
+            $pathArray = explode('.', $path);
+            foreach ($pathArray as $key) {
                 if (isset(self::$data[$key])) {
                     self::$data = self::$data[$key];
                 }
             }
         } else {
-            $confArray = [$conf];
-            foreach ($confArray as $key) {
+            $pathArray = [$path];
+            foreach ($pathArray as $key) {
                 if (isset(self::$data[$key])) {
                     self::$data = self::$data[$key];
                 }
