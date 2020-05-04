@@ -3,9 +3,9 @@ namespace App\Model;
 
 use App\Core\Gateway;
 
-class User
+class User extends Gateway
 {
-    public static function createTable()
+    public function createTable()
     {
         $sql = "CREATE TABLE IF NOT EXISTS `users` (
             `id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,10 +18,10 @@ class User
             `password` VARCHAR(40) NOT NULL,
             `date_joined` TIMESTAMP
             )";
-        return Gateway::run($sql);
+        return $this->run($sql);
     }
 
-    public static function register()
+    public function register()
     {
         //
     }

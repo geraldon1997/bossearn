@@ -8,5 +8,9 @@ use App\Model\User;
 
 require_once "vendor/autoload.php";
 
-//User::createTable();
-Referral::createTable();
+$u = new User;
+$r = new Referral;
+$uu = $u->createTable();
+$rr = $r->addRef([1,2]);
+
+var_dump($rr);

@@ -6,23 +6,13 @@ use App\Core\Config;
 
 class DB
 {
-    public static $host;
-    public static $user;
-    public static $pass;
-    public static $db;
-
-    public static function setParams()
+    public function init()
     {
-        Config::loadConfFile('database');
-        self::$host = Config::get('driver.mysql.host');
-        self::$user = Config::get('driver.mysql.user');
-        self::$pass = Config::get('driver.mysql.pass');
-        self::$db = Config::get('driver.mysql.db');
-    }
+        $mysqli = new mysqli('localhost', 'bossearnphp', 'bossearnphp', 'bossearnphp');
 
-    public static function init()
-    {
-        self::setParams();
-        return new mysqli(self::$host, self::$user, self::$pass, self::$db);
+        if ($mysqli->connect_error) {
+            echo "error in connection, please contact webmaster ". $mysqli->connect_errno;
+        }
+         return $mysqli;
     }
 }

@@ -1,16 +1,24 @@
 <?php
 namespace App\Core;
 
-class Gateway
+use App\Core\DB;
+
+class Gateway extends DB
 {
-    public static function run($sql)
+    public function run($sql)
     {
-        return DB::init()->query($sql);
+        $result = $this->init()->query($sql);
+
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
     }
 
-    public static function fetch($sql)
+    public function fetch($sql)
     {
-        $result = DB::init()->query($sql);
+        $result = $this->run($sql);
 
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
