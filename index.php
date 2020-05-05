@@ -8,9 +8,14 @@ use App\Model\User;
 
 require_once "vendor/autoload.php";
 
-$u = new User;
-$r = new Referral;
-$uu = $u->createTable();
-$rr = $r->addRef([1,2]);
+$u = new User(new Referral);
+// $r = $u->register(123456, [
+//     'fn' => 'mosco',
+//     'ln' => 'gerald',
+//     'email' => 'me@me.com',
+//     'ph' => '09234232',
+//     'un' => 'hades',
+//     'pw' => 'cerjeirve'
+// ]);
 
-var_dump($rr);
+// var_dump($r);

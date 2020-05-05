@@ -12,7 +12,7 @@ class Referral extends Gateway
             `ref_id` INT NOT NULL,
             `ref_user_id` INT NOT NULL
         )";
-        return $this->run($sql);
+        $this->run($sql);
     }
 
     public function addRef(array $refs)
