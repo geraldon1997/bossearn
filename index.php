@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\UserController;
 use App\Core\Config;
 use App\Core\DB;
 use App\Core\Gateway;
@@ -8,14 +9,14 @@ use App\Model\User;
 
 require_once "vendor/autoload.php";
 
-$u = new User(new Referral);
-// $r = $u->register(123456, [
-//     'fn' => 'mosco',
-//     'ln' => 'gerald',
-//     'email' => 'me@me.com',
-//     'ph' => '09234232',
-//     'un' => 'hades',
-//     'pw' => 'cerjeirve'
-// ]);
+$u = new UserController();
+$r = $u->createUser(518412, [
+    'fn' => 'mosco',
+    'ln' => 'gerald',
+    'email' => 'me@me.de',
+    'phone' => '09234232',
+    'un' => 'mosco',
+    'pw' => 'cerjeirve'
+]);
 
-// var_dump($r);
+var_dump($r);

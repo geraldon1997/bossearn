@@ -6,13 +6,6 @@ use App\Model\Referral;
 
 class User extends Gateway
 {
-    public $refObj;
-
-    public function __construct(Referral $referral)
-    {
-        $this->refObj = $referral;
-    }
-
     public function createTable()
     {
         $sql = "CREATE TABLE IF NOT EXISTS `users` (
@@ -29,15 +22,16 @@ class User extends Gateway
         $this->run($sql);
     }
 
-    public function register(int $ref_id, array $values)
+    public function register(Referral $refObj, int $ref_id, array $values)
     {
         $this->createTable();
         $ref = rand(0, 999999);
         $val = implode("', '", $values);
         $sql = "INSERT INTO users (ref,fname,lname,email,phone,uname,`password`) VALUES ($ref,'$val')";
         $this->run($sql);
-        $id = $this->getLastId();
-        return $this->refObj->addRef([$ref_id,$id]);
+        $refuserid = $this->getLastId();
+        $refid = $this->findUser('ref', $ref_id)['id'];
+        return $refObj->addRef([$refid,$refuserid]);
     }
 
     public function getLastId()
@@ -51,13 +45,33 @@ class User extends Gateway
 
     public function findUser($col, $val)
     {
-        $sql = "SELECT * FROM users WHERE $col = '$val' ";
-        return $this->fetch($sql);
+        $sql = "SELECT * FROM users WHERE $col = '$val' LIMIT 1";
+        $user = $this->fetch($sql);
+        foreach ($user as $key) {
+            return $key;
+        }
     }
 
     public function getAllUsers()
     {
         $sql = "SELECT * FROM users ORDER BY fname ASC";
         return $this->fetch($sql);
+    }
+
+    public function checkRefCode($refcode)
+    {
+        $sql = "SELECT * FROM users WHERE ref = '$refcode' ";
+        return $this->fetch($sql);
+    }
+
+    public function getUserDetails(string $un)
+    {
+        $sql = "SELECT * FROM users WHERE uname = '$un' ";
+        return $this->fetch($sql);
+    }
+
+    public function addUsersBank(Bank $bank, $sql)
+    {
+        $bank->addAcct($sql);
     }
 }
