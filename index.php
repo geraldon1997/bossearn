@@ -10,12 +10,12 @@ use App\Model\User;
 require_once "vendor/autoload.php";
 
 $u = new UserController();
-$r = $u->createUser(518412, [
+$r = $u->createUser(73019, [
     'fn' => 'mosco',
     'ln' => 'gerald',
-    'email' => 'me@me.de',
-    'phone' => '09234232',
-    'un' => 'mosco',
+    'email' => 'gen@test.com',
+    'phone' => '09234232234',
+    'un' => 'gen',
     'pw' => 'cerjeirve'
 ]);
 
