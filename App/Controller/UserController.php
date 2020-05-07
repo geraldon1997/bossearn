@@ -24,11 +24,12 @@ class UserController extends User
         if (empty($this->errmsg)) {
             $checkRef = $this->checkRefCode($ref_id);
             if ($checkRef > 0) {
-                return $this->register(new Referral, $ref_id, $this->data);
+                $this->register(new Referral, $ref_id, $this->data);
             } else {
                 $ref = $this->assignRef();
-                return $this->register(new Referral, $ref, $this->data);
+                $this->register(new Referral, $ref, $this->data);
             }
+            return $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
         }
     }
 
@@ -157,6 +158,6 @@ class UserController extends User
         $headers .= "From: Support <support@bossearn.com>\n";
         $headers .= "X-Priority: 1\n";
         $headers .= "Content-Type:text/html; charset=\"iso-8859-1\"\n";
-        return mail($to, $subject, $message, $headers);
+        mail($to, $subject, $message, $headers);
     }
 }

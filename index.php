@@ -19,4 +19,4 @@ $r = $u->createUser(73019, [
     'pw' => 'cerjeirve'
 ]);
 
-var_dump($r);
+var_dump($r, $u->errmsg, $u->success);
