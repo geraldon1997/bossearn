@@ -106,7 +106,7 @@
                     <div class="col-md-12 text-center">
                         <br>
                         <br>
-                        <div class="copyright">&copy; Markedia. Design: <a href="http://html.design">HTML Design</a>.</div>
+                        <div class="copyright">&copy; orbit brothers communication <a href="https://obcgroup.com.ng">OBCGROUP</a>.</div>
                     </div>
                 </div>
             </div><!-- end container -->
