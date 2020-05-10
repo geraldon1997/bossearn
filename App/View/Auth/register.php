@@ -64,7 +64,7 @@ require_once Layout::start('auth.header');
 
                     <div class="flex-m w-full p-b-33">
                         <div class="contact100-form-checkbox">
-                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox">
                             <label class="label-checkbox100" for="ckb1">
                                 <span class="txt1">
                                     I agree to the
