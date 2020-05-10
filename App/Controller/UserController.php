@@ -11,7 +11,7 @@ class UserController extends User
     public $errmsg = [];
     public $success = [];
 
-    public function createUser($ref_id, $values)
+    public function createUser($ref_id, array $values)
     {
         $this->data = $values;
         $this->cleanInput();
@@ -19,7 +19,7 @@ class UserController extends User
         $this->validateEmail();
         $this->validatePhone();
         $this->checkIfRegDetailsExist();
-        $this->data['pw'] = $this->hashpwd($this->data['pw']);
+        $this->data['pass'] = $this->hashpwd($this->data['pass']);
 
         if (empty($this->errmsg)) {
             $checkRef = $this->checkRefCode($ref_id);
@@ -29,17 +29,18 @@ class UserController extends User
                 $ref = $this->assignRef();
                 $this->register(new Referral, $ref, $this->data);
             }
-            return $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
+            $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
+            $this->success['register'] = 'registeration was successful';
         }
     }
 
     public function checkIfRegDetailsExist()
     {
-        $u = $this->checkRegDetails('uname', $this->data['un']);
+        $u = $this->checkRegDetails('uname', $this->data['username']);
         $e = $this->checkRegDetails('email', $this->data['email']);
 
         if ($u > 0) {
-            $this->errmsg['uname'] = $this->data['un']." has been taken, choose another username";
+            $this->errmsg['username'] = $this->data['username']." has been taken, choose another username";
         }
 
         if ($e > 0) {
@@ -104,13 +105,13 @@ class UserController extends User
         $this->data = $data;
         $this->cleanInput();
         $this->checkInput();
-        $this->data['pwd'] = $this->hashpwd($this->data['pwd']);
-        $login = $this->checkLogin($this->data['uname'], $this->data['pwd']);
+        $this->data['pwd'] = $this->hashpwd($this->data['pass']);
+        $login = $this->checkLogin($this->data['username'], $this->data['pass']);
 
         if ($login > 0) {
-            echo 'yes';
+            $this->success['login'] = "authentication was successful";
         } else {
-            echo 'no';
+            $this->errmsg['login'] = "username or password is incorrect";
         }
     }
 
@@ -120,7 +121,7 @@ class UserController extends User
         $this->cleanInput();
         $this->checkInput();
         $uid = $this->findUser('uname', $_SESSION['uname'])['id'];
-        $update = $this->updateProfile($this->data['fn'], $this->data['ln'], $this->data['ph'], $uid);
+        $update = $this->updateProfile($this->data['fname'], $this->data['lname'], $this->data['phone'], $uid);
 
         if ($update === true) {
             $this->success['update'] = 'profile updated successfully';
