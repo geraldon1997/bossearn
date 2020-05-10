@@ -105,7 +105,7 @@ class UserController extends User
         $this->data = $data;
         $this->cleanInput();
         $this->checkInput();
-        $this->data['pwd'] = $this->hashpwd($this->data['pass']);
+        $this->data['pass'] = $this->hashpwd($this->data['pass']);
         $login = $this->checkLogin($this->data['username'], $this->data['pass']);
 
         if ($login > 0) {
