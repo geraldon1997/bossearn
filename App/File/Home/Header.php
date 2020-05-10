@@ -73,13 +73,17 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="https://bossearn.com/">Home</a>
+                                <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://bossearn.com/dashboard.php/">Dashboard</a>
+                            <?php if (isset($_SESSION['uname'])) {?>
+                                <a class="nav-link" href="">Dashboard</a>
+                            <?php } ?>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://bossearn.com/vendors.php/">Vendors</a>
+                            <?php if (isset($_SESSION['uname'])) {?>
+                                <a class="nav-link" href="/vendors.php">Vendors</a>
+                            <?php } ?>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">how it works</a>
@@ -88,7 +92,11 @@
                                 <a class="nav-link" href="#">Contact us</a>
                             </li>
                             <li class="nav-item">
+                            <?php if (!isset($_SESSION['uname'])) {?>
                                 <a class="nav-link" href="/login.php">Login</a>
+                            <?php } else {?>
+                                <a class="nav-link" href="/logout.php">Logout</a>
+                            <?php } ?>
                             </li>
                         </ul>
                         <form class="form-inline">
@@ -99,10 +107,3 @@
                 </nav>
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
-
-        <div class="row">
-            <div class="col-md-12" style="border: 1px solid black;">
-                <img class="h-i" src="<?php echo $assets; ?>images/version/b1.jpeg" alt="bossearn">
-            </div>    
-        </div><!-- end page-title -->
-        <marquee><h2> Welcome to Bossearn <small>we are glad to have you back today. kindly login with your registered username and password to start enjoying the opportunities for today. wishing you splendid day ahead!</small></h2></marquee>

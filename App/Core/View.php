@@ -32,4 +32,9 @@ class View
     {
         require_once Config::get('home.index');
     }
+
+    public function vendors()
+    {
+        require_once Config::get('home.vendors');
+    }
 }

@@ -17,8 +17,8 @@ class User extends Gateway
             `phone` VARCHAR(15) NOT NULL,
             `uname` VARCHAR(20) UNIQUE NOT NULL,
             `passwd` VARCHAR(40) NOT NULL,
-            `is_email_verified` BOOLEAN,
-            `is_logged_in` BOOLEAN,
+            `is_email_verified` BOOLEAN NOT NULL,
+            `is_logged_in` BOOLEAN NOT NULL,
             `date_joined` TIMESTAMP NOT NULL
             )";
         $this->run($sql);
@@ -29,7 +29,7 @@ class User extends Gateway
         $this->createTable();
         $ref = rand(0, 999999);
         $val = implode("', '", $values);
-        $sql = "INSERT INTO users (ref,fname,lname,email,phone,uname,passwd) VALUES ($ref,'$val')";
+        $sql = "INSERT INTO users (ref,fname,lname,email,phone,uname,passwd,is_email_verified,is_logged_in) VALUES ($ref,'$val',false,false)";
         $register = $this->run($sql);
         $refuserid = $this->getLastId();
         $refid = $this->findUser('ref', $ref_id)['id'];
@@ -97,7 +97,27 @@ class User extends Gateway
 
     public function checkLogin($un, $pwd)
     {
-        $sql = "SELECT * FROM users WHERE uname = '$un' AND passwd = '$pwd' LIMIT 1";
+        $sql = "SELECT * FROM users WHERE uname = '$un' AND passwd = '$pwd' AND `is_email_verified` = true AND `is_logged_in` = false LIMIT 1";
+        $login = $this->checkExists($sql);
+        if ($login > 0) {
+            $sql1 = "UPDATE `users` SET `is_logged_in` = true WHERE `uname` = '$un'";
+            return $this->run($sql1);
+        }
+    }
+
+    public function logout($un)
+    {
+        $sql = "SELECT * FROM `users` WHERE `uname` = '$un' AND `is_logged_in` = true LIMIT 1";
+        $logout = $this->checkExists($sql);
+        if ($logout > 0) {
+            $sql1 = "UPDATE `users` SET `is_logged_in` = false WHERE `uname` = '$un'";
+            return $this->run($sql1);
+        }
+    }
+
+    public function isLoggedIn($un)
+    {
+        $sql = "SELECT * FROM `users` WHERE `uname` = '$un' AND `is_logged_in` = true";
         return $this->checkExists($sql);
     }
 

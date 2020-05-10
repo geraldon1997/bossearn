@@ -6,7 +6,18 @@ $uc = new UserController;
 
 require_once Layout::start('home.header');
 ?>
-
+<div class="row">
+    <div class="col-md-12" style="border: 1px solid black;">
+        <img class="h-i" src="<?php echo $assets; ?>images/version/b1.jpeg" alt="bossearn">
+    </div>    
+</div><!-- end page-title -->
+<marquee>
+    <h2> Welcome to Bossearn 
+        <small>we are glad to have you back today. 
+            kindly login with your registered username and password 
+            to start enjoying the opportunities for today. 
+            wishing you splendid day ahead!</small></h2>
+</marquee>
         <section class="section lb">
             <div class="container">
                 <div class="row">
@@ -298,4 +309,4 @@ require_once Layout::start('home.header');
                 </div><!-- end row -->
             </div><!-- end container -->
         </section>
-<?php require_once Layout::end('home.footer');
+<?php require_once Layout::end('home.footer'); ?>

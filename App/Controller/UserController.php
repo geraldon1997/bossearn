@@ -20,7 +20,7 @@ class UserController extends User
         $this->validatePhone();
         $this->checkIfRegDetailsExist();
         $this->data['pass'] = $this->hashpwd($this->data['pass']);
-
+        
         if (empty($this->errmsg)) {
             $checkRef = $this->checkRefCode($ref_id);
             if ($checkRef > 0) {
@@ -32,6 +32,7 @@ class UserController extends User
             if ($register) {
                 $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
                 $this->success['register'] = 'registeration was successful';
+                header('refresh:5 url=bossearnphp.test');
             } else {
                 $this->errmsg['register'] = 'registeration was not successful';
             }
@@ -112,10 +113,23 @@ class UserController extends User
         $this->data['pass'] = $this->hashpwd($this->data['pass']);
         $login = $this->checkLogin($this->data['username'], $this->data['pass']);
 
-        if ($login > 0) {
+        if ($login === true) {
             $this->success['login'] = "authentication was successful";
+            header('refresh: 3 url=/');
+            $_SESSION['uname'] = $this->data['username'];
         } else {
             $this->errmsg['login'] = "username or password is incorrect";
+        }
+    }
+
+    public function logoutUser()
+    {
+        $logout = $this->logout($_SESSION['uname']);
+        if ($logout) {
+            unset($_SESSION['uname']);
+            header('location: /');
+        } else {
+            echo $_SESSION['uname'];
         }
     }
 
