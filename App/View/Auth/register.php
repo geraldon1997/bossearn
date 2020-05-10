@@ -93,6 +93,13 @@ require_once Layout::start('auth.header');
                         </a>
                     </div>
                 </form>
+                <hr>
+                <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <a href="/" class="login100-form-btn">
+                                home
+                            </a>
+                        </div>
             </div>
         </div>
     </div>
