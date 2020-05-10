@@ -45,7 +45,7 @@ require_once Layout::start('home.header');
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <marquee><h2> Welcome <small class="hidden-xs-down hidden-sm-down">to </small> Bossearn</h2></marquee>
+                        <marquee><h2> Welcome to Bossearn</h2></marquee>
                     </div><!-- end col -->
                     <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                         <ol class="breadcrumb">
