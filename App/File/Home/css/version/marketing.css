@@ -350,7 +350,7 @@ a:focus,
 
 .market-header .navbar,
 .newsletter-widget.text-center {
-    border-color: #f9ca27;
+    border-color: whitesmoke;
 }
 
 .color-yellow a,
@@ -362,5 +362,5 @@ a:focus,
 .dropdown-item:hover,
 .bg-inverse {
     color: #111111 !important;
-    background-color: #f9ca27 !important;
+    background-color: orange !important;
 }

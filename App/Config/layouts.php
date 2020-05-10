@@ -5,8 +5,8 @@ return [
         'footer' => 'App/File/Auth/Footer.php',
         'assets' => 'App/File/Auth/'
     ],
-    'dashboard' => [
-        'header' => 'App/File/Dashboard/Header.php',
-        'footer' => 'App/File/Dashboard/Footer.php'
+    'home' => [
+        'header' => 'App/File/Home/Header.php',
+        'footer' => 'App/File/Home/Footer.php'
     ]
 ];

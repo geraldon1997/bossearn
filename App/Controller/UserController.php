@@ -24,13 +24,17 @@ class UserController extends User
         if (empty($this->errmsg)) {
             $checkRef = $this->checkRefCode($ref_id);
             if ($checkRef > 0) {
-                $this->register(new Referral, $ref_id, $this->data);
+                $register = $this->register(new Referral, $ref_id, $this->data);
             } else {
                 $ref = $this->assignRef();
-                $this->register(new Referral, $ref, $this->data);
+                $register = $this->register(new Referral, $ref, $this->data);
             }
-            $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
-            $this->success['register'] = 'registeration was successful';
+            if ($register) {
+                $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
+                $this->success['register'] = 'registeration was successful';
+            } else {
+                $this->errmsg['register'] = 'registeration was not successful';
+            }
         }
     }
 

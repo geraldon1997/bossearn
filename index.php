@@ -1,1 +1,7 @@
-<h1>hello world</h1>
+<?php
+require_once 'vendor/autoload.php';
+
+use App\Core\View;
+
+$auth = new View;
+$auth->home();

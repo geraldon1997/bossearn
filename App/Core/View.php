@@ -30,6 +30,6 @@ class View
 
     public function home()
     {
-        Config::get('home.index');
+        require_once Config::get('home.index');
     }
 }
