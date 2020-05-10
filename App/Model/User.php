@@ -17,6 +17,8 @@ class User extends Gateway
             `phone` VARCHAR(15) NOT NULL,
             `uname` VARCHAR(20) UNIQUE NOT NULL,
             `passwd` VARCHAR(40) NOT NULL,
+            `is_email_verified` BOOLEAN,
+            `is_logged_in` BOOLEAN,
             `date_joined` TIMESTAMP NOT NULL
             )";
         $this->run($sql);

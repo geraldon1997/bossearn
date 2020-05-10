@@ -41,21 +41,12 @@ require_once Layout::start('home.header');
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
 
-        <div class="page-title db">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <marquee><h2> Welcome to Bossearn</h2></marquee>
-                    </div><!-- end col -->
-                    <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Bossearn</a></li>
-                            <li class="breadcrumb-item active">Home</li>
-                        </ol>
-                    </div><!-- end col -->                    
-                </div><!-- end row -->
-            </div><!-- end container -->
+        <div class="row">
+            <div class="col-md-12" style="border: 1px solid black; background-color: orange;">
+                <img src="<?php echo $assets; ?>images/version/bossearn.png" alt="bossearn" width="100%" height="100" style="margin-top: 55px; filter: blur(10px);">
+            </div>    
         </div><!-- end page-title -->
+        <marquee><h2> Welcome to Bossearn</h2></marquee>
 
         <section class="section lb">
             <div class="container">
