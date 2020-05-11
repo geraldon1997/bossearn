@@ -5,9 +5,9 @@ use App\Core\DB;
 
 class Gateway extends DB
 {
-    public function run($sql)
+    public static function run($sql)
     {
-        $result = $this->init()->query($sql);
+        $result = self::init()->query($sql);
 
         if (!$result) {
             return false;
@@ -16,9 +16,9 @@ class Gateway extends DB
         return $result;
     }
 
-    public function fetch($sql)
+    public static function fetch($sql)
     {
-        $result = $this->init()->query($sql);
+        $result = self::init()->query($sql);
 
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
@@ -28,7 +28,7 @@ class Gateway extends DB
 
     public function checkExists($sql)
     {
-        $result = $this->init()->query($sql);
+        $result = self::init()->query($sql);
         return $result->num_rows;
     }
 }

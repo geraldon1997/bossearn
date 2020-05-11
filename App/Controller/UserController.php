@@ -11,165 +11,165 @@ class UserController extends User
     public $errmsg = [];
     public $success = [];
 
-    public function createUser($ref_id, array $values)
+    public static function createUser($ref_id, array $values)
     {
-        $this->data = $values;
-        $this->cleanInput();
-        $this->checkInput();
-        $this->validateEmail();
-        $this->validatePhone();
-        $this->checkIfRegDetailsExist();
-        $this->data['pass'] = $this->hashpwd($this->data['pass']);
+        self::$data = $values;
+        self::cleanInput();
+        self::checkInput();
+        self::validateEmail();
+        self::validatePhone();
+        self::checkIfRegDetailsExist();
+        self::$data['pass'] = self::hashpwd(self::$data['pass']);
         
-        if (empty($this->errmsg)) {
-            $checkRef = $this->checkRefCode($ref_id);
+        if (empty(self::$errmsg)) {
+            $checkRef = self::checkRefCode($ref_id);
             if ($checkRef > 0) {
-                $register = $this->register(new Referral, $ref_id, $this->data);
+                $register = self::register($ref_id, self::$data);
             } else {
-                $ref = $this->assignRef();
-                $register = $this->register(new Referral, $ref, $this->data);
+                $ref = self::assignRef();
+                $register = self::register($ref, self::$data);
             }
             if ($register) {
-                $this->sendEmail($this->data['email'], 'welcome to bossearn', 'hello world');
-                $this->success['register'] = 'registeration was successful';
+                self::sendEmail(self::$data['email'], 'welcome to bossearn', 'hello world');
+                self::$success['register'] = 'registeration was successful';
                 header('refresh:5 url=bossearnphp.test');
             } else {
-                $this->errmsg['register'] = 'registeration was not successful';
+                self::$errmsg['register'] = 'registeration was not successful';
             }
         }
     }
 
-    public function checkIfRegDetailsExist()
+    public static function checkIfRegDetailsExist()
     {
-        $u = $this->checkRegDetails('uname', $this->data['username']);
-        $e = $this->checkRegDetails('email', $this->data['email']);
+        $u = self::checkRegDetails('uname', self::$data['username']);
+        $e = self::checkRegDetails('email', self::$data['email']);
 
         if ($u > 0) {
-            $this->errmsg['username'] = $this->data['username']." has been taken, choose another username";
+            self::$errmsg['username'] = self::$data['username']." has been taken, choose another username";
         }
 
         if ($e > 0) {
-            $this->errmsg['email'] = $this->data['email']." has been taken, choose another email";
+            self::$errmsg['email'] = self::$data['email']." has been taken, choose another email";
         }
     }
 
-    public function cleanInput()
+    public static function cleanInput()
     {
-        foreach ($this->data as $key => $value) {
-            $data = trim(htmlspecialchars(stripslashes(strip_tags($this->data[$key]))));
-            $this->data[$key] = $data;
+        foreach (self::$data as $key => $value) {
+            $data = trim(htmlspecialchars(stripslashes(strip_tags(self::$data[$key]))));
+            self::$data[$key] = $data;
         }
     }
 
-    public function checkInput()
+    public static function checkInput()
     {
-        foreach ($this->data as $key => $value) {
-            if ($this->data[$key] = '' || $this->data[$key] === null || empty($this->data[$key])) {
+        foreach (self::$data as $key => $value) {
+            if (self::$data[$key] = '' || self::$data[$key] === null || empty(self::$data[$key])) {
                 $msg = "$key should not be empty";
-                $this->errmsg[$key] = $msg;
-                unset($this->data[$key]);
+                self::$errmsg[$key] = $msg;
+                unset(self::$data[$key]);
             } else {
-                $this->data[$key] = $value;
+                self::$data[$key] = $value;
             }
         }
     }
 
-    public function validateEmail()
+    public static function validateEmail()
     {
-        $mail = $this->data['email'];
+        $mail = self::$data['email'];
         $email = filter_var($mail, FILTER_VALIDATE_EMAIL);
         if ($email) {
-            $this->data['email'] = $email;
+            self::$data['email'] = $email;
         } else {
-            $msg = $this->data['email']." is not a valid email address";
-            $this->errmsg['email'] = $msg;
-            unset($this->data['email']);
+            $msg = self::$data['email']." is not a valid email address";
+            self::$errmsg['email'] = $msg;
+            unset(self::$data['email']);
         }
     }
 
-    public function validatePhone()
+    public static function validatePhone()
     {
-        $phone = $this->data['phone'];
+        $phone = self::$data['phone'];
         $validPhone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
         if ($validPhone) {
-            $this->data['phone'] = $validPhone;
+            self::$data['phone'] = $validPhone;
         } else {
             $msg = $phone." is not valid";
-            $this->errmsg['phone'] = $msg;
-            unset($this->data['phone']);
+            self::$errmsg['phone'] = $msg;
+            unset(self::$data['phone']);
         }
     }
 
-    public function hashpwd($pwd)
+    public static function hashpwd($pwd)
     {
         return md5($pwd);
     }
 
-    public function login($data)
+    public static function login($data)
     {
-        $this->data = $data;
-        $this->cleanInput();
-        $this->checkInput();
-        $this->data['pass'] = $this->hashpwd($this->data['pass']);
-        $login = $this->checkLogin($this->data['username'], $this->data['pass']);
-
-        if ($login === true) {
-            $this->success['login'] = "authentication was successful";
+        self::$data = $data;
+        self::cleanInput();
+        self::checkInput();
+        self::$data['pass'] = self::hashpwd(self::$data['pass']);
+        $login = self::checkLogin(self::$data['username'], self::$data['pass']);
+        // var_dump($login);
+        if ($login == true) {
+            self::$success['login'] = "authentication was successful";
             header('refresh: 3 url=/');
-            $_SESSION['uname'] = $this->data['username'];
-        } else {
-            $this->errmsg['login'] = "username or password is incorrect";
+            $_SESSION['uname'] = self::$data['username'];
+        } elseif ($login == 'not exists') {
+            self::$errmsg['login'] = "username or password is incorrect";
+        } elseif ($login == 'email not verified') {
+            self::$errmsg['login'] = "please verify email first";
         }
     }
 
-    public function logoutUser()
+    public static function logoutUser()
     {
-        $logout = $this->logout($_SESSION['uname']);
+        $logout = self::logout($_SESSION['uname']);
         if ($logout) {
             unset($_SESSION['uname']);
             header('location: /');
-        } else {
-            echo $_SESSION['uname'];
         }
     }
 
-    public function updateMyProfile($data)
+    public static function updateMyProfile($data)
     {
-        $this->data = $data;
-        $this->cleanInput();
-        $this->checkInput();
-        $uid = $this->findUser('uname', $_SESSION['uname'])['id'];
-        $update = $this->updateProfile($this->data['fname'], $this->data['lname'], $this->data['phone'], $uid);
+        self::$data = $data;
+        self::cleanInput();
+        self::checkInput();
+        $uid = self::findUser('uname', $_SESSION['uname'])['id'];
+        $update = self::updateProfile(self::$data['fname'], self::$data['lname'], self::$data['phone'], $uid);
 
         if ($update === true) {
-            $this->success['update'] = 'profile updated successfully';
+            self::$success['update'] = 'profile updated successfully';
         } else {
-            $this->errmsg['update'] = 'profile was not updated';
+            self::$errmsg['update'] = 'profile was not updated';
         }
     }
 
-    public function changePwd()
+    public static function changePwd()
     {
         //
     }
 
-    public function forgotPwd($email)
+    public static function forgotPwd($email)
     {
         Config::loadConfFile('templates');
         $body = Config::get('email.forgotpwd');
-        $this->sendEmail($email, 'Password Reset', $body);
+        self::sendEmail($email, 'Password Reset', $body);
     }
 
-    public function resetPwd($data)
+    public static function resetPwd($data)
     {
-        $this->data = $data;
-        $this->cleanInput();
-        $this->checkInput();
-        $this->data['pwd'] = $this->hashpwd($this->data['pwd']);
-        $this->updatePwd($this->data['pwd'], 'email', $this->data['email']);
+        self::$data = $data;
+        self::cleanInput();
+        self::checkInput();
+        self::$data['pwd'] = self::hashpwd(self::$data['pwd']);
+        self::updatePwd(self::$data['pwd'], 'email', self::$data['email']);
     }
 
-    public function sendEmail($email, $subject, $body)
+    public static function sendEmail($email, $subject, $body)
     {
         $to = $email;
         $subject = 'subject';

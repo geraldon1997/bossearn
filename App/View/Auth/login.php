@@ -2,10 +2,8 @@
 use App\Core\Layout;
 use App\Controller\UserController;
 
-$uc = new UserController;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $uc->login($_POST);
+    UserController::login($_POST);
 }
 require_once Layout::start('auth.header');
 ?>
@@ -15,8 +13,8 @@ require_once Layout::start('auth.header');
             <div class="login100-more" style="background-image: url('<?php echo $assets; ?>images/bg-01.jpg');"></div>
 
             <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-            <span id="errmsg"><?php echo $uc->errmsg['login']; ?></span>
-            <span id="successmsg"><?php echo $uc->success['login']; ?></span>
+            <span id="errmsg"><?php echo UserController::$errmsg['login']; ?></span>
+            <span id="successmsg"><?php echo UserController::$success['login']; ?></span>
                 <form class="login100-form validate-form" method="post">
                     <span class="login100-form-title p-b-59">
                         Sign In

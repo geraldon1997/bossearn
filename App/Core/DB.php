@@ -6,7 +6,7 @@ use App\Core\Config;
 
 class DB
 {
-    public function init()
+    public static function init()
     {
         $mysqli = new mysqli('localhost', 'bossearnphp', 'bossearnphp', 'bossearnphp');
 

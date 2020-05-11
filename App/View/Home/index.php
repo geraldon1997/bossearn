@@ -2,8 +2,6 @@
 use App\Core\Layout;
 use App\Controller\UserController;
 
-$uc = new UserController;
-
 require_once Layout::start('home.header');
 ?>
 <div class="row">

@@ -6,7 +6,7 @@ use App\Model\Referral;
 
 class User extends Gateway
 {
-    public function createTable()
+    public static function createTable()
     {
         $sql = "CREATE TABLE IF NOT EXISTS `users` (
             `id` INT PRIMARY KEY AUTO_INCREMENT,
@@ -19,117 +19,132 @@ class User extends Gateway
             `passwd` VARCHAR(40) NOT NULL,
             `is_email_verified` BOOLEAN NOT NULL,
             `is_logged_in` BOOLEAN NOT NULL,
+            `role_id` INT NOT NULL,
             `date_joined` TIMESTAMP NOT NULL
             )";
-        $this->run($sql);
+        self::run($sql);
     }
 
-    public function register(Referral $refObj, int $ref_id, array $values)
+    public static function register(int $ref_id, array $values)
     {
-        $this->createTable();
         $ref = rand(0, 999999);
         $val = implode("', '", $values);
-        $sql = "INSERT INTO users (ref,fname,lname,email,phone,uname,passwd,is_email_verified,is_logged_in) VALUES ($ref,'$val',false,false)";
-        $register = $this->run($sql);
-        $refuserid = $this->getLastId();
-        $refid = $this->findUser('ref', $ref_id)['id'];
+        $sql = "INSERT INTO users (ref,fname,lname,email,phone,uname,passwd,is_email_verified,is_logged_in,role_id) VALUES ($ref,'$val',false,false,3)";
+        $register = self::run($sql);
+        $refuserid = self::getLastId();
+        $refid = self::findUser('ref', $ref_id)['id'];
         if ($register === true) {
-            return $refObj->addRef([$refid,$refuserid]);
+            return Referral::addRef([$refid,$refuserid]);
         }
     }
 
-    public function getLastId()
+    public static function getLastId()
     {
         $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
-        $lastid = $this->fetch($sql);
+        $lastid = self::fetch($sql);
         foreach ($lastid as $key) {
             return $key['id'];
         }
     }
 
-    public function findUser($col, $val)
+    public static function findUser($col, $val)
     {
         $sql = "SELECT * FROM users WHERE $col = '$val' ";
-        $user = $this->fetch($sql);
+        $user = self::fetch($sql);
         foreach ($user as $key) {
             return $key;
         }
     }
 
-    public function getAllUsers()
+    public static function getAllUsers()
     {
         $sql = "SELECT * FROM users ORDER BY fname ASC";
-        return $this->fetch($sql);
+        return self::fetch($sql);
     }
 
-    public function checkRegDetails($col, $val)
+    public static function checkRegDetails($col, $val)
     {
         $sql = "SELECT * FROM users WHERE $col = '$val' ";
-        return $this->checkExists($sql);
+        return self::checkExists($sql);
     }
 
-    public function checkRefCode($refcode)
+    public static function checkRefCode($refcode)
     {
         $sql = "SELECT * FROM users WHERE ref = '$refcode' ";
-        return $this->checkExists($sql);
+        return self::checkExists($sql);
     }
 
-    public function getUserDetails(string $un)
+    public static function getUserDetails(string $un)
     {
         $sql = "SELECT * FROM users WHERE uname = '$un' ";
-        return $this->fetch($sql);
+        return self::fetch($sql);
     }
 
-    public function addUsersBank(Bank $bank, $data)
+    public static function addUsersBank(Bank $bank, $data)
     {
         $values = implode("', '", $data);
         return $bank->addAcct($values);
     }
 
-    public function assignRef()
+    public static function assignRef()
     {
         $sql = "SELECT ref FROM users ORDER BY RAND() LIMIT 1";
-        $ref = $this->fetch($sql);
+        $ref = self::fetch($sql);
         foreach ($ref as $key) {
             return $key['ref'];
         }
     }
 
-    public function checkLogin($un, $pwd)
+    public static function checkLogin($un, $pwd)
     {
-        $sql = "SELECT * FROM users WHERE uname = '$un' AND passwd = '$pwd' AND `is_email_verified` = true AND `is_logged_in` = false LIMIT 1";
-        $login = $this->checkExists($sql);
+        $sql = "SELECT * FROM users WHERE uname = '$un' AND passwd = '$pwd' LIMIT 1";
+        $login = self::checkExists($sql);
         if ($login > 0) {
-            $sql1 = "UPDATE `users` SET `is_logged_in` = true WHERE `uname` = '$un'";
-            return $this->run($sql1);
+            $details = self::fetch($sql);
+            foreach ($details as $val) {
+            }
+            if ($val['is_email_verified'] == true) {
+                if ($val['is_logged_in'] == false) {
+                    $sql1 = "UPDATE `users` SET `is_logged_in` = true WHERE `uname` = '$un' ";
+                    return self::run($sql1);
+                } else {
+                    return true;
+                }
+            } else {
+                return 'email not verified';
+            }
+        } else {
+            return 'not exists';
         }
     }
 
-    public function logout($un)
+    public static function logout($un)
     {
         $sql = "SELECT * FROM `users` WHERE `uname` = '$un' AND `is_logged_in` = true LIMIT 1";
-        $logout = $this->checkExists($sql);
+        $logout = self::checkExists($sql);
         if ($logout > 0) {
             $sql1 = "UPDATE `users` SET `is_logged_in` = false WHERE `uname` = '$un'";
-            return $this->run($sql1);
+            return self::run($sql1);
+        } else {
+            return true;
         }
     }
 
-    public function isLoggedIn($un)
+    public static function isLoggedIn($un)
     {
         $sql = "SELECT * FROM `users` WHERE `uname` = '$un' AND `is_logged_in` = true";
-        return $this->checkExists($sql);
+        return self::checkExists($sql);
     }
 
-    public function updateProfile($fn, $ln, $ph, $uid)
+    public static function updateProfile($fn, $ln, $ph, $uid)
     {
         $sql = "UPDATE users SET `fname` = '$fn', `lname` = '$ln', `phone` = '$ph' WHERE `id` = '$uid' ";
-        return $this->run($sql);
+        return self::run($sql);
     }
 
-    public function updatePwd($pwd, $col, $val)
+    public static function updatePwd($pwd, $col, $val)
     {
         $sql = "UPDATE users SET `password` = '$pwd' WHERE $col = '$val' ";
-        return $this->run($sql);
+        return self::run($sql);
     }
 }
