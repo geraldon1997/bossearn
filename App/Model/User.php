@@ -101,17 +101,15 @@ class User extends Gateway
         $login = self::checkExists($sql);
         if ($login > 0) {
             $details = self::fetch($sql);
-            foreach ($details as $val) {
-                if ($val['is_email_verified'] === 1) {
-                    if ($val['is_logged_in'] === 0) {
-                        $sql1 = "UPDATE `users` SET `is_logged_in` = 1 WHERE `uname` = '$un' ";
-                        return self::run($sql1);
-                    } else {
-                        return true;
-                    }
+            if ($details[0]['is_email_verified'] == true) {
+                if ($details[0]['is_logged_in'] == false) {
+                    $sql1 = "UPDATE `users` SET `is_logged_in` = 1 WHERE `uname` = '$un' ";
+                    return self::run($sql1);
                 } else {
-                    return 'email not verified';
+                    return true;
                 }
+            } else {
+                return 'email not verified';
             }
         } else {
             return 'not exists';
