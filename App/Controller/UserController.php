@@ -30,6 +30,11 @@ class UserController extends User
                 $ref = self::assignRef();
                 $register = self::register($ref, self::$data);
             }
+            $email = self::$data['email'];
+            $expire = time() * 60 * 60 * 48;
+            Config::loadConfFile('templates');
+            $body = require_once Config::get('email.verification');
+            self::sendEmail(self::$data['email'], 'Email Verification', $body);
         }
     }
 
