@@ -112,7 +112,7 @@ class UserController extends User
         self::$data['pass'] = self::hashpwd(self::$data['pass']);
         $login = self::checkLogin(self::$data['username'], self::$data['pass']);
         // var_dump($login);
-        if ($login == true) {
+        if ($login === true) {
             self::$success['login'] = "authentication was successful";
             header('refresh: 3 url=/');
             $_SESSION['uname'] = self::$data['username'];
