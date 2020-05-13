@@ -111,7 +111,7 @@ class UserController extends User
         self::checkInput();
         self::$data['pass'] = self::hashpwd(self::$data['pass']);
         $login = self::checkLogin(self::$data['username'], self::$data['pass']);
-        var_dump($login);
+        
         if ($login === "email not verified") {
             self::$errmsg['login'] = "please verify email first";
         } elseif ($login === "not exists") {
