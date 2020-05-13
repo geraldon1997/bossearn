@@ -81,7 +81,7 @@ $assets = 'App/File/Home/'; ?>
                             </li>
                             <li class="nav-item">
                             <?php if (isset($_SESSION['uname'])) {?>
-                                <a class="nav-link" href="">Dashboard</a>
+                                <a class="nav-link" href="/dashboard.php">Dashboard</a>
                             <?php } ?>
                             </li>
                             <li class="nav-item">
@@ -92,10 +92,10 @@ $assets = 'App/File/Home/'; ?>
                             <?php } ?>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">how it works</a>
+                                <a class="nav-link" href="/how.php">how it works</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact us</a>
+                                <a class="nav-link" href="/contact.php">Contact us</a>
                             </li>
                             <li class="nav-item">
                             <?php if (!isset($_SESSION['uname'])) {?>
