@@ -1,7 +1,7 @@
 <?php
 return [
     'email' => [
-        'verification' => 'App/Templates/verify.php',
+        'verification' => 'App/Templates/verifyemail.php',
         'forgotpwd' => 'App/Templates/forgotpwd.php'
     ]
 ];

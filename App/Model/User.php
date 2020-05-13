@@ -147,4 +147,13 @@ class User extends Gateway
         $sql = "UPDATE users SET `password` = '$pwd' WHERE $col = '$val' ";
         return self::run($sql);
     }
+
+    public static function getRoleId($un)
+    {
+        $sql = "SELECT * FROM `users` WHERE `uname` = '$un'";
+        $roleid = self::fetch($sql);
+        foreach ($roleid as $key) {
+            return $key['role_id'];
+        }
+    }
 }

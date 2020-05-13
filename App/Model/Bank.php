@@ -20,7 +20,7 @@ class Bank extends Gateway
     public static function addAcct($val)
     {
         $sql = "INSERT INTO users_banks (`user_id`,`bankname`,`acctnum`) VALUES ('$val')";
-        return self::run($sql);
+        self::run($sql);
     }
 
     public static function getUserAcct($uid)

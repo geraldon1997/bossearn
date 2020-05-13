@@ -1,4 +1,8 @@
-<?php $assets = 'App/File/Home/'; ?>
+<?php
+
+use App\Controller\UserController;
+
+$assets = 'App/File/Home/'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,8 +85,10 @@
                             <?php } ?>
                             </li>
                             <li class="nav-item">
-                            <?php if (isset($_SESSION['uname'])) {?>
+                            <?php if (isset($_SESSION['uname']) && UserController::getUserRole($_SESSION['uname']) == 'user') {?>
                                 <a class="nav-link" href="/vendors.php">Vendors</a>
+                            <?php } elseif (isset($_SESSION['uname']) && UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
+                                <a class="nav-link" href="/users.php">users</a>
                             <?php } ?>
                             </li>
                             <li class="nav-item">

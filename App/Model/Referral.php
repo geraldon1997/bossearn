@@ -15,16 +15,25 @@ class Referral extends Gateway
         self::run($sql);
     }
 
-    public function addRef(array $refs)
+    public static function addRef(array $refs)
     {
         $ref = implode(',', $refs);
         $sql = "INSERT INTO referrals (ref_id,ref_user_id) VALUES ($ref)";
-        return $this->run($sql);
+        return self::run($sql);
     }
 
-    public function findRef($ref)
+    public static function findRef($ref)
     {
         $sql = "SELECT * FROM users, referrals WHERE ref_user_id = $ref";
-        $this->fetch($sql);
+        self::fetch($sql);
+    }
+
+    public static function getRefCode($un)
+    {
+        $sql = "SELECT * FROM `users` WHERE `uname` = '$un' LIMIT 1";
+        $refCode = self::fetch($sql);
+        foreach ($refCode as $key) {
+            return $key['ref'];
+        }
     }
 }

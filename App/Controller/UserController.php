@@ -4,12 +4,13 @@ namespace App\Controller;
 use App\Core\Config;
 use App\Model\User;
 use App\Model\Referral;
+use App\Model\Role;
 
 class UserController extends User
 {
-    private $data = [];
-    public $errmsg = [];
-    public $success = [];
+    private static $data = [];
+    public static $errmsg = [];
+    public static $success = [];
 
     public static function createUser($ref_id, array $values)
     {
@@ -28,13 +29,6 @@ class UserController extends User
             } else {
                 $ref = self::assignRef();
                 $register = self::register($ref, self::$data);
-            }
-            if ($register) {
-                self::sendEmail(self::$data['email'], 'welcome to bossearn', 'hello world');
-                self::$success['register'] = 'registeration was successful';
-                header('refresh:5 url=bossearnphp.test');
-            } else {
-                self::$errmsg['register'] = 'registeration was not successful';
             }
         }
     }
@@ -178,5 +172,10 @@ class UserController extends User
         $headers .= "X-Priority: 1\n";
         $headers .= "Content-Type:text/html; charset=\"iso-8859-1\"\n";
         mail($to, $subject, $message, $headers);
+    }
+
+    public static function getUserRole($uname)
+    {
+        return Role::getRole(User::getRoleId($uname));
     }
 }

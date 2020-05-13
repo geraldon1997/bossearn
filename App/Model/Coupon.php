@@ -80,7 +80,7 @@ class Coupon extends Gateway
         return self::fetch($sql);
     }
 
-    public static function getId($table, $col, $val)
+    public static function getCouponId($table, $col, $val)
     {
         $sql = "SELECT * FROM $table WHERE $col = '$val' ";
         $id = self::fetch($sql);
