@@ -112,13 +112,13 @@ class UserController extends User
         self::$data['pass'] = self::hashpwd(self::$data['pass']);
         $login = self::checkLogin(self::$data['username'], self::$data['pass']);
         // var_dump($login);
-        if ($login === true) {
+        if ($login) {
             self::$success['login'] = "authentication was successful";
             header('refresh: 3 url=/');
             $_SESSION['uname'] = self::$data['username'];
-        } elseif ($login == 'not exists') {
+        } elseif ($login === 'not exists') {
             self::$errmsg['login'] = "username or password is incorrect";
-        } elseif ($login == 'email not verified') {
+        } elseif ($login === 'email not verified') {
             self::$errmsg['login'] = "please verify email first";
         }
     }
