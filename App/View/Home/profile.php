@@ -4,7 +4,6 @@ use App\Controller\UserController;
 
 require_once Layout::start('home.header');
 ?>
-<hr><hr><hr>
-<h1>vendors</h1>
-
+<hr><hr><hr><hr><hr>
+<h1>profile</h1>
 <?php require_once Layout::end('home.footer'); ?>

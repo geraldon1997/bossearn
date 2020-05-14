@@ -8,33 +8,53 @@ class View
 {
     public $layout;
 
-    public function __construct()
+    public static function init()
     {
         Config::loadConfFile('views');
     }
 
-    public function login()
+    public static function login()
     {
         require_once Config::get('auth.login');
     }
 
-    public function register()
+    public static function register()
     {
         require_once Config::get('auth.register');
     }
 
-    public function dashboard()
+    public static function coupon()
     {
-        Config::get('dashboard.index');
+        require_once Config::get('home.coupon');
     }
 
-    public function home()
+    public static function home()
     {
         require_once Config::get('home.index');
     }
 
-    public function vendors()
+    public static function vendors()
     {
         require_once Config::get('home.vendors');
+    }
+
+    public static function profile()
+    {
+        require_once Config::get('home.profile');
+    }
+
+    public static function earnings()
+    {
+        require_once Config::get('home.earnings');
+    }
+
+    public static function contact()
+    {
+        require_once Config::get('home.contact');
+    }
+
+    public static function how()
+    {
+        require_once Config::get('home.how');
     }
 }

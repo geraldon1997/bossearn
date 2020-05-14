@@ -4,4 +4,4 @@ require_once 'vendor/autoload.php';
 use App\Core\View;
 
 View::init();
-View::home();
+View::profile();

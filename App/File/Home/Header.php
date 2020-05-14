@@ -80,28 +80,41 @@ $assets = 'App/File/Home/'; ?>
                                 <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                            <?php if (isset($_SESSION['uname'])) {?>
-                                <a class="nav-link" href="/dashboard.php">Dashboard</a>
-                            <?php } ?>
-                            </li>
-                            <li class="nav-item">
-                            <?php if (isset($_SESSION['uname']) && UserController::getUserRole($_SESSION['uname']) == 'user') {?>
-                                <a class="nav-link" href="/vendors.php">Vendors</a>
-                            <?php } elseif (isset($_SESSION['uname']) && UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
-                                <a class="nav-link" href="/users.php">users</a>
-                            <?php } ?>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/how.php">how it works</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact.php">Contact us</a>
                             </li>
+                            <?php if (isset($_SESSION['uname'])) {?>
+                                <?php if (UserController::getUserRole($_SESSION['uname']) == 'user') {?>
                             <li class="nav-item">
-                            <?php if (!isset($_SESSION['uname'])) {?>
-                                <a class="nav-link" href="/login.php">Login</a>
+                                <a class="nav-link" href="/vendors.php">Vendors</a>
+                            </li>
+                                <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users.php">users</a>
+                            </li>
+                                <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'admin') {?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users.php">users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/vendors.php">vendors</a>
+                            </li>
+                                <?php }?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coupon.php">coupon</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/profile.php">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/earnings.php">Earnings</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="/logout.php">Logout</a>  
                             <?php } else {?>
-                                <a class="nav-link" href="/logout.php">Logout</a>
+                                <a class="nav-link" href="/login.php">Login</a>
                             <?php } ?>
                             </li>
                         </ul>
