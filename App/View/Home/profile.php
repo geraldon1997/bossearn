@@ -1,9 +1,9 @@
 <?php
 
-use App\Controller\BankController;
 use App\Controller\CouponController;
 use App\Core\Layout;
 use App\Controller\UserController;
+use App\Controller\BankController;
 
 $profile = UserController::getProfile($_SESSION['uname']);
 require_once Layout::start('home.header');
@@ -89,7 +89,7 @@ require_once Layout::start('home.header');
 
     <div class="bank">
     <h1>Bank Information</h1>
-    <?php if (CouponController::isCouponVerified($_SESSION['uname']) == false) { ?>
+    <?php if (CouponController::isCouponVerified($_SESSION['uname']) == true) { ?>
         <form action="" method="post">
             <div class="input-group">
                 <label for="bank name">Bank Name : </label>
@@ -105,7 +105,7 @@ require_once Layout::start('home.header');
                     <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                         <input type="text" name="bank" placeholder="Account Name">
                     <?php } else { ?>
-                        <input type="text" value="<?php echo $bank['acctname'] ?>" disabled>
+                        <input type="text" name="bank" placeholder="Account Name">
                     <?php } ?>
             </div>
 
@@ -114,7 +114,7 @@ require_once Layout::start('home.header');
                     <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                         <input type="text" name="acctnum" placeholder="Account Number">
                     <?php } else { ?>
-                        <input type="text" value="<?php echo $bank['acctnum'] ?>" disabled>
+                        <input type="text" name="acctnum" placeholder="Account Number">
                     <?php } ?>
             </div>
             <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
@@ -124,5 +124,5 @@ require_once Layout::start('home.header');
     <?php } ?>
     </div>
 </div>
-
+<?php $er = BankController::isBankFilled($_SESSION['uname']); ?>
 <?php require_once Layout::end('home.footer'); ?>
