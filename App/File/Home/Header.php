@@ -87,12 +87,15 @@ $assets = 'App/File/Home/'; ?>
                             </li>
                             <?php if (isset($_SESSION['uname'])) {?>
                                 <?php if (UserController::getUserRole($_SESSION['uname']) == 'user') {?>
+                                    <?php if (UserController::isCouponVerified() == false) { ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/vendors.php">Vendors</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/coupon.php">verify coupon</a>
                             </li>
+                                    <?php } ?>
+
                                 <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/users.php">users</a>
@@ -115,13 +118,13 @@ $assets = 'App/File/Home/'; ?>
                                 <a class="nav-link" href="/profile.php">Profile</a>
                             </li>
                             <li class="nav-item">
-                            	<a class="nav-link" href="/logout.php">Logout</a>
+                                <a class="nav-link" href="/logout.php">Logout</a>
                             </li>
                             <?php } else {?>
-                          	<li class="nav-item">
-                            	<a class="nav-link" href="/register.php">Register</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register.php">Register</a>
                             </li>
-                          	<li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/login.php">Login</a>
                             </li>
                             <?php } ?>

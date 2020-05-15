@@ -186,9 +186,19 @@ class UserController extends User
 
     public static function getProfile($un)
     {
-      $profile = self::getUserDetails($un);
-      foreach ($profile as $val) {
-        return $val;
-      }
+        $profile = self::getUserDetails($un);
+        foreach ($profile as $val) {
+            return $val;
+        }
+    }
+
+    public static function isCouponVerified()
+    {
+        return true;
+    }
+
+    public static function isBankFilled()
+    {
+        return false;
     }
 }
