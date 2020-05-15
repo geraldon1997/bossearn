@@ -9,23 +9,23 @@ $assets = 'App/File/Home/'; ?>
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Site Metas -->
     <title>Bossearn</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="<?php echo $assets; ?>images/version/bossearn.jpeg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo $assets; ?>images/version/bossearn.jpeg">
-    
+
     <!-- Design fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="<?php echo $assets; ?>css/bootstrap.css" rel="stylesheet">
 
@@ -90,9 +90,15 @@ $assets = 'App/File/Home/'; ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/vendors.php">Vendors</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coupon.php">verify coupon</a>
+                            </li>
                                 <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/users.php">users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coupon.php">my coupons</a>
                             </li>
                                 <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'admin') {?>
                             <li class="nav-item">
@@ -101,22 +107,24 @@ $assets = 'App/File/Home/'; ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/vendors.php">vendors</a>
                             </li>
-                                <?php }?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/coupon.php">coupon</a>
+                                <a class="nav-link" href="/coupon.php">coupons</a>
                             </li>
+                                <?php }?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/profile.php">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/earnings.php">Earnings</a>
+                            	<a class="nav-link" href="/logout.php">Logout</a>
                             </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="/logout.php">Logout</a>  
                             <?php } else {?>
-                                <a class="nav-link" href="/login.php">Login</a>
-                            <?php } ?>
+                          	<li class="nav-item">
+                            	<a class="nav-link" href="/register.php">Register</a>
                             </li>
+                          	<li class="nav-item">
+                                <a class="nav-link" href="/login.php">Login</a>
+                            </li>
+                            <?php } ?>
                         </ul>
                         <form class="form-inline">
                             <input class="form-control mr-sm-2" type="text" placeholder="How may I help?">

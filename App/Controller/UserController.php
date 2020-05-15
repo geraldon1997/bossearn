@@ -21,7 +21,7 @@ class UserController extends User
         self::validatePhone();
         self::checkIfRegDetailsExist();
         self::$data['pass'] = self::hashpwd(self::$data['pass']);
-        
+
         if (empty(self::$errmsg)) {
             $checkRef = self::checkRefCode($ref_id);
             if ($checkRef > 0) {
@@ -111,7 +111,7 @@ class UserController extends User
         self::checkInput();
         self::$data['pass'] = self::hashpwd(self::$data['pass']);
         $login = self::checkLogin(self::$data['username'], self::$data['pass']);
-        
+
         if ($login === "email not verified") {
             self::$errmsg['login'] = "please verify email first";
         } elseif ($login === "not exists") {
@@ -182,5 +182,13 @@ class UserController extends User
     public static function getUserRole($uname)
     {
         return Role::getRole(User::getRoleId($uname));
+    }
+
+    public static function getProfile($un)
+    {
+      $profile = self::getUserDetails($un);
+      foreach ($profile as $val) {
+        return $val;
+      }
     }
 }
