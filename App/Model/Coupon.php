@@ -88,4 +88,13 @@ class Coupon extends Gateway
             return $key['id'];
         }
     }
+
+    public static function getUserCoupon($id)
+    {
+        $sql = "SELECT * FROM users_coupons WHERE `user_id` = '$id'";
+        $userCoupon = self::fetch($sql);
+        foreach ($userCoupon as $key) {
+            return $key;
+        }
+    }
 }

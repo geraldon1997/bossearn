@@ -1,4 +1,7 @@
 <?php
+
+use App\Controller\BankController;
+use App\Controller\CouponController;
 use App\Core\Layout;
 use App\Controller\UserController;
 
@@ -86,11 +89,11 @@ require_once Layout::start('home.header');
 
     <div class="bank">
     <h1>Bank Information</h1>
-    <?php if (UserController::isCouponVerified() == true) { ?>
+    <?php if (CouponController::isCouponVerified($_SESSION['uname']) == false) { ?>
         <form action="" method="post">
             <div class="input-group">
                 <label for="bank name">Bank Name : </label>
-                    <?php if (UserController::isBankFilled() == false) { ?>
+                    <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                         <input type="text" name="bank" placeholder="Bank Name">
                     <?php } else { ?>
                         <input type="text" value="<?php echo $bank['bank'] ?>" disabled>
@@ -99,26 +102,27 @@ require_once Layout::start('home.header');
 
             <div class="input-group">
                 <label for="account name">Account Name : </label>
-                    <?php if (UserController::isBankFilled() == false) { ?>
+                    <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                         <input type="text" name="bank" placeholder="Account Name">
                     <?php } else { ?>
-                        <input type="text" name="bank" placeholder="Account Name">
+                        <input type="text" value="<?php echo $bank['acctname'] ?>" disabled>
                     <?php } ?>
             </div>
 
             <div class="input-group">
                 <label for="accout number">Account Number : </label>
-                    <?php if (UserController::isBankFilled() == false) { ?>
+                    <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                         <input type="text" name="acctnum" placeholder="Account Number">
                     <?php } else { ?>
-                        <input type="text" name="acctnum" placeholder="Account Number">
+                        <input type="text" value="<?php echo $bank['acctnum'] ?>" disabled>
                     <?php } ?>
             </div>
-            <?php if (UserController::isBankFilled() == false) { ?>
+            <?php if (BankController::isBankFilled($_SESSION['uname']) == false) { ?>
                 <button>Add Bank Details</button>
             <?php } ?>
         </form>
     <?php } ?>
     </div>
 </div>
+
 <?php require_once Layout::end('home.footer'); ?>

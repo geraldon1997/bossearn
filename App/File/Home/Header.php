@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\CouponController;
 use App\Controller\UserController;
 
 $assets = 'App/File/Home/'; ?>
@@ -87,7 +88,7 @@ $assets = 'App/File/Home/'; ?>
                             </li>
                             <?php if (isset($_SESSION['uname'])) {?>
                                 <?php if (UserController::getUserRole($_SESSION['uname']) == 'user') {?>
-                                    <?php if (UserController::isCouponVerified() == false) { ?>
+                                    <?php if (CouponController::isCouponVerified($_SESSION['uname']) == false) { ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/vendors.php">Vendors</a>
                             </li>

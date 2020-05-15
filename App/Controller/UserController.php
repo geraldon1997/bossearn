@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Core\Config;
+use App\Model\Bank;
+use App\Model\Coupon;
 use App\Model\User;
 use App\Model\Referral;
 use App\Model\Role;
@@ -190,15 +192,5 @@ class UserController extends User
         foreach ($profile as $val) {
             return $val;
         }
-    }
-
-    public static function isCouponVerified()
-    {
-        return true;
-    }
-
-    public static function isBankFilled()
-    {
-        return false;
     }
 }

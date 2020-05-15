@@ -11,6 +11,7 @@ class Bank extends Gateway
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `user_id` INT NOT NULL,
             `bankname` VARCHAR(40) NOT NULL,
+            `acctname` VARCHAR(40) NOT NULL,
             `acctnum` VARCHAR(20) NOT NULL,
             `date_added` TIMESTAMP
         )";
@@ -25,7 +26,7 @@ class Bank extends Gateway
 
     public static function getUserAcct($uid)
     {
-        $sql = "SELECT * FROM users_banks, users WHERE `users_banks.user_id` = '$uid' ";
+        $sql = "SELECT * FROM users_banks WHERE `user_id` = '$uid' ";
         return self::fetch($sql);
     }
 

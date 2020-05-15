@@ -38,6 +38,15 @@ class User extends Gateway
         }
     }
 
+    public static function getId($un)
+    {
+        $sql = "SELECT * FROM users WHERE `uname` = '$un' ";
+        $id = self::fetch($sql);
+        foreach ($id as $key) {
+            return $key['id'];
+        }
+    }
+
     public static function getLastId()
     {
         $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
