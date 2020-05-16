@@ -121,6 +121,7 @@ $assets = 'App/File/Home/'; ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout.php">Logout</a>
                             </li>
+                            <a href="test.php">test</a>
                             <?php } else {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="/register.php">Register</a>

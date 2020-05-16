@@ -1,6 +1,7 @@
 <?php
 namespace App\Model;
 
+use App\Model\User;
 use App\Core\Gateway;
 
 class Coupon extends Gateway
@@ -9,7 +10,7 @@ class Coupon extends Gateway
     {
         $sql = "CREATE TABLE IF NOT EXISTS `coupons` (
     	`id` INT PRIMARY KEY AUTO_INCREMENT,
-        `coupon` VARCHAR(10) UNIQUE NOT NULL,
+        `coupon` VARCHAR(20) UNIQUE NOT NULL,
         `is_sold` BOOLEAN NOT NULL,
         `date_gen` TIMESTAMP
     )";
@@ -20,7 +21,7 @@ class Coupon extends Gateway
     {
         $sql = "CREATE TABLE IF NOT EXISTS `vendors_coupons` (
     	`id` INT PRIMARY KEY AUTO_INCREMENT,
-        `coupon_id` INT NOT NULL,
+        `coupon_id` INT UNIQUE NOT NULL,
         `vendor_id` INT NOT NULL,
         `is_sold` BOOLEAN NOT NULL,
         `date_sold` TIMESTAMP
@@ -33,7 +34,7 @@ class Coupon extends Gateway
         $sql = "CREATE TABLE IF NOT EXISTS `users_coupons` (
     	`id` INT PRIMARY KEY AUTO_INCREMENT,
         `user_id` INT NOT NULL,
-        `vendors_coupons_id` INT NOT NULL,
+        `vendors_coupons_id` INT UNIQUE NOT NULL,
         `is_verified` BOOLEAN NOT NULL,
         `date_verified` TIMESTAMP
     )";
@@ -42,24 +43,31 @@ class Coupon extends Gateway
 
     public static function generateCoupon($coupon)
     {
-        $sql = "INSERT INTO `coupons` (`coupon`, `is_sold`) VALUES ($coupon, false)";
-        self::run($sql);
+        $sql = "INSERT INTO `coupons` (`coupon`, `is_sold`) VALUES ('$coupon', false)";
+        return self::run($sql);
     }
 
-    public static function sellCouponToVendor($cid, $vid)
+    public static function sellCouponToVendor($coupon, $vendor)
     {
-        $sql = "INSERT INTO `vendors_coupons` (`coupon_id`,`vendor_id`,`is_sold`) VALUES ($cid, $vid, false)";
-        self::run($sql);
-        $sold = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid' ";
-        self::run($sold);
+        $cid = self::getCouponId('coupons', 'coupon', $coupon);
+        $vid = User::getId($vendor);
+
+        $sql = "INSERT INTO `vendors_coupons` (`coupon_id`,`vendor_id`,`is_sold`) VALUES ('$cid','$vid',false)";
+        $vs = self::run($sql);
+
+        if ($vs) {
+            $sql1 = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid'";
+            return self::run($sql1);
+        } else {
+            return false;
+        }
     }
 
-    public static function sellCouponToUser($uid, $vcid)
+    public static function sellCouponToUser($uname, $coupon)
     {
-        $sql = "INSERT INTO `users_coupons` (`user_id`, `vendors_coupons_id`, `is_verified`) VALUES ('$uid', '$vcid', false)";
-        self::run($sql);
-        $sold = "UPDATE `vendors_coupons` SET `is_sold` = true WHERE `id` = '$vcid'";
-        self::run($sold);
+        $uid = User::getId($uname);
+        $cid = self::getCouponId('coupons', 'coupon', $coupon);
+        $vcid = self::getCouponId('vendors_coupons', 'coupon_id', $cid);
     }
 
     public static function verifyUserCoupon()
@@ -68,9 +76,9 @@ class Coupon extends Gateway
         self::run($sql);
     }
 
-    public static function getUnsoldCoupon($ctable)
+    public static function getUnsoldCoupon($ctable, $num)
     {
-        $sql = "SELECT * FROM $ctable WHERE `is_sold` = false";
+        $sql = "SELECT * FROM $ctable WHERE `is_sold` = false LIMIT $num";
         return self::fetch($sql);
     }
 

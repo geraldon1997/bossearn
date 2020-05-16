@@ -123,7 +123,7 @@ require_once Layout::start('home.header');
         </form>
     <?php } else { ?>
       <h1>please buy a coupon and verify to update your bank details</h1>
-     <?php } ?>
+    <?php } ?>
     </div>
 </div>
 
