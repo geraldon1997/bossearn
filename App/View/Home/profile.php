@@ -121,8 +121,10 @@ require_once Layout::start('home.header');
                 <button>Add Bank Details</button>
             <?php } ?>
         </form>
-    <?php } ?>
+    <?php } else { ?>
+      <h1>please buy a coupon and verify to update your bank details</h1>
+     <?php } ?>
     </div>
 </div>
-<?php $er = BankController::isBankFilled($_SESSION['uname']); ?>
+
 <?php require_once Layout::end('home.footer'); ?>

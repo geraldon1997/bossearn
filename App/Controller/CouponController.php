@@ -15,4 +15,18 @@ class CouponController extends Coupon
             return false;
         }
     }
+
+    public static function createCoupon(int $num)
+    {
+    .   $coupon = uniqid();
+        for ($i = 0; $i < $num; $i++) {
+          Coupon::generateCoupon($coupon);
+        }
+        return true;
+    }
+
+    public static function sellCoupon()
+    {
+      //
+    }
 }
