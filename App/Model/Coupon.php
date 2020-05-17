@@ -68,17 +68,44 @@ class Coupon extends Gateway
         $uid = User::getId($uname);
         $cid = self::getCouponId('coupons', 'coupon', $coupon);
         $vcid = self::getCouponId('vendors_coupons', 'coupon_id', $cid);
+
+        $sql = "INSERT INTO `users_coupons` (`user_id`,`vendors_coupons_id`,`is_verified`) VALUES ('$uid','$vcid',false)";
+        $us = self::run($sql);
+
+        if ($us) {
+            $sql1 = "UPDATE `vendors_coupons` SET `is_sold` = true WHERE `id` = '$vcid'";
+            return self::run($sql1);
+        }
     }
 
-    public static function verifyUserCoupon()
+    public static function verifyUserCoupon($coupon, $uname)
     {
-        $sql = "";
-        self::run($sql);
+        $uc = self::getUserCoupon(User::getId($uname))['user_id'];
+        $uid = User::getId($uname);
+        $cid = self::getCouponId('coupons', 'coupon', $coupon);
+        $vcid = self::getCouponId('vendors_coupons', 'coupon_id', $cid);
+        $vc_id = self::getUserCoupon(User::getId($uname))['vendors_coupons_id'];
+        $cid_vct = self::getCoupons('vendors_coupons', 'coupon_id', $cid)['coupon_id'];
+
+        if ($uid == $uc) {
+            if ($vcid == $vc_id) {
+                if ($cid == $cid_vct) {
+                    $sql = "UPDATE `users_coupons` SET `is_verified` = true WHERE `vendors_coupons_id` = '$vcid'";
+                    return self::run($sql);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
-    public static function getUnsoldCoupon($ctable, $num)
+    public static function getUnsoldCoupon($ctable)
     {
-        $sql = "SELECT * FROM $ctable WHERE `is_sold` = false LIMIT $num";
+        $sql = "SELECT * FROM $ctable WHERE `is_sold` = false";
         return self::fetch($sql);
     }
 
@@ -104,5 +131,11 @@ class Coupon extends Gateway
         foreach ($userCoupon as $key) {
             return $key;
         }
+    }
+
+    public static function getCoupons($table, $col, $val)
+    {
+        $sql = "SELECT * FROM $table WHERE $col = '$val'";
+        return self::fetch($sql);
     }
 }

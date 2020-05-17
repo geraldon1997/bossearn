@@ -57,4 +57,9 @@ class View
     {
         require_once Config::get('home.how');
     }
+
+    public static function users()
+    {
+        require_once Config::get('home.users');
+    }
 }

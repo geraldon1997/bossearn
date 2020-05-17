@@ -1,10 +1,18 @@
 <?php
 
 use App\Controller\CouponController;
+use App\Model\Coupon;
 
 require_once 'vendor/autoload.php';
 
-// $c = CouponController::createCoupon(10);
-// echo CouponController::$success['coupongen'];
-$c = CouponController::sellCoupon();
-var_dump($c);
+CouponController::viewCoupons();
+
+?>
+
+<form action="" method="post">
+    <input type="submit" name="sold_coupons" value="view sold coupons">
+</form>
+
+<form action="" method="post">
+    <input type="submit" name="unsold_coupons" value="view unsold coupons">
+</form>
