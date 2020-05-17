@@ -38,7 +38,12 @@ class CouponController extends Coupon
         if ($userRole == 'admin') {
             return self::sellCouponToVendor($coupon, $user);
         } elseif ($userRole == 'vendor') {
-            return self::sellCouponToUser($user, $coupon);
+            $soldToUser = self::sellCouponToUser($user, $coupon);
+            if ($soldToUser) {
+                return 'coupon sold successfully';
+            } else {
+                return 'coupon could not be sold';
+            }
         }
     }
 
@@ -58,16 +63,20 @@ class CouponController extends Coupon
                     foreach ($sold as $key) {
                         echo "<tr>";
                         echo "<td>".$key['coupon']."</td>";
+                        echo "<td>sold</td>";
                         echo "</tr>";
                     }
                 }
             } elseif ($userRole == 'vendor') {
                 $sold = self::getSoldCoupon('vendors_coupons');
                 if ($sold > 0) {
+                    echo "<tr><th>coupons</th>
+                                <th>action</th></tr>";
                     $sold1 = self::getCoupons('coupons', 'id', $sold[0]['coupon_id']);
                     foreach ($sold1 as $key) {
                         echo "<tr>";
                         echo "<td>".$key['coupon']."</td>";
+                        echo "<td>sold</td>";
                         echo "</tr>";
                     }
                 } else {
@@ -77,20 +86,32 @@ class CouponController extends Coupon
         } elseif (isset($_POST['unsold_coupons'])) {
             if ($userRole == 'admin') {
                 $unsold = self::getUnsoldCoupon('coupons');
+                    
                 foreach ($unsold as $key) {
                     echo "<tr>";
                     echo "<td>".$key['coupon']."</td>";
+                    echo "<td>sell</td>";
                     echo "</tr>";
                 }
             } elseif ($userRole == 'vendor') {
                 $unsold = self::getUnsoldCoupon('vendors_coupons');
 
                 if ($unsold > 0) {
-                    $unsold1 = self::getCoupons('coupons', 'id', $unsold[0]['coupon_id']);
-                    foreach ($unsold1 as $key) {
-                        echo "<tr>";
-                        echo "<td>".$key['coupon']."</td>";
-                        echo "</tr>";
+                    echo "<tr><th>coupons</th>
+                                    <th>user</th>
+                                    <th>action</th></tr>";
+                    foreach ($unsold as $key) {
+                        $unsold1 = self::getCoupons('coupons', 'id', $key['coupon_id']);
+                        foreach ($unsold1 as $key) {
+                            $c = $key['coupon'];
+                            echo "<tr>";
+                            echo "<form action='' method='post'>";
+                            echo "<td><input name='coupon' value='$c'></td>";
+                            echo "<td><input name='uname' placeholder='username of buyer'></td>";
+                            echo "<td><button>sell</button></td>";
+                            echo "</form>";
+                            echo "</tr>";
+                        }
                     }
                 } else {
                     echo "no coupons left";

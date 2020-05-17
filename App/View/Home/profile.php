@@ -7,6 +7,10 @@ use App\Controller\BankController;
 
 $profile = UserController::getProfile($_SESSION['uname']);
 require_once Layout::start('home.header');
+
+if (isset($_POST['fname'])) {
+    UserController::updateMyProfile($_POST);
+}
 ?>
 <style>
 .content{
@@ -55,7 +59,9 @@ require_once Layout::start('home.header');
 </style>
 <div class="content">
     <div class="earnings">
+    <?php if (UserController::getUserRole($_SESSION['uname']) == 'user') {?>
     <h1>earnings</h1>
+    <?php } ?>
     </div>
     <div class="profile">
     <h1>Personal Information</h1>
@@ -84,12 +90,14 @@ require_once Layout::start('home.header');
             <label for="username">UserName:</label>
             <input type="text" value="<?php echo $profile['uname'] ?>" disabled>
         </div>
+        <button>update</button>
         </form>
     </div>
 
     <div class="bank">
+    <?php if (UserController::getUserRole($_SESSION['uname']) == 'user') {?>
     <h1>Bank Information</h1>
-    <?php if (CouponController::isCouponVerified($_SESSION['uname']) == true) { ?>
+        <?php if (CouponController::isCouponVerified($_SESSION['uname']) == true) { ?>
         <form action="" method="post">
             <div class="input-group">
                 <label for="bank name">Bank Name : </label>
@@ -121,8 +129,9 @@ require_once Layout::start('home.header');
                 <button>Add Bank Details</button>
             <?php } ?>
         </form>
-    <?php } else { ?>
+        <?php } else { ?>
       <h1>please buy a coupon and verify to update your bank details</h1>
+        <?php } ?>
     <?php } ?>
     </div>
 </div>

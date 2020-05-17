@@ -142,7 +142,7 @@ class UserController extends User
         $uid = self::findUser('uname', $_SESSION['uname'])['id'];
         $update = self::updateProfile(self::$data['fname'], self::$data['lname'], self::$data['phone'], $uid);
 
-        if ($update === true) {
+        if ($update) {
             self::$success['update'] = 'profile updated successfully';
         } else {
             self::$errmsg['update'] = 'profile was not updated';

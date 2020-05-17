@@ -99,9 +99,6 @@ $assets = 'App/File/Home/'; ?>
 
                                 <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'vendor') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="/users.php">users</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/coupon.php">my coupons</a>
                             </li>
                                 <?php } elseif (UserController::getUserRole($_SESSION['uname']) == 'admin') {?>
