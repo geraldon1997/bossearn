@@ -4,6 +4,7 @@ use App\Controller\CouponController;
 use App\Core\Layout;
 use App\Controller\UserController;
 use App\Controller\BankController;
+use App\Model\Referral;
 
 $profile = UserController::getProfile($_SESSION['uname']);
 require_once Layout::start('home.header');
@@ -64,6 +65,7 @@ if (isset($_POST['fname'])) {
     <?php } ?>
     </div>
     <div class="profile">
+        <p><b>referral link</b> : https://bossearn.php/register.php?ref=<?php echo Referral::getRefCode($_SESSION['uname']) ?></p>
     <h1>Personal Information</h1>
         <form action="" method="post">
         <div class="input-group">
