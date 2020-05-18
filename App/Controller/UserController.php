@@ -193,4 +193,44 @@ class UserController extends User
             return $val;
         }
     }
+
+    public static function viewUsers()
+    {
+        $users = self::getAllUsers(3);
+        foreach ($users as $key) {
+            $fn = $key['fname'];
+            $ln = $key['lname'];
+            $em = $key['email'];
+            $ph = $key['phone'];
+            $un = $key['uname'];
+
+            echo "<tr>";
+            echo "<td>$fn</td>";
+            echo "<td>$ln</td>";
+            echo "<td>$em</td>";
+            echo "<td>$ph</td>";
+            echo "<td>$un</td>";
+            echo "</tr>";
+        }
+    }
+
+    public static function viewVendors()
+    {
+        $vendors = self::getAllUsers(2);
+        foreach ($vendors as $key) {
+            $fn = $key['fname'];
+            $ln = $key['lname'];
+            $em = $key['email'];
+            $ph = $key['phone'];
+            $un = $key['uname'];
+
+            echo "<tr>";
+            echo "<td>$fn</td>";
+            echo "<td>$ln</td>";
+            echo "<td>$em</td>";
+            echo "<td>$ph</td>";
+            echo "<td>$un</td>";
+            echo "</tr>";
+        }
+    }
 }
