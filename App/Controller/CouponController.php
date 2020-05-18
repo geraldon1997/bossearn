@@ -79,6 +79,8 @@ class CouponController extends Coupon
                         echo "<td>sold</td>";
                         echo "</tr>";
                     }
+                } else {
+                    echo "no coupons sold yet";
                 }
             } elseif ($userRole == 'vendor') {
                 $sold = self::getSoldCoupon('vendors_coupons');
