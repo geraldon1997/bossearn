@@ -80,26 +80,20 @@ class Coupon extends Gateway
 
     public static function verifyUserCoupon($coupon, $uname)
     {
-        $uc = self::getUserCoupon(User::getId($uname))['user_id'];
+        $ucuid = self::getUserCoupon(User::getId($uname))['user_id'];
         $uid = User::getId($uname);
-        $cid = self::getCouponId('coupons', 'coupon', $coupon);
-        $vcid = self::getCouponId('vendors_coupons', 'coupon_id', $cid);
-        $vc_id = self::getUserCoupon(User::getId($uname))['vendors_coupons_id'];
-        $cid_vct = self::getCoupons('vendors_coupons', 'coupon_id', $cid)['coupon_id'];
-
-        if ($uid == $uc) {
-            if ($vcid == $vc_id) {
-                if ($cid == $cid_vct) {
+        $ctid = self::getCouponId('coupons', 'coupon', $coupon);
+        $vctid = self::getCouponId('vendors_coupons', 'coupon_id', $ctid);
+        $uctvid = self::getUserCoupon(User::getId($uname))['vendors_coupons_id'];
+        $vctcid = self::getCoupons('vendors_coupons', 'coupon_id', $ctid)['coupon_id'];
+        
+        if ($ucuid == $uid) {
+            if ($vctid == $uctvid) {
+                if ($ctid == $vctcid) {
                     $sql = "UPDATE `users_coupons` SET `is_verified` = true WHERE `vendors_coupons_id` = '$vcid'";
                     return self::run($sql);
-                } else {
-                    return false;
                 }
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
     }
 
@@ -136,6 +130,9 @@ class Coupon extends Gateway
     public static function getCoupons($table, $col, $val)
     {
         $sql = "SELECT * FROM $table WHERE $col = '$val'";
-        return self::fetch($sql);
+        $gc = self::fetch($sql);
+        foreach ($gc as $key) {
+            return $key;
+        }
     }
 }

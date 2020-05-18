@@ -27,7 +27,7 @@ class CouponController extends Coupon
         }
         
         if ($gen == true) {
-            self::$success['coupongen'] = $num.' coupons generated successfully';
+            return $num.' coupons generated successfully';
         }
     }
 
@@ -36,7 +36,12 @@ class CouponController extends Coupon
         $userRole = Role::getRole(User::getRoleId($_SESSION['uname']));
         
         if ($userRole == 'admin') {
-            return self::sellCouponToVendor($coupon, $user);
+            $soldToVendor = self::sellCouponToVendor($coupon, $user);
+            if ($soldToVendor) {
+                return 'coupon sold successfully';
+            } else {
+                return 'coupon coult not be sold';
+            }
         } elseif ($userRole == 'vendor') {
             $soldToUser = self::sellCouponToUser($user, $coupon);
             if ($soldToUser) {
@@ -49,7 +54,13 @@ class CouponController extends Coupon
 
     public static function verifyCoupon($coupon)
     {
-        return self::verifyUserCoupon($coupon, $_SESSION['uname']);
+        $verify = self::verifyUserCoupon($coupon, $_SESSION['uname']);
+
+        if ($verify) {
+            return 'coupon verified';
+        } else {
+            return 'invalid coupon';
+        }
     }
 
     public static function viewCoupons()
@@ -60,6 +71,8 @@ class CouponController extends Coupon
             if ($userRole == 'admin') {
                 $sold = self::getSoldCoupon('coupons');
                 if ($sold > 0) {
+                    echo "<tr><th>coupons</th>
+                                <th>action</th></tr>";
                     foreach ($sold as $key) {
                         echo "<tr>";
                         echo "<td>".$key['coupon']."</td>";
@@ -86,12 +99,23 @@ class CouponController extends Coupon
         } elseif (isset($_POST['unsold_coupons'])) {
             if ($userRole == 'admin') {
                 $unsold = self::getUnsoldCoupon('coupons');
-                    
-                foreach ($unsold as $key) {
-                    echo "<tr>";
-                    echo "<td>".$key['coupon']."</td>";
-                    echo "<td>sell</td>";
-                    echo "</tr>";
+                if ($unsold > 0) {
+                    echo "<tr><th>coupons</th>
+                                    <th>vendor</th>
+                                    <th>action</th></tr>";
+                    foreach ($unsold as $key) {
+                        $c = $key['coupon'];
+
+                        echo "<tr>";
+                        echo "<form action='' method='post'>";
+                        echo "<td><input name='coupon' value='$c'></td>";
+                        echo "<td><input name='uname' placeholder='username of vendor'></td>";
+                        echo "<td><button>sell</button></td>";
+                        echo "</form>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo 'no coupons left';
                 }
             } elseif ($userRole == 'vendor') {
                 $unsold = self::getUnsoldCoupon('vendors_coupons');
