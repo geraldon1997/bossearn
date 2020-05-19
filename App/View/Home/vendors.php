@@ -29,6 +29,7 @@ td{
 <div class="content">
 <h1>Vendors</h1>
 
+<?php if (UserController::getUserRole($_SESSION['uname']) == 'admin') {?>
 <table border="1">
     <th>first name</th>
     <th>last name</th>
@@ -36,8 +37,9 @@ td{
     <th>phone</th>
     <th>username</th>
 
-<?php UserController::viewVendors(); ?>
+    <?php UserController::viewVendors(); ?>
 </table>
+<?php } ?>
 </div>
 
 <?php require_once Layout::end('home.footer'); ?>
