@@ -53,14 +53,10 @@ class Coupon extends Gateway
         $vid = User::getId($vendor);
 
         $sql = "INSERT INTO `vendors_coupons` (`coupon_id`,`vendor_id`,`is_sold`) VALUES ('$cid','$vid',false)";
-        $vs = self::run($sql);
+        self::run($sql);
 
-        if ($vs) {
-            $sql1 = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid'";
-            return self::run($sql1);
-        } else {
-            return false;
-        }
+        $sql1 = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid'";
+        self::run($sql1);
     }
 
     public static function sellCouponToUser($uname, $coupon)
@@ -84,13 +80,13 @@ class Coupon extends Gateway
         $uid = User::getId($uname);
         $ctid = self::getCouponId('coupons', 'coupon', $coupon);
         $vctid = self::getCouponId('vendors_coupons', 'coupon_id', $ctid);
-        $uctvid = self::getUserCoupon(User::getId($uname))['vendors_coupons_id'];
+        $uctvcid = self::getUserCoupon(User::getId($uname))['vendors_coupons_id'];
         $vctcid = self::getCoupons('vendors_coupons', 'coupon_id', $ctid)['coupon_id'];
         
         if ($ucuid == $uid) {
-            if ($vctid == $uctvid) {
+            if ($vctid == $uctvcid) {
                 if ($ctid == $vctcid) {
-                    $sql = "UPDATE `users_coupons` SET `is_verified` = true WHERE `vendors_coupons_id` = '$vcid'";
+                    $sql = "UPDATE `users_coupons` SET `is_verified` = true WHERE `vendors_coupons_id` = '$uctvcid'";
                     return self::run($sql);
                 }
             }
@@ -100,6 +96,12 @@ class Coupon extends Gateway
     public static function getUnsoldCoupon($ctable)
     {
         $sql = "SELECT * FROM $ctable WHERE `is_sold` = false";
+        return self::fetch($sql);
+    }
+
+    public static function getUnsoldCouponLimit($ctable, $num)
+    {
+        $sql = "SELECT * FROM $ctable WHERE `is_sold` = false LIMIT $num";
         return self::fetch($sql);
     }
 

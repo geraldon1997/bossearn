@@ -8,6 +8,8 @@ require_once Layout::start('home.header');
 
 if (isset($_POST['coupon']) && isset($_POST['uname'])) {
     $cs = CouponController::sellCoupon($_POST['coupon'], $_POST['uname']);
+} elseif (isset($_POST['vendor']) && isset($_POST['quantity'])) {
+    $cs = CouponController::sellCoupon($_POST['vendor'], $_POST['quantity']);
 }
 
 if (isset($_POST['usercoupon'])) {
@@ -30,6 +32,9 @@ if (isset($_POST['couponnum'])) {
 .buttons{
     display: grid;
     grid-template-columns: 50% 50%;
+}
+input{
+    margin-right: 10px;
 }
 </style>
 

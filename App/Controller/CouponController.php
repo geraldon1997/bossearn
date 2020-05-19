@@ -36,11 +36,17 @@ class CouponController extends Coupon
         $userRole = Role::getRole(User::getRoleId($_SESSION['uname']));
         
         if ($userRole == 'admin') {
-            $soldToVendor = self::sellCouponToVendor($coupon, $user);
-            if ($soldToVendor) {
-                return 'coupon sold successfully';
-            } else {
-                return 'coupon coult not be sold';
+            $vendor = $coupon;
+            $quantity = $user;
+            $c = self::getUnsoldCouponLimit('coupons', $quantity);
+            
+            foreach ($c as $key) {
+                $soldToVendor = self::sellCouponToVendor($key['coupon'], $vendor);
+                // if ($soldToVendor) {
+                //     return 'coupon sold';
+                // } else {
+                //     return 'not sold';
+                // }
             }
         } elseif ($userRole == 'vendor') {
             $soldToUser = self::sellCouponToUser($user, $coupon);
@@ -114,19 +120,19 @@ class CouponController extends Coupon
                 $unsold = self::getUnsoldCoupon('coupons');
 
                 if ($unsold > 0) {
+                    echo "<form method='post'>";
+                    echo "<input type='text' name='vendor' placeholder='vendor username'>";
+                    echo "<input type='number' name='quantity' placeholder='quantity'>";
+                    echo "<button>sell</button>";
+                    echo "</form>";
+                    echo "<hr>";
                     echo "<tr>
                             <th>coupon</th>
-                            <th>buyer</th>
-                            <th>action</th>
                     </tr>";
                     foreach ($unsold as $key) {
                         $c = $key['coupon'];
                         echo "<tr>";
-                        echo "<form method='post'>";
-                        echo "<td><input name='coupon' value='$c'></td>";
-                        echo "<td><input name='uname' placeholder='username of buyer'></td>";
-                        echo "<td><button>sell</button></td>";
-                        echo "</form>";
+                        echo "<td>$c</td>";
                         echo "</tr>";
                     }
                 } else {
