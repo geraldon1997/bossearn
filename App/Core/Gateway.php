@@ -26,7 +26,7 @@ class Gateway extends DB
         return $data;
     }
 
-    public function checkExists($sql)
+    public static function checkExists($sql)
     {
         $result = self::init()->query($sql);
         return $result->num_rows;

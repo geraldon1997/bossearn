@@ -197,6 +197,7 @@ class UserController extends User
     public static function viewUsers()
     {
         $users = self::getAllUsers(3);
+        echo self::getTotal(3).' users';
         foreach ($users as $key) {
             $fn = $key['fname'];
             $ln = $key['lname'];
@@ -217,6 +218,7 @@ class UserController extends User
     public static function viewVendors()
     {
         $vendors = self::getAllUsers(2);
+        echo self::getTotal(2).' vendor';
         foreach ($vendors as $key) {
             $fn = $key['fname'];
             $ln = $key['lname'];

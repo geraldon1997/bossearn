@@ -42,11 +42,11 @@ class CouponController extends Coupon
             
             foreach ($c as $key) {
                 $soldToVendor = self::sellCouponToVendor($key['coupon'], $vendor);
-                // if ($soldToVendor) {
-                //     return 'coupon sold';
-                // } else {
-                //     return 'not sold';
-                // }
+            }
+            if ($soldToVendor) {
+                return "$quantity coupon(s) sold to $vendor";
+            } else {
+                return 'coupon not sold';
             }
         } elseif ($userRole == 'vendor') {
             $soldToUser = self::sellCouponToUser($user, $coupon);
@@ -79,6 +79,7 @@ class CouponController extends Coupon
                 
                 
                 if ($sold > 0) {
+                    echo self::getTotal('coupons', 'is_sold', true).' coupons sold';
                     echo "<tr><th>coupons</th>
                                 <th>vendor</th>
                                 <th>action</th></tr>";
@@ -97,6 +98,7 @@ class CouponController extends Coupon
             } elseif ($userRole == 'vendor') {
                 $sold = self::getSoldCoupon('vendors_coupons');
                 if ($sold > 0) {
+                    echo self::getTotal('vendors_coupons', 'is_sold', true).' coupons sold';
                     echo "<tr><th>coupons</th>
                                 <th>user</th>
                                 <th>action</th></tr>";
@@ -126,6 +128,7 @@ class CouponController extends Coupon
                     echo "<button>sell</button>";
                     echo "</form>";
                     echo "<hr>";
+                    echo self::getTotal('coupons', 'is_sold', false).' coupons remaining';
                     echo "<tr>
                             <th>coupon</th>
                     </tr>";
@@ -141,6 +144,7 @@ class CouponController extends Coupon
             } elseif ($userRole == 'vendor') {
                 $unsold = self::getUnsoldCoupon('vendors_coupons');
                 if ($unsold > 0) {
+                    echo self::getTotal('vendors_coupons', 'is_sold', false).' coupons remaining';
                     echo "<tr>
                             <th>coupons</th>
                             <th>buyer</th>

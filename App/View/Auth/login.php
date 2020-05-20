@@ -17,7 +17,7 @@ require_once Layout::start('auth.header');
             <span id="successmsg"><?php echo UserController::$success['login']; ?></span>
                 <form class="login100-form validate-form" method="post">
                     <span class="login100-form-title p-b-59">
-                        Sign In
+                        Login
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
@@ -36,12 +36,12 @@ require_once Layout::start('auth.header');
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button class="login100-form-btn">
-                                Sign In
+                                Login
                             </button>
                         </div>
 
                         <a href="/register.php" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-                            Sign Up
+                            Register
                             <i class="fa fa-long-arrow-right m-l-5"></i>
                         </a>
                     </div>

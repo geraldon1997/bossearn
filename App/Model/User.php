@@ -67,11 +67,14 @@ class User extends Gateway
 
     public static function getAllUsers($id)
     {
-        $sql = "SELECT * FROM users WHERE `role_id` = $id ORDER BY fname ASC";
-        $users = self::fetch($sql);
-        foreach ($users as $key) {
-            return $users;
-        }
+        $sql = "SELECT * FROM users WHERE `role_id` = '$id' ORDER BY fname ASC";
+        return self::fetch($sql);
+    }
+
+    public static function getTotal($id)
+    {
+        $sql = "SELECT * FROM users WHERE `role_id` = '$id' ";
+        return self::checkExists($sql);
     }
 
     public static function checkRegDetails($col, $val)

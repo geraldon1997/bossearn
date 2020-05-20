@@ -53,10 +53,12 @@ class Coupon extends Gateway
         $vid = User::getId($vendor);
 
         $sql = "INSERT INTO `vendors_coupons` (`coupon_id`,`vendor_id`,`is_sold`) VALUES ('$cid','$vid',false)";
-        self::run($sql);
+        $ci = self::run($sql);
 
-        $sql1 = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid'";
-        self::run($sql1);
+        if ($ci) {
+            $sql1 = "UPDATE `coupons` SET `is_sold` = true WHERE `id` = '$cid'";
+            return self::run($sql1);
+        }
     }
 
     public static function sellCouponToUser($uname, $coupon)
@@ -136,5 +138,11 @@ class Coupon extends Gateway
         foreach ($gc as $key) {
             return $key;
         }
+    }
+
+    public static function getTotal($ctable, $col, $val)
+    {
+        $sql = "SELECT * FROM $ctable WHERE $col = '$val' ";
+        return self::checkExists($sql);
     }
 }
