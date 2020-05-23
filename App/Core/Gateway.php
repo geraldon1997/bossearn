@@ -3,32 +3,36 @@ namespace App\Core;
 
 use App\Core\DB;
 
-class Gateway extends DB
+class Gateway
 {
     public static function run($sql)
     {
-        $result = self::init()->query($sql);
-
-        if (!$result) {
+        $result = DB::init()->query($sql);
+        if ($result) {
+            return true;
+        } else {
             return false;
         }
-
-        return $result;
     }
 
     public static function fetch($sql)
     {
-        $result = self::init()->query($sql);
+        $result = DB::init()->query($sql);
 
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
+        if ($result->num_rows > 0) {
+            $data = [];
+            while ($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            return $data;
+        } else {
+            return false;
         }
-        return $data;
     }
 
-    public static function checkExists($sql)
+    public static function check($sql)
     {
-        $result = self::init()->query($sql);
+        $result = DB::init()->query($sql);
         return $result->num_rows;
     }
 }

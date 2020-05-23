@@ -1,7 +1,7 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once 'autoload.php';
 
-use App\Core\View;
+use App\Models\Coupon;
 
-View::init();
-View::home();
+Coupon::createTable();
+echo Coupon::insert(10);
