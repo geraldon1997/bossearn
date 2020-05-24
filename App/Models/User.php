@@ -15,6 +15,7 @@ class User extends Gateway
             `email` VARCHAR(40) UNIQUE NOT NULL,
             `uname` VARCHAR(20) UNIQUE NOT NULL,
             `paswd` VARCHAR(40) NOT NULL,
+            `role_id` INT NOT NULL,
             `date` DATE NOT NULL
         )";
         Gateway::run($sql);
@@ -24,7 +25,7 @@ class User extends Gateway
     {
         $date = date('d-m-Y');
         $val = implode("', '", $vals);
-        $sql = "INSERT INTO users (fname,lname,country,email,uname,paswd,`date`) VALUES ('$val', '$date')";
+        $sql = "INSERT INTO users (fname,lname,country,email,uname,paswd,role_id,`date`) VALUES ('$val', 3, '$date')";
         return Gateway::run($sql);
     }
 

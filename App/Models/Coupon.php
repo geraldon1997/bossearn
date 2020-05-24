@@ -11,6 +11,7 @@ class Coupon extends Gateway
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `coupon` VARCHAR(20) UNIQUE NOT NULL,
             `is_verified` BOOLEAN NOT NULL,
+            `verified_by` INT NULL,
             `date` TIMESTAMP
         )";
         Gateway::run($sql);
@@ -25,7 +26,7 @@ class Coupon extends Gateway
             $random_character = $chars[mt_rand(0, $input_length - 1)];
             $random_string .= $random_character;
         }
-     
+
         return $random_string;
     }
 
@@ -45,9 +46,20 @@ class Coupon extends Gateway
         return Gateway::fetch($sql);
     }
 
-    public static function updateCoupon($val, $col, $value)
+    public static function updateCoupon($coupon)
     {
-        $sql = "UPDATE TABLE coupons SET `is_verified` = $val WHERE $col = $value";
+        $sql = "UPDATE coupons SET `is_verified` = true, `verified_by` = '$uid' WHERE coupon = '$coupon'";
         return Gateway::run($sql);
     }
+
+  public static function status($coupon)
+  {
+    $sql = "SELECT `is_verified` FROM coupons WHERE coupon = '$coupon'";
+    $result = Gateway::check($sql);
+    if ($result > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

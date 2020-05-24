@@ -1,0 +1,48 @@
+<?php
+namespace App\Models;
+
+use App\Core\Gateway;
+
+class Post extends Gateway
+{
+	public static function createTable()
+    {
+    	$sql = "CREATE TABLE IF NOT EXISTS posts (
+        	`id` INT PRIMARY KEY AUTO_INCREMENT,
+            `title` VARCHAR(100) NOT NULL,
+            `body` TEXT NOT NULL,
+            `image` VARCHAR(255) NOT NULL,
+            `date` TIMESTAMP
+        )";
+      	Gateway::run($sql);
+    }
+
+  	public static function insert($title,$body,$image)
+    {
+    	$sql = "INSERT INTO posts (`title`,`body`,`image`) VALUES ('$title','$body','$image')";
+      	return Gateway::run($sql);
+    }
+
+  	public static function uploadImage($image)
+    {
+    	//
+    }
+
+  	public static function updatePost($title, $body, $image, $id)
+    {
+      $sql = "UPDATE `posts` SET `title` = '$title', `body` = '$body', `image` = '$image' WHERE `id` = '$id'";
+      return Gateway::run($sql);
+    }
+
+  	public static function allPosts()
+    {
+    	$sql = "SELECT * FROM `posts` ORDER BY id DESC";
+      	return Gateway::fetch($sql);
+    }
+
+  	public static function post($col, $val)
+    {
+    	$sql = "SELECT * FROM `posts` WHERE $col = '$val'";
+      	return Gateway::fetch($sql);
+    }
+}
