@@ -5,18 +5,18 @@ use App\Core\Gateway;
 
 class Role extends Gateway
 {
-	public static function createTable()
+    public static function createTable()
     {
-    	$sql = "CREATE TABLE IF NOT EXISTS roles (
+        $sql = "CREATE TABLE IF NOT EXISTS roles (
         	`id` INT PRIMARY KEY AUTO_INCREMENT,
             `role` VARCHAR(40) NOT NULL
         )";
-      	Gateway::run($sql);
+        Gateway::run($sql);
     }
 
-  	public static function role()
+    public static function role()
     {
-      	$sql = "SELECT * FROM roles WHERE id = '$id'";
-      	return Gateway::fetch($sql);
+        $sql = "SELECT * FROM roles WHERE id = '$id'";
+        return Gateway::fetch($sql);
     }
 }

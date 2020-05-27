@@ -52,14 +52,14 @@ class Coupon extends Gateway
         return Gateway::run($sql);
     }
 
-  public static function status($coupon)
-  {
-    $sql = "SELECT `is_verified` FROM coupons WHERE coupon = '$coupon'";
-    $result = Gateway::check($sql);
-    if ($result > 0) {
-      return true;
-    } else {
-      return false;
+    public static function status($coupon)
+    {
+        $sql = "SELECT `is_verified` FROM coupons WHERE coupon = '$coupon'";
+        $result = Gateway::check($sql);
+        if ($result > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 }
