@@ -31,7 +31,7 @@ class Earning extends Gateway
 
     public static function updateBref()
     {
-        $sql = "";
+        $sql = "UPDATE `earnings` SET bref = '$bref' WHERE `user_id` = '$uid'";
         return Gateway::run($sql);
     }
 
