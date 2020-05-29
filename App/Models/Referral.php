@@ -7,17 +7,17 @@ class Referral extends Gateway
 {
     public static function createTable()
     {
-        $sql = "CREATE TABLE IF NOT EXISTS (
+        $sql = "CREATE TABLE IF NOT EXISTS `referrals` (
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `referrer` INT NOT NULL,
-            `referred` INT NOT NULL
+            `referred` INT UNIQUE NOT NULL
         )";
         Gateway::run($sql);
     }
 
     public static function insert($referrer, $referred)
     {
-        $sql = "INSERT INTO `referral` (referrer,reffered) VALUES ('$referrer','$referred')";
+        $sql = "INSERT INTO `referrals` (referrer,referred) VALUES ('$referrer','$referred')";
         return Gateway::run($sql);
     }
 

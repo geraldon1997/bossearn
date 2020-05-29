@@ -23,7 +23,7 @@ class Comment extends Gateway
         return Gateway::run($sql);
     }
 
-    public static function comments($id)
+    public static function allComments()
     {
         $sql = "SELECT * FROM comments WHERE `post_id` = '$id'";
         return Gateway::fetch($sql);

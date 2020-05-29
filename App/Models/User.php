@@ -7,12 +7,13 @@ class User extends Gateway
 {
     public static function createTable()
     {
-        $sql = "CREATE TABLE IF NOT EXISTS (
+        $sql = "CREATE TABLE IF NOT EXISTS `users` (
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `fname` VARCHAR(20) NOT NULL,
             `lname` VARCHAR(20) NOT NULL,
             `country` VARCHAR(40) NOT NULL,
             `email` VARCHAR(40) UNIQUE NOT NULL,
+            `phone` VARCHAR(15) NOT NULL,
             `uname` VARCHAR(20) UNIQUE NOT NULL,
             `paswd` VARCHAR(40) NOT NULL,
             `role_id` INT NOT NULL,
@@ -23,9 +24,9 @@ class User extends Gateway
 
     public static function insert($vals)
     {
-        $date = date('d-m-Y');
+        $date = date('Y-m-d');
         $val = implode("', '", $vals);
-        $sql = "INSERT INTO users (fname,lname,country,email,uname,paswd,role_id,`date`) VALUES ('$val', 3, '$date')";
+        $sql = "INSERT INTO users (fname,lname,country,email,phone,uname,paswd,role_id,`date`) VALUES ('$val', 3, '$date')";
         return Gateway::run($sql);
     }
 
@@ -55,7 +56,7 @@ class User extends Gateway
 
     public static function updateUser($fn, $ln, $ph, $un)
     {
-        $sql = "UPDATE users SET fname = '$fn', lname = '$ln', phone = '$ph' WHERE uname = '$un'";
+        $sql = "UPDATE users SET fname = '$fn', lname = '$ln', phone = '$ph' WHERE uname = '$un' ";
         return Gateway::run($sql);
     }
 }
