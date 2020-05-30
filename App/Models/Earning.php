@@ -55,7 +55,7 @@ class Earning extends Gateway
     {
         $sql = "SELECT withdraw FROM earnings WHERE `user_id` = '$uid'";
         $result = Gateway::fetch($sql);
-        return $result[0]['withdraw'];
+        return $result['withdraw'];
     }
 
     public static function findEarning($uid)

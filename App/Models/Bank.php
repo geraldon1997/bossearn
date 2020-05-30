@@ -14,13 +14,13 @@ class Bank extends Gateway
             `acct_name` VARCHAR(40) NOT NULL,
             `acct_num` VARCHAR(15) NOT NULL
         )";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function insert($vals)
     {
         $val = implode("', '", $vals);
-        $sql = "INSERT INTO banks (`user_id`,bank,acct_name,acct_num) VALUES ('$val')";
+        $sql = "INSERT INTO users_banks (`user_id`,bank,acct_name,acct_num) VALUES ('$val')";
         return Gateway::run($sql);
     }
 
@@ -28,5 +28,11 @@ class Bank extends Gateway
     {
         $sql = "SELECT * FROM users_banks WHERE $col = '$val'";
         return Gateway::fetch($sql);
+    }
+
+    public static function isBankFilled($col, $val)
+    {
+        $sql = "SELECT * FROM users_banks WHERE $col = '$val' ";
+        return Gateway::check($sql);
     }
 }

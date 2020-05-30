@@ -24,7 +24,7 @@ class Gateway
             while ($row = $result->fetch_assoc()) {
                 array_push($data, $row);
             }
-            return $data[0];
+            return $data;
         } else {
             return false;
         }

@@ -34,9 +34,15 @@ class Post extends Gateway
         }
     }
 
-    public static function updatePost($title, $body, $image, $id)
+    public static function updateWithImage($title, $body, $image, $id)
     {
         $sql = "UPDATE `posts` SET `title` = '$title', `body` = '$body', `image` = '$image' WHERE `id` = '$id'";
+        return Gateway::run($sql);
+    }
+
+    public static function updateWithoutImage($title, $body, $id)
+    {
+        $sql = "UPDATE `posts` SET `title` = '$title', `body` = '$body' WHERE `id` = '$id'";
         return Gateway::run($sql);
     }
 
@@ -46,7 +52,7 @@ class Post extends Gateway
         return Gateway::fetch($sql);
     }
 
-    public static function post($col, $val)
+    public static function findPost($col, $val)
     {
         $sql = "SELECT * FROM `posts` WHERE $col = '$val'";
         return Gateway::fetch($sql);

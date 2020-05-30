@@ -21,8 +21,26 @@ class PostController extends Post
         }
     }
 
-    public static function updatePost()
+    public static function updatePost($data)
     {
-        //
+        $file = $_FILES['image'];
+        if (empty($file)) {
+            return self::updateWithoutImage($data['title'], $data['body'], $data['pid']);
+        } else {
+            return Post::updateWithImage($data['title'], $data['body'], self::uploadHandler(), $data['pid']);
+        }
+    }
+
+    public static function viewAllPosts()
+    {
+        $all = self::allPosts();
+        foreach ($all as $key) {
+            $pid = $key['id'];
+            $pt = $key['title'];
+            $pb = $key['body'];
+            $pi = $key['image'];
+
+            echo $pid.' '.$pt.' '.$pb.' '.$pi.'<br>';
+        }
     }
 }

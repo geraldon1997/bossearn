@@ -46,7 +46,7 @@ class Coupon extends Gateway
         return Gateway::fetch($sql);
     }
 
-    public static function updateCoupon($coupon)
+    public static function updateCoupon($uid, $coupon)
     {
         $sql = "UPDATE coupons SET `is_verified` = true, `verified_by` = '$uid' WHERE coupon = '$coupon'";
         return Gateway::run($sql);
