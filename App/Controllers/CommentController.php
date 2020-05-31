@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
+use App\Models\User;
 
 class CommentController extends Comment
 {
@@ -18,6 +19,7 @@ class CommentController extends Comment
             $cuid = $key['user_id'];
             $cpid = $key['post_id'];
             $cc = $key['comment'];
+          $user = User::findUser('id', $cuid);
 
             echo $cid.' '.$cuid.' '.$cpid.' '.$cc.'<br>';
         }
