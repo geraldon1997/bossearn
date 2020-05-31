@@ -9,11 +9,30 @@ class UserController extends User
 {
     public static $success;
 
-    public static function register($data)
+    public static function register($ref, $data)
     {
-        $signup = User::insert($data);
-        if ($signup) {
-            self::$success['signup'] = 'Registeration was successful';
+        $refcode = rand(000000, 999999);
+        $refExist = Referral::refExist($ref);
+        if ($refExist) {
+            // $signup = User::insert($refcode, $data);
+            // $referrer = Referral::refId($ref);
+            // $refferred = User::lastUserId()[0]['id'];
+            
+            // Referral::insert($referrer, $refferred);
+            
+            // Earning::insert($refferred);
+            // Earning::updateBref(10000, $referrer);
+
+            // self::$success['signup'] = 'Registeration was successful';
+        } else {
+            $signup = User::insert($refcode, $data);
+            $referrer = Referral::refId(Referral::assignRef());
+            $refferred = User::lastUserId()[0]['id'];
+            
+            Referral::insert($referrer, $refferred);
+            
+            Earning::insert($refferred);
+            Earning::updateBref(10000, $referrer);
         }
     }
 

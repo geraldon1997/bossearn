@@ -19,7 +19,7 @@ class CommentController extends Comment
             $cuid = $key['user_id'];
             $cpid = $key['post_id'];
             $cc = $key['comment'];
-          $user = User::findUser('id', $cuid);
+            $user = User::findUser('id', $cuid);
 
             echo $cid.' '.$cuid.' '.$cpid.' '.$cc.'<br>';
         }

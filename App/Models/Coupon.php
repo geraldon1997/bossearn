@@ -11,7 +11,7 @@ class Coupon extends Gateway
             `id` INT PRIMARY KEY AUTO_INCREMENT,
             `coupon` VARCHAR(20) UNIQUE NOT NULL,
             `is_verified` BOOLEAN NOT NULL,
-            `verified_by` INT NULL,
+            `user_id` INT NULL,
             `date` TIMESTAMP
         )";
         Gateway::run($sql);

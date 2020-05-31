@@ -27,22 +27,23 @@ class Referral extends Gateway
         return Gateway::fetch($sql);
     }
 
-  public static function assignRef()
-  {
-    $sql = "SELECT ref FROM users ORDER BY RAND LIMIT 1";
-    $ref = Gateway::fetch($sql);
-    return $ref[0]['ref'];
-  }
+    public static function assignRef()
+    {
+        $sql = "SELECT ref FROM users ORDER BY RAND() LIMIT 1";
+        $ref = Gateway::fetch($sql);
+        return $ref[0]['ref'];
+    }
 
-  public static function refId($ref)
-  {
-    $sql = "SELECT id FROM users WHERE ref = '$ref'";
-    $ref = Gateway::fetch($sql);
-    return $ref[0]['id'];
-  }
+    public static function refId($ref)
+    {
+        $sql = "SELECT id FROM users WHERE ref = '$ref'";
+        $ref = Gateway::fetch($sql);
+        return $ref[0]['id'];
+    }
 
-  public static function refExist($ref)
-  {
-    //
-  }
+    public static function refExist($ref)
+    {
+        $sql = "SELECT ref FROM users WHERE ref = '$ref' ";
+        return Gateway::check($sql);
+    }
 }

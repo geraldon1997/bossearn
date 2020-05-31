@@ -9,6 +9,7 @@ class User extends Gateway
     {
         $sql = "CREATE TABLE IF NOT EXISTS `users` (
             `id` INT PRIMARY KEY AUTO_INCREMENT,
+            `ref` INT UNIQUE NOT NULL,
             `fname` VARCHAR(20) NOT NULL,
             `lname` VARCHAR(20) NOT NULL,
             `country` VARCHAR(40) NOT NULL,
@@ -22,11 +23,11 @@ class User extends Gateway
         Gateway::run($sql);
     }
 
-    public static function insert($vals)
+    public static function insert($ref, $vals)
     {
         $date = date('Y-m-d');
         $val = implode("', '", $vals);
-        $sql = "INSERT INTO users (fname,lname,country,email,phone,uname,paswd,role_id,`date`) VALUES ('$val', 3, '$date')";
+        $sql = "INSERT INTO users (ref,fname,lname,country,email,phone,uname,paswd,role_id,`date`) VALUES ('$ref','$val', 3, '$date')";
         return Gateway::run($sql);
     }
 
@@ -38,8 +39,9 @@ class User extends Gateway
 
     public static function lastUserId()
     {
-        $sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
-        return Gateway::fetch($sql);
+        $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
+        $lastuserid = Gateway::fetch($sql);
+        return $lastuserid;
     }
 
     public static function findUser($col, $val)
