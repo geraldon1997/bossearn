@@ -28,7 +28,7 @@
     <link href="App/Assets/Css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="App/Assets/style.css" rel="stylesheet">
+    <link href="App/Assets/Css/style.css" rel="stylesheet">
 
     <!-- Animate styles for this template -->
     <link href="App/Assets/Css/animate.css" rel="stylesheet">
@@ -41,16 +41,26 @@
 
     <!-- Version Marketing CSS for this template -->
     <link href="App/Assets/Css/version/marketing.css" rel="stylesheet">
+    <link rel='stylesheet' href='App/Assets/Css/share-button.min.css' type='text/css' media='all'/>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="App/Assets/Js/jquery.js"></script>
 
 <style>
     #logo{
         width: 100px;
         height: 70px;
+    }
+    share-button{
+        background-color: blue;
+        color: whitesmoke;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 </style>
 
@@ -71,16 +81,37 @@
                                 <a class="nav-link" href="marketing-index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">Marketing</a>
+                                <a class="nav-link" href="marketing-category.html">how it works</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">Make Money</a>
+                                <a class="nav-link" href="marketing-category.html">contact us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-blog.html">Blog</a>
+                                <a class="nav-link" href="marketing-blog.html">register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">Contact Us</a>
+                                <a class="nav-link" href="marketing-contact.html">login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">vendors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">coupons</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">vendors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="marketing-contact.html">earnings</a>
                             </li>
                         </ul>
                         <!-- <form class="form-inline">
