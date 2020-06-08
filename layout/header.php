@@ -1,3 +1,6 @@
+<?php
+require_once 'autoload.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,13 +44,11 @@
 
     <!-- Version Marketing CSS for this template -->
     <link href="App/Assets/Css/version/marketing.css" rel="stylesheet">
-    <link rel='stylesheet' href='App/Assets/Css/share-button.min.css' type='text/css' media='all'/>
+    
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="App/Assets/Js/jquery.js"></script>
+    <link rel='stylesheet' href='test/share-button.min.css' type='text/css' media='all'/>
+    <script src="test/jquery.js"></script>
+    
 
 <style>
     #logo{
@@ -74,26 +75,30 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="marketing-index.html"><img src="App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
+                    <a class="navbar-brand" href="/"><img src="App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
+                        
+                                
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-index.html">Home</a>
+                                <a class="nav-link" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">how it works</a>
+                                <a class="nav-link" href="how.php">how it works</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-category.html">contact us</a>
+                                <a class="nav-link" href="contact.php">contact us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-blog.html">register</a>
+                                <a class="nav-link" href="register.php">register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">login</a>
+                                <a class="nav-link" href="login.php">login</a>
                             </li>
+
+                        <?php if (isset($_SESSION['uname'])) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">logout</a>
+                                <a class="nav-link" onclick="logout()" href="#">logout</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">profile</a>
@@ -108,11 +113,14 @@
                                 <a class="nav-link" href="marketing-contact.html">users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">vendors</a>
+                                <a class="nav-link" href="marketing-contact.html">buy coupon</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">earnings</a>
                             </li>
+
+                        <?php } ?>
+
                         </ul>
                         <!-- <form class="form-inline">
                             <input class="form-control mr-sm-2" type="text" placeholder="How may I help?">

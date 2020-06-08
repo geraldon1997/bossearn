@@ -28,7 +28,6 @@
                                         <div class="post-sharing">
                                             <ul class="list-inline">
                                                 <li><share-button>share</share-button></li>
-                                                
                                             </ul>
                                         </div><!-- end post-sharing -->
                                         <h4><a href="marketing-single.html" title="">You can learn how to make money with your blog and videos</a></h4>

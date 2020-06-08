@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='share-button.min.css' type='text/css' media='all'/>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <share-button>share</share-button>
+    
+    
+    <script>
+        $( document ).ready(function() {
+        new ShareButton({
+            networks: {
+                whatsapp: {
+                    enabled: true
+                },
+                twitter: {
+                    enabled: true,
+                    before: function() {
+                        this.url   = "https://github.com/carrot/share-button";
+                        this.text  = "Changing the Facebook Share Configurations";
+                    },
+                    after: function() {
+                        window.location = "google.com"
+                    }
+                },
+                googlePlus: {
+                    enabled: false
+                }
+            },
+            ui: {
+                flyout: 'middle right'
+                }
+        });
+    });
+    </script>
+
+    <script src="share-button.min.js"></script>
+</body>
+</html>

@@ -5,9 +5,9 @@ use App\Core\Config;
 
 class Layout
 {
-    public static function start($path)
+    public static function start()
     {
-        return Config::get($path);
+        return 'layout/header.php';
     }
 
     public static function end($path)
