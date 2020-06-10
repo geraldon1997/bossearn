@@ -11,53 +11,61 @@ require_once 'layout/header.php';
 
         <span class="color-yellow"><a href="marketing-category.html" title="">How Bossearn works</a></span>
 
-        <h3>The golden rules you need to know for a positive life</h3>
+        <h3>Welcome to BOSSEARN !!!</h3>
 
     </div><!-- end title -->
 
-    <div class="single-post-media">
-        <img src="upload/market_blog_06.jpg" alt="" class="img-fluid">
-    </div><!-- end media -->
-
     <div class="blog-content">  
         <div class="pp">
-            <p>In lobortis pharetra mattis. Morbi nec nibh iaculis, <a href="#">bibendum augue a</a>, ultrices nulla. Nunc velit ante, lacinia id tincidunt eget, faucibus nec nisl. In mauris purus, bibendum et gravida dignissim, venenatis commodo lacus. Duis consectetur quis nisi nec accumsan. Pellentesque enim velit, ut tempor turpis. Mauris felis neque, egestas in lobortis et,iaculis at nunc ac, rhoncus sagittis ipsum. </p>
+            <p>We are glad to have you back today. Kindly login with your registered username and password and start enjoying the opportunities for today.</p>
+            <p>Wishing you splendid stay ahead!</p>
 
-            <h3><strong>Maecenas non convallis quam, eu sodales justo. Pellentesque quis lectus elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></h3>
+            <h3><strong>Why you should join us?</strong></h3>
 
-            <p>Donec nec metus sed leo sollicitudin ornare sed consequat neque. Aliquam iaculis neque quis dui venenatis, eget posuere felis viverra. Ut sit amet feugiat elit, nec elementum velit. Sed eu nisl convallis, efficitur turpis eu, euismod nunc. Proin neque enim, malesuada non lobortis nec, facilisis et lectus. Ie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </p>
-
-            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+            <ul>
+                <li>We pay 100% without referrals</li>
+                <li>We pay the Top  referral bonus ₦1,000</li>
+                <li>Two thousand Five hundred (2500)points for sign up bonus</li>
+                <li>Daily withdrawal of referral earnings, and many more</li>
+            </ul>
 
         </div><!-- end pp -->
 
-        <img src="upload/market_blog_02.jpg" alt="" class="img-fluid img-fullwidth">
-
         <div class="pp">
-            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
-
-            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-
-            <p>Morbi pharetra porta consequat. Aenean et diam sapien. <a href="#">Interdum et malesuada</a> fames ac ante ipsum primis in faucibus. Pellentesque dictum ligula iaculis, feugiat metus eu, sollicitudin ex. Quisque eu ullamcorper ligula. In vel ex ac purus finibus viverra. Maecenas pretium lobortis turpis. Fusce lacinia nisi in tortor massa nunc.</p>
+            <h3><strong>OUR SELLING POINTS</strong></h3>
 
             <ul class="check">
-                <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
-                <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
-                <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
-                <li>In dapibus sapien at viverra venenatis.</li>
-                <li>Pellentesque mollis velit id maximus finibus.</li>
+                <li>REGISTRATION FEE A ONE TIME PAYMENT OF (₦2,500)</li>
+                <li>WE PAY EVERY DAY</li>
+                <li>REFERRING IS OPTIONAL</li>
+                <li>WE PAY THE TOP AFFILIATE COMMISSION (₦1,000)</li>
             </ul>
 
-            <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
+        </div><!-- end pp -->
 
-            <p><img src="upload/market_blog_01.jpg" class="float-left" width="340" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant m tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.orbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
+        <div class="pp">
+            <h3><strong>WAYS TO EARN LIKE A BOSS ON BOSSEARN(B.E)</strong></h3>
 
-            <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
+            <h4>Let's calculate your estimated earnings</h4>
 
+            <ul class="check">
+                <li>Sign up bonus #2500</li>
+                <li>You make a comment on posts per week = 200 X7=1400 points</li>
+                <li>You share our sponsored post for a week = N500 X 7 = 3500 points</li>
+                <li>You refer 10persons in a week = N1,000 X 10 = 10,000 (Optional)</li>
+                <li>Daily login of 100 naira per day for 7 days = N100 X 7 = 700 points</li>
+                <li>sharing news to other sites form giftalworld attracts 20 naira per post. Let's say you share 10 posts daily. That's 200. For 7 days, that's 1400 points </li>
+                <li>Each news read gives 5 points = 5 X 7 = 35points </li>
+            </ul>
 
-            <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+            <h4>calculate how much you've made so far with just your smartphone</h4>
+            <p>That's over 20k for the week without referring</p>
+            <h4>WITH MY TRICK WHICH I WILL SHOW YOU, YOU SHOULD EARN OVER 30k FOR THE WEEK</h4>
+            <h5>Just imagine you, imagine yourself earning this (lets just say 40k) every week..  In a month, you're up with over 100k  </h5>
+            <p>And for withdrawal. That takes no time,  For example u get registered. All u have to do is go to bank details and put your account details. For withdrawal anytime</p>
+            <h5>Does Facebook, whatsapp or Ig pay you this daily or monthly</h5>
+            <h4>REMEMBER, It was all possible because of a #2500!!</h4>
 
-            <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
         </div><!-- end pp -->
     </div><!-- end content -->
 

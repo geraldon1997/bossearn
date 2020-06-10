@@ -63,6 +63,7 @@ require_once 'autoload.php';
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    
 </style>
 
 </head>

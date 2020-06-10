@@ -5,6 +5,10 @@
         width: 100%;
         height: 500px;
     }
+    .btn-news:hover{
+        cursor: pointer;
+        color: gold !important;
+    }
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
         <section class="section lb">
@@ -30,12 +34,11 @@
                                                 <li><share-button>share</share-button></li>
                                             </ul>
                                         </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">You can learn how to make money with your blog and videos</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Make Money</a></small>
-                                        <small><a href="marketing-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="#" title="">by Jack</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 2291</a></small>
+                                        <h4>You can learn how to make money with your blog and videos</h4>
+                                        <form action="news.php" method="post">
+                                            <input type="hidden" name="news" value="1">
+                                            <button class="btn btn-news">Read more &nbsp;<i class="fa fa-book"></i></button>
+                                        </form>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
