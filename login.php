@@ -1,6 +1,11 @@
 <?php
-
 require_once 'layout/header.php';
+
+use App\Controllers\UserController;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    UserController::login($_POST);
+}
 ?>
 <style>
     .page-wrapper{
@@ -14,11 +19,11 @@ require_once 'layout/header.php';
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6">
-            <form class="form-wrapper">
-            <h4>Login form</h4>
-                <input type="text" class="form-control" placeholder="Username">
-                <input type="password" class="form-control" placeholder="Password">
-                <button type="submit" class="btn btn-primary">Login <i class="fa fa-arrow-right"></i></button>
+        <h4>Login form</h4>
+            <form class="form-wrapper" method="POST" action="">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <button type="submit" class="btn">Login <i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
 

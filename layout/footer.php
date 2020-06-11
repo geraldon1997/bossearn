@@ -15,12 +15,6 @@
 
     <!-- Core JavaScript
     ================================================== -->
-  
-    <script>
-    function logout() {
-        document.location = 'logout.php'
-    }
-    </script>
 
     <script src="test/share-button.min.js"></script>
     <script src="App/Assets/Js/jquery.min.js"></script>

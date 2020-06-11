@@ -1,5 +1,10 @@
 <?php
+
+use App\Models\Role;
+use App\Models\User;
+
 require_once 'autoload.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,18 +95,13 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.php">contact us</a>
                             </li>
+                        
+                            <?php if (isset($_SESSION['uname'])) {?>
+                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id']) === 'user') {?>
+                            <p>i am a user</p>
+                            <?php } ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="register.php">register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php">login</a>
-                            </li>
-
-                        <?php if (isset($_SESSION['uname'])) { ?>
-                            <li class="nav-item">
-                                <a class="nav-link" onclick="logout()" href="#">logout</a>
-                            </li>
-                            <li class="nav-item">
+                            <?php echo Role::role(User::findUser('uname', $_SESSION['uname']); ?>
                                 <a class="nav-link" href="marketing-contact.html">profile</a>
                             </li>
                             <li class="nav-item">
@@ -119,9 +119,18 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">earnings</a>
                             </li>
-
-                        <?php } ?>
-
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="document.location = 'logout.php' " >logout</a>
+                            </li>
+                            <?php } else { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register.php">register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php">login</a>
+                            </li>
+                        
+                            <?php } ?>
                         </ul>
                         <!-- <form class="form-inline">
                             <input class="form-control mr-sm-2" type="text" placeholder="How may I help?">

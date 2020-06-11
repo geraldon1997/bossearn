@@ -1,6 +1,11 @@
 <?php
-
 require_once 'layout/header.php';
+
+use App\Controllers\UserController;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    UserController::register($_GET['ref'], $_POST);
+}
 ?>
 <style>
     .page-wrapper{
@@ -13,7 +18,7 @@ require_once 'layout/header.php';
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6">
-            <form class="form-wrapper">
+            <form class="form-wrapper" method="POST">
             <h4>Registration form</h4>
                 <input type="text" class="form-control" placeholder="First name">
                 <input type="text" class="form-control" placeholder="Last name">

@@ -1,9 +1,5 @@
 <?php
+session_start();
+session_unset();
 
-function logout()
-{
-    session_destroy();
-    // header('location: http://bossearnphp.test');
-}
-
-logout();
+echo "<script>window.location = 'login.php';</script>";

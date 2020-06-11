@@ -53,8 +53,8 @@ class UserController extends User
     public static function login($data)
     {
         $login = User::findUser('uname', $data['username']);
-        if ($login[0]['uname'] == $data['username'] && $login[0]['paswd'] == $data['password']) {
-            header('location:index.php');
+        if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
+            echo "<script>window.location = '/';</script>";
             $_SESSION['uname'] = $data['username'];
         } else {
             self::$error['login'] = 'username or password is incorrect';
