@@ -6,7 +6,8 @@ use App\Models\User;
 require_once 'layout/header.php';
 
 $user = User::findUser('uname', $_SESSION['uname'])[0];
-$earning = Earning::findEarning($user['id'])[0];
+$earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
+$totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 
 ?>
 <style>
@@ -21,13 +22,13 @@ $earning = Earning::findEarning($user['id'])[0];
         <div class="sidebar">
             <div class="widget-no-style">
                 <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earnings in points</h3>
+                    <h3>Earning in points</h3>
                     <div class="row">
-                        <div class="col-lg-6"><b>Bref : </b></div>
-                        <div class="col-lg-6"><b>Bearn : </b></div>
+                        <div class="col-lg-6"><b>Bref : <?php echo number_format($earning['bref']) ?> </b></div>
+                        <div class="col-lg-6"><b>Bearn : <?php echo number_format($earning['bearn']) ?></b></div>
                     </div>
                     <hr>
-                    <h5>Total : </h5>
+                    <h5>Total : <?php echo number_format($totalearning['totalearnings']) ?> </h5>
                 </div><!-- end newsletter -->
             </div>
         </div><!-- end sidebar -->
@@ -37,13 +38,13 @@ $earning = Earning::findEarning($user['id'])[0];
         <div class="sidebar">
             <div class="widget-no-style">
                 <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earnings in cash</h3>
+                    <h3>Earning in cash</h3>
                     <div class="row">
-                        <div class="col-lg-6"><b>Bref : </b></div>
-                        <div class="col-lg-6"><b>Bearn : </b></div>
+                        <div class="col-lg-6"><b>Bref : &#8358; <?php echo number_format($earning['bref'] / 10); ?> </b></div>
+                        <div class="col-lg-6"><b>Bearn : &#8358; <?php echo number_format($earning['bearn'] / 10) ?></b></div>
                     </div>
                     <hr>
-                    <h5>Total : </h5>
+                    <h5>Total : &#8358; <?php echo number_format($totalearning['totalearnings'] / 10);  ?></h5>
                 </div><!-- end newsletter -->
             </div>
         </div><!-- end sidebar -->
