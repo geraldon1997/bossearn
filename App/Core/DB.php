@@ -7,6 +7,6 @@ class DB
 {
     public static function init()
     {
-        return new mysqli('localhost', 'bossearnphp', 'bossearnphp', 'bossearnphp');
+        return new mysqli('localhost', 'root', '', 'bossearn');
     }
 }

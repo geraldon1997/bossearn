@@ -68,6 +68,9 @@ require_once 'autoload.php';
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    #logout:hover{
+        cursor: pointer;    
+    }
     
 </style>
 
@@ -97,13 +100,11 @@ require_once 'autoload.php';
                             </li>
                         
                             <?php if (isset($_SESSION['uname'])) {?>
-                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id']) === 'user') {?>
-                            <p>i am a user</p>
-                            <?php } ?>
+                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
                             <li class="nav-item">
-                            <?php echo Role::role(User::findUser('uname', $_SESSION['uname']); ?>
-                                <a class="nav-link" href="marketing-contact.html">profile</a>
+                                <a class="nav-link" href="profile.php">profile</a>
                             </li>
+                            <?php } else {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">vendors</a>
                             </li>
@@ -119,8 +120,9 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">earnings</a>
                             </li>
+                            <?php } ?>
                             <li class="nav-item">
-                                <a class="nav-link" onclick="document.location = 'logout.php' " >logout</a>
+                                <a class="nav-link" onclick="document.location = 'logout.php' " id='logout'>logout</a>
                             </li>
                             <?php } else { ?>
                             <li class="nav-item">
