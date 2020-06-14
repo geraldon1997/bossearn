@@ -63,18 +63,47 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
         <div class="col-lg-6">
             <form class="form-wrapper" method="POST">
             <h4> Personal Details </h4>
+                <label for="Referral Id">Referral Id</label>
                 <input type="text" class="form-control" placeholder="referral code" disabled value="<?php echo $user['ref'] ?>">
+                <label for="first name">First Name</label>
                 <input type="text" class="form-control" placeholder="First name" value="<?php echo $user['fname'] ?>" name="fn">
+                <label for="Last name">Last Name</label>
                 <input type="text" class="form-control" placeholder="Last name" value="<?php echo $user['lname'] ?>" name="ln">
+                <label for="country">Country</label>
                 <input type="text" class="form-control" placeholder="Country" disabled value="<?php echo $user['country'] ?>">
+                <label for="email">Email Address</label>
                 <input type="email" class="form-control" placeholder="Email address" disabled value="<?php echo $user['email'] ?>">
+                <label for="phone">Phone</label>
                 <input type="tel" class="form-control" placeholder="Phone" value="<?php echo $user['phone'] ?>" name="ph">
+                <label for="username">Username</label>
                 <input type="text" class="form-control" placeholder="Username" disabled value="<?php echo $user['uname'] ?>">
                 
                 <button type="submit" class="btn btn-primary"> update <i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
 
+        <div class="col-lg-3"></div>
+    </div>
+
+    <hr class="invis">
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form action="post" class="form-wrapper">
+                <h4>Bank Details</h4>
+                <label for="bank">Bank Name</label>
+                <input type="text" class="form-control" placeholder="Bank Name" value="">
+
+                <label for="account name">Account Name</label>
+                <input type="text" class="form-control" placeholder="Account name" value="">
+
+                <label for="account number">Account Number</label>
+                <input type="text" class="form-control" placeholder="Account Number" value="">
+
+                <button type="submit" class="btn btn-primary"> update <i class="fa fa-arrow-right"></i></button>
+            </form>
+        </div>
         <div class="col-lg-3"></div>
     </div>
 </div>
