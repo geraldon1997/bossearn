@@ -25,7 +25,7 @@ class UserController extends User
                 Earning::insert($refferred);
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
-                echo "<script> window.location = 'index.php'; </script>";
+                echo "<script> window.location = '/'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
@@ -42,7 +42,7 @@ class UserController extends User
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
             
-                echo "<script> window.location = 'index.php'; </script>";
+                echo "<script> window.location = '/'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
