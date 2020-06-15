@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Core\Gateway;
+use App\Models\Earning;
 
 class Comment extends Gateway
 {
@@ -20,6 +21,7 @@ class Comment extends Gateway
     public static function insert($uid, $pid, $com)
     {
         $sql = "INSERT INTO comments (`user_id`,`post_id`,`comment`) VALUES ('$uid','$pid','$com')";
+        Earning::updateBearn(5, $uid);
         return Gateway::run($sql);
     }
 

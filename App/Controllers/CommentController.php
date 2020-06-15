@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
+use App\Models\Earning;
 use App\Models\User;
 
 class CommentController extends Comment

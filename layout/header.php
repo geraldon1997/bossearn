@@ -104,6 +104,9 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">profile</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="vendors.php">buy coupons</a>
+                            </li>
                             <?php } else {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">vendors</a>
