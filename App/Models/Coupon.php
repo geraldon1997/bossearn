@@ -48,18 +48,26 @@ class Coupon extends Gateway
 
     public static function updateCoupon($uid, $coupon)
     {
-        $sql = "UPDATE coupons SET `is_verified` = true, `verified_by` = '$uid' WHERE coupon = '$coupon'";
+        $sql = "UPDATE coupons SET `is_verified` = true, `user_id` = '$uid' WHERE coupon = '$coupon'";
         return Gateway::run($sql);
     }
 
-    public static function status($coupon)
+    public static function couponExists($coupon)
     {
-        $sql = "SELECT `is_verified` FROM coupons WHERE coupon = '$coupon'";
-        $result = Gateway::check($sql);
-        if ($result > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $sql = "SELECT * FROM coupons WHERE coupon = '$coupon'";
+        return Gateway::check($sql);
+    }
+
+    public static function couponStatus($coupon)
+    {
+        $sql = "SELECT * FROM coupons WHERE coupon = '$coupon' ";
+        $result = Gateway::fetch($sql);
+        return $result[0]['is_verified'];
+    }
+
+    public static function userStatus($uid)
+    {
+        $sql = "SELECT * FROM coupons WHERE `user_id` = '$uid' ";
+        return Gateway::check($sql);
     }
 }

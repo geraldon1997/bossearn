@@ -5,6 +5,8 @@ use App\Models\User;
 
 require_once 'autoload.php';
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,9 +106,6 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">profile</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="vendors.php">buy coupons</a>
-                            </li>
                             <?php } else {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">vendors</a>
@@ -117,9 +116,7 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">users</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">buy coupon</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">earnings</a>
                             </li>
@@ -128,6 +125,9 @@ require_once 'autoload.php';
                                 <a class="nav-link" onclick="document.location = 'logout.php' " id='logout'>logout</a>
                             </li>
                             <?php } else { ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="vendors.php">buy coupons</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="register.php">register</a>
                             </li>

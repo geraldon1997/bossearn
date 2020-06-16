@@ -3,9 +3,6 @@ require_once 'layout/header.php';
 
 use App\Controllers\UserController;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    UserController::login($_POST);
-}
 ?>
 <style>
     .page-wrapper{
@@ -19,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6">
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    UserController::login($_POST);
+} ?>
         <h4>Login form</h4>
             <form class="form-wrapper" method="POST" action="">
                 <input type="text" name="username" class="form-control" placeholder="Username">

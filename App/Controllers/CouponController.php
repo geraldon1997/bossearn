@@ -19,7 +19,7 @@ class CouponController extends Coupon
         }
     }
 
-    public static function view()
+    public static function view($col, $val)
     {
         $coupon = self::findCoupon($col, $val);
         foreach ($coupon as $key) {
@@ -31,28 +31,27 @@ class CouponController extends Coupon
         }
     }
 
-    public static function verify()
+    public static function verify($coupon)
     {
-        $status = self::status($coupon);
-        if ($status == false) {
-            $user = User::findUser('uname', $_SESSION['uname']);
-            $verify = self::updateCoupon($user[0]['id'], $coupon);
-
-            if ($verify) {
-                self::$success['coupon'] = 'coupon verified';
-                header('refresh:1 url=index.php');
+        $exist = self::couponExists($coupon);
+        
+        if ($exist) {
+            $status = self::couponStatus($coupon);
+            if (!$status) {
+                self::updateCoupon(User::userId($_SESSION['uname'])[0]['id'], $coupon);
+                echo "<script>window.location = 'profile.php'</script>";
             } else {
-                self::$error['coupon'] = 'coupon not verified';
+                self::$error = 'coupon already used';
             }
         } else {
-            self::$error['coupon'] = 'coupon has been verified by another user';
+            self::$error = 'invalid coupon';
+            return;
         }
     }
 
-    public static function hasUserVerifiedCoupon()
+    public static function userCouponStatus($un)
     {
-        $user = User::findUser('uname', $_SESSION['uname']);
-        $is = self::findCoupon('verified_by', $user[0]['id']);
-        var_dump($is);
+        $user = User::findUser('uname', $un);
+        return self::userStatus($user[0]['id']);
     }
 }

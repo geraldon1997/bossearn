@@ -55,10 +55,15 @@ class UserController extends User
     {
         $login = User::findUser('uname', $data['username']);
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
-            Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
-            echo "<script>window.location = '/';</script>";
-            $_SESSION['uname'] = $data['username'];
-        } else {
+            if (CouponController::userCouponStatus($data['username']) > 0) {
+                Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
+                echo "<script>window.location = '/';</script>";
+                $_SESSION['uname'] = $data['username'];
+            } else {
+                echo "<script>window.location = 'verify.php';</script>";
+                $_SESSION['uname'] = $data['username'];
+            }
+            } else {
             self::$error['login'] = 'username or password is incorrect';
         }
     }
