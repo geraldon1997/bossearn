@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\CouponController;
 use App\Models\Role;
 use App\Models\User;
 
@@ -103,9 +104,13 @@ require_once 'autoload.php';
                         
                             <?php if (isset($_SESSION['uname'])) {?>
                             <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+                            <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">profile</a>
                             </li>
+                            
+                            <?php } ?>
+
                             <?php } else {?>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">vendors</a>
