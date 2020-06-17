@@ -20,13 +20,13 @@ class UserController extends User
             if ($signup) {
                 $referrer = Referral::refId($ref);
                 $refferred = User::lastUserId()[0]['id'];
-                
+
                 Referral::insert($referrer, $refferred);
-                
+
                 Earning::insert($refferred);
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
-                echo "<script> window.location = '/'; </script>";
+                echo "<script> window.location = 'verify.php'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
@@ -36,14 +36,14 @@ class UserController extends User
             if ($signup) {
                 $referrer = Referral::refId(Referral::assignRef());
                 $refferred = User::lastUserId()[0]['id'];
-                
+
                 Referral::insert($referrer, $refferred);
-                
+
                 Earning::insert($refferred);
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
-            
-                echo "<script> window.location = '/'; </script>";
+
+                echo "<script> window.location = 'verify.php'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
