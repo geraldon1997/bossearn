@@ -32,11 +32,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <h4>Contact form</h4>
                                 <input type="text" class="form-control" name="cn" placeholder="Your name">
                                 <input type="text" class="form-control" name="ce" placeholder="Email address">
-                                <input type="text" class="form-control" name="cp" placeholder="Phone">
                                 <input type="text" class="form-control" name="cs" placeholder="Subject">
                                 <textarea class="form-control" name="cm" placeholder="Your message"></textarea>
                                 <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
                             </form>
+                          <p>
+                            <?php
+                            if (isset(ContactController::$success['mail'])) {
+                              echo ContactController::$success['mail'];
+                            } elseif (isset(ContactController::$error['mail'])) {
+                            	echo ContactController::$error['mail'];
+                            }
+                            ?>
+                          </p>
                           <a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to message admin on whatsapp</a>
                         </div>
                     </div>
