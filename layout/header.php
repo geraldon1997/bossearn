@@ -99,15 +99,7 @@ require_once 'autoload.php';
                           	<li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.php">login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="register.php">register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="vendors.php">buy coupons</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="how.php">how it works</a>
                             </li>
