@@ -18,7 +18,9 @@
     }
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
-<marquee><b>Welcome to boss earn please do login  or click the register to enjoy</b></marquee>
+<marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
+<div style="width:100%; text-align: center;">
+<a href="register.php" class="btn" >Register</a>
         <section class="section lb">
             <div class="container">
                 <div class="row">
