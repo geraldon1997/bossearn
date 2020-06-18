@@ -1,52 +1,65 @@
 <?php
 
 require_once 'layout/header.php';
+
+use App\Controllers\ContactController;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  ContactController::sendMail();
+}
 ?>
 <style>
     .section{
         margin-top: 100px;
         /* margin-bottom: 50px; */
     }
+  .chat{
+    margin: 10px;
+  }
 </style>
 <section class="section lb">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div class="sidebar">
-                    <div class="widget-no-style">
-                        <div class="newsletter-widget text-center align-self-center">
-                            <h3>Subscribe Today!</h3>
-                            <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-                            <form class="form-inline" method="post">
-                                <input type="text" name="email" placeholder="Add your email here.." required class="form-control" />
-                                <input type="submit" value="Subscribe" class="btn btn-default btn-block" />
-                            </form>         
-                        </div><!-- end newsletter -->
-                    </div>
 
-                    
-                </div><!-- end sidebar -->
-            </div><!-- end col -->
-            
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <div class="page-wrapper">
                     <div class="row">
-                        
+
                     </div><!-- end row -->
 
                     <hr class="invis">
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form class="form-wrapper">
+                            <form class="form-wrapper" method="post">
                             <h4>Contact form</h4>
-                                <input type="text" class="form-control" placeholder="Your name">
-                                <input type="text" class="form-control" placeholder="Email address">
-                                <input type="text" class="form-control" placeholder="Phone">
-                                <input type="text" class="form-control" placeholder="Subject">
-                                <textarea class="form-control" placeholder="Your message"></textarea>
+                                <input type="text" class="form-control" name="cn" placeholder="Your name">
+                                <input type="text" class="form-control" name="ce" placeholder="Email address">
+                                <input type="text" class="form-control" name="cs" placeholder="Subject">
+                                <textarea class="form-control" name="cm" placeholder="Your message"></textarea>
                                 <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
                             </form>
+                          <p>
+                            <?php
+                            if (isset(ContactController::$success['mail'])) {
+                              echo ContactController::$success['mail'];
+                            } elseif (isset(ContactController::$error['mail'])) {
+                            	echo ContactController::$error['mail'];
+                            }
+                            ?>
+                          </p>
+							<div class="row">
+                          	<div class="col-md-12 chat">
+                            	<a href="https://wa.me/2348132023741?text=Hi%20admin%20" class="btn">click to send a message on whatsapp</a>
+                            </div>
+                            <div class="col-md-12 chat">
+                              <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click to send a message on instagram</a>
+                            </div>
+                            <div class="col-md-12 chat">
+                              <a href="https://www.facebook.com/groups/563831221190622/?ref=share" class="btn">click to send a message on facebook</a>
+                            </div>
+                          </div>
+
                         </div>
                     </div>
                 </div><!-- end page-wrapper -->

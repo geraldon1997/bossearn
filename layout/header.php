@@ -11,27 +11,27 @@ require_once 'autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Site Metas -->
     <title>Bossearn</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="App/Assets/Images/logo.jpeg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="App/Assets/Images/logo.jpeg">
-    
+
     <!-- Design fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="App/Assets/Css/bootstrap.css" rel="stylesheet">
 
@@ -52,11 +52,11 @@ require_once 'autoload.php';
 
     <!-- Version Marketing CSS for this template -->
     <link href="App/Assets/Css/version/marketing.css" rel="stylesheet">
-    
+
 
     <link rel='stylesheet' href='test/share-button.min.css' type='text/css' media='all'/>
     <script src="test/jquery.js"></script>
-    
+
 
 <style>
     #logo{
@@ -72,9 +72,9 @@ require_once 'autoload.php';
         padding-bottom: 20px;
     }
     #logout:hover{
-        cursor: pointer;    
+        cursor: pointer;
     }
-    
+
 </style>
 
 </head>
@@ -90,20 +90,22 @@ require_once 'autoload.php';
                     <a class="navbar-brand" href="/"><img src="App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
-                        
-                                
-                            <li class="nav-item">
+
+
+
+
+                            <?php if (isset($_SESSION['uname'])) {?>
+
+                          	<li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="how.php">how it works</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.php">contact us</a>
                             </li>
-                        
-                            <?php if (isset($_SESSION['uname'])) {?>
-                                
                             <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
 
                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
@@ -114,44 +116,40 @@ require_once 'autoload.php';
 
                             <?php } ?>
 
-                            <?php } else {?>
-
+                            <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'vendor') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">vendors</a>
+                                <a class="nav-link" href="profile.php">profile</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">coupons</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">users</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">earnings</a>
-                            </li>
-
+                                <a class="nav-link" href="coupon.php">coupons</a>
+								</li>
                             <?php } ?>
-
                             <li class="nav-item">
                                 <a class="nav-link" onclick="document.location = 'logout.php' " id='logout'>logout</a>
                             </li>
-
                             <?php } else { ?>
-
+                          	<li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php">login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register.php">register</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="vendors.php">buy coupons</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="register.php">register</a>
+                                <a class="nav-link" href="how.php">how it works</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="login.php">login</a>
+                                <a class="nav-link" href="contact.php">contact us</a>
                             </li>
-                        
+
                             <?php } ?>
                         </ul>
                         <!-- <form class="form-inline">

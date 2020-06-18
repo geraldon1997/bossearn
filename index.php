@@ -6,12 +6,21 @@
         width: 100%;
         height: 500px;
     }
+  @media (max-width: 700px){
+    #bg{
+      width: 100%;
+      height: 100%;
+    }
+  }
     .btn-news:hover{
         cursor: pointer;
         color: gold !important;
     }
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
+<marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
+<div style="width:100%; text-align: center;">
+<a href="register.php" class="btn" >Register</a>
         <section class="section lb">
             <div class="container">
                 <div class="row">
@@ -46,18 +55,18 @@
                                 </div><!-- end blog-box -->
 
                                 <hr class="invis">
-                                
+
                             </div>
                         </div>
 
                         <hr class="invis">
 
-                        
+
                     </div><!-- end col -->
 
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
-                            
+
 
                             <div class="widget">
                                 <h2 class="widget-title">Recent Posts</h2>
@@ -89,7 +98,7 @@
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
-                        
+
                         </div><!-- end sidebar -->
                     </div><!-- end col -->
                 </div><!-- end row -->

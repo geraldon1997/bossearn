@@ -5,6 +5,7 @@ use App\Models\Bank;
 use App\Models\User;
 use App\Models\Referral;
 use App\Models\Earning;
+use App\Models\Role;
 
 class UserController extends User
 {
@@ -20,13 +21,13 @@ class UserController extends User
             if ($signup) {
                 $referrer = Referral::refId($ref);
                 $refferred = User::lastUserId()[0]['id'];
-                
+
                 Referral::insert($referrer, $refferred);
-                
+
                 Earning::insert($refferred);
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
-                echo "<script> window.location = '/'; </script>";
+                echo "<script> window.location = 'verify.php'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
@@ -36,14 +37,14 @@ class UserController extends User
             if ($signup) {
                 $referrer = Referral::refId(Referral::assignRef());
                 $refferred = User::lastUserId()[0]['id'];
-                
+
                 Referral::insert($referrer, $refferred);
-                
+
                 Earning::insert($refferred);
                 Earning::updateBref(10000, $referrer);
                 self::$success['signup'] = 'Registeration was successful';
-            
-                echo "<script> window.location = '/'; </script>";
+
+                echo "<script> window.location = 'verify.php'; </script>";
                 $_SESSION['uname'] = $data['username'];
             } else {
                 self::$error['signup'] = 'username or email already exists';
@@ -55,6 +56,7 @@ class UserController extends User
     {
         $login = User::findUser('uname', $data['username']);
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
+          if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
             if (CouponController::userCouponStatus($data['username']) > 0) {
                 Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
                 echo "<script>window.location = '/';</script>";
@@ -63,6 +65,10 @@ class UserController extends User
                 echo "<script>window.location = 'verify.php';</script>";
                 $_SESSION['uname'] = $data['username'];
             }
+        } else {
+            	echo "<script>window.location = '/';</script>";
+                $_SESSION['uname'] = $data['username'];
+          }
             } else {
             self::$error['login'] = 'username or password is incorrect';
         }
