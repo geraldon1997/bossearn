@@ -11,7 +11,7 @@ require_once 'autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,20 +115,13 @@ require_once 'autoload.php';
 
                             <?php } ?>
 
-                            <?php } else {?>
+                            <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'vendor') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">vendors</a>
+                                <a class="nav-link" href="marketing-contact.html">profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="marketing-contact.html">coupons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">users</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">earnings</a>
-                            </li>
+								</li>
                             <?php } ?>
                             <li class="nav-item">
                                 <a class="nav-link" onclick="document.location = 'logout.php' " id='logout'>logout</a>
