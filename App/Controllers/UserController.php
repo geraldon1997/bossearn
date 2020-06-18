@@ -97,6 +97,31 @@ class UserController extends User
                 <td><a href='https://api.whatsapp.com/send?phone=$ph&text=Hello, i am from bossearn and i want to buy coupon&source=&data=' class='btn' target='_blank'>chat</a></td>
             </tr>";
         }
+
     }
 
+    public static function view($rid)
+    {
+        $users = User::findUser('role_id', $rid);
+        $sn = 1;
+
+        foreach ($users as $key) {
+            $uid = $key['id'];
+            $ref = $key['ref'];
+            $fn = $key['fname'];
+            $ln = $key['lname'];
+            $em = $key['email'];
+            $ph = $key['phone'];
+            $un = $key['uname'];
+
+            echo "<tr>
+                    <td>".$sn++."</td>
+                    <td>$ref</td>
+                    <td>$fn $ln</td>
+                    <td>$em</td>
+                    <td>$ph</td>
+                    <td>$un</td>
+            </tr>";
+        }
+    }
 }

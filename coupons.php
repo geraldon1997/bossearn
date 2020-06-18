@@ -15,6 +15,14 @@ require_once 'layout/header.php';
     td{
         padding: 10px;
     }
+    button{
+
+}
+@media (max-width: 700px){
+    button{
+        margin-bottom: 10px;
+    }
+}
 </style>
 
 <div class="page-wrapper text-center center">
@@ -35,8 +43,10 @@ require_once 'layout/header.php';
             </form>
         </div>
     </div>
+
     <br>
     <hr class="">
+
     <div class="row">
         <div class="col-md-3"></div>
 
@@ -44,6 +54,7 @@ require_once 'layout/header.php';
             <table border="1">
                 <th>S/N</th>
                 <th>Coupon</th>
+                <th>used by</th>
                 <?php
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         CouponController::view('is_verified', $_POST['coupon']);

@@ -29,12 +29,23 @@ class CouponController extends Coupon
             $cvb = $key['user_id'];
             
 
-            $user = User::findUser('id', $cvb);
+            if ($cvb !== NULL) {
+                $user = User::findUser('id', $cvb);
+                $un = $user[0]['uname'];
 
-            echo "<tr>
-                    <td>".$sn++."</td>
-                    <td>$cc</td>
-            </tr>";
+                echo "<tr>
+                        <td>".$sn++."</td>
+                        <td>$cc</td>
+                        <td>$un</td>
+                </tr>";
+            } else {
+                echo "<tr>
+                        <td>".$sn++."</td>
+                        <td>$cc</td>
+                        <td>NULL</td>
+                </tr>";
+            }
+            
         }
     }
 
