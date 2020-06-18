@@ -11,10 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <style>
-.page-wrapper{
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
+
 </style>
 
 <div class="page-wrapper text-center">

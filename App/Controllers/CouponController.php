@@ -22,12 +22,19 @@ class CouponController extends Coupon
     public static function view($col, $val)
     {
         $coupon = self::findCoupon($col, $val);
+        $sn = 1;
         foreach ($coupon as $key) {
             $cid = $key['id'];
             $cc = $key['coupon'];
-            $cvb = $key['verified_by'];
+            $cvb = $key['user_id'];
+            
 
             $user = User::findUser('id', $cvb);
+
+            echo "<tr>
+                    <td>".$sn++."</td>
+                    <td>$cc</td>
+            </tr>";
         }
     }
 

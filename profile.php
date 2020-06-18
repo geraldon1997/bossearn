@@ -2,6 +2,7 @@
 
 use App\Models\Earning;
 use App\Models\User;
+use App\Models\Role;
 
 require_once 'layout/header.php';
 
@@ -11,12 +12,12 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 
 ?>
 <style>
-    .page-wrapper{
-        margin-top: 100px;
-    }
+    
 </style>
 <div class="page-wrapper text-center center">
 
+<?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
+<h1>Role : <?php echo Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
 <div class="row text-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="sidebar">
@@ -56,7 +57,7 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 <p><strong>Referral link : https://bossearn.com/register.php?ref=<?php echo $user['ref'] ?></strong></p>
 </div>
 </div>
-
+<?php } ?>
     <div class="row">
         <div class="col-lg-3"></div>
 
@@ -89,6 +90,8 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 
     <div class="row">
         <div class="col-lg-3"></div>
+        <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+
         <div class="col-lg-6">
             <form action="post" class="form-wrapper">
                 <h4>Bank Details</h4>
@@ -104,6 +107,7 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
                 <button type="submit" class="btn btn-primary"> update <i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
+        <?php } ?>
         <div class="col-lg-3"></div>
     </div>
 </div>

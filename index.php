@@ -1,4 +1,10 @@
-<?php require_once 'layout/header.php' ?>
+<?php 
+require_once 'layout/header.php'; 
+
+use App\Models\Role;
+use App\Models\User;
+use App\Controllers\CouponController;
+?>
 
 <style>
     #bg{
@@ -20,7 +26,9 @@
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
+<?php if (!isset($_SESSION['uname'])) {?>
 <a href="register.php" class="btn" >Register</a>
+<?php } ?>
         <section class="section lb">
             <div class="container">
                 <div class="row">
@@ -42,7 +50,13 @@
                                         <div class="post-sharing">
                                             <ul class="list-inline">
                                             <?php if (isset($_SESSION['uname'])) {?>
+                                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+                                            <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
                                                 <li><share-button>share</share-button></li>
+                                            <?php } ?>
+                                            <?php } else {?>
+                                                <li><share-button>share</share-button></li>
+                                            <?php } ?>
                                             <?php } ?>
                                             </ul>
                                         </div><!-- end post-sharing -->

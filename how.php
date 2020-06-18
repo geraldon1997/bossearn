@@ -2,9 +2,7 @@
 require_once 'layout/header.php';
 ?>
 <style>
-    .page-wrapper{
-        margin-top: 100px;
-    }
+    
 </style>
 <div class="page-wrapper">
     <div class="blog-title-area">

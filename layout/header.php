@@ -74,7 +74,11 @@ require_once 'autoload.php';
     #logout:hover{
         cursor: pointer;
     }
-
+    .page-wrapper{
+        margin-top: 100px;
+        margin-bottom: 100px;
+        text-align: center;
+    }
 </style>
 
 </head>
@@ -120,11 +124,25 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">profile</a>
                             </li>
+                            
+                            <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin') {?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile.php">profile</a>
+                            </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="coupon.php">coupons</a>
-								</li>
+                                <a class="nav-link" href="coupons.php">coupons</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="users.php">users</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="earnings.php">earnings</a>
+							</li>
                             <?php } ?>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" onclick="document.location = 'logout.php' " id='logout'>logout</a>
                             </li>

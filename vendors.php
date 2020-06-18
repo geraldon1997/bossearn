@@ -6,11 +6,7 @@ use App\Controllers\UserController;
 ?>
 
 <style>
-    .page-wrapper{
-        margin-top: 100px;
-        margin-bottom: 200px;
-        text-align: center;
-    }
+    
 </style>
 
 <div class="page-wrapper">

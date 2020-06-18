@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <section class="section lb">
     <div class="container">
         <div class="row">
-
+            <div class="col-lg-2"></div>
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <div class="page-wrapper">
                     <div class="row">
