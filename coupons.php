@@ -16,8 +16,7 @@ require_once 'layout/header.php';
         padding: 10px;
     }
     button{
-
-}
+    }
 @media (max-width: 700px){
     button{
         margin-bottom: 10px;

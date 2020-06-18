@@ -61,4 +61,10 @@ class User extends Gateway
         $sql = "UPDATE users SET fname = '$fn', lname = '$ln', phone = '$ph' WHERE uname = '$un' ";
         return Gateway::run($sql);
     }
+
+    public static function makeVendor($uid)
+    {
+        $sql = "UPDATE users SET role_id = 2 WHERE id = '$uid' ";
+        return Gateway::run($sql);
+    }
 }

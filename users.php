@@ -1,8 +1,13 @@
 <?php
 
 use App\Controllers\UserController;
+use App\Models\User;
 
 require_once 'layout/header.php';
+
+if (isset($_POST['uid'])) {
+    User::makeVendor($_POST['uid']);
+}
 ?>
 
 <style>
@@ -22,7 +27,6 @@ require_once 'layout/header.php';
         overflow: auto;
     }
     button{
-
     }
     @media (max-width: 700px){
         button{
@@ -68,8 +72,9 @@ require_once 'layout/header.php';
                 <th>Email</th>
                 <th>Phone</th>
                 <th>username</th>
+                <th>Action</th>
                 <?php
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['user'])) {
                     UserController::view($_POST['user']);
                 }
             ?>
