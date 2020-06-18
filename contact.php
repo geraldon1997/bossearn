@@ -50,13 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           </p>
 							<div class="row">
                           	<div class="col-md-12 chat">
-                            	<a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to message admin on whatsapp</a>
+                            	<a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to send a message admin on whatsapp</a>
                             </div>
                             <div class="col-md-12 chat">
-                              <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click to message admin on instagram</a>
+                              <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click to send a message admin on instagram</a>
                             </div>
                             <div class="col-md-12 chat">
-                              <a href="https://www.facebook.com/groups/563831221190622/?ref=share" class="btn">click to message admin on facebook</a>
+                              <a href="https://www.facebook.com/groups/563831221190622/?ref=share" class="btn">click to send a message admin on facebook</a>
                             </div>
                           </div>
 
