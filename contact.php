@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           </p>
 							<div class="row">
                           	<div class="col-md-12 chat">
-                            	<a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to send a message on whatsapp</a>
+                            	<a href="https://wa.me/2348132023741?text=Hi%20admin%20" class="btn">click to send a message on whatsapp</a>
                             </div>
                             <div class="col-md-12 chat">
                               <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click to send a message on instagram</a>
