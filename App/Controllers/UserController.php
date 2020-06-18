@@ -5,6 +5,7 @@ use App\Models\Bank;
 use App\Models\User;
 use App\Models\Referral;
 use App\Models\Earning;
+use App\Models\Role;
 
 class UserController extends User
 {
