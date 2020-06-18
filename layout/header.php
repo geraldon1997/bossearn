@@ -117,10 +117,10 @@ require_once 'autoload.php';
 
                             <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'vendor') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">profile</a>
+                                <a class="nav-link" href="profile.php">profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="marketing-contact.html">coupons</a>
+                                <a class="nav-link" href="coupon.php">coupons</a>
 								</li>
                             <?php } ?>
                             <li class="nav-item">
