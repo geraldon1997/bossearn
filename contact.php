@@ -13,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         margin-top: 100px;
         /* margin-bottom: 50px; */
     }
+  .chat{
+    margin: 10px;
+  }
 </style>
 <section class="section lb">
     <div class="container">
@@ -45,7 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             }
                             ?>
                           </p>
-                          <a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to message admin on whatsapp</a>
+							<div class="row">
+                          	<div class="col-md-12 chat">
+                            	<a href="https://wa.me/2347018242137?text=Welcome%20to%20bossearn.%20What%20information%20do%20you%20need%20" class="btn">click to message admin on whatsapp</a>
+                            </div>
+                            <div class="col-md-12 chat">
+                              <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click here to chat admin on instagram</a>
+                            </div>
+                            <div class="col-md-12 chat">
+                              <a href="https://www.facebook.com/groups/563831221190622/?ref=share" class="btn">click here to chat admin on facebook</a>
+                            </div>
+                          </div>
+
                         </div>
                     </div>
                 </div><!-- end page-wrapper -->
