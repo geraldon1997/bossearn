@@ -175,7 +175,7 @@ Irrelevant contribution (comment) e.g: one word, hmmm, ok, lol, etc and a single
                 <li>REFERRING IS OPTIONAL</li>
                 <li>WE PAY THE TOP AFFILIATE COMMISSION (₦1,000)</li>
             </ul>
-
+            
             <h5><strong>WAYS TO EARN LIKE A BOSS ON BOSSEARN(B.E)</strong></h5>
             <h5>Let's calculate your estimated earnings</h5>
 
