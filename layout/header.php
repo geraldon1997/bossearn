@@ -116,19 +116,19 @@ require_once 'autoload.php';
                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="profile.php">profile</a>
+                                <a class="nav-link" href="dashboard.php">dashboard</a>
                             </li>
 
                             <?php } ?>
 
                             <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'vendor') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="profile.php">profile</a>
+                                <a class="nav-link" href="dashboard.php">dashboard</a>
                             </li>
                             
                             <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin') {?>
                             <li class="nav-item">
-                                <a class="nav-link" href="profile.php">profile</a>
+                                <a class="nav-link" href="dashboard.php">dashboard</a>
                             </li>
 
                             <li class="nav-item">

@@ -11,6 +11,16 @@ $user = User::findUser('uname', $_SESSION['uname'])[0];
 $earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
 $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['fn'])) {
+        User::updateUser($_POST['fn'], $_POST['ln'], $_POST['ph'], $_SESSION['uname']);
+        echo "<script>window.location = 'dashboard.php' </script> ";
+    } elseif (isset($_POST['bn'])) {
+        Bank::insert(User::userId($_SESSION['uname'])[0]['id'], $_POST);
+        echo "<script>window.location = 'dashboard.php' </script> ";
+    }
+}
+
 ?>
 <style>
     
@@ -59,11 +69,15 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 </div>
 </div>
 <?php } ?>
-    <div class="row">
+
+<div class="row">
         <div class="col-lg-3"></div>
 
-        <div class="col-lg-6">
-            <form class="form-wrapper" method="POST">
+        <div class="col-lg-6 " >
+
+        <button data-toggle="collapse" data-target="#profile" class="btn">profile</button>
+
+            <form class="form-wrapper collapse" method="POST" id="profile">
             <h4> Personal Details </h4>
                 <label for="Referral Id">Referral Id</label>
                 <input type="text" class="form-control" placeholder="referral code" disabled value="<?php echo $user['ref'] ?>">
@@ -80,7 +94,7 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
                 <label for="username">Username</label>
                 <input type="text" class="form-control" placeholder="Username" disabled value="<?php echo $user['uname'] ?>">
                 
-                <button type="submit" class="btn btn-primary"> update <i class="fa fa-arrow-right"></i></button>
+                <button type="submit" class="btn btn-primary"> update profile <i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
 
@@ -89,23 +103,28 @@ $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 
     <hr class="invis">
 
+    
     <div class="row">
         <div class="col-lg-3"></div>
         <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
-        <?php if (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) > 1) {?>
-        <div class="col-lg-6">
-            <form action="post" class="form-wrapper">
+        <?php if (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) < 1) {?>
+            
+        <div class="col-lg-6" >
+
+        <button data-toggle="collapse" data-target="#bank" class="btn">bank details</button>
+
+            <form method="post" class="form-wrapper collapse" id="bank">
                 <h4>Bank Details</h4>
                 <label for="bank">Bank Name</label>
-                <input type="text" class="form-control" placeholder="Bank Name" value="">
+                <input type="text" class="form-control" placeholder="Bank Name" value="" name="bn">
 
                 <label for="account name">Account Name</label>
-                <input type="text" class="form-control" placeholder="Account name" value="">
+                <input type="text" class="form-control" placeholder="Account name" value="" name="an">
 
                 <label for="account number">Account Number</label>
-                <input type="text" class="form-control" placeholder="Account Number" value="">
+                <input type="text" class="form-control" placeholder="Account Number" value="" name="acn">
 
-                <button type="submit" class="btn btn-primary"> update <i class="fa fa-arrow-right"></i></button>
+                <button type="submit" class="btn btn-primary"> update bank <i class="fa fa-arrow-right"></i></button>
             </form>
         </div>
         <?php } ?>

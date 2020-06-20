@@ -17,10 +17,10 @@ class Bank extends Gateway
         Gateway::run($sql);
     }
 
-    public static function insert($vals)
+    public static function insert($uid, $vals)
     {
         $val = implode("', '", $vals);
-        $sql = "INSERT INTO users_banks (`user_id`,bank,acct_name,acct_num) VALUES ('$val')";
+        $sql = "INSERT INTO users_banks (`user_id`,bank,acct_name,acct_num) VALUES ('$uid','$val')";
         return Gateway::run($sql);
     }
 
