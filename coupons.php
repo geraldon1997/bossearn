@@ -29,6 +29,22 @@ require_once 'layout/header.php';
     <h1>Coupons</h1>
 
     <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <?php
+                if (isset($_POST['quantity'])) {
+                    echo CouponController::create($_POST['quantity']);
+                }
+            ?>
+            <form method="post" class="form-wrapper">
+                <input type="number" name="quantity" class="">
+                <button type="submit" class="btn">generate</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row">
         <div class="col-md-6">
             <form action="" method="post">
                 <input type="hidden" name="coupon" value="1">
@@ -55,7 +71,7 @@ require_once 'layout/header.php';
                 <th>Coupon</th>
                 <th>used by</th>
                 <?php
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if (isset($_POST['coupon'])) {
                         CouponController::view('is_verified', $_POST['coupon']);
                     }
                 ?>

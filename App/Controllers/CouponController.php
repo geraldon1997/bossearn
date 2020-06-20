@@ -13,9 +13,9 @@ class CouponController extends Coupon
     {
         $coupon = self::insert($quantity);
         if ($coupon) {
-            self::$success['coupon'] = $quantity.' coupons generated';
+            return $quantity.' coupons generated';
         } else {
-            self::$error['coupon'] = 'no coupon was generated, please try again';
+            return 'no coupon was generated, please try again';
         }
     }
 

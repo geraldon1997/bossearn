@@ -15,13 +15,37 @@
 
     <!-- Core JavaScript
     ================================================== -->
-
-    <script src="test/share-button.min.js"></script>
+    <script src="App/Assets/Js/share-button.min.js"></script>
     <script src="App/Assets/Js/jquery.min.js"></script>
     <script src="App/Assets/Js/tether.min.js"></script>
     <script src="App/Assets/Js/bootstrap.min.js"></script>
     <script src="App/Assets/Js/animate.js"></script>
     <script src="App/Assets/Js/custom.js"></script>
-    
+    <script>
+        $( document ).ready(function() {
+            new ShareButton({
+                networks: {
+                    whatsapp: {
+                        before: function(element){
+                            this.url = 'https://bossearn.com',
+                            this.description = 'testing'
+                        }
+                    },
+                    googlePlus: {
+                        enabled: false
+                    },
+                    twitter: {
+                        url: 'ininiuws'
+                    },
+                    facebook: {
+                        enabled: true
+                    }
+                },
+                ui: {
+                    flyout: 'middle bottom'
+                    }
+            });
+        });
+    </script>
 </body>
 </html>

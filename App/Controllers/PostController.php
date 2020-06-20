@@ -33,14 +33,6 @@ class PostController extends Post
 
     public static function viewAllPosts()
     {
-        $all = self::allPosts();
-        foreach ($all as $key) {
-            $pid = $key['id'];
-            $pt = $key['title'];
-            $pb = $key['body'];
-            $pi = $key['image'];
-
-            echo $pid.' '.$pt.' '.$pb.' '.$pi.'<br>';
-        }
+         self::allPosts();
     }
 }

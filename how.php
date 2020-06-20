@@ -132,11 +132,72 @@ Irrelevant contribution (comment) e.g: one word, hmmm, ok, lol, etc and a single
             </ul>
 
             <p>Today I will be showing you how to get referrals on Bossearn Program.
-Please note that this write up on how to get referrals on Bossearn Program. This is not something I should have shared online. But for any person that sees it,Kudos!</p>
+                Please note that this write up on how to get referrals on Bossearn Program. This is not something I should have shared online. But for any person that sees it,Kudos!</p>
 
-<p>If you are a serious minded person, you should start making over 20k every weekly on Bossearn after this. Do well to share it as well with whoever you love to see succeed in Bossearn.</p>
+            <p>If you are a serious minded person, you should start making over 20k every weekly on Bossearn after this. Do well to share it as well with whoever you love to see succeed in Bossearn.</p>
 
+            <h3><strong>NOW TO THE MAIN BUSINESS OF THE DAY</strong></h3>
+            <p>First of all, join these facebookgroups</p>
+            <p>Are you ready ???.</p>
+            <p>Oya …let’s start!</p>
+            <p>If you don’t know where to post advert daily</p>
+            <h5><strong>HERE ARE SOME LIST OF FACEBOOK GROUPS TO POST TO DAILY</strong></h5>
+            <p>Apart from Facebook, you can still head over to forums like nairaland.com warriorforum.com Reddit.com etc and make your adverts as it has many people visiting it. So go and register with them FOR FREE and start driving audiences.</p>
+            <p>Also don’t forget to join Students facebook groups. you can find these out by just searching on facebook for any school.</p>
 
+            <h4><strong>NOW MAKE ADVERT!!!</strong></h4>
+            <p>On your WhatsApp status, Facebook stories, groups and timeline… Tag your friends who u know need advert business…. Post something like this:
+                “Partner with a Nigeria News Update Website and get the privilege of being paid each time you share a post on your facebook or watch videos, view a post on the website, create a post and login to the website. You can start today with a one time registration fee of N2,500 and stand d chance to earn over 20k everyday Ask me how”.</p>
+            <p>After “ask me how”, Put your WhatsApp number. If someone picks interest by asking you “How?”
+                Give the person this brief info about how Bossearn works    With all this you will be earning Like a boss from home.</p>
+
+            <h5><strong>FEATURES ARE</strong></h5>
+            <ul class="check">
+                <li>Politics updates</li>
+                <li>Education updates</li>
+                <li>Business updates</li>
+                <li>Sports updates</li>
+                <li>Entertainment updates</li>
+            </ul>
+
+            <h4><strong>Welcome to BOSSEARN !!!</strong></h4>
+            <ul class="check">
+                <li>We pay 100% without referrals;</li>
+                <li>We pay the Top  referral bonus ₦1,000;</li>
+                <li>Two thousand Five hundred (2500)points for sign up bonus;</li>
+                <li>Daily withdrawal of referral earnings, and many more</li>
+            </ul>
+
+            <h5><strong>OUR SELLING POINTS</strong></h5>
+            <ul class="check">
+                <li>REGISTRATION FEE A ONE TIME PAYMENT OF (₦2,500)</li>
+                <li>WE PAY EVERY DAY</li>
+                <li>REFERRING IS OPTIONAL</li>
+                <li>WE PAY THE TOP AFFILIATE COMMISSION (₦1,000)</li>
+            </ul>
+
+            <h5><strong>WAYS TO EARN LIKE A BOSS ON BOSSEARN(B.E)</strong></h5>
+            <h5>Let's calculate your estimated earnings</h5>
+
+            <ul class="check">
+                <li>Sign up bonus #2500</li>
+                <li>You make a comment on posts per week=200 X7=1400point</li>
+                <li>You share our sponsored post for a week = N500 X 7 =3500point</li>
+                <li>You refer 10persons in a week = N1,000 X 10 =10,000 *(Optional)</li>
+                <li>Daily login of 100 naira per day for 7 days = N100 X 7= 700point</li>
+                <li>sharing news to other sites form giftalworld attracts 20 naira per post. Let's say you share 10 posts daily. That's 200. For 7 days, that's 1400point</li>
+                <li>Each news read gives 5point  per news =5 X 7=35point</li>
+            </ul>
+
+            <h6><strong>calculate how much you've made so far with just your smartphone </strong></h6>
+            <p>That's over 20k for the week without referring.</p>
+            <h5><strong>WITH MY TRICK WHICH I WILL SHOW YOU, YOU SHOULD EARN OVER 30k FOR THE WEEK</strong></h5>
+            <p><strong>Just imagine you, imagine yourself earning this (lets just say 40k) every week..  In a month, you're up with over 100k </strong></p>
+            <p>And for withdrawal. That takes no time,  For example u get registered. All u have to do is go to bank details and put your account details. For withdrawal anytime</p>
+            <h6><strong>legit money</strong></h6>
+            <h5><strong>Does Facebook, whatsapp or Ig pay you this daily or monthly</strong></h5>
+            <h5><strong>REMEMBER, It was all possible because of a #2500!!</strong></h5>
+            <h4><strong>BOSSEARN ALL THE WAY</strong></h4>
 
         </div><!-- end pp -->
     </div><!-- end content -->

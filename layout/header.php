@@ -54,8 +54,9 @@ require_once 'autoload.php';
     <link href="App/Assets/Css/version/marketing.css" rel="stylesheet">
 
 
-    <link rel='stylesheet' href='test/share-button.min.css' type='text/css' media='all'/>
-    <script src="test/jquery.js"></script>
+    <link rel='stylesheet' href='App/Assets/Css/share-button.min.css' type='text/css' media='all'/>
+    <!-- <script src="App/Assets/Js/jquery.min.js"></script> -->
+    
 
 
 <style>
@@ -140,6 +141,10 @@ require_once 'autoload.php';
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="earnings.php">earnings</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="post.php">post</a>
 							</li>
                             <?php } ?>
                             

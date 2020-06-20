@@ -63,4 +63,10 @@ class Earning extends Gateway
         $sql = "SELECT * FROM earnings WHERE `user_id` = '$uid' ";
         return Gateway::fetch($sql);
     }
+
+    public static function all()
+    {
+        $sql = "SELECT * FROM earnings";
+        return Gateway::fetch($sql);
+    }
 }

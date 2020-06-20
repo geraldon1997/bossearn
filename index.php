@@ -4,6 +4,8 @@ require_once 'layout/header.php';
 use App\Models\Role;
 use App\Models\User;
 use App\Controllers\CouponController;
+use App\Models\Post;
+
 ?>
 
 <style>
@@ -34,11 +36,16 @@ use App\Controllers\CouponController;
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
+                            <?php
+                            $post = Post::allPosts();
+                            foreach ($post as $key) {
+                            ?>
                             <div class="blog-custom-build">
+                            
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="App/Assets/Images/market_blog_01.jpg" alt="" class="img-fluid">
+                                        <a href="news.php?news=<?php echo $key['id'] ?>" title="">
+                                            <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -60,17 +67,15 @@ use App\Controllers\CouponController;
                                             <?php } ?>
                                             </ul>
                                         </div><!-- end post-sharing -->
-                                        <h4>You can learn how to make money with your blog and videos</h4>
-                                        <form action="news.php" method="post">
-                                            <input type="hidden" name="news" value="1">
-                                            <button class="btn btn-news">Read more &nbsp;<i class="fa fa-book"></i></button>
-                                        </form>
+                                        <h4><?php echo $key['title'] ?></h4>
+                                        <a href="news.php?news=<?php echo $key['id'] ?>" class="btn">Read more</a>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
                                 <hr class="invis">
 
                             </div>
+                            <?php } ?>
                         </div>
 
                         <hr class="invis">
