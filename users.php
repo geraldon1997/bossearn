@@ -38,14 +38,21 @@ if (isset($_POST['uid'])) {
 <div class="page-wrapper text-center">
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <form action="" method="post">
                 <input type="hidden" name="user" value="3">
                 <button type="submit" class="btn">users</button>
             </form>
         </div>
+
+        <div class="col-md-4">
+            <form action="" method="post">
+                <input type="text" name="username" placeholder="username">
+                <button type="submit" class="btn">search</button>
+            </form>
+        </div>
         
-        <div class="col-md-6">
+        <div class="col-md-4">
             <form action="" method="post">
                 <input type="hidden" name="user" value="2">
                 <button type="submit" class="btn">vendors</button>
@@ -76,6 +83,8 @@ if (isset($_POST['uid'])) {
                 <?php
                 if (isset($_POST['user'])) {
                     UserController::view($_POST['user']);
+                } elseif (isset($_POST['username'])) {
+                    UserController::searchUser($_POST['username']);
                 }
             ?>
             </table>

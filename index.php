@@ -24,6 +24,14 @@ use App\Models\Post;
         cursor: pointer;
         color: gold !important;
     }
+    .btn-ep{
+        background-color: orange !important;
+        color: black !important;
+    }
+    .btn-ep:hover{
+        background-color: black !important;
+        color: white !important;
+    }
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
@@ -69,6 +77,8 @@ use App\Models\Post;
                                         </div><!-- end post-sharing -->
                                         <h4><?php echo $key['title'] ?></h4>
                                         <a href="news.php?news=<?php echo $key['id'] ?>" class="btn">Read more</a>
+                                        <hr class="invis">
+                                        <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 

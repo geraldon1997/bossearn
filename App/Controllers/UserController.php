@@ -140,4 +140,46 @@ class UserController extends User
 
         
     }
+
+    public static function searchUser($un)
+    {
+        $user = User::findUser('uname', $un);
+        $sn = 1;
+
+        if (!empty($user)) {
+            foreach ($user as $key) {
+                $uid = $key['id'];
+                $ref = $key['ref'];
+                $fn = $key['fname'];
+                $ln = $key['lname'];
+                $em = $key['email'];
+                $ph = $key['phone'];
+                $un = $key['uname'];
+                $rid = $key['role_id'];
+    
+                echo "<tr>
+                        <td>".$sn++."</td>
+                        <td>$ref</td>
+                        <td>$fn $ln</td>
+                        <td>$em</td>
+                        <td>$ph</td>
+                        <td>$un</td>
+                        <td>";
+                        if ($rid == 3) {
+                            echo "<form method='post'>
+                            <input type='hidden' name='uid' value='$uid' >
+                            <button type='submit' class='btn'>make vendor</button>
+                            </form>";
+                        } elseif ($rid == 2) {
+                            echo "no action";
+                        } elseif ($rid == 1) {
+                            echo "you are admin";
+                        }
+                            
+
+                        "</td>
+                </tr>";
+            }
+        }
+    }
 }

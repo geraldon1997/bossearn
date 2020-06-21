@@ -10,6 +10,7 @@ require_once 'layout/header.php';
 $user = User::findUser('uname', $_SESSION['uname'])[0];
 $earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
 $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
+$bank = Bank::findBank('user_id', User::userId($_SESSION['uname'])[0]['id'])[0];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['fn'])) {
@@ -107,9 +108,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="row">
         <div class="col-lg-3"></div>
         <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
-        <?php if (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) < 1) {?>
             
         <div class="col-lg-6" >
+
+        <?php if (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) < 1) {?>
 
         <button data-toggle="collapse" data-target="#bank" class="btn">bank details</button>
 
@@ -126,8 +128,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <button type="submit" class="btn btn-primary"> update bank <i class="fa fa-arrow-right"></i></button>
             </form>
+
+            <?php } elseif (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) > 0) {?>
+
+                <button data-toggle="collapse" data-target="#bank" class="btn">bank details</button>
+
+                <div id="bank" class="collapse">
+                    <h4>Bank Details</h4>
+                    <label for="bank">Bank Name</label>
+                    <input type="text" class="form-control" value="<?php echo $bank['bank'] ?>" disabled>
+
+                    <label for="account name">Account Name</label>
+                    <input type="text" class="form-control"  value="<?php echo $bank['acct_name'] ?>" disabled>
+
+                    <label for="account number">Account Number</label>
+                    <input type="text" class="form-control" value="<?php echo $bank['acct_num'] ?>" disabled>
+                </div>
+                <?php } ?>
+
         </div>
-        <?php } ?>
+
         <?php } ?>
         <div class="col-lg-3"></div>
     </div>
