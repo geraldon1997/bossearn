@@ -144,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="account number">Account Number</label>
                     <input type="text" class="form-control" value="<?php echo $bank['acct_num'] ?>" disabled>
                 </div>
+                
                 <?php } ?>
 
         </div>
