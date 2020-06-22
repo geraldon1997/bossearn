@@ -127,9 +127,22 @@ class UserController extends User
                             echo "<form method='post'>
                             <input type='hidden' name='uid' value='$uid' >
                             <button type='submit' class='btn'>make vendor</button>
-                            </form>";
+                            </form>
+                            <br>
+                            <a class='btn' href='edituser.php?uid=$uid'>edit user</a>
+                            <br><br>
+                            <form method='post'>
+                            <input type='hidden' name='delid' value='$uid' >
+                            <button type='submit' class='btn'>delete user</button>
+                            </form>
+                            ";
                         } elseif ($rid == 2) {
-                            echo "no action";
+                            echo "<a class='btn' href='edituser.php?uid=$uid'>edit vendor</a>
+                            <br>
+                            <form method='post'>
+                            <input type='hidden' name='delid' value='$uid' >
+                            <button type='submit' class='btn'>delete vendor</button>
+                            </form>";
                         }
                             
 
@@ -169,9 +182,22 @@ class UserController extends User
                             echo "<form method='post'>
                             <input type='hidden' name='uid' value='$uid' >
                             <button type='submit' class='btn'>make vendor</button>
-                            </form>";
+                            </form>
+                            <br>
+                            <a class='btn' href='edituser.php?uid=$uid'>edit user</a>
+                            <br><br>
+                            <form method='post'>
+                            <input type='hidden' name='delid' value='$uid' >
+                            <button type='submit' class='btn'>delete user</button>
+                            </form>
+                            ";
                         } elseif ($rid == 2) {
-                            echo "no action";
+                            echo "<a class='btn' href='edituser.php?uid=$uid'>edit vendor</a>
+                            <br>
+                            <form method='post'>
+                            <input type='hidden' name='delid' value='$uid' >
+                            <button type='submit' class='btn'>delete vendor</button>
+                            </form>";
                         } elseif ($rid == 1) {
                             echo "you are admin";
                         }

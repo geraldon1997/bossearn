@@ -67,4 +67,25 @@ class User extends Gateway
         $sql = "UPDATE users SET role_id = 2 WHERE id = '$uid' ";
         return Gateway::run($sql);
     }
+
+    public static function deleteUser($uid)
+    {
+        $sql = "DELETE FROM users WHERE `id` = '$uid' ";
+        $sql1 = "DELETE FROM users_banks WHERE `user_id` = '$uid' ";
+        $sql2 = "DELETE FROM earnings WHERE `user_id` = '$uid' ";
+        $sql3 = "DELETE FROM coupons WHERE `user_id` = '$uid' ";
+        
+        Gateway::run($sql);
+        Gateway::run($sql1);
+        Gateway::run($sql2);
+        Gateway::run($sql3);
+    }
+
+    public static function adminUpdateUser($uid, $email, $bn, $ban, $bacn)
+    {
+        $sql = "UPDATE users SET email = '$email' WHERE id = '$uid' ";
+        Gateway::run($sql);
+        $sql1 = "UPDATE users_banks SET bank = '$bn', acct_name = '$ban', acct_num = '$bacn' WHERE `user_id` = '$uid' ";
+        Gateway::run($sql1);
+    }
 }

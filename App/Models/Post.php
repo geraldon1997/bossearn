@@ -20,6 +20,7 @@ class Post extends Gateway
     public static function insert($title, $body, $image)
     {
         self::createTable();
+        $body = addslashes($body);
         $sql = "INSERT INTO posts (`title`,`body`,`image`) VALUES ('$title','$body','$image')";
         return Gateway::run($sql);
     }

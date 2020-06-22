@@ -8,6 +8,10 @@ require_once 'layout/header.php';
 if (isset($_POST['uid'])) {
     User::makeVendor($_POST['uid']);
 }
+
+if (isset($_POST['delid'])) {
+    User::deleteUser($_POST['delid']);
+}
 ?>
 
 <style>

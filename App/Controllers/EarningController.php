@@ -32,9 +32,9 @@ class EarningController extends Earning
                 }
                 
 
-                $total = Earning::earnings($uid)[0];
-                $t = number_format($total['totalearnings']);
-                $tc = number_format($total['totalearnings'] / 10);
+                // $total = Earning::earnings($uid)[0];
+                // $t = number_format($total['totalearnings']);
+                // $tc = number_format($total['totalearnings'] / 10);
 
                 echo "<tr>
                         <td>".$sn++."</td>
