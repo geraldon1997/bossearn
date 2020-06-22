@@ -57,4 +57,10 @@ class Post extends Gateway
         $sql = "SELECT * FROM `posts` WHERE $col = '$val'";
         return Gateway::fetch($sql);
     }
+
+    public static function recentPost()
+    {
+        $sql = "SELECT * FROM posts ORDER BY `date` DESC LIMIT 5";
+        return Gateway::fetch($sql);
+    }
 }

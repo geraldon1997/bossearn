@@ -24,7 +24,8 @@ class PostController extends Post
     public static function updatePost($data)
     {
         $file = $_FILES['image'];
-        if (empty($file)) {
+        
+        if (empty($file['name'])) {
             return self::updateWithoutImage($data['title'], $data['body'], $data['pid']);
         } else {
             return Post::updateWithImage($data['title'], $data['body'], self::uploadHandler(), $data['pid']);

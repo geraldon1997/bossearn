@@ -14,6 +14,12 @@ use App\Models\Post;
         width: 100%;
         height: 500px;
     }
+    .post-img{
+        height: 500px
+    }
+    .recent-post-img{
+        height: 50px
+    }
   @media (max-width: 700px){
     #bg{
       width: 100%;
@@ -53,7 +59,7 @@ use App\Models\Post;
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
                                         <a href="news.php?news=<?php echo $key['id'] ?>" title="">
-                                            <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid">
+                                            <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid post-img">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -78,7 +84,13 @@ use App\Models\Post;
                                         <h4><?php echo $key['title'] ?></h4>
                                         <a href="news.php?news=<?php echo $key['id'] ?>" class="btn">Read more</a>
                                         <hr class="invis">
-                                        <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
+
+                                        <?php 
+                                        if (isset($_SESSION['uname'])) {
+                                        if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin') { ?>
+                                            <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
+                                        <?php } } ?>
+
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
@@ -101,29 +113,15 @@ use App\Models\Post;
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <?php foreach (Post::recentPost() as $key) {?>
+                                        <a href="news.php?news=<?php echo $key['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="App/Assets/Images/small_07.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                <small>12 Jan, 2016</small>
+                                                <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid float-left recent-post-img">
+                                                <h5 class="mb-1"><?php echo $key['title'] ?></h5>
+                                                <small><?php echo $key['date'] ?></small>
                                             </div>
                                         </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="App/Assets/Images/small_08.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Let's make an introduction for creative life</h5>
-                                                <small>11 Jan, 2016</small>
-                                            </div>
-                                        </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="App/Assets/Images/small_09.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
-                                                <small>07 Jan, 2016</small>
-                                            </div>
-                                        </a>
+                                        <?php } ?>
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
