@@ -11,7 +11,7 @@ class Post extends Gateway
         	`id` INT PRIMARY KEY AUTO_INCREMENT,
             `title` VARCHAR(100) NOT NULL,
             `body` TEXT NOT NULL,
-            `image` VARCHAR(255) NOT NULL,
+            `image` TEXT NOT NULL,
             `date` TIMESTAMP
         )";
         Gateway::run($sql);

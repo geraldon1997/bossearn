@@ -14,8 +14,11 @@ class EarningController extends Earning
             $sn = 1;
             foreach ($earning as $key) {
                 $uid = $key['user_id'];
-                $bref = number_format($key['bref']);
-                $bearn = number_format($key['bearn']);
+                $bref = $key['bref'];
+                $bearn = $key['bearn'];
+                $wt = $key['withdraw'];
+                $brefw = $bref / 10;
+                $bearnw = $bearn / 10;
 
                 $user = User::findUser('id', $uid)[0];
                 $em = $user['email'];
@@ -27,12 +30,26 @@ class EarningController extends Earning
                 echo "<tr>
                         <td>".$sn++."</td>
                         <td>$em</td>
-                        <td>$bref</td>
-                        <td>$bearn</td>
-                        <td>$t</td>
-                        <td>$tc</td>
-                        <td>pending</td>
-                </tr>";
+                        <td>".number_format($bref)."</td>
+                        <td>".number_format($bearn)."</td>
+                        <td>$wt</td>";
+
+                        if ($wt === 'bref') {
+                            echo "<td>".number_format($brefw)."</td>";
+                        } elseif ($wt === 'bearn') {
+                            echo "<td>".number_format($bearnw)."</td>";
+                        } else {
+                            echo "<td>0</td>";
+                        }
+
+                        if ($wt === 'bref') {
+                            echo "<td>click to confirm</td>";
+                        } elseif ($wt === 'bearn') {
+                            echo "<td>click to confirm</td>";
+                        } else {
+                            echo "<td>pending</td>";
+                        }
+                echo "</tr>";
             }
         }
     }

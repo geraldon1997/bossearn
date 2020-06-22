@@ -19,7 +19,8 @@ class Earning extends Gateway
 
     public static function insert($uid)
     {
-        $sql = "INSERT INTO `earnings` (`user_id`,bref,bearn,withdraw) VALUES ('$uid',0,2500,false)";
+        $date = time();
+        $sql = "INSERT INTO `earnings` (`user_id`,bref,bearn,withdraw,`date`) VALUES ('$uid',0,2500,false,'$date')";
         return Gateway::run($sql);
     }
 
@@ -47,15 +48,16 @@ class Earning extends Gateway
 
     public static function withdraw($type, $uid)
     {
-        $sql = "UPDATE earnings SET `withdraw` = $type WHERE `user_id` = '$uid'";
+        $sql = "UPDATE earnings SET `withdraw` = '$type', `status` = 1 WHERE `user_id` = '$uid'";
         return Gateway::run($sql);
+        
     }
 
     public static function status($uid)
     {
-        $sql = "SELECT withdraw FROM earnings WHERE `user_id` = '$uid'";
+        $sql = "SELECT `status` FROM earnings WHERE `user_id` = '$uid'";
         $result = Gateway::fetch($sql);
-        return $result['withdraw'];
+        return $result['status'];
     }
 
     public static function findEarning($uid)

@@ -39,9 +39,9 @@ require_once 'layout/header.php';
                 <th>S/N</th>
                 <th>Email</th>
                 <th>Bref</th>
-                <th>Bearn</th>
-                <th>total</th>
-                <th>total (currency)</th>
+                <th>Bpoints</th>
+                <th>withdraw type</th>
+                <th>withdraw (cash)</th>
                 <th>action</th>
                 <?php EarningController::view(); ?>
             </table>

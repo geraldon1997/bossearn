@@ -12,7 +12,7 @@ $earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
 $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 $bank = Bank::findBank('user_id', User::userId($_SESSION['uname'])[0]['id'])[0];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     if (isset($_POST['fn'])) {
         User::updateUser($_POST['fn'], $_POST['ln'], $_POST['ph'], $_SESSION['uname']);
         echo "<script>window.location = 'dashboard.php' </script> ";
@@ -20,7 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Bank::insert(User::userId($_SESSION['uname'])[0]['id'], $_POST);
         echo "<script>window.location = 'dashboard.php' </script> ";
     }
-}
+
+    if (isset($_POST['withdraw'])) {
+        $w = Earning::withdraw($_POST['withdraw'], User::userId($_SESSION['uname'])[0]['id']);
+    
+    }
+
+    
+
+$brefpoint = $earning['bref'];
+$brefcash = $earning['bref'] / 10;
+
+$bearnpoint = $earning['bearn'];
+$bearncash = $earning['bearn'] / 10;
 
 ?>
 <style>
@@ -35,13 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="sidebar">
             <div class="widget-no-style">
                 <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earning in points</h3>
+                    <h3>Earning in Bref</h3>
                     <div class="row">
-                        <div class="col-lg-6"><b>Bref : <?php echo number_format($earning['bref']) ?> </b></div>
-                        <div class="col-lg-6"><b>Bpoints : <?php echo number_format($earning['bearn']) ?></b></div>
+                        <div class="col-lg-6"><b>Points: <?php echo number_format($brefpoint) ?> </b></div>
+                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($brefcash); ?></b></div>
                     </div>
                     <hr>
-                    <h5>Total : <?php echo number_format($totalearning['totalearnings']) ?> </h5>
+                    <?php if ($earning['status'] == 0 && $brefcash >= 3000) {?>
+                        <form method="post" action="">
+                            <input type="hidden" name="withdraw" value="bref">
+                            <button type="submit">withdraw</button>
+                        </form>
+                    <?php } ?>
                 </div><!-- end newsletter -->
             </div>
         </div><!-- end sidebar -->
@@ -51,13 +68,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="sidebar">
             <div class="widget-no-style">
                 <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earning in cash</h3>
+                    <h3>Earnings in Bpoints</h3>
                     <div class="row">
-                        <div class="col-lg-6"><b>Bref : &#8358; <?php echo number_format($earning['bref'] / 10); ?> </b></div>
-                        <div class="col-lg-6"><b>Bpoints : &#8358; <?php echo number_format($earning['bearn'] / 10) ?></b></div>
+                        <div class="col-lg-6"><b>Points : <?php echo number_format($bearnpoint); ?> </b></div>
+                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($bearncash); ?></b></div>
                     </div>
                     <hr>
-                    <h5>Total : &#8358; <?php echo number_format($totalearning['totalearnings'] / 10);  ?></h5>
+                    <?php if ($earning['date'] >= (time() + 60 * 60 * 24 * 30) && $earning['status'] == 0) {?>
+                        <form method="post">
+                            <input type="hidden" name="withdraw" value="bearn">
+                            <button type="submit">withdraw</button>
+                        </form>
+                        
+                    <?php } ?>
                 </div><!-- end newsletter -->
             </div>
         </div><!-- end sidebar -->
