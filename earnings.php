@@ -33,11 +33,14 @@ require_once 'layout/header.php';
 <div class="page-wrapper">
     <h1>Earnings</h1>
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        
+        <div class="col-md-12 tbl">
             <table border="1">
                 <th>S/N</th>
                 <th>Email</th>
+                <th>Bank</th>
+                <th>Account Name</th>
+                <th>Account number</th>
                 <th>Bref</th>
                 <th>Bpoints</th>
                 <th>withdraw type</th>
@@ -46,7 +49,7 @@ require_once 'layout/header.php';
                 <?php EarningController::view(); ?>
             </table>
         </div>
-        <div class="col-md-2"></div>
+        
     </div>
 </div>
 

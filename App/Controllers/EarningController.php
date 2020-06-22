@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\Bank;
 use App\Models\Earning;
 use App\Models\User;
 
@@ -23,14 +24,38 @@ class EarningController extends Earning
                 $user = User::findUser('id', $uid)[0];
                 $em = $user['email'];
 
+                $bank = Bank::findBank('user_id', $uid);
+                if (!empty($bank)) {
+                    $bn = $bank[0]['bank'];
+                    $ban = $bank[0]['acct_name'];
+                    $bacn = $bank[0]['acct_num'];
+                }
+                
+
                 $total = Earning::earnings($uid)[0];
                 $t = number_format($total['totalearnings']);
                 $tc = number_format($total['totalearnings'] / 10);
 
                 echo "<tr>
                         <td>".$sn++."</td>
-                        <td>$em</td>
-                        <td>".number_format($bref)."</td>
+                        <td>$em</td>";
+                        
+                        if (empty($bn) || empty($ban) || empty($bacn)) {
+                            echo "
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                    <td>NULL</td>
+                                ";
+                        } else {
+                            echo "  
+                                    <td>$bn</td>
+                                    <td>$ban</td>
+                                    <td>$bacn</td>
+                                ";
+                        }
+                        
+
+                echo    "<td>".number_format($bref)."</td>
                         <td>".number_format($bearn)."</td>
                         <td>$wt</td>";
 

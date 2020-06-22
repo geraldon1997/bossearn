@@ -14,7 +14,7 @@ use App\Controllers\UserController;
     <div class="row">
     <div class="col-lg-3"></div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 tbl">
             <table border="1" >
                 <th>first name</th>
                 <th>last name</th>

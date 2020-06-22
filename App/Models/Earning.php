@@ -12,7 +12,9 @@ class Earning extends Gateway
       `user_id` INT UNIQUE NOT NULL,
       `bref` INT NOT NULL,
       `bearn` INT NOT NULL,
-      `withdraw` BOOLEAN NOT NULL
+      `withdraw` VARCHAR(10) NOT NULL,
+      `status` BOOLEAN NOT NULL,
+      `date` VARCHAR(50)
     )";
         Gateway::run($sql);
     }
@@ -20,7 +22,7 @@ class Earning extends Gateway
     public static function insert($uid)
     {
         $date = time();
-        $sql = "INSERT INTO `earnings` (`user_id`,bref,bearn,withdraw,`date`) VALUES ('$uid',0,2500,false,'$date')";
+        $sql = "INSERT INTO `earnings` (`user_id`,bref,bearn,withdraw,`status`,`date`) VALUES ('$uid',0,2500,0,false,'$date')";
         return Gateway::run($sql);
     }
 

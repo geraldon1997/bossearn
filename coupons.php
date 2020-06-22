@@ -65,7 +65,7 @@ require_once 'layout/header.php';
     <div class="row">
         <div class="col-md-3"></div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 tbl">
             <table border="1">
                 <th>S/N</th>
                 <th>Coupon</th>

@@ -6,6 +6,10 @@ use App\Models\User;
 use App\Controllers\CouponController;
 use App\Models\Post;
 
+if (isset($_POST['pid'])) {
+    Post::deletePost($_POST['pid']);
+}
+
 ?>
 
 <style>
@@ -33,6 +37,7 @@ use App\Models\Post;
     .btn-ep{
         background-color: orange !important;
         color: black !important;
+        margin-bottom: 5px;
     }
     .btn-ep:hover{
         background-color: black !important;
@@ -89,6 +94,11 @@ use App\Models\Post;
                                         if (isset($_SESSION['uname'])) {
                                         if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin') { ?>
                                             <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
+                                            <form method="post">
+                                                <input type="hidden" name="pid" value="<?php echo $key['id'] ?>">
+                                                <button type="submit" class="btn btn-ep">delete post</button>
+                                            </form>
+                                            
                                         <?php } } ?>
 
                                     </div><!-- end meta -->
@@ -131,5 +141,6 @@ use App\Models\Post;
                 </div><!-- end row -->
             </div><!-- end container -->
         </section>
+
 
 <?php require_once 'layout/footer.php' ?>

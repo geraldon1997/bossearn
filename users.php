@@ -64,7 +64,7 @@ if (isset($_POST['uid'])) {
 
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-8 tbl">
             <?php
                 if (isset($_POST['user']) && $_POST['user'] === '2') {
                     echo "<h2>Vendors</h2>";

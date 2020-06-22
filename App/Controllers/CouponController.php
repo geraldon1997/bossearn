@@ -57,7 +57,7 @@ class CouponController extends Coupon
             $status = self::couponStatus($coupon);
             if (!$status) {
                 self::updateCoupon(User::userId($_SESSION['uname'])[0]['id'], $coupon);
-                echo "<script>window.location = 'profile.php'</script>";
+                echo "<script>window.location = 'dashboard.php'</script>";
             } else {
                 self::$error = 'coupon already used';
             }

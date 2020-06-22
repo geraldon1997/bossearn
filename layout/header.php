@@ -80,6 +80,9 @@ require_once 'autoload.php';
         margin-bottom: 100px;
         text-align: center;
     }
+    .tbl{
+        overflow: auto;
+    }
 </style>
 
 </head>

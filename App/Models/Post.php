@@ -10,7 +10,7 @@ class Post extends Gateway
         $sql = "CREATE TABLE IF NOT EXISTS posts (
         	`id` INT PRIMARY KEY AUTO_INCREMENT,
             `title` VARCHAR(100) NOT NULL,
-            `body` TEXT NOT NULL,
+            `body` LONGTEXT NOT NULL,
             `image` TEXT NOT NULL,
             `date` TIMESTAMP
         )";
@@ -56,6 +56,12 @@ class Post extends Gateway
     {
         $sql = "SELECT * FROM `posts` WHERE $col = '$val'";
         return Gateway::fetch($sql);
+    }
+
+    public static function deletePost($pid)
+    {
+        $sql = "DELETE FROM posts WHERE `id` = '$pid' ";
+        return Gateway::run($sql);
     }
 
     public static function recentPost()
