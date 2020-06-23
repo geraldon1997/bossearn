@@ -36,9 +36,6 @@
                     twitter: {
                         url: document.getElementById('read').getAttribute('href'),
                         description: document.getElementById('title').innerHTML
-                    },
-                    facebook: {
-                        enabled: true
                     }
                 },
                 ui: {

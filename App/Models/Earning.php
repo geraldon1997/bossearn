@@ -73,4 +73,11 @@ class Earning extends Gateway
         $sql = "SELECT * FROM earnings WHERE `status` = 1";
         return Gateway::fetch($sql);
     }
+
+    public static function paid($type, $uid)
+    {
+        $date = time();
+        $sql = "UPDATE earnings SET $type = 0, `withdraw` = 0, `status` = 0, `date` = '$date' WHERE `user_id` = '$uid' ";
+        return Gateway::run($sql);
+    }
 }

@@ -1,8 +1,13 @@
 <?php
 
 use App\Controllers\EarningController;
+use App\Models\Earning;
 
 require_once 'layout/header.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Earning::paid($_POST['type'], $_POST['uid']);
+}
 ?>
 
 <style>
@@ -42,7 +47,7 @@ require_once 'layout/header.php';
                 <th>Account Name</th>
                 <th>Account number</th>
                 <th>Bref</th>
-                <th>Bpoints</th>
+                <th>Bearn</th>
                 <th>withdraw type</th>
                 <th>withdraw (cash)</th>
                 <th>action</th>

@@ -68,9 +68,21 @@ class EarningController extends Earning
                         }
 
                         if ($wt === 'bref') {
-                            echo "<td>click to confirm</td>";
+                            echo "<td>
+                                    <form method='post'>
+                                        <input type='hidden' name='type' value='$wt'>
+                                        <input type='hidden' name='uid' value='$uid'>
+                                        <button type='submit' class='btn'>paid</button>
+                                    </form>
+                                </td>";
                         } elseif ($wt === 'bearn') {
-                            echo "<td>click to confirm</td>";
+                            echo "<td>
+                                    <form method='post'>
+                                        <input type='hidden' name='type' value='$wt'>
+                                        <input type='hidden' name='uid' value='$uid'>
+                                        <button type='submit' class='btn'>paid</button>
+                                    </form>
+                                </td>";
                         } else {
                             echo "<td>pending</td>";
                         }
