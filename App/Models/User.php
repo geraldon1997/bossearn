@@ -87,5 +87,6 @@ class User extends Gateway
         Gateway::run($sql);
         $sql1 = "UPDATE users_banks SET bank = '$bn', acct_name = '$ban', acct_num = '$bacn' WHERE `user_id` = '$uid' ";
         Gateway::run($sql1);
+        echo "<script>window.location = 'users.php' </script>";
     }
 }
