@@ -58,7 +58,10 @@ class UserController extends User
 
     public static function login($data)
     {
+        $data['username'] = strtolower($data['username']);
+
         $login = User::findUser('uname', $data['username']);
+        
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
           if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
             if (CouponController::userCouponStatus($data['username']) > 0) {
