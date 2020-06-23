@@ -19,7 +19,8 @@ if (isset($_POST['pid'])) {
         height: 500px;
     }
     .post-img{
-        height: 500px
+        height: 300px;
+        width: 400px !important;
     }
     .recent-post-img{
         height: 50px
