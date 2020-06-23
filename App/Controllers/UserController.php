@@ -14,43 +14,46 @@ class UserController extends User
 
     public static function register($ref, $data)
     {
-        $data['username'] = strtolower($data['username']);
-        $refcode = rand(000000, 999999);
-        $refExist = Referral::refExist($ref);
-        if ($refExist) {
-            $signup = User::insert($refcode, $data);
-            if ($signup) {
-                $referrer = Referral::refId($ref);
-                $refferred = User::lastUserId()[0]['id'];
+        self::$error['signup'] = 'testing';
+            $data['username'] = strtolower($data['username']);
+            $refcode = rand(000000, 999999);
+            $refExist = Referral::refExist($ref);
+            if ($refExist) {
+                $signup = User::insert($refcode, $data);
+                if ($signup) {
+                    $referrer = Referral::refId($ref);
+                    $refferred = User::lastUserId()[0]['id'];
 
-                Referral::insert($referrer, $refferred);
+                    Referral::insert($referrer, $refferred);
 
-                Earning::insert($refferred);
-                Earning::updateBref(10000, $referrer);
-                self::$success['signup'] = 'Registeration was successful';
-                echo "<script> window.location = 'verify.php'; </script>";
-                $_SESSION['uname'] = $data['username'];
+                    Earning::insert($refferred);
+                    Earning::updateBref(10000, $referrer);
+                    self::$success['signup'] = 'Registeration was successful';
+                    echo "<script> window.location = 'verify.php'; </script>";
+                    $_SESSION['uname'] = $data['username'];
+                } else {
+                    self::$error['signup'] = 'username or email already exists';
+                }
             } else {
-                self::$error['signup'] = 'username or email already exists';
-            }
-        } else {
-            $signup = User::insert($refcode, $data);
-            if ($signup) {
-                $referrer = Referral::refId(Referral::assignRef());
-                $refferred = User::lastUserId()[0]['id'];
+                $signup = User::insert($refcode, $data);
+                if ($signup) {
+                    $referrer = Referral::refId(Referral::assignRef());
+                    $refferred = User::lastUserId()[0]['id'];
 
-                Referral::insert($referrer, $refferred);
+                    Referral::insert($referrer, $refferred);
 
-                Earning::insert($refferred);
-                Earning::updateBref(10000, $referrer);
-                self::$success['signup'] = 'Registeration was successful';
+                    Earning::insert($refferred);
+                    Earning::updateBref(10000, $referrer);
+                    self::$success['signup'] = 'Registeration was successful';
 
-                echo "<script> window.location = 'verify.php'; </script>";
-                $_SESSION['uname'] = $data['username'];
-            } else {
-                self::$error['signup'] = 'username or email already exists';
-            }
+                    echo "<script> window.location = 'verify.php'; </script>";
+                    $_SESSION['uname'] = $data['username'];
+                } else {
+                    self::$error['signup'] = 'username or email already exists';
+                }
+            
         }
+        
     }
 
     public static function login($data)
@@ -72,6 +75,23 @@ class UserController extends User
           }
             } else {
             self::$error['login'] = 'username or password is incorrect';
+        }
+    }
+
+    public static function validate($ref, $data)
+    {
+        foreach ($data as $key => $value) {
+            if ($data[$key] = '' || $data[$key] === null || empty($data[$key])) {
+                $msg = "$key should not be empty";
+                self::$error[$key] = $msg;
+                unset($data[$key]);
+            } else {
+                $data[$key] = $value;
+            }
+        }
+        
+        if (empty(self::$error)) {
+            self::register($ref, $data);
         }
     }
 
