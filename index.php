@@ -129,7 +129,7 @@ if (isset($_POST['pid'])) {
                                             <div class="w-100 justify-content-between">
                                                 <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid float-left recent-post-img">
                                                 <h5 class="mb-1"><?php echo $key['title'] ?></h5>
-                                                <small><?php echo $key['date'] ?></small>
+                                                <p><?php echo $key['date'] ?></p>
                                             </div>
                                         </a>
                                         <?php } ?>
