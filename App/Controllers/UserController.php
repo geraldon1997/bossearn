@@ -14,6 +14,7 @@ class UserController extends User
 
     public static function register($ref, $data)
     {
+        $data['username'] = strtolower($data['username']);
         $refcode = rand(000000, 999999);
         $refExist = Referral::refExist($ref);
         if ($refExist) {
