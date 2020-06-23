@@ -88,6 +88,7 @@ if (isset($_POST['pid'])) {
                                             </ul>
                                         </div><!-- end post-sharing -->
                                         <h4><?php echo $key['title'] ?></h4>
+                                        <p><?php echo substr($key['body'], 0, 120) ?></p>
                                         <a href="news.php?news=<?php echo $key['id'] ?>" class="btn">Read more</a>
                                         <hr class="invis">
 

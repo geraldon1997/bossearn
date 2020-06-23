@@ -65,8 +65,8 @@ require_once 'autoload.php';
         height: 70px;
     }
     share-button{
-        background-color: blue;
-        color: whitesmoke;
+        background-color: gold;
+        color: black;
         padding-left: 50px;
         padding-right: 50px;
         padding-top: 20px;
