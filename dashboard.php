@@ -99,7 +99,7 @@ $bearncash = $earning['bearn'] / 10;
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6 " >
-        <p><strong>Referral link : https://bossearn.com/register.php?ref=<?php echo $user['ref'] ?></strong></p>
+        
         <button data-toggle="collapse" data-target="#profile" class="btn">profile</button>
 
             <form class="form-wrapper collapse" method="POST" id="profile">
