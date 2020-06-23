@@ -26,16 +26,16 @@
             new ShareButton({
                 networks: {
                     whatsapp: {
-                        before: function(element){
-                            this.url = 'https://bossearn.com',
-                            this.description = 'testing'
-                        }
+                        url: document.getElementById('read').getAttribute('href'),
+                        description: document.getElementById('title').innerHTML
                     },
-                    googlePlus: {
-                        enabled: false
+                    facebook: {
+                        url: document.getElementById('read').getAttribute('href'),
+                        description: document.getElementById('title').innerHTML
                     },
                     twitter: {
-                        url: 'ininiuws'
+                        url: document.getElementById('read').getAttribute('href'),
+                        description: document.getElementById('title').innerHTML
                     },
                     facebook: {
                         enabled: true

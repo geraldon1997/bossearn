@@ -70,7 +70,7 @@ class Earning extends Gateway
 
     public static function all()
     {
-        $sql = "SELECT * FROM earnings";
+        $sql = "SELECT * FROM earnings WHERE `status` = 1";
         return Gateway::fetch($sql);
     }
 }
