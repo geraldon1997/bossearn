@@ -76,7 +76,7 @@ require_once 'autoload.php';
         cursor: pointer;
     }
     .page-wrapper{
-        margin-top: 100px;
+        margin-top: 50px;
         margin-bottom: 100px;
         text-align: center;
     }
