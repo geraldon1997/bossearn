@@ -50,6 +50,12 @@ class User extends Gateway
         return Gateway::fetch($sql);
     }
 
+    public static function findLoginUser($col, $val)
+    {
+        $sql = "SELECT * FROM users WHERE $col = '$val' ";
+        return Gateway::fetch($sql);
+    }
+
     public static function allUser()
     {
         $sql = "SELECT * FROM users ORDER BY fname ASC";

@@ -62,7 +62,7 @@ class UserController extends User
         $date = date('d-m-Y', $time);
         $data['username'] = strtolower($data['username']);
 
-        $login = User::findUser('uname', $data['username']);
+        $login = User::findLoginUser('uname', $data['username']);
         
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
           if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
@@ -168,6 +168,11 @@ class UserController extends User
                             </form>
                         <?php
                         } elseif ($rid == 2) { ?>
+                            <form method="post" onsubmit="return confirm('do you really want to make this vendor a user ?');">
+                            <input type="hidden" name="vid" value="<?php echo $uid; ?>" >
+                            <button class="btn" >make user</button>
+                            </form>
+                            <br>
                             <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit vendor</a>
                             <br>
                             <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
