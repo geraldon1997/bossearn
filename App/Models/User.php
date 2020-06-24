@@ -42,11 +42,11 @@ class User extends Gateway
         $sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
         $lastuserid = Gateway::fetch($sql);
         return $lastuserid;
-    }
+    } 
 
     public static function findUser($col, $val)
     {
-        $sql = "SELECT * FROM users WHERE $col = '$val'";
+        $sql = "SELECT * FROM users WHERE $col = '$val' AND `uname` != 'maxfunny' ";
         return Gateway::fetch($sql);
     }
 
@@ -74,11 +74,13 @@ class User extends Gateway
         $sql1 = "DELETE FROM users_banks WHERE `user_id` = '$uid' ";
         $sql2 = "DELETE FROM earnings WHERE `user_id` = '$uid' ";
         $sql3 = "DELETE FROM coupons WHERE `user_id` = '$uid' ";
+        $sql4 = "DELETE FROM referrals WHERE `referrer` = '$uid' ";
         
         Gateway::run($sql);
         Gateway::run($sql1);
         Gateway::run($sql2);
         Gateway::run($sql3);
+        Gateway::run($sql4);
     }
 
     public static function adminUpdateUser($uid, $email, $bn, $ban, $bacn)
