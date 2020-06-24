@@ -114,7 +114,7 @@ require_once 'autoload.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.php">contact us</a>
                             </li>
-                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+                            <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
 
                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
 
