@@ -54,28 +54,6 @@
         width: 100px;
         height: 70px;
     }
-    share-button{
-        background-color: gold;
-        color: black;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    #logout:hover{
-        cursor: pointer;
-    }
-    .page-wrapper{
-        margin-top: 100px;
-        margin-bottom: 100px;
-        text-align: center;
-    }
-    .tbl{
-        overflow: auto;
-    }
-    .market-header{
-        width: 100% !important;
-    }
 </style>
 
 </head>
