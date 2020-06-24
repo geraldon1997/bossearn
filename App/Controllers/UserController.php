@@ -257,17 +257,20 @@ class UserController extends User
     {
         $user = User::findLoginUser('uname', $un)[0];
 
-        $to = 'bob@example.com';
+        $to = $user['email'];
 
-        $subject = 'Website Change Reqest';
+        $subject = 'Password Change Request';
 
-        $headers = "From: " . strip_tags($_POST['req-email']) . "\r\n";
-        $headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
-        $headers .= "CC: susan@example.com\r\n";
+        $headers = "From: Support <suppor@bossearn.com> \r\n";
+        $headers .= "Reply-To: suppor@bossearn.com \r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        $message = '<p><strong>This is strong text</strong> while this is not.</p>';
+        $message = require_once 'layout/header.php';
+        $message .= "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
+        $message .= require_once 'layout/footer.php';
+
+        mail($to, $subject, $message, $headers);
 
     }
 }

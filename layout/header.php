@@ -83,6 +83,9 @@ require_once 'autoload.php';
     .tbl{
         overflow: auto;
     }
+    .market-header{
+        width: 100% !important;
+    }
 </style>
 
 </head>
