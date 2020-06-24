@@ -266,9 +266,8 @@ class UserController extends User
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        $message = require_once 'layout/header.php';
-        $message .= "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
-        $message .= require_once 'layout/footer.php';
+        $message = "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
+        
 
         mail($to, $subject, $message, $headers);
 
