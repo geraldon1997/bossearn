@@ -261,12 +261,14 @@ class UserController extends User
 
         $subject = 'Password Change Request';
 
-        $headers = "From: Support <suppor@bossearn.com> \r\n";
+        $headers = "From: Support <support@bossearn.com> \r\n";
         $headers .= "Reply-To: suppor@bossearn.com \r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        $message = "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
+        $message = file_get_contents('layout/emailheader.php');
+        $message .= "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
+        $message .= file_get_contents('layout/emailfooter.php');
         
 
         mail($to, $subject, $message, $headers);
