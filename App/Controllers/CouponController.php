@@ -69,7 +69,7 @@ class CouponController extends Coupon
 
     public static function userCouponStatus($un)
     {
-        $user = User::findUser('uname', $un);
+        $user = User::findLoginUser('uname', $un);
         return self::userStatus($user[0]['id']);
     }
 }
