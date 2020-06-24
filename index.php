@@ -78,7 +78,7 @@ if (isset($_POST['pid'])) {
                                         <div class="post-sharing">
                                             <ul class="list-inline">
                                             <?php if (isset($_SESSION['uname'])) {?>
-                                            <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+                                            <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
                                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
                                             <?php 
                                                 $postdate = date('d-m-Y', $key['date']);
@@ -100,7 +100,7 @@ if (isset($_POST['pid'])) {
 
                                         <?php 
                                         if (isset($_SESSION['uname'])) {
-                                        if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') { ?>
+                                        if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') { ?>
                                             <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
                                             <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
                                                 <input type="hidden" name="pid" value="<?php echo $key['id'] ?>">
