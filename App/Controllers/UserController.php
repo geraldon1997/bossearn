@@ -271,7 +271,7 @@ class UserController extends User
         $message .= file_get_contents('layout/emailfooter.php');
         
 
-        mail($to, $subject, $message, $headers);
+        // mail($to, $subject, $message, $headers);
 
     }
 }

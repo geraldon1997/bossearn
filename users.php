@@ -34,11 +34,11 @@ if (isset($_POST['delid'])) {
     .col-md-6{
         overflow: auto;
     }
-    button{
-        margin-bottom: 0;
+    .btn{
+        margin-bottom: 10px
     }
     @media (max-width: 700px){
-        button{
+        .btn{
             margin-bottom: 10px;
         }
     }

@@ -47,6 +47,10 @@ $bearncash = $earning['bearn'] / 10;
 <h1>Role : <?php echo Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
 <h3>Username : <?php echo $_SESSION['uname']; ?></h3>
 <h4>No of Referrals : <?php if (!empty($referral)) {echo count($referral);} else {echo 0;} ?></h4>
+<ul class="check">
+    <li><a href="https://www.instagram.com/BOSSEARN_CEO">click to follow us on instagram</a></li>
+    <li><a href="https://www.facebook.com/groups/563831221190622/?ref=share">click to follow us on facebook</a></li>
+</ul>
 <div class="row text-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <div class="sidebar">
