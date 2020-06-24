@@ -141,7 +141,7 @@ $bearncash = $earning['bearn'] / 10;
     
     <div class="row">
         <div class="col-lg-3"></div>
-        <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+        <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
             
         <div class="col-lg-6" >
 
