@@ -88,7 +88,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="https://bossearn.com"><img src="https://bossearn.com/https://bossearn.com/App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
+                    <a class="navbar-brand" href="https://bossearn.com"><img src="https://bossearn.com/App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         
                         <!-- <form class="form-inline">

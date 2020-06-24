@@ -266,12 +266,12 @@ class UserController extends User
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        $message = file_get_contents('layout/emailheader.php');
+        $message = include_once('layout/emailheader.php');
         $message .= "<a href='https://bossearn.com/reset.php?u=$un' class='btn'>click here to reset your password</a>";
-        $message .= file_get_contents('layout/emailfooter.php');
+        $message .= include_once('layout/emailfooter.php');
         
 
-        // mail($to, $subject, $message, $headers);
+        mail($to, $subject, $message, $headers);
 
     }
 }
