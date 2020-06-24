@@ -72,4 +72,37 @@ class CouponController extends Coupon
         $user = User::findLoginUser('uname', $un);
         return self::userStatus($user[0]['id']);
     }
+
+    public static function searchCoupon($val)
+    {
+        $coupon = self::findCoupon('coupon', $val);
+        $sn = 1;
+        if (!empty($coupon)) {
+            foreach ($coupon as $key) {
+                $cid = $key['id'];
+                $cc = $key['coupon'];
+                $cvb = $key['user_id'];
+                
+    
+                if ($cvb !== NULL) {
+                    $user = User::findUser('id', $cvb);
+                    $un = $user[0]['uname'];
+    
+                    echo "<tr>
+                            <td>".$sn++."</td>
+                            <td>$cc</td>
+                            <td>$un</td>
+                    </tr>";
+                } else {
+                    echo "<tr>
+                            <td>".$sn++."</td>
+                            <td>$cc</td>
+                            <td>NULL</td>
+                    </tr>";
+                }
+                
+            }
+        }
+        
+    }
 }

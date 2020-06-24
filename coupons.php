@@ -37,7 +37,7 @@ require_once 'layout/header.php';
                 }
             ?>
             <form method="post" class="form-wrapper">
-                <input type="number" name="quantity" class="">
+                <input type="number" name="quantity" class="" placeholder="enter coupon quantity">
                 <button type="submit" class="btn">generate</button>
             </form>
         </div>
@@ -66,6 +66,11 @@ require_once 'layout/header.php';
         <div class="col-md-3"></div>
 
         <div class="col-md-6 tbl">
+            <form method="post">
+                <input type="text" name="csearch" id="" placeholder="enter coupon">
+                <button type="submit" class="btn">search</button>
+            </form>
+            <br>
             <table border="1">
                 <th>S/N</th>
                 <th>Coupon</th>
@@ -73,6 +78,8 @@ require_once 'layout/header.php';
                 <?php
                     if (isset($_POST['coupon'])) {
                         CouponController::view('is_verified', $_POST['coupon']);
+                    } elseif (isset($_POST['csearch'])) {
+                        CouponController::searchCoupon($_POST['csearch']);
                     }
                 ?>
             </table>
