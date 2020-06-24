@@ -74,6 +74,12 @@ class User extends Gateway
         return Gateway::run($sql);
     }
 
+    public static function makeUser($uid)
+    {
+        $sql = "UPDATE users SET role_id = 3 WHERE id = '$uid' ";
+        return Gateway::run($sql);
+    }
+
     public static function deleteUser($uid)
     {
         $sql = "DELETE FROM users WHERE `id` = '$uid' ";

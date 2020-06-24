@@ -230,6 +230,11 @@ class UserController extends User
                             ";
                         <?php
                         } elseif ($rid == 2) { ?>
+                            <form method="post" onsubmit="return confirm('do you really want to make this vendor a user ?');">
+                            <input type="hidden" name="vid" value="<?php echo $uid; ?>" >
+                            <button class="btn" >make user</button>
+                            </form>
+                            <br>
                             <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit vendor</a>
                             <br>
                             <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
@@ -246,5 +251,23 @@ class UserController extends User
                 </tr>";
             }
         }
+    }
+
+    public static function forgotPassword($un)
+    {
+        $user = User::findLoginUser('uname', $un)[0];
+
+        $to = 'bob@example.com';
+
+        $subject = 'Website Change Reqest';
+
+        $headers = "From: " . strip_tags($_POST['req-email']) . "\r\n";
+        $headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
+        $headers .= "CC: susan@example.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+        $message = '<p><strong>This is strong text</strong> while this is not.</p>';
+
     }
 }

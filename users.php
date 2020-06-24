@@ -10,7 +10,7 @@ if (isset($_POST['uid'])) {
 }
 
 if (isset($_POST['vid'])) {
-    # code...
+    User::makeUser($_POST['vid']);
 }
 
 if (isset($_POST['delid'])) {
