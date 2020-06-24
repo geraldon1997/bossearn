@@ -45,6 +45,7 @@ $bearncash = $earning['bearn'] / 10;
 
 <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
 <h1>Role : <?php echo Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
+<h3>Username : <?php echo $_SESSION['uname']; ?></h3>
 <h4>No of Referrals : <?php if (!empty($referral)) {echo count($referral);} else {echo 0;} ?></h4>
 <div class="row text-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
