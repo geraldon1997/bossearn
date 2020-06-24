@@ -122,7 +122,7 @@ require_once 'autoload.php';
                                 <a class="nav-link" href="dashboard.php">dashboard</a>
                             </li>
 
-                            <?php if ($_SESSION['uname'] === 'Tonyinye') {?>
+                            <?php if ($_SESSION['uname'] === 'tonyinye') {?>
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="post.php">Post</a>
