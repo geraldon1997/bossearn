@@ -1,5 +1,12 @@
 <?php
-require_once 'layout/header.php'; 
+
+use App\Controllers\UserController;
+
+require_once 'layout/header.php';
+
+if (isset($_POST['username'])) {
+    UserController::forgotPassword($_POST['username']);
+}
 ?>
 
 <div class="page-wrapper text-center center">
