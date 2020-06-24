@@ -103,4 +103,14 @@ class User extends Gateway
         Gateway::run($sql1);
         echo "<script>window.location = 'users.php' </script>";
     }
+
+    public static function updatePass($un, $pass)
+    {
+        $sql = "UPDATE users SET paswd = '$pass' WHERE `uname` = '$un' ";
+        $up = Gateway::run($sql);
+        if ($up) {
+            echo "<script>window.location = '/' </script>";
+            $_SESSION['uname'] = $un;
+        }
+    }
 }
