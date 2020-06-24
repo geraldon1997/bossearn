@@ -148,8 +148,8 @@ class UserController extends User
                         <td>$un</td>
                         <td>";
                         if ($rid == 3) {?>
-                            <form method="post">
-                            <input type="hidden" name="uid" value="$uid" >
+                            <form method="post" onsubmit="return confirm('do you really want to make this user a vendor ?');">
+                            <input type="hidden" name="uid" value="<?php echo $uid; ?>" >
                             <button class="btn" >make vendor</button>
                             </form>
                             <br>
@@ -204,7 +204,7 @@ class UserController extends User
                         <td>$un</td>
                         <td>";
                         if ($rid == 3) { ?>
-                            echo "<form method='post'>
+                            echo "<form method='post' onsubmit="return confirm('do you really want to make this user a vendor ?');">
                             <input type='hidden' name='uid' value='<?php echo $uid; ?>' >
                             <button type='submit' class='btn'>make vendor</button>
                             </form>
