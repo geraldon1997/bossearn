@@ -9,7 +9,7 @@ class Post extends Gateway
     {
         $sql = "CREATE TABLE IF NOT EXISTS posts (
         	`id` INT PRIMARY KEY AUTO_INCREMENT,
-            `title` VARCHAR(100) NOT NULL,
+            `title` TEXT NOT NULL,
             `body` LONGTEXT NOT NULL,
             `image` TEXT NOT NULL,
             `date` VARCHAR(50)
