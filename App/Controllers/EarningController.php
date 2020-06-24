@@ -67,22 +67,24 @@ class EarningController extends Earning
                             echo "<td>0</td>";
                         }
 
-                        if ($wt === 'bref') {
-                            echo "<td>
-                                    <form method='post'>
-                                        <input type='hidden' name='type' value='$wt'>
-                                        <input type='hidden' name='uid' value='$uid'>
+                        if ($wt === 'bref') { ?>
+                                <td>
+                                    <form method='post' onsubmit="return confirm('are you sure ?');">
+                                        <input type='hidden' name='type' value='<?php echo $wt; ?>'>
+                                        <input type='hidden' name='uid' value='<?php echo $uid ?>'>
                                         <button type='submit' class='btn'>paid</button>
                                     </form>
                                 </td>";
-                        } elseif ($wt === 'bearn') {
-                            echo "<td>
-                                    <form method='post'>
-                                        <input type='hidden' name='type' value='$wt'>
-                                        <input type='hidden' name='uid' value='$uid'>
+                                <?php
+                        } elseif ($wt === 'bearn') { ?>
+                                <td>
+                                    <form method='post' onsubmit="return confirm('are you sure ?');">
+                                        <input type='hidden' name='type' value='<?php echo $wt; ?>'>
+                                        <input type='hidden' name='uid' value='<?php echo $uid ?>'>
                                         <button type='submit' class='btn'>paid</button>
                                     </form>
-                                </td>";
+                                </td>
+                                <?php
                         } else {
                             echo "<td>pending</td>";
                         }

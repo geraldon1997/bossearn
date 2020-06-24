@@ -25,7 +25,8 @@ $referral = Referral::findRef('referrer', $user['id']);
 
     if (isset($_POST['withdraw'])) {
         $w = Earning::withdraw($_POST['withdraw'], User::userId($_SESSION['uname'])[0]['id']);
-    
+        echo "<script>alert('withdrawal request send successfully');</script>";
+        echo "<script>window.location = 'dashboard.php' </script> ";
     }
 
     
@@ -57,7 +58,7 @@ $bearncash = $earning['bearn'] / 10;
                     </div>
                     <hr>
                     <?php if ($earning['status'] == 0 && $brefcash >= 3000) {?>
-                        <form method="post" action="">
+                        <form method="post" >
                             <input type="hidden" name="withdraw" value="bref">
                             <button type="submit">withdraw</button>
                         </form>
