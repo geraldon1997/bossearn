@@ -42,7 +42,12 @@ class Coupon extends Gateway
 
     public static function findCoupon($col, $val)
     {
-        $sql = "SELECT * FROM coupons WHERE $col = '$val' AND `user_id` != 5 ";
+        if ($val == 0) {
+            $sql = "SELECT * FROM coupons WHERE $col = '$val' ";
+        } elseif ($val == 1) {
+            $sql = "SELECT * FROM coupons WHERE $col = '$val' AND `user_id` != 5 ";
+        }
+        
         return Gateway::fetch($sql);
     }
 
