@@ -122,6 +122,14 @@ require_once 'autoload.php';
                                 <a class="nav-link" href="dashboard.php">dashboard</a>
                             </li>
 
+                            <?php if ($_SESSION['uname'] === 'Tonyinye') {?>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="post.php">Post</a>
+                            </li>
+
+                            <?php } ?>
+
                             <?php } ?>
 
                             <?php } elseif (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'vendor') {?>
@@ -148,7 +156,8 @@ require_once 'autoload.php';
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="post.php">post</a>
-							</li>
+                            </li>
+                            
                             <?php } ?>
                             
                             <li class="nav-item">

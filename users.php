@@ -31,6 +31,7 @@ if (isset($_POST['delid'])) {
         overflow: auto;
     }
     button{
+        margin-bottom: 0;
     }
     @media (max-width: 700px){
         button{
@@ -94,9 +95,15 @@ if (isset($_POST['delid'])) {
             </table>
             
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-1">
+           
+        </div>
     </div>
 
 </div>
+
+<script>
+    
+</script>
 
 <?php require_once 'layout/footer.php'; ?>

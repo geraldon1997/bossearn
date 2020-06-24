@@ -147,26 +147,27 @@ class UserController extends User
                         <td>$ph</td>
                         <td>$un</td>
                         <td>";
-                        if ($rid == 3) {
-                            echo "<form method='post'>
-                            <input type='hidden' name='uid' value='$uid' >
-                            <button type='submit' class='btn'>make vendor</button>
+                        if ($rid == 3) {?>
+                            <form method="post">
+                            <input type="hidden" name="uid" value="$uid" >
+                            <button class="btn" >make vendor</button>
                             </form>
                             <br>
-                            <a class='btn' href='edituser.php?uid=$uid'>edit user</a>
+                            <a class="btn" href="edituser.php?uid=<?php echo $uid; ?>" >edit user</a>
                             <br><br>
-                            <form method='post'>
-                            <input type='hidden' name='delid' value='$uid' >
-                            <button type='submit' class='btn'>delete user</button>
+                            <form method="post" onsubmit="return confirm('do you really want to delete this user ?');">
+                            <input type="hidden" name="delid" value="<?php echo $uid ?>" >
+                            <button type="submit" class="btn"  >delete user</button>
                             </form>
-                            ";
-                        } elseif ($rid == 2) {
-                            echo "<a class='btn' href='edituser.php?uid=$uid'>edit vendor</a>
+                        <?php
+                        } elseif ($rid == 2) { ?>
+                            <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit vendor</a>
                             <br>
-                            <form method='post'>
-                            <input type='hidden' name='delid' value='$uid' >
-                            <button type='submit' class='btn'>delete vendor</button>
+                            <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
+                            <input type='hidden' name='delid' value='<?php echo $uid; ?>' >
+                            <button type='submit' class='btn' >delete vendor</button>
                             </form>";
+                        <?php
                         }
                             
 
@@ -202,26 +203,28 @@ class UserController extends User
                         <td>$ph</td>
                         <td>$un</td>
                         <td>";
-                        if ($rid == 3) {
+                        if ($rid == 3) { ?>
                             echo "<form method='post'>
-                            <input type='hidden' name='uid' value='$uid' >
+                            <input type='hidden' name='uid' value='<?php echo $uid; ?>' >
                             <button type='submit' class='btn'>make vendor</button>
                             </form>
                             <br>
-                            <a class='btn' href='edituser.php?uid=$uid'>edit user</a>
+                            <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit user</a>
                             <br><br>
-                            <form method='post'>
-                            <input type='hidden' name='delid' value='$uid' >
+                            <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
+                            <input type='hidden' name='delid' value='<?php echo $uid; ?>' >
                             <button type='submit' class='btn'>delete user</button>
                             </form>
                             ";
-                        } elseif ($rid == 2) {
-                            echo "<a class='btn' href='edituser.php?uid=$uid'>edit vendor</a>
+                        <?php
+                        } elseif ($rid == 2) { ?>
+                            <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit vendor</a>
                             <br>
-                            <form method='post'>
+                            <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
                             <input type='hidden' name='delid' value='$uid' >
                             <button type='submit' class='btn'>delete vendor</button>
                             </form>";
+                        <?php
                         } elseif ($rid == 1) {
                             echo "you are admin";
                         }
