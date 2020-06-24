@@ -4,6 +4,7 @@ require_once 'layout/header.php';
 use App\Models\Role;
 use App\Models\User;
 use App\Controllers\CouponController;
+use App\Models\Earning;
 use App\Models\Post;
 
 if (isset($_POST['pid'])) {
@@ -79,7 +80,12 @@ if (isset($_POST['pid'])) {
                                             <?php if (isset($_SESSION['uname'])) {?>
                                             <?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
                                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
+                                            <?php 
+                                                $postdate = date('d-m-Y', $key['date']);
+                                                $today = date('d-m-Y', time());
+                                                if ($postdate == $today) {?>
                                                 <li><share-button>share</share-button></li>
+                                            <?php } ?>
                                             <?php } ?>
                                             <?php } else {?>
                                                 <li><share-button>share</share-button></li>

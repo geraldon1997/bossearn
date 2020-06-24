@@ -12,7 +12,7 @@ class Post extends Gateway
             `title` VARCHAR(100) NOT NULL,
             `body` LONGTEXT NOT NULL,
             `image` TEXT NOT NULL,
-            `date` TIMESTAMP
+            `date` VARCHAR(50)
         )";
         Gateway::run($sql);
     }
@@ -21,7 +21,8 @@ class Post extends Gateway
     {
         self::createTable();
         $body = addslashes($body);
-        $sql = "INSERT INTO posts (`title`,`body`,`image`) VALUES ('$title','$body','$image')";
+        $date = time();
+        $sql = "INSERT INTO posts (`title`,`body`,`image`,`date`) VALUES ('$title','$body','$image','$date')";
         return Gateway::run($sql);
     }
 

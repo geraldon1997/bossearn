@@ -8,6 +8,7 @@ class PostController extends Post
     public static function createPost($data)
     {
         return Post::insert($data['title'], $data['body'], self::uploadHandler());
+        // var_dump($data);
     }
 
     public static function uploadHandler()

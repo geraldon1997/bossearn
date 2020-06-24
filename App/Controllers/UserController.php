@@ -58,6 +58,8 @@ class UserController extends User
 
     public static function login($data)
     {
+        $time = time();
+        $date = date('d-m-Y', $time);
         $data['username'] = strtolower($data['username']);
 
         $login = User::findUser('uname', $data['username']);
@@ -65,9 +67,14 @@ class UserController extends User
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
           if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
             if (CouponController::userCouponStatus($data['username']) > 0) {
-                Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
+                $earnlog = Earning::findEarning(User::userId($login[0]['uname'])[0]['id'])[0];
+                if (date('d-m-Y', $earnlog['date']) != $date) {
+                    Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
+                }
+                
                 echo "<script>window.location = '/';</script>";
                 $_SESSION['uname'] = $data['username'];
+               
             } else {
                 echo "<script>window.location = 'verify.php';</script>";
                 $_SESSION['uname'] = $data['username'];

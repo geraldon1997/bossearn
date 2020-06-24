@@ -57,6 +57,7 @@ $bearncash = $earning['bearn'] / 10;
                         <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($brefcash); ?></b></div>
                     </div>
                     <hr>
+                    
                     <?php if ($earning['status'] == 0 && $brefcash >= 3000) {?>
                         <form method="post" >
                             <input type="hidden" name="withdraw" value="bref">
