@@ -8,7 +8,7 @@ use App\Models\Role;
 
 require_once 'layout/header.php';
 
-$user = User::findUser('uname', $_SESSION['uname'])[0];
+$user = User::findLoginUser('uname', $_SESSION['uname'])[0];
 $earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
 $totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
 $bank = Bank::findBank('user_id', User::userId($_SESSION['uname'])[0]['id'])[0];
@@ -43,8 +43,8 @@ $bearncash = $earning['bearn'] / 10;
 </style>
 <div class="page-wrapper text-center center">
 
-<?php if (Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
-<h1>Role : <?php echo Role::role(User::findUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
+<?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
+<h1>Role : <?php echo Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
 <h3>Username : <?php echo $_SESSION['uname']; ?></h3>
 <h4>No of Referrals : <?php if (!empty($referral)) {echo count($referral);} else {echo 0;} ?></h4>
 <div class="row text-center">
