@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\Coupon;
+use App\Models\Earning;
+use App\Models\Referral;
 use App\Models\User;
 
 class CouponController extends Coupon
@@ -57,6 +59,8 @@ class CouponController extends Coupon
             $status = self::couponStatus($coupon);
             if (!$status) {
                 self::updateCoupon(User::userId($_SESSION['uname'])[0]['id'], $coupon);
+                Earning::insert(User::userId($_SESSION['uname'])[0]['id']);
+                Earning::updateBref(10000, Referral::findRef('referred', User::userId($_SESSION['uname'])[0]['referrer'] ));
                 echo "<script>window.location = 'dashboard.php'</script>";
             } else {
                 self::$error = 'coupon already used';

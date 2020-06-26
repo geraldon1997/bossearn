@@ -26,8 +26,8 @@ class UserController extends User
 
                     Referral::insert($referrer, $refferred);
 
-                    Earning::insert($refferred);
-                    Earning::updateBref(10000, $referrer);
+                    // Earning::insert($refferred);
+                    // Earning::updateBref(10000, $referrer);
                     self::$success['signup'] = 'Registeration was successful';
                     echo "<script> window.location = 'verify.php'; </script>";
                     $_SESSION['uname'] = $data['username'];
@@ -37,13 +37,13 @@ class UserController extends User
             } else {
                 $signup = User::insert($refcode, $data);
                 if ($signup) {
-                    $referrer = Referral::refId(Referral::assignRef());
+                    $referrer = Referral::refId(726348);
                     $refferred = User::lastUserId()[0]['id'];
 
                     Referral::insert($referrer, $refferred);
 
-                    Earning::insert($refferred);
-                    Earning::updateBref(10000, $referrer);
+                    // Earning::insert($refferred);
+                    // Earning::updateBref(10000, $referrer);
                     self::$success['signup'] = 'Registeration was successful';
 
                     echo "<script> window.location = 'verify.php'; </script>";
@@ -58,8 +58,7 @@ class UserController extends User
 
     public static function login($data)
     {
-        $time = time();
-        $date = date('d-m-Y', $time);
+        $date = date('Y-m-d');
         $data['username'] = strtolower($data['username']);
 
         $login = User::findLoginUser('uname', $data['username']);
@@ -67,8 +66,8 @@ class UserController extends User
         if ($login[0]['uname'] === $data['username'] && $login[0]['paswd'] === $data['password']) {
           if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
             if (CouponController::userCouponStatus($data['username']) > 0) {
-                $earnlog = Earning::findEarning(User::userId($login[0]['uname'])[0]['id'])[0];
-                if (date('d-m-Y', $earnlog['date']) != $date) {
+                $earnlog = $login[0];
+                if ($earnlog['date'] != $date) {
                     Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
                 }
                 

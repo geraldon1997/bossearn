@@ -28,10 +28,13 @@ class Earning extends Gateway
 
     public static function updateBearn($bearn, $uid)
     {
+        $date = date('Y-m-d');
         $oldBearn = self::findEarning($uid);
         $newBearn = $oldBearn[0]['bearn'] + $bearn;
         $sql = "UPDATE `earnings` SET bearn = '$newBearn' WHERE `user_id` = '$uid'";
-        return Gateway::run($sql);
+        $sql1 = "UPDATE `users` SET `date` = '$date' WHERE `id` = '$uid' ";
+        Gateway::run($sql);
+        Gateway::run($sql1);
     }
 
     public static function updateBref($bref, $uid)
