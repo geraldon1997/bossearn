@@ -38,7 +38,7 @@ class UserController extends User
             } else {
                 $signup = User::insert($refcode, $data);
                 if ($signup) {
-                    $referrer = Referral::refId(726348);
+                    $referrer = Referral::refId(123456);
                     $refferred = User::lastUserId()[0]['id'];
 
                     Referral::insert($referrer, $refferred);
