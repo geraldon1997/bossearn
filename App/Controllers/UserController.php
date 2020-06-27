@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Bank;
+use App\Models\Coupon;
 use App\Models\User;
 use App\Models\Referral;
 use App\Models\Earning;
@@ -132,18 +133,19 @@ class UserController extends User
 
     public static function view($rid)
     {
-        $users = User::findUser('role_id', $rid);
+        $users = User::findVerifiedUser('is_verified', 1, 'role_id', $rid)[0];
         $sn = 1;
-
+        // var_dump($users);
         if (!empty($users)) {
-            foreach ($users as $key) {
-                $uid = $key['id'];
-                $ref = $key['ref'];
-                $fn = $key['fname'];
-                $ln = $key['lname'];
-                $em = $key['email'];
-                $ph = $key['phone'];
-                $un = $key['uname'];
+            // foreach ($verifiedusers as $users) {
+                
+                $uid = $users['id'];
+                $ref = $users['ref'];
+                $fn = $users['fname'];
+                $ln = $users['lname'];
+                $em = $users['email'];
+                $ph = $users['phone'];
+                $un = $users['uname'];
     
                 echo "<tr>
                         <td>".$sn++."</td>
@@ -185,26 +187,25 @@ class UserController extends User
                         "</td>
                 </tr>";
             }
-        }
-
+        // }
         
     }
 
     public static function searchUser($un)
     {
-        $user = User::findUser('uname', $un);
+        $user = User::findVerifiedUser('is_verified', 1, 'uname', $un)[0];
         $sn = 1;
 
         if (!empty($user)) {
-            foreach ($user as $key) {
-                $uid = $key['id'];
-                $ref = $key['ref'];
-                $fn = $key['fname'];
-                $ln = $key['lname'];
-                $em = $key['email'];
-                $ph = $key['phone'];
-                $un = $key['uname'];
-                $rid = $key['role_id'];
+            // foreach ($user as $key) {
+                $uid = $user['id'];
+                $ref = $user['ref'];
+                $fn = $user['fname'];
+                $ln = $user['lname'];
+                $em = $user['email'];
+                $ph = $user['phone'];
+                $un = $user['uname'];
+                $rid = $user['role_id'];
     
                 echo "<tr>
                         <td>".$sn++."</td>
@@ -215,7 +216,7 @@ class UserController extends User
                         <td>$un</td>
                         <td>";
                         if ($rid == 3) { ?>
-                            echo "<form method='post' onsubmit="return confirm('do you really want to make this user a vendor ?');">
+                            <form method='post' onsubmit="return confirm('do you really want to make this user a vendor ?');">
                             <input type='hidden' name='uid' value='<?php echo $uid; ?>' >
                             <button type='submit' class='btn'>make vendor</button>
                             </form>
@@ -249,7 +250,7 @@ class UserController extends User
                         "</td>
                 </tr>";
             }
-        }
+        // }
     }
 
     public static function forgotPassword($un)

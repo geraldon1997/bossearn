@@ -56,6 +56,12 @@ class User extends Gateway
         return Gateway::fetch($sql);
     }
 
+    public static function findVerifiedUser($col, $val, $col1, $val1)
+    {
+        $sql = "SELECT * FROM `coupons`, `users` WHERE `coupons`.$col = '$val' AND `users`.$col1 = '$val1' AND `users`.`uname` != 'maxfunny' ";
+        return Gateway::fetch($sql);
+    }
+
     public static function allUser()
     {
         $sql = "SELECT * FROM users ORDER BY fname ASC";
