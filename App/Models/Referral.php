@@ -18,7 +18,7 @@ class Referral extends Gateway
     public static function insert($referrer, $referred)
     {
         $sql = "INSERT INTO `referrals` (referrer,referred) VALUES ('$referrer','$referred')";
-        return Gateway::run($sql);
+        Gateway::run($sql);
     }
 
     public static function findRef($col, $val)

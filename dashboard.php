@@ -142,7 +142,7 @@ $bearncash = $earning['bearn'] / 10;
     <div class="row">
         <div class="col-lg-3"></div>
         <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
-            
+            <?php echo Referral::findRef('referred', User::userId($_SESSION['uname'])[0]['id'])[0]['referrer'] ; ?>
         <div class="col-lg-6" >
 
         <?php if (Bank::isBankFilled('user_id', User::userId($_SESSION['uname'])[0]['id']) < 1) {?>

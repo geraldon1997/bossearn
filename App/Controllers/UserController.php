@@ -23,9 +23,9 @@ class UserController extends User
                 $signup = User::insert($refcode, $data);
                 if ($signup) {
                     $referrer = Referral::refId($ref);
-                    $refferred = User::lastUserId()[0]['id'];
+                    $refferred = User::userId($data['username'])[0]['id'];
 
-                    Referral::insert($referrer, $refferred);
+                    $test = Referral::insert($referrer, $refferred);
 
                     // Earning::insert($refferred);
                     // Earning::updateBref(10000, $referrer);
@@ -38,8 +38,8 @@ class UserController extends User
             } else {
                 $signup = User::insert($refcode, $data);
                 if ($signup) {
-                    $referrer = Referral::refId(123456);
-                    $refferred = User::lastUserId()[0]['id'];
+                    $referrer = Referral::refId(69928);
+                    $refferred = User::userId($data['username'])[0]['id'];
 
                     Referral::insert($referrer, $refferred);
 

@@ -60,7 +60,7 @@ class CouponController extends Coupon
             if (!$status) {
                 self::updateCoupon(User::userId($_SESSION['uname'])[0]['id'], $coupon);
                 Earning::insert(User::userId($_SESSION['uname'])[0]['id']);
-                Earning::updateBref(10000, Referral::findRef('referred', User::userId($_SESSION['uname'])[0]['referrer'] ));
+                Earning::updateBref(10000, Referral::findRef('referred', User::userId($_SESSION['uname'])[0]['id'])[0]['referrer'] );
                 echo "<script>window.location = 'dashboard.php'</script>";
             } else {
                 self::$error = 'coupon already used';
