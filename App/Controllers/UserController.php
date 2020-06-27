@@ -133,12 +133,12 @@ class UserController extends User
 
     public static function view($rid)
     {
-        $users = User::findVerifiedUser('is_verified', 1, 'role_id', $rid)[0];
+        $verifiedusers = Coupon::findCoupon('is_verified', 1);
         $sn = 1;
         // var_dump($users);
-        if (!empty($users)) {
-            // foreach ($verifiedusers as $users) {
-                
+        if (!empty($verifiedusers)) {
+            foreach ($verifiedusers as $key) {
+                $users = User::findVerifiedUser('id', $key['user_id'], 'role_id', $rid)[0];
                 $uid = $users['id'];
                 $ref = $users['ref'];
                 $fn = $users['fname'];
@@ -187,17 +187,21 @@ class UserController extends User
                         "</td>
                 </tr>";
             }
-        // }
+        }
         
     }
 
     public static function searchUser($un)
     {
-        $user = User::findVerifiedUser('is_verified', 1, 'uname', $un)[0];
+        $verifieduser = Coupon::findCoupon('is_verified', 1);
+        $u = User::findLoginUser('uname', $un);
+        $c = Coupon::findCoupon('user_id', $u[0]['id']);
         $sn = 1;
+        
 
-        if (!empty($user)) {
-            // foreach ($user as $key) {
+        if (!empty($verifieduser) && !empty($u) && $u[0]['id'] == $c[0]['user_id']) {
+            foreach ($u as $user) {
+                
                 $uid = $user['id'];
                 $ref = $user['ref'];
                 $fn = $user['fname'];
@@ -250,7 +254,7 @@ class UserController extends User
                         "</td>
                 </tr>";
             }
-        // }
+        }
     }
 
     public static function forgotPassword($un)

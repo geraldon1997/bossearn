@@ -46,6 +46,8 @@ class Coupon extends Gateway
             $sql = "SELECT * FROM coupons WHERE $col = '$val' ";
         } elseif ($val == 1) {
             $sql = "SELECT * FROM coupons WHERE $col = '$val' AND `user_id` != 5 ";
+        } else {
+            $sql = "SELECT * FROM coupons WHERE $col = '$val' ";
         }
         
         return Gateway::fetch($sql);
