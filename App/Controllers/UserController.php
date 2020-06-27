@@ -133,19 +133,20 @@ class UserController extends User
 
     public static function view($rid)
     {
-        $verifiedusers = Coupon::findCoupon('is_verified', 1);
+        $role = User::findLoginUser('role_id', $rid);
         $sn = 1;
-        // var_dump($users);
-        if (!empty($verifiedusers)) {
-            foreach ($verifiedusers as $key) {
-                $users = User::findVerifiedUser('id', $key['user_id'], 'role_id', $rid)[0];
-                $uid = $users['id'];
-                $ref = $users['ref'];
-                $fn = $users['fname'];
-                $ln = $users['lname'];
-                $em = $users['email'];
-                $ph = $users['phone'];
-                $un = $users['uname'];
+        foreach ($role as $user) {
+            $c = Coupon::userStatus($user['id']);
+
+            if ($c > 0) {
+                $uid = $user['id'];
+                $ref = $user['ref'];
+                $fn = $user['fname'];
+                $ln = $user['lname'];
+                $em = $user['email'];
+                $ph = $user['phone'];
+                $un = $user['uname'];
+                $rid = $user['role_id'];
     
                 echo "<tr>
                         <td>".$sn++."</td>
@@ -155,18 +156,19 @@ class UserController extends User
                         <td>$ph</td>
                         <td>$un</td>
                         <td>";
-                        if ($rid == 3) {?>
-                            <form method="post" onsubmit="return confirm('do you really want to make this user a vendor ?');">
-                            <input type="hidden" name="uid" value="<?php echo $uid; ?>" >
-                            <button class="btn" >make vendor</button>
+                        if ($rid == 3) { ?>
+                            <form method='post' onsubmit="return confirm('do you really want to make this user a vendor ?');">
+                            <input type='hidden' name='uid' value='<?php echo $uid; ?>' >
+                            <button type='submit' class='btn'>make vendor</button>
                             </form>
                             <br>
-                            <a class="btn" href="edituser.php?uid=<?php echo $uid; ?>" >edit user</a>
+                            <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit user</a>
                             <br><br>
-                            <form method="post" onsubmit="return confirm('do you really want to delete this user ?');">
-                            <input type="hidden" name="delid" value="<?php echo $uid ?>" >
-                            <button type="submit" class="btn"  >delete user</button>
+                            <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
+                            <input type='hidden' name='delid' value='<?php echo $uid; ?>' >
+                            <button type='submit' class='btn'>delete user</button>
                             </form>
+                            ";
                         <?php
                         } elseif ($rid == 2) { ?>
                             <form method="post" onsubmit="return confirm('do you really want to make this vendor a user ?');">
@@ -177,10 +179,12 @@ class UserController extends User
                             <a class='btn' href='edituser.php?uid=<?php echo $uid; ?>'>edit vendor</a>
                             <br>
                             <form method='post' onsubmit="return confirm('do you really want to delete this user ?');">
-                            <input type='hidden' name='delid' value='<?php echo $uid; ?>' >
-                            <button type='submit' class='btn' >delete vendor</button>
+                            <input type='hidden' name='delid' value='$uid' >
+                            <button type='submit' class='btn'>delete vendor</button>
                             </form>";
                         <?php
+                        } elseif ($rid == 1) {
+                            echo "you are admin";
                         }
                             
 
@@ -188,7 +192,6 @@ class UserController extends User
                 </tr>";
             }
         }
-        
     }
 
     public static function searchUser($un)
