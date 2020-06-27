@@ -135,10 +135,12 @@ class UserController extends User
     {
         $role = User::findLoginUser('role_id', $rid);
         $sn = 1;
-        foreach ($role as $user) {
-            $c = Coupon::userStatus($user['id']);
+        foreach ($role as $key) {
+            $c = Coupon::userStatus($key['id']);
 
             if ($c > 0) {
+                $user = User::findUser('id', $key['id'])[0];
+
                 $uid = $user['id'];
                 $ref = $user['ref'];
                 $fn = $user['fname'];
