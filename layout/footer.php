@@ -12,7 +12,7 @@
         <div class="dmtop"></div>
         
     </div><!-- end wrapper -->
-<?php function tester(){echo "<script>window.location = 'dashboard.php' </script>";} ?>
+
     <!-- Core JavaScript
     ================================================== -->
     <script src="App/Assets/Js/share-button.min.js"></script>
@@ -39,8 +39,18 @@
                         description: document.getElementById('title').innerHTML
                     },
                     twitter: {
-                        url: document.getElementById('read').getAttribute('href'),
-                        description: document.getElementById('title').innerHTML
+                        before: function() {
+                            this.url = document.getElementById('read').getAttribute('href'),
+                            this.description = document.getElementById('title').innerHTML
+                        },
+                        after: function() {
+                            val = $('#uid').val();
+                            $.ajax({
+                            url: 'http://bossearn.test/addshare.php',
+                            type: 'POST',
+                            data : {uid : val}
+                            })
+                        }
                     }
                 },
                 ui: {

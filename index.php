@@ -78,6 +78,7 @@ if (isset($_POST['pid'])) {
                                         <div class="post-sharing">
                                             <ul class="list-inline">
                                             <?php if (isset($_SESSION['uname'])) {?>
+                                            <input type="hidden" id="uid" name="uid" value="<?php echo User::userId($_SESSION['uname'])[0]['id'] ?>">
                                             <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
                                             <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
                                             <?php 
