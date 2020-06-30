@@ -26,17 +26,32 @@
             new ShareButton({
                 networks: {
                     whatsapp: {
-                        before: function(element) {
-                            this.url = element.getAttribute("data-url"),
-                            this.description = element.getAttribute("data-description")
+                        before: function() {
+                            this.url = document.getElementById('read').getAttribute('href'),
+                            this.description = document.getElementById('title').innerHTML
                         },
                         after: function() {
-                            console.log("User shared:", this.url);
+                            val = $('#uid').val();
+                            $.ajax({
+                            url: 'http://bossearn.test/addshare.php',
+                            type: 'POST',
+                            data : {uid : val}
+                            })
                         }
                     },
                     facebook: {
-                        url: document.getElementById('read').getAttribute('href'),
-                        description: document.getElementById('title').innerHTML
+                        before: function() {
+                            this.url = document.getElementById('read').getAttribute('href'),
+                            this.description = document.getElementById('title').innerHTML
+                        },
+                        after: function() {
+                            val = $('#uid').val();
+                            $.ajax({
+                            url: 'http://bossearn.test/addshare.php',
+                            type: 'POST',
+                            data : {uid : val}
+                            })
+                        }
                     },
                     twitter: {
                         before: function() {
