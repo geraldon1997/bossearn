@@ -93,9 +93,9 @@ if (isset($_POST['pid'])) {
                                             <?php } ?>
                                             </ul>
                                         </div><!-- end post-sharing -->
-                                        <h4 id="title"><?php echo $key['title'] ?></h4>
+                                        <h4 id="title" data-description="<?php echo $key['title'] ?>"> <?php echo $key['title'] ?></h4>
                                         <p><?php echo substr($key['body'], 0, 120).'. . .'; ?></p>
-                                        <a href="https://bossearn.com/news.php?news=<?php echo $key['id'] ?>" class="btn" id="read">Read more</a>
+                                        <a href="https://bossearn.com/news.php?news=<?php echo $key['id'] ?>" class="btn" data-url="https://bossearn.com/news.php?news=<?php echo $key['id'] ?>" id="read">Read more</a>
                                         <hr class="invis">
 
                                         <?php 

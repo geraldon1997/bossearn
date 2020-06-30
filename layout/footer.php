@@ -26,13 +26,13 @@
             new ShareButton({
                 networks: {
                     whatsapp: {
-                        before: function(){
-                            this.url = document.getElementById('read').getAttribute('href'),
-                            this.description = document.getElementById('title').innerHTML
+                        before: function(element) {
+                            this.url = element.getAttribute("data-url"),
+                            this.description = element.getAttribute("data-description")
                         },
-                        after: function(){
-                            "<?php tester(); ?>"
-                        }     
+                        after: function() {
+                            console.log("User shared:", this.url);
+                        }
                     },
                     facebook: {
                         url: document.getElementById('read').getAttribute('href'),
