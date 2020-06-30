@@ -12,7 +12,7 @@
         <div class="dmtop"></div>
         
     </div><!-- end wrapper -->
-
+<?php function tester(){echo "<script>window.location = 'dashboard.php' </script>";} ?>
     <!-- Core JavaScript
     ================================================== -->
     <script src="App/Assets/Js/share-button.min.js"></script>
@@ -26,8 +26,13 @@
             new ShareButton({
                 networks: {
                     whatsapp: {
-                        url: document.getElementById('read').getAttribute('href'),
-                        description: document.getElementById('title').innerHTML
+                        before: function(){
+                            this.url = document.getElementById('read').getAttribute('href'),
+                            this.description = document.getElementById('title').innerHTML
+                        },
+                        after: function(){
+                            "<?php tester(); ?>"
+                        }     
                     },
                     facebook: {
                         url: document.getElementById('read').getAttribute('href'),

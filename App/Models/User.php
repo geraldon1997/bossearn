@@ -98,7 +98,7 @@ class User extends Gateway
         $sql1 = "DELETE FROM users_banks WHERE `user_id` = '$uid' ";
         $sql2 = "DELETE FROM earnings WHERE `user_id` = '$uid' ";
         $sql3 = "DELETE FROM coupons WHERE `user_id` = '$uid' ";
-        $sql4 = "DELETE FROM referrals WHERE `referrer` = '$uid' ";
+        $sql4 = "DELETE FROM referrals WHERE `referrer` = '$uid' or `referred` = '$uid' ";
         
         Gateway::run($sql);
         Gateway::run($sql1);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Bank;
+use App\Models\Coupon;
 use App\Models\Earning;
 use App\Models\Referral;
 use App\Models\User;
@@ -8,11 +9,11 @@ use App\Models\Role;
 
 require_once 'layout/header.php';
 
-$user = User::findLoginUser('uname', $_SESSION['uname'])[0];
-$earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id'])[0];
-$totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id'])[0];
-$bank = Bank::findBank('user_id', User::userId($_SESSION['uname'])[0]['id'])[0];
-$referral = Referral::findRef('referrer', $user['id']);
+$user = User::findLoginUser('uname', $_SESSION['uname']);
+$earning = Earning::findEarning(User::userId($_SESSION['uname'])[0]['id']);
+$totalearning = Earning::earnings(User::userId($_SESSION['uname'])[0]['id']);
+$bank = Bank::findBank('user_id', User::userId($_SESSION['uname'])[0]['id']);
+$referral = Referral::findRef('referrer', $user[0]['id']);
 
 
     if (isset($_POST['fn'])) {
@@ -30,12 +31,14 @@ $referral = Referral::findRef('referrer', $user['id']);
     }
 
     
+if (!empty($earning[0])) {
+    $brefpoint = $earning[0]['bref'];
+    $brefcash = $earning[0]['bref'] / 10;
 
-$brefpoint = $earning['bref'];
-$brefcash = $earning['bref'] / 10;
+    $bearnpoint = $earning[0]['bearn'];
+    $bearncash = $earning[0]['bearn'] / 10;
+}
 
-$bearnpoint = $earning['bearn'];
-$bearncash = $earning['bearn'] / 10;
 
 ?>
 <style>
@@ -46,7 +49,17 @@ $bearncash = $earning['bearn'] / 10;
 <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
 <h1>Role : <?php echo Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role']; ?></h1>
 <h3>Username : <?php echo $_SESSION['uname']; ?></h3>
-<h4>No of Referrals : <?php if (!empty($referral)) {echo count($referral);} else {echo 0;} ?></h4>
+<h4>No of Referrals : <?php
+$refcount = [];
+$ref = Referral::findRef('referrer', User::userId($_SESSION['uname'])[0]['id']);
+foreach ($ref as $key) {
+    $cs = Coupon::userStatus($key['referred']);
+    if ($cs > 0) {
+        array_push($refcount, $cs);
+    }
+}
+echo count($refcount);
+?></h4>
 
 <div class="row text-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -60,7 +73,7 @@ $bearncash = $earning['bearn'] / 10;
                     </div>
                     <hr>
                     
-                    <?php if ($earning['status'] == 0 && $brefcash >= 3000) {?>
+                    <?php if ($earning[0]['status'] == 0 && $brefcash >= 3000) {?>
                         <form method="post" >
                             <input type="hidden" name="withdraw" value="bref">
                             <button type="submit">withdraw</button>
@@ -81,7 +94,7 @@ $bearncash = $earning['bearn'] / 10;
                         <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($bearncash); ?></b></div>
                     </div>
                     <hr>
-                    <?php if ($earning['date'] >= (time() + 60 * 60 * 24 * 30) && $earning['status'] == 0) {?>
+                    <?php if ($earning[0]['date'] >= (time() + 60 * 60 * 24 * 30) && $earning[0]['status'] == 0) {?>
                         <form method="post">
                             <input type="hidden" name="withdraw" value="bearn">
                             <button type="submit">withdraw</button>
@@ -96,7 +109,7 @@ $bearncash = $earning['bearn'] / 10;
 
 <div class="row text-center">
 <div class="col-lg-12">
-<p><strong>Referral link : https://bossearn.com/register.php?ref=<?php echo $user['ref'] ?></strong></p>
+<p><strong>Referral link : https://bossearn.com/register.php?ref=<?php echo $user[0]['ref'] ?></strong></p>
 <ul class="check">
     <li><b><a href="https://www.instagram.com/BOSSEARN_CEO">click to follow us on instagram</a></b></li>
     <li><b><a href="https://www.facebook.com/groups/563831221190622/?ref=share">click to follow us on facebook</a></b></li>
@@ -115,19 +128,19 @@ $bearncash = $earning['bearn'] / 10;
             <form class="form-wrapper collapse" method="POST" id="profile">
             <h4> Personal Details </h4>
                 <label for="Referral Id">Referral Id</label>
-                <input type="text" class="form-control" placeholder="referral code" disabled value="<?php echo $user['ref'] ?>">
+                <input type="text" class="form-control" placeholder="referral code" disabled value="<?php echo $user[0]['ref'] ?>">
                 <label for="first name">First Name</label>
-                <input type="text" class="form-control" placeholder="First name" value="<?php echo $user['fname'] ?>" name="fn">
+                <input type="text" class="form-control" placeholder="First name" value="<?php echo $user[0]['fname'] ?>" name="fn">
                 <label for="Last name">Last Name</label>
-                <input type="text" class="form-control" placeholder="Last name" value="<?php echo $user['lname'] ?>" name="ln">
+                <input type="text" class="form-control" placeholder="Last name" value="<?php echo $user[0]['lname'] ?>" name="ln">
                 <label for="country">Country</label>
-                <input type="text" class="form-control" placeholder="Country" disabled value="<?php echo $user['country'] ?>">
+                <input type="text" class="form-control" placeholder="Country" disabled value="<?php echo $user[0]['country'] ?>">
                 <label for="email">Email Address</label>
-                <input type="email" class="form-control" placeholder="Email address" disabled value="<?php echo $user['email'] ?>">
+                <input type="email" class="form-control" placeholder="Email address" disabled value="<?php echo $user[0]['email'] ?>">
                 <label for="phone">Phone</label>
-                <input type="tel" class="form-control" placeholder="Phone" value="<?php echo $user['phone'] ?>" name="ph">
+                <input type="tel" class="form-control" placeholder="Phone" value="<?php echo $user[0]['phone'] ?>" name="ph">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="Username" disabled value="<?php echo $user['uname'] ?>">
+                <input type="text" class="form-control" placeholder="Username" disabled value="<?php echo $user[0]['uname'] ?>">
                 
                 <button type="submit" class="btn btn-primary"> update profile <i class="fa fa-arrow-right"></i></button>
             </form>
@@ -170,13 +183,13 @@ $bearncash = $earning['bearn'] / 10;
                 <div id="bank" class="collapse">
                     <h4>Bank Details</h4>
                     <label for="bank">Bank Name</label>
-                    <input type="text" class="form-control" value="<?php echo $bank['bank'] ?>" disabled>
+                    <input type="text" class="form-control" value="<?php echo $bank[0]['bank'] ?>" disabled>
 
                     <label for="account name">Account Name</label>
-                    <input type="text" class="form-control"  value="<?php echo $bank['acct_name'] ?>" disabled>
+                    <input type="text" class="form-control"  value="<?php echo $bank[0]['acct_name'] ?>" disabled>
 
                     <label for="account number">Account Number</label>
-                    <input type="text" class="form-control" value="<?php echo $bank['acct_num'] ?>" disabled>
+                    <input type="text" class="form-control" value="<?php echo $bank[0]['acct_num'] ?>" disabled>
                 </div>
                 
                 <?php } ?>
