@@ -125,7 +125,7 @@ class UserController extends User
                 <td>$bn</td>
                 <td>$an</td>
                 <td>$acn</td>
-                <td><a href='https://api.whatsapp.com/send?phone=$ph&text=Hello, i am from bossearn and i want to buy coupon&source=&data=' class='btn' target='_blank'>chat</a></td>
+                <td><a href='https://wa.me/$ph' class='btn' target='_blank'>chat</a></td>
             </tr>";
         }
 
