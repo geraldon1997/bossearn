@@ -7,7 +7,7 @@ class PostController extends Post
 {
     public static function createPost($data)
     {
-        return Post::insert($data['title'], $data['body'], self::uploadHandler());
+        return Post::insert($data['type'], $data['title'], $data['body'], self::uploadHandler());
         // var_dump($data);
     }
 
@@ -27,9 +27,9 @@ class PostController extends Post
         $file = $_FILES['image'];
         
         if (empty($file['name'])) {
-            return self::updateWithoutImage($data['title'], $data['body'], $data['pid']);
+            return self::updateWithoutImage($data['type'], $data['title'], $data['body'], $data['pid']);
         } else {
-            return Post::updateWithImage($data['title'], $data['body'], self::uploadHandler(), $data['pid']);
+            return Post::updateWithImage($data['type'], $data['title'], $data['body'], self::uploadHandler(), $data['pid']);
         }
     }
 

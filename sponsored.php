@@ -46,19 +46,19 @@ if (isset($_POST['pid'])) {
         color: white !important;
     }
 </style>
-<img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
-<?php if (!isset($_SESSION['uname'])) {?>
+<!-- <img src="App/Assets/Images/b1.jpeg" alt="" id="bg"> -->
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
+<?php if (!isset($_SESSION['uname'])) {?>
 <a href="register.php" class="btn" >Register</a>
 <?php } ?>
         <section class="section lb">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <?php
-                            $post = Post::findPost('type', 'blog');
+                            $post = Post::findPost('type', 'sponsored');
                             foreach ($post as $key) {
                             ?>
                             <div class="blog-custom-build">
@@ -76,7 +76,23 @@ if (isset($_POST['pid'])) {
                                     <!-- end media -->
                                     <div class="blog-meta big-meta text-center">
                                         <div class="post-sharing">
-                                            
+                                            <ul class="list-inline">
+                                            <?php if (isset($_SESSION['uname'])) {?>
+                                            <input type="hidden" id="uid" name="uid" value="<?php echo User::userId($_SESSION['uname'])[0]['id'] ?>">
+                                            <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
+                                            <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
+                                            <?php 
+                                                $postdate = date('d-m-Y', $key['date']);
+                                                $today = date('d-m-Y', time());
+                                                if ($postdate == $today) {?>
+                                                <li><share-button>share</share-button></li>
+                                            <?php } ?>
+                                            <?php } ?>
+                                            <?php } else {?>
+                                                <li><share-button>share</share-button></li>
+                                            <?php } ?>
+                                            <?php } ?>
+                                            </ul>
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" data-description="<?php echo $key['title'] ?>"> <?php echo $key['title'] ?></h4>
                                         <p><?php echo substr($key['body'], 0, 120).'. . .'; ?></p>
@@ -108,29 +124,7 @@ if (isset($_POST['pid'])) {
 
                     </div><!-- end col -->
 
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sidebar">
-
-
-                            <div class="widget">
-                                <h2 class="widget-title">Recent Posts</h2>
-                                <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <?php foreach (Post::recentPost() as $key) {?>
-                                        <a href="news.php?news=<?php echo $key['id'] ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid float-left recent-post-img">
-                                                <h5 class="mb-1"><?php echo $key['title'] ?></h5>
-                                                <p><?php echo date('d-m-Y', $key['date']); ?></p>
-                                            </div>
-                                        </a>
-                                        <?php } ?>
-                                    </div>
-                                </div><!-- end blog-list -->
-                            </div><!-- end widget -->
-
-                        </div><!-- end sidebar -->
-                    </div><!-- end col -->
+                    
                 </div><!-- end row -->
             </div><!-- end container -->
         </section>

@@ -35,6 +35,12 @@ $post = Post::findPost('id', $_GET['id'])[0];
         <form class="form-wrapper" method="POST" enctype="multipart/form-data">
             <h4>Update Post</h4>
                 <input type="hidden" name="pid" value="<?php echo $post['id'] ?>">
+                <label for="type of post">Type of post</label>
+                <select name="type" id="" class="form-control">
+                    <option value="<?php echo $post['type']; ?>"><?php echo $post['type']; ?> post</option>
+                    <option value="blog">blog post</option>
+                    <option value="sponsored">sponsored post</option>
+                </select>
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" value="<?php echo $post['title']; ?>">
                 <label for="body">body</label>

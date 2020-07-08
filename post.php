@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="col-md-6">
         <form class="form-wrapper" method="POST" enctype="multipart/form-data">
             <h4>Post form</h4>
+                <select name="type" id="" class="form-control">
+                    <option value="">select type of post</option>
+                    <option value="blog">blog post</option>
+                    <option value="sponsored">sponsored post</option>
+                </select>
                 <input type="text" class="form-control" placeholder="Title" name="title">
                 <textarea name="body" id="" cols="30" rows="10" class="form-control" placeholder="body of post"></textarea>
                 <input type="file" name="image" id="" class="form-control">
