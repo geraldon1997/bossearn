@@ -54,7 +54,7 @@
                             pid_val = $('#pid').val();
                             
                             $.ajax({
-                            url: 'http://bossearn.test/addshare.php',
+                            url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
                             data : {
                                 uid : uid_val,
