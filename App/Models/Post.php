@@ -57,7 +57,7 @@ class Post extends Gateway
 
     public static function findPost($col, $val)
     {
-        $sql = "SELECT * FROM `posts` WHERE $col = '$val'";
+        $sql = "SELECT * FROM `posts` WHERE $col = '$val' ORDER BY `date` DESC";
         return Gateway::fetch($sql);
     }
 
