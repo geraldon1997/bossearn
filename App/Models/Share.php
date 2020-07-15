@@ -8,20 +8,26 @@ class Share extends Gateway
 {
     public static function createTable()
     {
-        $sql = "CREATE TABLE IF EXISTS `shares` (
-            id INT PRIMARY KEY AUTO_INCREMENT,
+        $sql = "CREATE TABLE IF NOT EXISTS `shares` (
+            `id` INT PRIMARY KEY AUTO_INCREMENT,
             `user_id` INT NOT NULL,
-            `num_of_shares` INT NOT NULL
+            `post_id` INT NOT NULL,
+            `is_shared` BOOLEAN NOT NULL
         ) ";
 
         Gateway::run($sql);
     }
 
-    public static function insert($uid, $num)
+    public static function insert($uid, $pid)
     {
-        $sql = "INSERT INTO `shares` (`user_id`, `num_of_shares`) VALUES ('$uid','$num') ";
-        Earning::updateBearn(50, $uid);
-        return Gateway::run($sql);
+        $sql = "SELECT * FROM `shares` WHERE `user_id` = '$uid' AND `post_id` = '$pid' ";
+        $checkShare = Gateway::check($sql);
+        if ($checkShare < 1) {
+            $sql = "INSERT INTO `shares` (`user_id`, `post_id`, `is_shared`) VALUES ('$uid', '$pid', 1) ";
+            Earning::updateBearn(50, $uid);
+            return Gateway::run($sql);
+        }
+        
     }
 
     public static function updateShare($num, $uid)

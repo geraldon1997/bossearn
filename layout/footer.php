@@ -31,11 +31,16 @@
                             this.description = document.getElementById('title').innerHTML
                         },
                         after: function() {
-                            val = $('#uid').val();
+                            uid_val = $('#uid').val();
+                            pid_val = $('#pid').val();
+
                             $.ajax({
                             url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
-                            data : {uid : val}
+                            data : {
+                                uid : uid_val,
+                                pid : pid_val
+                                }
                             })
                         }
                     },
@@ -45,12 +50,18 @@
                             this.description = document.getElementById('title').innerHTML
                         },
                         after: function() {
-                            val = $('#uid').val();
+                            uid_val = $('#uid').val();
+                            pid_val = $('#pid').val();
+                            
                             $.ajax({
-                            url: 'https://bossearn.com/addshare.php',
+                            url: 'http://bossearn.test/addshare.php',
                             type: 'POST',
-                            data : {uid : val}
+                            data : {
+                                uid : uid_val,
+                                pid : pid_val
+                                }
                             })
+                            
                         }
                     },
                     twitter: {
@@ -59,11 +70,16 @@
                             this.description = document.getElementById('title').innerHTML
                         },
                         after: function() {
-                            val = $('#uid').val();
+                            uid_val = $('#uid').val();
+                            pid_val = $('#pid').val();
+                            
                             $.ajax({
                             url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
-                            data : {uid : val}
+                            data : {
+                                uid : uid_val,
+                                pid : pid_val
+                                }
                             })
                         }
                     }

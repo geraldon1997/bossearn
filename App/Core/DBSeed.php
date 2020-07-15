@@ -8,6 +8,7 @@ use App\Models\Earning;
 use App\Models\Post;
 use App\Models\Referral;
 use App\Models\Role;
+use App\Models\Share;
 use App\Models\User;
 
 class DBSeed
@@ -22,5 +23,6 @@ class DBSeed
         Role::createTable();
         Comment::createTable();
         Coupon::createTable();
+        Share::createTable();
     }
 }
