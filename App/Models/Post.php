@@ -22,7 +22,7 @@ class Post extends Gateway
     {
         self::createTable();
         $body = addslashes($body);
-        $date = time();
+        $date = time() + (60 * 60 * 24);
         $sql = "INSERT INTO posts (`type`, `title`,`body`,`image`,`date`) VALUES ('$type', '$title','$body','$image','$date')";
         return Gateway::run($sql);
     }

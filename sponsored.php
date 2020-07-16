@@ -50,7 +50,7 @@ if (isset($_POST['pid'])) {
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
 <?php if (!isset($_SESSION['uname'])) {?>
-<a href="register.php" class="btn" >Register</a>
+<script>window.location = 'login.php' </script>
 <?php } ?>
         <section class="section lb">
             <div class="container">
@@ -81,14 +81,23 @@ if (isset($_POST['pid'])) {
                                     <div class="blog-meta big-meta text-center">
                                         <div class="post-sharing">
 
+                                        <?php if ($post['date'] > time() ) :?>
                                             <ul class="list-inline">
                                                 <li><share-button post-id="<?php echo $post['id'] ?>" data-url="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" data-description="<?php echo $post['title'] ?>">share</share-button></li>
                                             </ul>
-                                            
+                                        <?php endif; ?>
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" > <?php echo $post['title']; ?> </h4>
                                         <p><?php echo substr($post['body'], 0, 120).' . . .'; ?></p>
                                         <a href="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
+                                        <hr class="invis">
+                                            <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') : ?>
+                                                <a href="editpost.php?id=<?php echo $post['id'] ?>" class="btn btn-ep">edit post</a>
+                                            <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
+                                                <input type="hidden" name="pid" value="<?php echo $post['id'] ?>">
+                                                <button type="submit" class="btn btn-ep">delete post</button>
+                                            </form>
+                                            <?php endif; ?>
                                         <hr class="invis">
 
                                         
