@@ -54,19 +54,23 @@ if (isset($_POST['pid'])) {
 <?php } ?>
         <section class="section lb">
             <div class="container">
+
+            
+
                 <div class="row">
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
                         <div class="page-wrapper">
-                            <?php
-                            $post = Post::findPost('type', 'sponsored');
-                            foreach ($post as $key) {
-                            ?>
+
+                        <?php foreach (Post::findPost('type', 'sponsored') as $post) : ?>
+                            
                             <div class="blog-custom-build">
                             
-                                <div class="blog-box wow fadeIn">
+                                <div class="blog-box wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
                                     <div class="post-media">
-                                        <a href="news.php?news=<?php echo $key['id'] ?>" title="">
-                                            <img src="<?php echo $key['image'] ?>" alt="" class="img-fluid post-img">
+                                        <a href="https://bossearn.com/news.php?news=<?php echo $post['id'] ?>" title="">
+                                            <img src="<?php echo $post['image'] ?>" alt="" class="img-fluid post-img">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -76,55 +80,32 @@ if (isset($_POST['pid'])) {
                                     <!-- end media -->
                                     <div class="blog-meta big-meta text-center">
                                         <div class="post-sharing">
+
                                             <ul class="list-inline">
-                                            <?php if (isset($_SESSION['uname'])) {?>
-                                                <input type="hidden" name="pid" id="pid" value="<?php echo $key['id'] ?>">
-                                            <input type="hidden" id="uid" name="uid" value="<?php echo User::userId($_SESSION['uname'])[0]['id'] ?>">
-                                            <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'user') {?>
-                                            <?php if (CouponController::userCouponStatus($_SESSION['uname']) > 0) {?>
-                                            <?php 
-                                                $postdate = date('d-m-Y', $key['date']);
-                                                $today = date('d-m-Y', time());
-                                                if ($postdate == $today) {?>
-                                                <li><share-button>share</share-button></li>
-                                            <?php } ?>
-                                            <?php } ?>
-                                            <?php } else {?>
-                                                <li><share-button>share</share-button></li>
-                                            <?php } ?>
-                                            <?php } ?>
+                                                <li><share-button post-id="<?php echo $post['id'] ?>" data-url="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" data-description="<?php echo $post['title'] ?>">share</share-button></li>
                                             </ul>
+                                            
                                         </div><!-- end post-sharing -->
-                                        <h4 id="title" data-description="<?php echo $key['title'] ?>"> <?php echo $key['title'] ?></h4>
-                                        <p><?php echo substr($key['body'], 0, 120).'. . .'; ?></p>
-                                        <a href="https://bossearn.com/news.php?news=<?php echo $key['id'] ?>" class="btn" data-url="https://bossearn.com/news.php?news=<?php echo $key['id'] ?>" id="read">Read more</a>
+                                        <h4 id="title" > <?php echo $post['title']; ?> </h4>
+                                        <p><?php echo substr($post['body'], 0, 120).' . . .'; ?></p>
+                                        <a href="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
                                         <hr class="invis">
 
-                                        <?php 
-                                        if (isset($_SESSION['uname'])) {
-                                        if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') { ?>
-                                            <a href="editpost.php?id=<?php echo $key['id'] ?>" class="btn btn-ep">edit post</a>
-                                            <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
-                                                <input type="hidden" name="pid" value="<?php echo $key['id'] ?>">
-                                                <button type="submit" class="btn btn-ep">delete post</button>
-                                            </form>
-                                            
-                                        <?php } } ?>
-
+                                        
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
                                 <hr class="invis">
 
                             </div>
-                            <?php } ?>
+                    
+                        <?php endforeach; ?>
+
                         </div>
+                            
+                    </div>
 
-                        <hr class="invis">
-
-
-                    </div><!-- end col -->
-
+                </div><!-- end col -->
                     
                 </div><!-- end row -->
             </div><!-- end container -->

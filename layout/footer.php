@@ -22,42 +22,40 @@
     <script src="App/Assets/Js/animate.js"></script>
     <script src="App/Assets/Js/custom.js"></script>
     <script>
+
         $( document ).ready(function() {
+            
             new ShareButton({
                 networks: {
                     whatsapp: {
-                        before: function() {
-                            this.url = document.getElementById('read').getAttribute('href'),
-                            this.description = document.getElementById('title').innerHTML
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description')
                         },
-                        after: function() {
-                            uid_val = $('#uid').val();
-                            pid_val = $('#pid').val();
+                        after: function(e) {
+                            pid_val = $(e).attr('post-id')
 
                             $.ajax({
                             url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
-                            data : {
-                                uid : uid_val,
+                            data : { 
                                 pid : pid_val
                                 }
                             })
                         }
                     },
                     facebook: {
-                        before: function() {
-                            this.url = document.getElementById('read').getAttribute('href'),
-                            this.description = document.getElementById('title').innerHTML
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description')
                         },
-                        after: function() {
-                            uid_val = $('#uid').val();
-                            pid_val = $('#pid').val();
+                        after: function(e) {
+                            pid_val = $(e).attr('post-id')
                             
                             $.ajax({
                             url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
                             data : {
-                                uid : uid_val,
                                 pid : pid_val
                                 }
                             })
@@ -65,22 +63,22 @@
                         }
                     },
                     twitter: {
-                        before: function() {
-                            this.url = document.getElementById('read').getAttribute('href'),
-                            this.description = document.getElementById('title').innerHTML
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description')
+                            
                         },
-                        after: function() {
-                            uid_val = $('#uid').val();
-                            pid_val = $('#pid').val();
+                        after: function(e) {;
+                            pid_val = $(e).attr('post-id');
                             
                             $.ajax({
                             url: 'https://bossearn.com/addshare.php',
                             type: 'POST',
                             data : {
-                                uid : uid_val,
                                 pid : pid_val
                                 }
                             })
+                              
                         }
                     }
                 },

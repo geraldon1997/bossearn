@@ -2,11 +2,13 @@
 
 use App\Models\Earning;
 use App\Models\Share;
+use App\Models\User;
 
 require_once 'autoload.php';
 
-if (!isset($_POST['uid'])) {
+$user = User::userId($_SESSION['uname'])[0]['id'];
+if (!isset($user)) {
     echo "<script>window.location = 'dashboard.php' </script>";
 } else {
-    Share::insert($_POST['uid'], $_POST['pid']);
+    Share::insert($user, $_POST['pid']);
 } 
