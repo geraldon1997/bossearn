@@ -83,13 +83,13 @@ if (isset($_POST['pid'])) {
 
                                         <?php if ($post['date'] > time() ) :?>
                                             <ul class="list-inline">
-                                                <li><share-button post-id="<?php echo $post['id'] ?>" data-url="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" data-description="<?php echo $post['title'] ?>">share</share-button></li>
+                                                <li><share-button post-id="<?php echo $post['id'] ?>" data-url="https://bossearn.com/news.php?news=<?php echo $post['id'] ?>" data-description="<?php echo $post['title'] ?>">share</share-button></li>
                                             </ul>
                                         <?php endif; ?>
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" > <?php echo $post['title']; ?> </h4>
                                         <p><?php echo substr($post['body'], 0, 120).' . . .'; ?></p>
-                                        <a href="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
+                                        <a href="https://bossearn.com/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
                                         <hr class="invis">
                                             <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') : ?>
                                                 <a href="editpost.php?id=<?php echo $post['id'] ?>" class="btn btn-ep">edit post</a>
