@@ -164,7 +164,11 @@ require_once 'autoload.php';
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="earnings.php">earnings</a>
+                                <a class="nav-link" href="bref.php">bref earnings</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="bpoint.php">bpoint earnings</a>
                             </li>
                             
                             <li class="nav-item">

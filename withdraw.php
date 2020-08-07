@@ -54,7 +54,7 @@ if (!empty($earning[0])) {
         <div class="sidebar">
             <div class="widget-no-style">
                 <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earning in Bref</h3>
+                    <h3>Earnings in Bref</h3>
                     <div class="row">
                         <div class="col-lg-6"><b>Points: <?php echo number_format($brefpoint) ?> </b></div>
                         <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($brefcash); ?></b></div>
