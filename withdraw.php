@@ -48,54 +48,32 @@ if (!empty($earning[0])) {
 
 <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] !== 'admin') {?>
 
+<h1>Withdrawal</h1>
 
-<div class="row text-center">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="sidebar">
-            <div class="widget-no-style">
-                <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earnings in Bref</h3>
-                    <div class="row">
-                        <div class="col-lg-6"><b>Points: <?php echo number_format($brefpoint) ?> </b></div>
-                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($brefcash); ?></b></div>
-                    </div>
-                    <hr>
-                    
-                    <?php if ($earning[0]['status'] == 0 && $brefcash >= 3000) {?>
-                        <form method="post" >
-                            <input type="hidden" name="withdraw" value="bref">
-                            <button type="submit">withdraw</button>
-                        </form>
-                    <?php } ?>
-                </div><!-- end newsletter -->
-            </div>
-        </div><!-- end sidebar -->
-    </div><!-- end col -->
+<hr>
 
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="sidebar">
-            <div class="widget-no-style">
-                <div class="newsletter-widget text-center align-self-center">
-                    <h3>Earnings in Bpoints</h3>
-                    <div class="row">
-                        <div class="col-lg-6"><b>Points : <?php echo number_format($bearnpoint); ?> </b></div>
-                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($bearncash); ?></b></div>
-                    </div>
-                    <hr>
-                    <?php if ($earning[0]['date'] >= (time() + 60 * 60 * 24 * 30) && $earning[0]['status'] == 0) {?>
-                        <form method="post">
-                            <input type="hidden" name="withdraw" value="bearn">
-                            <button type="submit">withdraw</button>
-                        </form>
-                        
-                    <?php } ?>
-                </div><!-- end newsletter -->
-            </div>
-        </div><!-- end sidebar -->
-    </div><!-- end col -->
+<div class="row">
+    <div class="col-md-6">
+        <button data-toggle="collapse" data-target="#bref" class="btn">withdraw bref</button>
+    </div>
+
+    <div class="col-md-6">
+        <button data-toggle="collapse" data-target="#bpoint" class="btn">withdraw bpoints</button>
+    </div>
 </div>
 
+<hr>
 
+<div class="row">
+    <div class="col">
+        <form action="" method="post" class="form-wrapper collapse" id="bref">
+            <div class="col-md-3 m-auto">
+                <input type="number" name="bref" id="" class="form-control" placeholder="Enter bref amount to withdraw">
+                <button class="btn">Request withdrawal</button>
+            </div>
+        </form>
+    </div>
+</div>
 <?php } ?>
 
 

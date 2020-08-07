@@ -73,6 +73,52 @@ echo count($refcount);
 </div>
 <?php } ?>
 
+<div class="row text-center">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="sidebar">
+            <div class="widget-no-style">
+                <div class="newsletter-widget text-center align-self-center">
+                    <h3>Earnings in Bref</h3>
+                    <div class="row">
+                        <div class="col-lg-6"><b>Points: <?php echo number_format($brefpoint) ?> </b></div>
+                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($brefcash); ?></b></div>
+                    </div>
+                    <hr>
+                    
+                    <?php if ($earning[0]['status'] == 0 && $brefcash >= 3000) {?>
+                        <form method="post" >
+                            <input type="hidden" name="withdraw" value="bref">
+                            <button type="submit">withdraw</button>
+                        </form>
+                    <?php } ?>
+                </div><!-- end newsletter -->
+            </div>
+        </div><!-- end sidebar -->
+    </div><!-- end col -->
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="sidebar">
+            <div class="widget-no-style">
+                <div class="newsletter-widget text-center align-self-center">
+                    <h3>Earnings in Bpoints</h3>
+                    <div class="row">
+                        <div class="col-lg-6"><b>Points : <?php echo number_format($bearnpoint); ?> </b></div>
+                        <div class="col-lg-6"><b>Cash : &#8358; <?php echo number_format($bearncash); ?></b></div>
+                    </div>
+                    <hr>
+                    <?php if ($earning[0]['date'] >= (time() + 60 * 60 * 24 * 30) && $earning[0]['status'] == 0) {?>
+                        <form method="post">
+                            <input type="hidden" name="withdraw" value="bearn">
+                            <button type="submit">withdraw</button>
+                        </form>
+                        
+                    <?php } ?>
+                </div><!-- end newsletter -->
+            </div>
+        </div><!-- end sidebar -->
+    </div><!-- end col -->
+</div>
+
 <div class="row">
         <div class="col-lg-3"></div>
 
