@@ -72,8 +72,8 @@ if (isset($_POST['delid'])) {
 <hr>
 
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 tbl">
+        
+        <div class="col-md-12 tbl">
             <?php
                 if (isset($_POST['user']) && $_POST['user'] === '2') {
                     echo "<h2>Vendors</h2>";
@@ -99,9 +99,7 @@ if (isset($_POST['delid'])) {
             </table>
             
         </div>
-        <div class="col-md-1">
-           
-        </div>
+        
     </div>
 
 </div>
