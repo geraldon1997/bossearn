@@ -33,8 +33,10 @@ class Earning extends Gateway
         $newBearn = $oldBearn[0]['bearn'] + $bearn;
         $sql = "UPDATE `earnings` SET bearn = '$newBearn' WHERE `user_id` = '$uid'";
         $sql1 = "UPDATE `users` SET `date` = '$date' WHERE `id` = '$uid' ";
-        Gateway::run($sql);
-        Gateway::run($sql1);
+        $a = Gateway::run($sql);
+        if ($a) {
+            Gateway::run($sql1);
+        }
     }
 
     public static function updateBref($bref, $uid)

@@ -22,7 +22,13 @@ class CommentController extends Comment
             $cc = $key['comment'];
             $user = User::findUser('id', $cuid);
 
-            echo $cid.' '.$cuid.' '.$cpid.' '.$cc.'<br>';
+            $username = $user[0]['uname'];
+
+            echo "<div class='blog-title-area'>";
+            echo "<span class='color-yellow'>.by <strong>$username</strong></span>";
+            echo "<p>$cc</p>";
+            echo "</div>";
+            echo "<hr>";
         }
     }
 }

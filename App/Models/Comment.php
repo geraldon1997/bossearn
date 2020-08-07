@@ -21,7 +21,7 @@ class Comment extends Gateway
     public static function insert($uid, $pid, $com)
     {
         $sql = "INSERT INTO comments (`user_id`,`post_id`,`comment`) VALUES ('$uid','$pid','$com')";
-        Earning::updateBearn(5, $uid);
+        // Earning::updateBearn(5, $uid);
         return Gateway::run($sql);
     }
 
@@ -29,5 +29,11 @@ class Comment extends Gateway
     {
         $sql = "SELECT * FROM comments WHERE $col = '$pid'";
         return Gateway::fetch($sql);
+    }
+
+    public static function checkComment($uid, $pid)
+    {
+        $sql = "SELECT * FROM comments WHERE `user_id` = '$uid' AND `post_id` = '$pid' ";
+        return Gateway::check($sql);
     }
 }

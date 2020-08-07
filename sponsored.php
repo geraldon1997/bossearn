@@ -69,7 +69,7 @@ if (isset($_POST['pid'])) {
                             
                                 <div class="blog-box wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
                                     <div class="post-media">
-                                        <a href="https://bossearn.com/news.php?news=<?php echo $post['id'] ?>" title="">
+                                        <a href="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" title="">
                                             <img src="<?php echo $post['image'] ?>" alt="" class="img-fluid post-img">
                                             <div class="hovereffect">
                                                 <span></span>
@@ -89,7 +89,7 @@ if (isset($_POST['pid'])) {
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" > <?php echo $post['title']; ?> </h4>
                                         <p><?php echo substr($post['body'], 0, 120).' . . .'; ?></p>
-                                        <a href="https://bossearn.com/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
+                                        <a href="http://bossearn.test/news.php?news=<?php echo $post['id'] ?>" class="btn" post-id="<?php echo $post['id'] ?>" id="read">Read more</a>
                                         <hr class="invis">
                                             <?php if (Role::role(User::findLoginUser('uname', $_SESSION['uname'])[0]['role_id'])[0]['role'] === 'admin' || $_SESSION['uname'] === 'tonyinye') : ?>
                                                 <a href="editpost.php?id=<?php echo $post['id'] ?>" class="btn btn-ep">edit post</a>

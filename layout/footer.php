@@ -53,7 +53,7 @@
                             pid_val = $(e).attr('post-id')
                             
                             $.ajax({
-                            url: 'https://bossearn.com/addshare.php',
+                            url: 'http://bossearn.test/addshare.php',
                             type: 'POST',
                             data : {
                                 pid : pid_val

@@ -68,12 +68,14 @@ class UserController extends User
           if (Role::role(User::findUser('uname', $data['username'])[0]['role_id'])[0]['role'] === 'user') {
             if (CouponController::userCouponStatus($data['username']) > 0) {
                 $earnlog = $login[0];
+                
                 if ($earnlog['date'] != $date) {
                     Earning::updateBearn(100, User::userId($data['username'])[0]['id']);
+
+                    
                 }
-                
                 echo "<script>window.location = '/';</script>";
-                $_SESSION['uname'] = $data['username'];
+                    $_SESSION['uname'] = $data['username'];
                
             } else {
                 echo "<script>window.location = 'verify.php';</script>";
