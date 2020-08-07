@@ -141,10 +141,10 @@ a {
 
 .navbar-inverse .navbar-nav .nav-link,
 .navbar-nav .nav-link {
-    font-size: 15px;
+    font-size: 10px;
     font-weight: 500;
     line-height: 1;
-    padding: 0.9rem 0 0.8rem;
+    padding: 0.5rem 0 0.5rem;
     text-transform: capitalize;
     color: #121212;
 }
@@ -162,8 +162,8 @@ a {
 }
 
 .navbar-toggleable-md .navbar-nav .nav-link {
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 .header-section {

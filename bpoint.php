@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </style>
 
 <div class="page-wrapper">
-    <h1>Bref Earnings</h1>
+    <h1>Bpoint Earnings</h1>
     <div class="row">
         
         <div class="col-md-12 tbl">
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <th>points</th>
                 <th>Naira (cash)</th>
                 <th>action</th>
-                <?php EarningController::view('bref'); ?>
+                <?php EarningController::view('bearn'); ?>
             </table>
         </div>
         

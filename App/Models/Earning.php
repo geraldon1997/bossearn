@@ -73,9 +73,9 @@ class Earning extends Gateway
         return Gateway::fetch($sql);
     }
 
-    public static function all()
+    public static function all($type)
     {
-        $sql = "SELECT * FROM earnings WHERE `status` = 1";
+        $sql = "SELECT * FROM earnings WHERE `withdraw` = '$type' AND `status` = 1";
         return Gateway::fetch($sql);
     }
 

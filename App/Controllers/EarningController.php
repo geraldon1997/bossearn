@@ -7,9 +7,9 @@ use App\Models\User;
 
 class EarningController extends Earning
 {
-    public static function view()
+    public static function view($type)
     {
-        $earning = Earning::all();
+        $earning = Earning::all($type);
 
         if (!empty($earning)) {
             $sn = 1;
@@ -55,19 +55,23 @@ class EarningController extends Earning
                         }
                         
 
-                echo    "<td>".number_format($bref)."</td>
-                        <td>".number_format($bearn)."</td>
-                        <td>$wt</td>";
+                        if ($type === 'bref') {
+                            echo "<td>".number_format($bref)."</td>";
+                        } elseif ($type === 'bearn') {
+                            echo "<td>".number_format($bearn)."</td>";
+                        }
+                        
+                        
 
-                        if ($wt === 'bref') {
+                        if ($type === 'bref') {
                             echo "<td>".number_format($brefw)."</td>";
-                        } elseif ($wt === 'bearn') {
+                        } elseif ($type === 'bearn') {
                             echo "<td>".number_format($bearnw)."</td>";
                         } else {
                             echo "<td>0</td>";
                         }
 
-                        if ($wt === 'bref') { ?>
+                        if ($type === 'bref') { ?>
                                 <td>
                                     <form method='post' onsubmit="return confirm('are you sure ?');">
                                         <input type='hidden' name='type' value='<?php echo $wt; ?>'>
@@ -76,7 +80,7 @@ class EarningController extends Earning
                                     </form>
                                 </td>";
                                 <?php
-                        } elseif ($wt === 'bearn') { ?>
+                        } elseif ($type === 'bearn') { ?>
                                 <td>
                                     <form method='post' onsubmit="return confirm('are you sure ?');">
                                         <input type='hidden' name='type' value='<?php echo $wt; ?>'>
