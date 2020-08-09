@@ -1,38 +1,51 @@
 <?php
 namespace App\Core;
 
-use App\Core\DB;
+use App\Core\Database;
 
-class Gateway
+class Gateway extends Database
 {
-    public static function run($sql)
+    private Database $mysqli;
+
+    public function __construct()
     {
-        $result = DB::init()->query($sql);
-        if ($result) {
-            return true;
-        } else {
+        $this->mysqli = new Database();
+    }
+    
+    protected function execute($query)
+    {
+        $result = $this->mysqli->query($query);
+        if (!$result) {
             return false;
         }
+        return $result;
     }
 
-    public static function fetch($sql)
+    protected function fetch($query)
     {
-        $result = DB::init()->query($sql);
+        $data = [];
+        $result = $this->mysqli->query($query);
 
-        if ($result->num_rows > 0) {
-            $data = [];
-            while ($row = $result->fetch_assoc()) {
-                array_push($data, $row);
-            }
-            return $data;
-        } else {
+        if (!$result) {
             return false;
         }
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+
+        return $data;
     }
 
-    public static function check($sql)
+    protected function check($query)
     {
-        $result = DB::init()->query($sql);
-        return $result->num_rows;
+        $result = $this->mysqli->query($query);
+        $exists = $result->num_rows;
+        
+        if (!$exists) {
+            return false;
+        }
+
+        return true;
     }
 }

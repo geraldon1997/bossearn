@@ -1,15 +1,11 @@
 <?php
-session_start();
+spl_autoload_register('loadClass');
 
-spl_autoload_register('myAutoLoad');
-
-function myAutoLoad($class)
+function loadClass($className)
 {
-    $newClass = str_replace('\\', '/', $class);
-    $ext = '.php';
-    $className = $newClass.$ext;
-
-    if (file_exists($className)) {
-        require_once $className;
+    $class = str_ireplace('\\', '/', $className).'.php';
+    if (!file_exists($class)) {
+        return false;
     }
+    require_once $class;
 }

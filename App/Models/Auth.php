@@ -3,7 +3,7 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class User extends Model
+class Auth extends Model
 {
     //
 }
