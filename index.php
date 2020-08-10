@@ -2,7 +2,7 @@
 
 use App\Core\Route;
 
-require_once 'autoload.php';
+require_once 'App/autoload.php';
 
 $route = new Route();
 echo $route->get();
