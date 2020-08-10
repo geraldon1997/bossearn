@@ -42,7 +42,11 @@ if (!empty($earning[0])) {
 
 ?>
 <style>
-    
+    @media (max-width: 700px){
+        .btn{
+            margin-bottom: 10px;
+        }
+    }
 </style>
 <div class="page-wrapper text-center center">
 
@@ -72,6 +76,13 @@ if (!empty($earning[0])) {
                 <button class="btn">Request withdrawal</button>
             </div>
         </form>
+
+        <form action="" method="post" class="form-wrapper collapse" id="bpoint">
+            <div class="col-md-3 m-auto">
+                <input type="number" name="bpoint" id="" class="form-control" placeholder="Enter bpoint amount to withdraw">
+                <button class="btn">Request withdrawal</button>
+            </div>
+        </form>
     </div>
 </div>
 <?php } ?>
@@ -81,5 +92,9 @@ if (!empty($earning[0])) {
     <hr class="invis">
 
 </div>
+
+<script>
+
+</script>
 
 <?php require_once 'layout/footer.php'; ?>
