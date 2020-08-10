@@ -9,3 +9,7 @@ function loadClass($className)
     }
     require_once $class;
 }
+
+define('HOME', '/');
+define('HOW', '/page/how');
+define('CONTACT', '/page/contact');
