@@ -15,9 +15,15 @@ class View
 
     public function importView($view, $data)
     {
+        $file = $this->viewPath.$view.'.php';
+        if (!file_exists($file)) {
+            return $this->importErrorView(['page not found']);
+        }
+        
         ob_start();
-        include_once $this->viewPath.$view.'.php';
+        include_once $file;
         return ob_get_clean();
+        
     }
 
     public function renderView($view, array $data = null)

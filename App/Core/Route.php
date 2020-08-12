@@ -48,20 +48,22 @@ class Route
 
         if (!class_exists($controller)) {
             $this->setStatusCode(404);
-            $error = [$class.' controller does not exist'];
+            $error = [$class.' Controller does not exist'];
             return call_user_func([new View, 'renderErrorView'], $error);
         }
         unset($pathArray[0]);
 
         if (empty($pathArray)) {
-            return 'no method found for '.$class.' controller';
+            $this->setStatusCode(404);
+            $error = ["no method found for $class controller"];
+            return call_user_func([new View, 'renderErrorView'], $error);
         }
 
         $method = $pathArray[1];
 
         if (!method_exists(new $controller, $method)) {
             $this->setStatusCode(404);
-            $error = [$method.' controller does not exist'];
+            $error = [$method.' Method does not exist'];
             return call_user_func([new View, 'renderErrorView'], $error);
         }
         unset($pathArray[1]);

@@ -10,6 +10,8 @@
     <li><a href="<?php echo HOME; ?>">index</a></li>
     <li><a href="<?php echo HOW; ?>">how it works</a></li>
     <li><a href="<?php echo CONTACT; ?>">contact</a></li>
+    <li><a href="<?php echo REGISTER; ?>">register</a></li>
+    <li><a href="<?php echo LOGIN; ?>">login</a></li>
 </ul>
 
     {{content}}
