@@ -12,6 +12,9 @@ function loadClass($className)
     require_once $class;
 }
 
+define('APP_ROOT', dirname(__DIR__));
+define('ASSETS', '/App/Assets');
+
 if (isset($_SESSION['uname'])) {
     define('HOME', '/home/index');
     define('HOW', '/home/how');

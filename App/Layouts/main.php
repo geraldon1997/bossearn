@@ -15,36 +15,36 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="App/Assets/Images/logo.jpeg" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="App/Assets/Images/logo.jpeg">
+    <link rel="shortcut icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg">
 
     <!-- Design fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="App/Assets/Css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/bootstrap.css" rel="stylesheet">
 
     <!-- FontAwesome Icons core CSS -->
-    <link href="App/Assets/Css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="App/Assets/Css/style.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/style.css" rel="stylesheet">
 
     <!-- Animate styles for this template -->
-    <link href="App/Assets/Css/animate.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/animate.css" rel="stylesheet">
 
     <!-- Responsive styles for this template -->
-    <link href="App/Assets/Css/responsive.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/responsive.css" rel="stylesheet">
 
     <!-- Colors for this template -->
-    <link href="App/Assets/Css/colors.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/colors.css" rel="stylesheet">
 
     <!-- Version Marketing CSS for this template -->
-    <link href="App/Assets/Css/version/marketing.css" rel="stylesheet">
+    <link href="<?php echo ASSETS; ?>/Css/version/marketing.css" rel="stylesheet">
 
 
-    <link rel='stylesheet' href='App/Assets/Css/share-button.min.css' type='text/css' media='all'/>
-    <!-- <script src="App/Assets/Js/jquery.min.js"></script> -->
+    <link rel='stylesheet' href='<?php echo ASSETS; ?>/Css/share-button.min.css' type='text/css' media='all'/>
+    <!-- <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script> -->
     
 
 
@@ -87,12 +87,28 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><img src="App/Assets/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
+                    <a class="navbar-brand" href="<?php echo HOME; ?>"><img src="<?php echo ASSETS; ?>/Images/version/logo.jpeg" alt="bossearn" id="logo"></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
 
                           	<li class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                                <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo LOGIN; ?>">login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo REGISTER; ?>">register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo HOW; ?>">how it works</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo CONTACT; ?>">contact us</a>
                             </li>
 
                         </ul>
@@ -124,12 +140,12 @@
 
     <!-- Core JavaScript
     ================================================== -->
-    <script src="App/Assets/Js/share-button.min.js"></script>
-    <script src="App/Assets/Js/jquery.min.js"></script>
-    <script src="App/Assets/Js/tether.min.js"></script>
-    <script src="App/Assets/Js/bootstrap.min.js"></script>
-    <script src="App/Assets/Js/animate.js"></script>
-    <script src="App/Assets/Js/custom.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/share-button.min.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/tether.min.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/bootstrap.min.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/animate.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/custom.js"></script>
     <script>
 
         $( document ).ready(function() {
