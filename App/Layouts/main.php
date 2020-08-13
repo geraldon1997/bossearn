@@ -44,7 +44,7 @@
 
 
     <link rel='stylesheet' href='<?php echo ASSETS; ?>/Css/share-button.min.css' type='text/css' media='all'/>
-    <!-- <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script> -->
+    <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
     
 
 
@@ -120,8 +120,9 @@
                 </nav>
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
-
-        {{content}}
+<div class="page-wrapper">
+{{content}}
+</div>
 
         <footer class="footer">
             <div class="container">
@@ -140,79 +141,12 @@
 
     <!-- Core JavaScript
     ================================================== -->
-    <script src="<?php echo ASSETS; ?>/Js/share-button.min.js"></script>
+    
     <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/tether.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/bootstrap.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/animate.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/custom.js"></script>
-    <script>
-
-        $( document ).ready(function() {
-            
-            new ShareButton({
-                networks: {
-                    whatsapp: {
-                        before: function(e) {
-                            this.url = $(e).attr('data-url'),
-                            this.description = $(e).attr('data-description')
-                        },
-                        after: function(e) {
-                            pid_val = $(e).attr('post-id')
-
-                            $.ajax({
-                            url: 'https://bossearn.com/addshare.php',
-                            type: 'POST',
-                            data : { 
-                                pid : pid_val
-                                }
-                            })
-                        }
-                    },
-                    facebook: {
-                        before: function(e) {
-                            this.url = $(e).attr('data-url'),
-                            this.description = $(e).attr('data-description')
-                        },
-                        after: function(e) {
-                            pid_val = $(e).attr('post-id')
-                            
-                            $.ajax({
-                            url: 'http://bossearn.test/addshare.php',
-                            type: 'POST',
-                            data : {
-                                pid : pid_val
-                                }
-                            })
-                            
-                        }
-                    },
-                    twitter: {
-                        before: function(e) {
-                            this.url = $(e).attr('data-url'),
-                            this.description = $(e).attr('data-description')
-                            
-                        },
-                        after: function(e) {;
-                            pid_val = $(e).attr('post-id');
-                            
-                            $.ajax({
-                            url: 'https://bossearn.com/addshare.php',
-                            type: 'POST',
-                            data : {
-                                pid : pid_val
-                                }
-                            })
-                              
-                        }
-                    }
-                },
-                ui: {
-                    flyout: 'middle bottom'
-                    }
-            });
-        });
-
-    </script>
+    
 </body>
 </html>

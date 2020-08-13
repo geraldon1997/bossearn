@@ -20,6 +20,11 @@ class Page extends Controller
         return $this->view('contact');
     }
 
+    public function login()
+    {
+        return $this->view('login');
+    }
+
     public function register()
     {
         return $this->view('register');

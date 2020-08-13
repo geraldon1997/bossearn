@@ -1,17 +1,18 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Auth as ModelsAuth;
+use App\Core\Controller;
 
-class Auth extends ModelsAuth
+class Auth extends Controller
 {
+    
     public function login()
     {
-        return $this->view('login');
+        var_dump($this->postData);
     }
 
     public function register()
     {
-        return $this->view('register');
+        
     }
 }
