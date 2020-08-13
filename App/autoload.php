@@ -15,19 +15,18 @@ function loadClass($className)
 define('APP_ROOT', dirname(__DIR__));
 define('ASSETS', '/App/Assets');
 
-if (isset($_SESSION['uname'])) {
-    define('HOME', '/home/index');
-    define('HOW', '/home/how');
-    define('CONTACT', '/home/contact');
-    define('SPONSORED', '/post/sponsored-posts');
-    define('PROFILE', '/user/profile');
-    define('WITHDRAW', '/earning/withdraw');
-    define('LOGOUT', '/user/logout');
+define('HOME', '/', true);
+define('HOW', '/page/how', true);
+define('CONTACT', '/page/contact', true);
+define('SPONSORED', '/post/sponsored-posts', true);
+define('PROFILE', '/user/profile', true);
+define('WITHDRAW', '/earning/withdraw', true);
+define('LOGOUT', '/auth/logout', true);
 
-}
+define('LOGIN', '/page/login', true);
+define('REGISTER', '/page/register', true);
 
-define('HOME', '/');
-define('HOW', '/page/how');
-define('CONTACT', '/page/contact');
-define('LOGIN', '/page/login');
-define('REGISTER', '/page/register');
+define('AUTH_LOGIN', '/auth/login');
+define('AUTH_REGISTER', '/auth/register');
+
+define('CONTACT_SEND', '/contact/send');

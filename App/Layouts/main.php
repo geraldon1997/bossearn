@@ -65,8 +65,6 @@
         cursor: pointer;
     }
     .page-wrapper{
-        margin-top: 100px;
-        margin-bottom: 100px;
         text-align: center;
     }
     .tbl{
@@ -74,6 +72,10 @@
     }
     .market-header{
         width: 100% !important;
+    }
+
+    .content{
+        margin-top: 100px;
     }
 </style>
 
@@ -95,6 +97,7 @@
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
 
+                            <?php if (!isset($_SESSION['uname'])) : ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo LOGIN; ?>">login</a>
                             </li>
@@ -102,6 +105,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo REGISTER; ?>">register</a>
                             </li>
+                            <?php endif; ?>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOW; ?>">how it works</a>
@@ -110,6 +114,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo CONTACT; ?>">contact us</a>
                             </li>
+
+                            <?php if (isset($_SESSION['uname'])) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo LOGOUT; ?>">logout</a>
+                            </li>
+                            <?php endif; ?>
 
                         </ul>
                         <!-- <form class="form-inline">
@@ -121,7 +131,9 @@
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
 <div class="page-wrapper">
+
 {{content}}
+
 </div>
 
         <footer class="footer">
