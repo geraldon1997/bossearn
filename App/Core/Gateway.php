@@ -42,7 +42,7 @@ class Gateway extends Database
         $result = $this->mysqli->query($query);
         $exists = $result->num_rows;
         
-        if (!$exists) {
+        if ($exists < 1) {
             return false;
         }
 

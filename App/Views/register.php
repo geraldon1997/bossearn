@@ -30,7 +30,7 @@
                 
                 <p></p>
 
-                <select name="couponAmount" id="" class="form-control">
+                <select name="couponAmountId" id="" class="form-control">
                     <option value="">choose coupon amount to register with</option>
                     <option>&#8358; 1,500</option>
                     <option>&#8358; 2,500</option>

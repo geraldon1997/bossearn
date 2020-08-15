@@ -1,9 +1,9 @@
 <?php
 namespace App\Models;
 
-use App\Core\Model;
+use App\Core\QueryBuilder;
 
-class User extends Model
+class User extends QueryBuilder
 {
     //
 }

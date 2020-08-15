@@ -17,11 +17,6 @@ class Auth extends Controller
         header('location:'.HOME);
     }
 
-    public function register()
-    {
-        var_dump($this->postData);
-    }
-
     public function logout()
    {
         $s = $_SESSION['uname'];

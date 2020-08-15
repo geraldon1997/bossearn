@@ -27,6 +27,6 @@ define('LOGIN', '/page/login', true);
 define('REGISTER', '/page/register', true);
 
 define('AUTH_LOGIN', '/auth/login');
-define('AUTH_REGISTER', '/auth/register');
+define('AUTH_REGISTER', '/user/register');
 
 define('CONTACT_SEND', '/contact/send');
