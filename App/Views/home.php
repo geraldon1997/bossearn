@@ -35,7 +35,7 @@
 
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
-<a href="register.php" class="btn" >Register</a>
+<a href="<?php echo REGISTER; ?>" class="btn" >Register</a>
 <hr>
         <section class="section lb">
             <div class="container">
