@@ -8,6 +8,7 @@ class Controller
     public View $view;
     public $postData;
     public $getData;
+    public $error;
 
     public function __construct()
     {
@@ -36,6 +37,7 @@ class Controller
             if (empty($this->postData[$key])) {
                 $this->error[$key] = "$key cannot be empty";
             }
+            htmlspecialchars($this->postData[$key]);
         }
     }
 }
