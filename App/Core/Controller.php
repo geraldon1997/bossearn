@@ -14,14 +14,11 @@ class Controller
         $this->view = new View();
         if ($this->method() === 'post') {
             $this->postData = $_POST;
-        }
-
-        if ($this->method() === 'get') {
             $this->getData = $_GET;
         }
     }
 
-    public function view($view, array $params = null)
+    public function view($view, $params = null)
     {
         
         return $this->view->renderView($view, $params);
