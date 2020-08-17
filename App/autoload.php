@@ -15,16 +15,16 @@ function loadClass($className)
 define('APP_ROOT', dirname(__DIR__));
 define('ASSETS', '/App/Assets');
 
-define('HOME', '/', true);
-define('HOW', '/page/how', true);
-define('CONTACT', '/page/contact', true);
-define('SPONSORED', '/post/sponsored-posts', true);
-define('PROFILE', '/user/profile', true);
-define('WITHDRAW', '/earning/withdraw', true);
-define('LOGOUT', '/auth/logout', true);
+define('HOME', '/');
+define('HOW', '/page/how');
+define('CONTACT', '/page/contact');
+define('SPONSORED', '/post/sponsored-posts');
+define('PROFILE', '/user/profile');
+define('WITHDRAW', '/earning/withdraw');
+define('LOGOUT', '/auth/logout');
 
-define('LOGIN', '/page/login', true);
-define('REGISTER', '/page/register', true);
+define('LOGIN', '/page/login');
+define('REGISTER', '/page/register');
 
 define('AUTH_LOGIN', '/auth/login');
 define('AUTH_REGISTER', '/user/register');
