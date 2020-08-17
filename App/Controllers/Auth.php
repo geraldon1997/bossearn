@@ -5,6 +5,7 @@ use App\Core\Controller;
 
 class Auth extends Controller
 {
+    public $error;
 
     public function defaultPage()
     {
@@ -13,8 +14,10 @@ class Auth extends Controller
     
     public function login()
     {
-        $_SESSION['uname'] = 'mosco';
-        header('location:'.HOME);
+        $this->validateForm();
+        if (!empty($this->error)) {
+            return $this->view('login', ['error' => $this->error]);
+        }
     }
 
     public function logout()

@@ -21,13 +21,5 @@ class User extends Controller
         }
     }
 
-    public function validateForm()
-    {
-        unset($this->postData['ref']);
-        foreach ($this->postData as $key => $value) {
-            if (empty($this->postData[$key])) {
-                $this->error[$key] = "$key cannot be empty";
-            }
-        }
-    }
+    
 }

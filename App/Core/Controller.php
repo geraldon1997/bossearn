@@ -29,4 +29,13 @@ class Controller
         $method = $_SERVER['REQUEST_METHOD'];
         return strtolower($method);
     }
+
+    public function validateForm()
+    {
+        foreach ($this->postData as $key => $value) {
+            if (empty($this->postData[$key])) {
+                $this->error[$key] = "$key cannot be empty";
+            }
+        }
+    }
 }
