@@ -2,13 +2,16 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Referral;
+use App\Models\Subscription;
+use App\Models\User as ModelsUser;
 
 class User extends Controller
 {
-
+    
     public function register()
     {
-        if (empty($this->postData['couponAmountId'])) {
+        if (empty($this->postData['subscription'])) {
             return $this->view('register', ['regError' => 'please choose subscription amount', 'data' => $this->postData]);
         }
         $ref = $this->postData['ref'];
@@ -19,7 +22,10 @@ class User extends Controller
         if (!empty($this->error)) {
             return $this->view('register', ['data' => $this->postData, 'error' => $this->error]);
         }
-        return "<h1>form submitted, validation passed</h1>";
+        
+        ModelsUser::usersTable();
+
+        Referral::referralsTable();
     }
 
     

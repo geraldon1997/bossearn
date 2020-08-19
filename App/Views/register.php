@@ -1,10 +1,21 @@
+<style>
+p{
+    color: red;
+}
+</style>
 <div class="content">
 <div class="row">
         <div class="col-lg-3"></div>
 
         <div class="col-lg-6">
-            <form class="form-wrapper" method="POST" action="<?php echo AUTH_REGISTER; ?>">
-            <?php if (isset($data['regError'])) {echo $data['regError'];} ?>
+            <form class="form-wrapper" method="POST" action="<?php
+
+use App\Models\Subscription;
+
+echo AUTH_REGISTER; ?>">
+
+            <p><?php if (isset($data['regError'])) {echo $data['regError'];} ?></p>
+
             <h4>Registration form</h4>
                 <input type="hidden" name="ref" value="<?php if (isset($_GET['ref'])) {echo $_GET['ref'];} ?>">
                 <input type="text" class="form-control" placeholder="surname" name="surname" value="<?php if (isset($data['data']['surname'])) {echo $data['data']['surname'];} ?>">
@@ -31,11 +42,11 @@
                 
                 <p><?php if (isset($data['error']['password'])) {echo $data['error']['password'];} ?></p>
 
-                <select name="couponAmountId" id="" class="form-control">
-                    <option value="<?php if (isset($data['data']['couponAmountId'])) {echo $data['data']['couponAmountId'];} else {echo "";} ?>"><?php if (isset($data['data']['couponAmountId'])) {echo $data['data']['couponAmountId'];} else {echo "choose coupon amount to register with";} ?></option>
-                    <option>&#8358; 1,500</option>
-                    <option>&#8358; 2,500</option>
-                    <option>&#8358; 3,500</option>
+                <select name="subscription" id="" class="form-control">
+                    <option value="<?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo $data['data']['subscription'];} ?>"><?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo Subscription::amount($data['data']['subscription']);} else {echo 'choose subscription amount';} ?></option>
+                    <?php foreach (Subscription::allSubscription() as $key) : ?>
+                    <option value="<?php echo $key['id'] ?>"><?php echo $key['amount']; ?></option>
+                    <?php endforeach; ?>
                 </select>
                 
                 <button type="submit" class="btn btn-primary">Register <i class="fa fa-arrow-right"></i></button>

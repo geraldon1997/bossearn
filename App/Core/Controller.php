@@ -20,8 +20,7 @@ class Controller
     }
 
     public function view($view, $params = null)
-    {
-        
+    {   
         return $this->view->renderView($view, $params);
     }
 
@@ -39,5 +38,10 @@ class Controller
             }
             htmlspecialchars($this->postData[$key]);
         }
+    }
+
+    public function passwordHash($password)
+    {
+        return password_hash($password, PASSWORD_BCRYPT);
     }
 }

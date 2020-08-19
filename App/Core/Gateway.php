@@ -5,26 +5,20 @@ use App\Core\Database;
 
 class Gateway extends Database
 {
-    private Database $mysqli;
-
-    public function __construct()
+   
+    protected static function execute($query)
     {
-        $this->mysqli = new Database();
-    }
-    
-    protected function execute($query)
-    {
-        $result = $this->mysqli->query($query);
+        $result = self::init()->query($query);
         if (!$result) {
             return false;
         }
         return $result;
     }
 
-    protected function fetch($query)
+    protected static function fetch($query)
     {
         $data = [];
-        $result = $this->mysqli->query($query);
+        $result = self::init()->query($query);
 
         if (!$result) {
             return false;
@@ -37,9 +31,9 @@ class Gateway extends Database
         return $data;
     }
 
-    protected function check($query)
+    protected static function check($query)
     {
-        $result = $this->mysqli->query($query);
+        $result = self::init()->query($query);
         $exists = $result->num_rows;
         
         if ($exists < 1) {

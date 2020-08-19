@@ -3,10 +3,13 @@ namespace App\Core;
 
 use mysqli;
 
-class Database extends mysqli
+class Database
 {
-    public function __construct()
+    public static $mysqli;
+
+    public static function init()
     {
-        return new mysqli('localhost','root','','bossearn');
+        self::$mysqli = new mysqli('localhost','root','','bossearn_new');
+        return self::$mysqli;
     }
 }
