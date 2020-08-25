@@ -12,7 +12,7 @@ class Page extends Controller
 
     public function how()
     {
-        return $this->view('how');
+        return $this->view('test');
     }
 
     public function contact()

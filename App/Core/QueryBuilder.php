@@ -24,7 +24,7 @@ class QueryBuilder extends Gateway
 
     public static function update(string $table, $set, string $col, string $val)
     {
-        $query = "UPDATE TABLE $table SET $set WHERE $col = '$val' ";
+        $query = "UPDATE $table SET $set WHERE $col = '$val' ";
         $result = self::execute($query);
         return $result;
     }
@@ -50,7 +50,9 @@ class QueryBuilder extends Gateway
     public static function exists($table, $col, $val)
     {
         $query = "SELECT * FROM $table WHERE $col = '$val' ";
-        return self::check($query);
+        $result = self::check($query);
+
+        return $result;
     }
 
     public static function delete($table, $col, $val)
@@ -58,4 +60,18 @@ class QueryBuilder extends Gateway
         $query = "DELETE FROM $table WHERE $col = '$val' ";
         return self::fetch($query);
     }
+
+    public static function columns($table)
+    {
+        $query = "SHOW COLUMNS FROM $table";
+        $result = self::fetch($query);
+
+        $columns = [];
+        for ($i=0; $i < count($result); $i++) { 
+            array_push($columns, $result[$i]['Field']);
+        }
+        array_shift($columns);
+        return $columns;
+    }
+
 }

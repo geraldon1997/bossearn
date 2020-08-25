@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\User;
 
 class Auth extends Controller
 {
@@ -18,6 +19,15 @@ class Auth extends Controller
         if (!empty($this->error)) {
             return $this->view('login', ['error' => $this->error]);
         }
+
+        $username = $this->postData['username'];
+        $password = $this->postData['password'];
+
+        $check = User::find(User::$table, 'username', $username);
+        if (count($check) < 1) {
+            return $this->view('login', ['error' => 'username or password does not exists']);
+        }
+        return count($check);
     }
 
     public function logout()

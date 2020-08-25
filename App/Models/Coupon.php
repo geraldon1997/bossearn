@@ -16,8 +16,8 @@ class Coupon extends QueryBuilder
         $data .= "user_id INT NOT NULL, ";
         $data .= "date_generated DATE NOT NULL, ";
         $data .= "date_used TIMESTAMP NOT NULL, ";
-        $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id), ";
-        $data .= "FOREIGN KEY (user_id) REFERENCES users(id)";
+        $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id) ON UPDATE CASCADE ON DELETE CASCADE, ";
+        $data .= "FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
         return self::create(self::$table, $data);
     }

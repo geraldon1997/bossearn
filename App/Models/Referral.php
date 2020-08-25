@@ -13,9 +13,22 @@ class Referral extends QueryBuilder
         $data .= "referrer INT NOT NULL, ";
         $data .= "referred INT NOT NULL, ";
         $data .= "date_updated TIMESTAMP, ";
-        $data .= "FOREIGN KEY (referrer) REFERENCES users(id), ";
-        $data .= "FOREIGN KEY (referred) REFERENCES users(id)";
+        $data .= "FOREIGN KEY (referrer) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE, ";
+        $data .= "FOREIGN KEY (referred) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
         return self::create(self::$table, $data);
+    }
+
+    public static function id($ref)
+    {
+        $result = self::find(User::$table, 'ref', $ref);
+        return $result[0]['id'];
+    }
+
+    public static function addReferral($values)
+    {
+        $columns = self::columns(self::$table);
+        array_pop($columns);
+        return self::insert(self::$table, $columns, $values);
     }
 }

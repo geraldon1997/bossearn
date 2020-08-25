@@ -10,7 +10,9 @@ class Subscription extends QueryBuilder
     public static function subscriptionTable()
     {
         $data = "id TINYINT PRIMARY KEY AUTO_INCREMENT, ";
-        $data .= "amount INT NOT NULL";
+        $data .= "amount INT NOT NULL, ";
+        $data .= "subscription_link VARCHAR(255) NOT NULL";
+        
         return self::create(self::$table, $data);
     }
 
@@ -40,4 +42,5 @@ class Subscription extends QueryBuilder
         $result = self::find(self::$table, 'amount', $amount);
         return $result[0]['id'];
     }
+
 }

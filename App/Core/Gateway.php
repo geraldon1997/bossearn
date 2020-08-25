@@ -36,10 +36,13 @@ class Gateway extends Database
         $result = self::init()->query($query);
         $exists = $result->num_rows;
         
-        if ($exists < 1) {
-            return false;
-        }
-
-        return true;
+        return $exists;
     }
+
+    public static function listColumns($query)
+    {
+        $result = self::init()->query($query);
+        return $result;
+    }
+
 }

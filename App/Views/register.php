@@ -15,6 +15,7 @@ use App\Models\Subscription;
 echo AUTH_REGISTER; ?>">
 
             <p><?php if (isset($data['regError'])) {echo $data['regError'];} ?></p>
+        
 
             <h4>Registration form</h4>
                 <input type="hidden" name="ref" value="<?php if (isset($_GET['ref'])) {echo $_GET['ref'];} ?>">
