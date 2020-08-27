@@ -106,7 +106,7 @@
                                 <a class="nav-link" href="<?php echo REGISTER; ?>">register</a>
                             </li>
                             <?php endif; ?>
-<a href="<?php echo ACTIVATION_PAGE; ?>">activate</a>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOW; ?>">how it works</a>
                             </li>
