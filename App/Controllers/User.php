@@ -24,6 +24,7 @@ class User extends Controller
 
         $this->validateForm();
 
+        $this->postData = $this->postData + array('is_active' => 0);
         $this->postData['date'] = date('Y-m-d');
         $this->postData = array('ref' => $refCode) + $this->postData;
         

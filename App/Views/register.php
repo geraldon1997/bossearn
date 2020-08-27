@@ -42,7 +42,7 @@ echo AUTH_REGISTER; ?>">
                 <input type="password" class="form-control" placeholder="Password" name="password" value="<?php if (isset($data['data']['password'])) {echo $data['data']['password'];} ?>">
                 
                 <p><?php if (isset($data['error']['password'])) {echo $data['error']['password'];} ?></p>
-
+                <input type="hidden" name="role_id" value="3">
                 <select name="subscription" id="" class="form-control">
                     <option value="<?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo $data['data']['subscription'];} ?>"><?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo Subscription::amount($data['data']['subscription']);} else {echo 'choose subscription amount';} ?></option>
                     <?php foreach (Subscription::allSubscription() as $key) : ?>
