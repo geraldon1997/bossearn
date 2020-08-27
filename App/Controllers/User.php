@@ -39,18 +39,18 @@ class User extends Controller
 
                 $register = ModelsUser::addUser($this->postData);
 
-                // if (!$register) {
-                //     $this->error = 'username or email already exists';
-                //     return $this->view('register', ['data' => $this->postData, 'regError' => $this->error]);
-                // }
+                if (!$register) {
+                    $this->error = 'username or email already exists';
+                    return $this->view('register', ['data' => $this->postData, 'regError' => $this->error]);
+                }
 
                 $user_id = ModelsUser::currentInsertedId($this->postData['username']);
 
                 $referrals = [$referralId,$user_id];
-                // $addref = Referral::addReferral($referrals);
+                $addref = Referral::addReferral($referrals);
                 
                 $point = Point::point('id', $this->postData['subscription'])[0]['signup_bonus'];
-                // $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
+                $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
 
                 $subid = ModelsUser::subscriptionId($user_id);
 
@@ -60,7 +60,7 @@ class User extends Controller
 
                 $updateEarning = Earning::updateEarning('bref', "'$newReferralPoint'", $referralId);
                 
-                header('location:'.HOME);
+                header('location:'.ACTIVATION_PAGE);
                 $_SESSION['uname'] = $this->postData['username'];
             }
             
@@ -79,7 +79,7 @@ class User extends Controller
         $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
 
         if ($addEarning) {
-            header('location:'.HOME);
+            header('location:'.ACTIVATION_PAGE);
             $_SESSION['uname'];
         }
 
@@ -88,6 +88,11 @@ class User extends Controller
     public static function generateReferralCode()
     {
         return rand(000000, 999999);
+    }
+
+    public function activation()
+    {
+        return $this->view('activation');
     }
 
     

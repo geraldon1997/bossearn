@@ -7,6 +7,7 @@ use App\Models\Earning;
 use App\Models\News;
 use App\Models\Point;
 use App\Models\Referral;
+use App\Models\Role;
 use App\Models\Subscription;
 use App\Models\User;
 
@@ -14,9 +15,10 @@ class Seed
 {
     public function __construct()
     {
+        Role::rolesTable();
         Subscription::subscriptionTable();
         Point::pointsTable();
-        User::usersTable();
+        $u = User::usersTable();
         Referral::referralsTable();
         Coupon::couponsTable();
         News::newsTypeTable();

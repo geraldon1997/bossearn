@@ -19,6 +19,7 @@ class User extends QueryBuilder
         $data .= "password VARCHAR(40) NOT NULL, ";
         $data .= "role_id TINYINT NOT NULL, ";
         $data .= "subscription_id TINYINT NOT NULL, ";
+        $data .= "is_active BOOLEAN NOT NULL, ";
         $data .= "date_joined DATE NOT NULL, ";
         $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id) ON UPDATE CASCADE ON DELETE CASCADE, ";
         $data .= "FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE";

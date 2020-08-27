@@ -43,4 +43,11 @@ class Subscription extends QueryBuilder
         return $result[0]['id'];
     }
 
+    public static function subscriptionLink()
+    {
+        $subId = self::find(User::$table, 'username', $_SESSION['uname'])[0]['subscription_id'];
+        $subLink = self::find(self::$table, 'id', $subId)[0]['subscription_link'];
+        return $subLink;
+    }
+
 }

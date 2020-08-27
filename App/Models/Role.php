@@ -9,7 +9,10 @@ class Role extends QueryBuilder
 
     public static function rolesTable()
     {
-        //
+        $data = "id TINYINT PRIMARY KEY AUTO_INCREMENT, ";
+        $data .= "role VARCHAR(20) NOT NULL";
+
+        return self::create(self::$table, $data);
     }
 
     public static function isUser()

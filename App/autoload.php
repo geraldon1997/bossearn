@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\Subscription;
+
 session_start();
 
 spl_autoload_register('loadClass');
@@ -30,3 +33,10 @@ define('AUTH_LOGIN', '/auth/login');
 define('AUTH_REGISTER', '/user/register');
 
 define('CONTACT_SEND', '/contact/send');
+
+define('ACTIVATION_PAGE', '/user/activation');
+
+if (isset($_SESSION['uname'])) {
+    define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
+}
+
