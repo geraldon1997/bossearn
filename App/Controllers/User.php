@@ -81,7 +81,7 @@ class User extends Controller
 
         if ($addEarning) {
             header('location:'.ACTIVATION_PAGE);
-            $_SESSION['uname'];
+            $_SESSION['uname'] = $this->postData['username'];
         }
 
     }

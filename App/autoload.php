@@ -40,3 +40,6 @@ if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
 }
 
+
+
+
