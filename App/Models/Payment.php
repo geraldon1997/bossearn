@@ -14,7 +14,7 @@ class Payment extends QueryBuilder
         $data .= "payment_type VARCHAR(15) NOT NULL, ";
         $data .= "subscription_id TINYINT NOT NULL, ";
         $data .= "reference_no VARCHAR(20) NOT NULL, ";
-        $data .= "date_updated";
+        $data .= "date_paid DATE NOT NULL, ";
         $data .= "FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE, ";
         $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id) ON UPDATE CASCADE ON DELETE CASCADE";
 

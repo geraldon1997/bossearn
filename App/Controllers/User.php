@@ -96,5 +96,8 @@ class User extends Controller
         return $this->view('activation');
     }
 
-    
+    public function profile()
+    {
+        return $this->view('profile');
+    }
 }

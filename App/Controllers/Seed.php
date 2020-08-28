@@ -5,6 +5,7 @@ use App\Models\Comment;
 use App\Models\Coupon;
 use App\Models\Earning;
 use App\Models\News;
+use App\Models\Payment;
 use App\Models\Point;
 use App\Models\Referral;
 use App\Models\Role;
@@ -25,5 +26,6 @@ class Seed
         News::newsTable();
         Comment::commentsTable();
         Earning::earningsTable();
+        Payment::paymentsTable();
     }
 }

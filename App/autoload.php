@@ -21,10 +21,8 @@ define('ASSETS', '/App/Assets');
 define('HOME', '/');
 define('HOW', '/page/how');
 define('CONTACT', '/page/contact');
-define('SPONSORED', '/post/sponsored-posts');
-define('PROFILE', '/user/profile');
-define('WITHDRAW', '/earning/withdraw');
-define('LOGOUT', '/auth/logout');
+
+
 
 define('LOGIN', '/page/login');
 define('REGISTER', '/page/register');
@@ -34,10 +32,15 @@ define('AUTH_REGISTER', '/user/register');
 
 define('CONTACT_SEND', '/contact/send');
 
-define('ACTIVATION_PAGE', '/user/activation');
+
 
 if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
+    define('PROFILE', '/user/profile');
+    define('WITHDRAW', '/earning/withdraw');
+    define('SPONSORED', '/post/sponsored-posts');
+    define('LOGOUT', '/auth/logout');
+    define('ACTIVATION_PAGE', '/user/activation');
 }
 
 

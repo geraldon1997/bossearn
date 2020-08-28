@@ -20,7 +20,6 @@ class QueryBuilder extends Gateway
         $query = "INSERT INTO $table ($col) VALUES ('$val') ";
         $result = self::execute($query);
         return $result;
-        // return $query;
     }
 
     public static function update(string $table, $set, string $col, string $val)
