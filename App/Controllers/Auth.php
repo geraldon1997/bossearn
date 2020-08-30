@@ -18,6 +18,7 @@ class Auth extends Controller
     public function login()
     {
         $this->validateForm();
+
         if (!empty($this->error)) {
             return $this->view('login', ['error' => $this->error]);
         }
@@ -43,9 +44,9 @@ class Auth extends Controller
             return $this->view('login', ['error' => $this->error]);
         }
 
-        if ($check[0]['is_active'] == false) {
-           header('location:'.ACTIVATION_PAGE);
-           $_SESSION['uname'] = $username;
+        if ($check[0]['is_active'] == false && $check[0]['rold_id'] !== '1') {
+            $_SESSION['uname'] = $username;
+            header('location:'.ACTIVATION_PAGE);
            return;
         }
 

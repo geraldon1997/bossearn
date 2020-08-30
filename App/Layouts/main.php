@@ -15,7 +15,11 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php
+
+use App\Models\Role;
+
+echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg">
 
     <!-- Design fonts -->
@@ -77,6 +81,31 @@
     .content{
         margin-top: 100px;
     }
+    th{
+        padding: 10px;
+        font-size: 1.3em;
+        font-weight: bolder;
+        color: black;
+        white-space: nowrap;
+    }
+    td{
+        white-space: nowrap;
+    }
+
+    @media (max-width: 700px){
+        th{
+            padding: 3px;
+            font-size: 1.2em;
+            white-space: nowrap;
+        }
+        td{
+            padding: 1px;
+            white-space: nowrap;
+        }
+        .btn{
+            margin-bottom: 10px;
+        }
+    }
 </style>
 
 </head>
@@ -96,6 +125,12 @@
                           	<li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
+
+                            <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo COUPON; ?>">coupons</a>
+                            </li>
+                            <?php endif; ?>
 
                             <?php if (!isset($_SESSION['uname'])) : ?>
                             <li class="nav-item">

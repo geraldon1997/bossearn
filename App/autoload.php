@@ -32,15 +32,16 @@ define('AUTH_REGISTER', '/user/register');
 
 define('CONTACT_SEND', '/contact/send');
 
-
+define('ACTIVATION_PAGE', '/user/activation');
 
 if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
-    define('PROFILE', '/user/profile');
-    define('WITHDRAW', '/earning/withdraw');
-    define('SPONSORED', '/post/sponsored-posts');
+    define('PROFILE', '/page/profile');
+    define('WITHDRAW', '/page/withdraw');
+    define('SPONSORED', '/page/sponsored-posts');
     define('LOGOUT', '/auth/logout');
-    define('ACTIVATION_PAGE', '/user/activation');
+    define('VERIFY_COUPON', '/coupon/verify');
+    define('COUPON', 'page/coupons');
 }
 
 

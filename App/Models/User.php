@@ -65,4 +65,9 @@ class User extends QueryBuilder
         $sub = self::find(self::$table, 'id', $id);
         return $sub[0]['subscription_id'];
     }
+
+    public static function activate($userId)
+    {
+        return self::update(self::$table, "is_active = TRUE", 'id', $userId);
+    }
 }

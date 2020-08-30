@@ -15,18 +15,10 @@ class Role extends QueryBuilder
         return self::create(self::$table, $data);
     }
 
-    public static function isUser()
+    public static function role()
     {
-        //
-    }
-
-    public static function isVendor()
-    {
-        //
-    }
-
-    public static function isAdmin()
-    {
-        //
+        $role_id = User::authinfo()['role_id'];
+        $role = self::find(self::$table, 'id', $role_id);
+        return $role[0]['role'];
     }
 }

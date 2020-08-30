@@ -2,6 +2,8 @@
 namespace App\Core;
 
 use App\Core\View;
+use App\Models\Role;
+use App\Models\User;
 
 class Controller
 {
@@ -9,6 +11,42 @@ class Controller
     public $postData;
     public $getData;
     public $error;
+    public $pages = [
+        'auth' => [
+            'admin' => [
+                'coupons',
+                'users',
+                'home',
+                'how',
+                'contact',
+                'login',
+                'register'
+            ],
+            'vendor' => [
+                'home',
+                'how',
+                'contact',
+                'login',
+                'register'
+            ],
+            'user' => [
+                'sponsored',
+                'profile',
+                'home',
+                'how',
+                'contact',
+                'login',
+                'register'
+            ]
+        ],
+        'nonauth' => [
+            'home',
+            'how',
+            'contact',
+            'login',
+            'register'
+        ]
+    ];
 
     public function __construct()
     {
@@ -20,8 +58,16 @@ class Controller
     }
 
     public function view($view, $params = null)
-    {   
-        return $this->view->renderView($view, $params);
+    {
+
+        if (isset($_SESSION['uname'])) {
+            $role = Role::role();
+            $page = array_search($view, $this->pages['auth'][$role]);
+            return $this->view->renderView($this->pages['auth'][$role][$page]);
+        }
+
+        $page = array_search($view, $this->pages['nonauth']);
+        return $this->view->renderView($this->pages['nonauth'][$page]);
     }
 
     public function method()
