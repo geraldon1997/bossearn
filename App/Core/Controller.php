@@ -36,7 +36,8 @@ class Controller
                 'how',
                 'contact',
                 'login',
-                'register'
+                'register',
+                'activation'
             ]
         ],
         'nonauth' => [
