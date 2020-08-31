@@ -63,11 +63,11 @@ class Controller
         if (isset($_SESSION['uname'])) {
             $role = Role::role();
             $page = array_search($view, $this->pages['auth'][$role]);
-            return $this->view->renderView($this->pages['auth'][$role][$page]);
+            return $this->view->renderView($this->pages['auth'][$role][$page], $params);
         }
 
         $page = array_search($view, $this->pages['nonauth']);
-        return $this->view->renderView($this->pages['nonauth'][$page]);
+        return $this->view->renderView($this->pages['nonauth'][$page], $params);
     }
 
     public function method()
