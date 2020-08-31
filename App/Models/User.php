@@ -29,7 +29,9 @@ class User extends QueryBuilder
 
     public static function addUser($values)
     {
+        $date = date('Y-m-d');
         $columns = self::columns(self::$table);
+        $values = $values + ['last_login' => $date];
         return self::insert(self::$table, $columns, $values);
     }
 

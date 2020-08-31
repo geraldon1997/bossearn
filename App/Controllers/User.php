@@ -13,6 +13,7 @@ class User extends Controller
     
     public function register()
     {
+        
         $refCode = self::generateReferralCode();
 
         if (empty($this->postData['subscription'])) {
@@ -63,6 +64,7 @@ class User extends Controller
                 
                 header('location:'.ACTIVATION_PAGE);
                 $_SESSION['uname'] = $this->postData['username'];
+                return;
             }
             
         }
@@ -74,7 +76,6 @@ class User extends Controller
             return $this->view('register', ['data' => $this->postData, 'regError' => $this->error]);
         }
 
-
         $user_id = ModelsUser::currentInsertedId($this->postData['username']);
         $point = Point::point('id', $this->postData['subscription'])[0]['signup_bonus'];
         $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
@@ -82,6 +83,7 @@ class User extends Controller
         if ($addEarning) {
             header('location:'.ACTIVATION_PAGE);
             $_SESSION['uname'] = $this->postData['username'];
+            return;
         }
 
     }
