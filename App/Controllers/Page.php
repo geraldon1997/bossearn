@@ -2,12 +2,14 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\News;
 
 class Page extends Controller
 {
     public function index()
     {
-        return $this->view('home');
+        $news = News::normal();
+        return $this->view('home', $news);
     }
 
     public function how()
@@ -43,5 +45,10 @@ class Page extends Controller
     public function users()
     {
         return $this->view('users');
+    }
+
+    public function addnews()
+    {
+        return $this->view('addnews');
     }
 }

@@ -10,6 +10,7 @@ class Controller
     public View $view;
     public $postData;
     public $getData;
+    public $fileData;
     public $error;
     public $pages = [
         'auth' => [
@@ -20,14 +21,19 @@ class Controller
                 'how',
                 'contact',
                 'login',
-                'register'
+                'register',
+                'addnews',
+                'editnews',
+                'sponsored',
+                'addnews'
             ],
             'vendor' => [
                 'home',
                 'how',
                 'contact',
                 'login',
-                'register'
+                'register',
+                'sponsored'
             ],
             'user' => [
                 'sponsored',
@@ -55,6 +61,7 @@ class Controller
         if ($this->method() === 'post') {
             $this->postData = $_POST;
             $this->getData = $_GET;
+            $this->fileData = $_FILES['image'];
         }
     }
 

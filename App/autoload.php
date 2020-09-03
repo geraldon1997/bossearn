@@ -41,9 +41,11 @@ if (isset($_SESSION['uname'])) {
     define('SPONSORED', '/page/sponsored-posts');
     define('LOGOUT', '/auth/logout');
     define('VERIFY_COUPON', '/coupon/verify');
-    define('COUPON', '/page/coupons');
+    define('COUPONPAGE', '/page/coupons');
     define('GENERATE_COUPON', '/coupon/createCoupon');
     define('VIEW_COUPON', '/coupon/viewCoupon');
+    define('ADDNEWSPAGE', '/page/addnews');
+    define('ADDNEWS', '/news/create');
 }
 
 

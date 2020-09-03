@@ -128,7 +128,10 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
 
                             <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo COUPON; ?>">coupons</a>
+                                <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
                             </li>
                             <?php endif; ?>
 

@@ -1,3 +1,4 @@
+
 <style>
     #bg{
         margin-top: 50px;
@@ -33,9 +34,12 @@
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
 
+<?php if (!isset($_SESSION['uname'])) : ?>
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
+
 <a href="<?php echo REGISTER; ?>" class="btn" >Register</a>
+<?php endif; ?>
 <hr>
         <section class="section lb">
             <div class="container">
@@ -45,10 +49,11 @@
                             
                             <div class="blog-custom-build">
                             
+                            <?php foreach ($data as $news) : ?>
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
-                                        <a href="news.php?news=" title="">
-                                            <img src="" alt="" class="img-fluid post-img">
+                                        <a href="news.php?news=" title="<?php echo $news['title']; ?>">
+                                            <img src="<?php echo $news['image']; ?>" alt="" class="img-fluid post-img">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -60,8 +65,8 @@
                                         <div class="post-sharing">
                                             
                                         </div><!-- end post-sharing -->
-                                        <h4 id="title" data-description="">title</h4>
-                                        <p>news</p>
+                                        <h4 id="title" data-description=""><?php echo $news['title']; ?></h4>
+                                        <p><?php echo $news['body']; ?></p>
                                         <a href="https://bossearn.com/news.php?news=" class="btn" data-url="https://bossearn.com/news.php?news=" id="read">Read more</a>
                                         <hr class="invis">
 
@@ -73,7 +78,8 @@
 
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
-
+                            
+                            <?php endforeach; ?>
                                 <hr class="invis">
 
                             </div>

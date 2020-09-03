@@ -29,4 +29,26 @@ class News extends QueryBuilder
 
         return self::create(self::$newstable, $data);
     }
+
+    public static function newsType()
+    {
+        return self::all(self::$newstypetable);
+    }
+
+    public static function addNews($values)
+    {
+        $columns = self::columns(self::$newstable);
+        array_pop($columns);
+        return self::insert(self::$newstable, $columns, $values);
+    }
+
+    public static function normal()
+    {
+        return self::find(self::$newstable, 'news_type_id', 1);
+    }
+
+    public static function sponsored()
+    {
+        return self::find(self::$newstable, 'news_type_id', 2);
+    }
 }
