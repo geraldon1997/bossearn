@@ -53,13 +53,22 @@ class News extends Controller
         return '';
     }
 
-    public function viewNews()
+    public function read($id)
     {
-        //
+        $id = implode('', $id);
+        $news = ModelsNews::find(ModelsNews::$newstable, 'id', $id)[0];
+        return $this->view('readnews', $news);
     }
 
-    public function editNews()
+    public function edit($id)
     {
-        //
+        $id = implode('', $id);
+        $news = ModelsNews::find(ModelsNews::$newstable, 'id', $id)[0];
+        return $this->view('editnews', $news);
+    }
+
+    public function update()
+    {
+        var_dump($this->postData);
     }
 }

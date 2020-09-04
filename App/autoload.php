@@ -46,6 +46,9 @@ if (isset($_SESSION['uname'])) {
     define('VIEW_COUPON', '/coupon/viewCoupon');
     define('ADDNEWSPAGE', '/page/addnews');
     define('ADDNEWS', '/news/create');
+    define('READNEWSPAGE', '/news/read/');
+    define('EDITNEWSPAGE', '/news/edit/');
+    define('EDITNEWS', '/news/update/');
 }
 
 

@@ -47,6 +47,11 @@ class News extends QueryBuilder
         return self::find(self::$newstable, 'news_type_id', 1);
     }
 
+    public static function recentNormal()
+    {
+        return self::findMultiple(self::$newstable, ("news_type_id = 1 ORDER BY id DESC LIMIT 5"));
+    }
+
     public static function sponsored()
     {
         return self::find(self::$newstable, 'news_type_id', 2);

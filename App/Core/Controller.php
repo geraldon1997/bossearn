@@ -24,6 +24,7 @@ class Controller
                 'register',
                 'addnews',
                 'editnews',
+                'readnews',
                 'sponsored',
                 'addnews'
             ],
@@ -33,7 +34,8 @@ class Controller
                 'contact',
                 'login',
                 'register',
-                'sponsored'
+                'sponsored',
+                'readnews'
             ],
             'user' => [
                 'sponsored',
@@ -43,7 +45,8 @@ class Controller
                 'contact',
                 'login',
                 'register',
-                'activation'
+                'activation',
+                'readnews'
             ]
         ],
         'nonauth' => [

@@ -34,7 +34,11 @@
 </style>
 <img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
 
-<?php if (!isset($_SESSION['uname'])) : ?>
+<?php
+
+use App\Models\Role;
+
+if (!isset($_SESSION['uname'])) : ?>
 <marquee><b>Welcome to BOSSEARN please do login or click the Register to enjoy</b></marquee>
 <div style="width:100%; text-align: center;">
 
@@ -49,7 +53,7 @@
                             
                             <div class="blog-custom-build">
                             
-                            <?php foreach ($data as $news) : ?>
+                            <?php foreach ($data[0] as $news) : ?>
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
                                         <a href="news.php?news=" title="<?php echo $news['title']; ?>">
@@ -66,16 +70,17 @@
                                             
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" data-description=""><?php echo $news['title']; ?></h4>
-                                        <p><?php echo $news['body']; ?></p>
-                                        <a href="https://bossearn.com/news.php?news=" class="btn" data-url="https://bossearn.com/news.php?news=" id="read">Read more</a>
+                                        <p><?php echo substr($news['body'], 0, 200); ?></p>
+                                        <a href="<?php echo READNEWSPAGE.$news['id']; ?>" class="btn" data-url="<?php echo READNEWSPAGE.$news['id']; ?>" id="read">Read more</a>
                                         <hr class="invis">
 
-                                            <a href="editpost.php?id=" class="btn btn-ep">edit post</a>
-                                            <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
+                                        <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
+                                            <a href="<?php echo EDITNEWSPAGE.$news['id']; ?>" class="btn btn-ep">edit post</a>
+                                            <!-- <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
                                                 <input type="hidden" name="pid" value="">
                                                 <button type="submit" class="btn btn-ep">delete post</button>
-                                            </form>
-
+                                            </form> -->
+                                        <?php endif; ?>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
                             
@@ -99,15 +104,15 @@
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                        
-                                        <a href="news.php?news=" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <?php foreach($data[1] as $recent) : ?>
+                                        <a href="<?php echo READNEWSPAGE.$recent['id']; ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="" alt="" class="img-fluid float-left recent-post-img">
-                                                <h5 class="mb-1"></h5>
-                                                <p></p>
+                                                <img src="<?php echo '/'.$recent['image']; ?>" alt="" class="img-fluid float-left recent-post-img">
+                                                <h5 class="mb-1"><?php echo $recent['title'] ?></h5>
+                                                <small><?php echo substr($recent['body'], 0, 25); ?></small>
                                             </div>
                                         </a>
-                                        
+                                    <?php endforeach; ?>
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->

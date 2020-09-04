@@ -9,7 +9,8 @@ class Page extends Controller
     public function index()
     {
         $news = News::normal();
-        return $this->view('home', $news);
+        $recent = News::recentNormal();
+        return $this->view('home', [$news, $recent]);
     }
 
     public function how()
