@@ -28,7 +28,7 @@ class News extends Controller
         if ($news) {
             return $this->view('addnews', ['news' => 'post created successfully']);
         }
-        return $this->view('addnews', ['data' => $this->postData, 'news' => 'post was not created']);
+        return $this->view('addnews', ['data' => $this->postData, 'error' => 'post was not created']);
         
     }
 

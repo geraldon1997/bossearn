@@ -45,16 +45,16 @@ use App\Models\Role;
         <section class="section lb">
             <div class="container">
                 <div class="row">
-                <?php foreach ($data[0] as $news) : ?>
+                
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         
-                        
+                    <?php foreach ($data[0] as $news) : ?>
                             <div class="blog-custom-build">
                             
                             
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
-                                        <a href="news.php?news=" title="<?php echo $news['title']; ?>">
+                                        <a href="<?php echo READNEWSPAGE.$news['id']; ?>" title="<?php echo $news['title']; ?>">
                                             <img src="<?php echo '/'.$news['image']; ?>" alt="" class="img-fluid post-img">
                                             <div class="hovereffect">
                                                 <span></span>
@@ -65,7 +65,7 @@ use App\Models\Role;
                                     <!-- end media -->
                                     <div class="blog-meta big-meta text-center">
                                         <div class="post-sharing">
-                                            
+                                            <share-button>Share</share-button>
                                         </div><!-- end post-sharing -->
                                         <h4 id="title" data-description=""><?php echo $news['title']; ?></h4>
                                         <p><?php echo substr($news['body'], 0, 200); ?></p>
@@ -82,11 +82,11 @@ use App\Models\Role;
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
                                                                
-
+                                
                             </div>
                             <hr class="invis">
+                            <?php endforeach; ?>
                         
-                        <?php endforeach; ?>
                     </div><!-- end col -->
                     
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">

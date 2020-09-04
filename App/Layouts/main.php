@@ -46,9 +46,10 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <!-- Version Marketing CSS for this template -->
     <link href="<?php echo ASSETS; ?>/Css/version/marketing.css" rel="stylesheet">
 
-
+    <script src="<?php echo ASSETS; ?>/Js/jquery.js"></script>
+    
     <link rel='stylesheet' href='<?php echo ASSETS; ?>/Css/share-button.css' type='text/css' media='all'/>
-    <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
+    
     
 
 
@@ -194,13 +195,43 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
 
     <!-- Core JavaScript
     ================================================== -->
-    
-    <script src="<?php echo ASSETS; ?>/Js/jquery.js"></script>
+
+       
     <script src="<?php echo ASSETS; ?>/Js/share-button.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/tether.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/bootstrap.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/animate.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/custom.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            new ShareButton({
+                networks: {
+                    whatsapp: {
+                        enabled: false
+                    },
+                    googlePlus: {
+                        enabled: false
+                    },
+                    facebook: {
+                        url: 'http://facebook.com',
+                        title: 'testing',
+                        description: 'testing the share button',
+                        image: 'hello'
+                    },
+                    twitter: {
+                        url: 'http://twitter.com',
+                        title: 'testing',
+                        description: 'testing the share button',
+                        image: 'test'
+                    }
+                },
+                ui: {
+                    flyout: 'bottom middle'
+                    }
+            });     
+        });
+    </script>
     
 </body>
 </html>
