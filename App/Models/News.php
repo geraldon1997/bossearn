@@ -44,7 +44,7 @@ class News extends QueryBuilder
 
     public static function normal()
     {
-        return self::find(self::$newstable, 'news_type_id', 1);
+        return self::findMultiple(self::$newstable, "news_type_id = 1 ORDER BY id DESC");
     }
 
     public static function recentNormal()
