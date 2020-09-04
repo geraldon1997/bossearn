@@ -38,7 +38,7 @@ if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
     define('PROFILE', '/page/profile');
     define('WITHDRAW', '/page/withdraw');
-    define('SPONSORED', '/page/sponsored-posts');
+    define('SPONSORED', '/page/sponsored');
     define('LOGOUT', '/auth/logout');
     define('VERIFY_COUPON', '/coupon/verify');
     define('COUPONPAGE', '/page/coupons');

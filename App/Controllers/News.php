@@ -2,7 +2,10 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Earning;
 use App\Models\News as ModelsNews;
+use App\Models\Point;
+use App\Models\User;
 
 class News extends Controller
 {
@@ -55,8 +58,26 @@ class News extends Controller
 
     public function read($id)
     {
-        $id = implode('', $id);
-        $news = ModelsNews::find(ModelsNews::$newstable, 'id', $id)[0];
+        $newsid = $id[0];
+        unset($id[0]);
+        if (isset($id[1])) {
+            $userid = $id[1];
+
+            $userexists = User::is_user_exists($userid);
+
+            if ($userexists) {
+                $subid = User::subscriptionId($userid);
+                $previouspoint = Earning::find(Earning::$table, 'user_id', $userid)[0]['bpoint'];
+                $point = Point::point('subscription_id', $subid)[0]['visitor_points'];
+                $newpoint = $previouspoint + $point;
+                
+                Earning::updateEarning('bpoint', $newpoint, $userid);
+            }
+
+        }
+        
+        $news = ModelsNews::find(ModelsNews::$newstable, 'id', $newsid)[0];
+        
         return $this->view('readnews', $news);
     }
 

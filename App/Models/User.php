@@ -72,4 +72,9 @@ class User extends QueryBuilder
     {
         return self::update(self::$table, "is_active = TRUE", 'id', $userId);
     }
+
+    public static function is_user_exists($id)
+    {
+        return self::exists(self::$table, 'id', $id);
+    }
 }

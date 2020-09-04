@@ -13,6 +13,13 @@ class Page extends Controller
         return $this->view('home', [$news, $recent]);
     }
 
+    public function sponsored()
+    {
+        $news = News::sponsored();
+        $recent = News::recentSponsored();
+        return $this->view('sponsored', [$news, $recent]);
+    }
+
     public function how()
     {
         return $this->view('how');

@@ -47,7 +47,7 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <link href="<?php echo ASSETS; ?>/Css/version/marketing.css" rel="stylesheet">
 
 
-    <link rel='stylesheet' href='<?php echo ASSETS; ?>/Css/share-button.min.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='<?php echo ASSETS; ?>/Css/share-button.css' type='text/css' media='all'/>
     <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
     
 
@@ -128,6 +128,9 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
 
                             <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
                             <li class="nav-item">
+                                <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
                             </li>
                             <li class="nav-item">
@@ -192,7 +195,8 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <!-- Core JavaScript
     ================================================== -->
     
-    <script src="<?php echo ASSETS; ?>/Js/jquery.min.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/jquery.js"></script>
+    <script src="<?php echo ASSETS; ?>/Js/share-button.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/tether.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/bootstrap.min.js"></script>
     <script src="<?php echo ASSETS; ?>/Js/animate.js"></script>

@@ -21,7 +21,7 @@ use App\Models\News;
 
                 <input type="text" name="title" id="" class="form-control" placeholder="title of post" value="<?php if (isset($data['data']['title'])) {echo $data['data']['title'];} ?>">
 
-                <input type="text" name="body" id="" class="form-control" placeholder="body of post" value="<?php if (isset($data['data']['body'])) {echo $data['data']['body'];} ?>">
+                <textarea name="body" class="form-control" placeholder="body of post"><?php if (isset($data['data']['body'])) {echo $data['data']['body'];} ?></textarea>
 
                 <input type="file" name="image" class="form-control" value="test">
 

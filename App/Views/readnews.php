@@ -1,16 +1,3 @@
-<?php
-use App\Models\Earning;
-use App\Models\User;
-use App\Models\Point;
-
-$userid = User::authid();
-$subid = User::authinfo()['subscription_id'];
-$previouspoint = Earning::bpoint();
-$currentpoint = Point::point('subscription_id', $subid)[0]['news_click'];
-$newpoint = $previouspoint + $currentpoint;
-
-Earning::updateEarning('bpoint', $newpoint, $userid);
-?>
 <div class="content">
 
 
