@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Subscription;
+use App\Models\User;
 
 session_start();
 
@@ -49,6 +50,7 @@ if (isset($_SESSION['uname'])) {
     define('READNEWSPAGE', '/news/read/');
     define('EDITNEWSPAGE', '/news/edit/');
     define('EDITNEWS', '/news/update/');
+    define('USERID', User::authid());
 }
 
 

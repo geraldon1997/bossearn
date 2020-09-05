@@ -205,7 +205,17 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
 
     <script>
         $( document ).ready(function() {
+
+            let site_url = 'https://bossearn.com';
+            let news_url = site_url + document.querySelector('#read').getAttribute('data-url');
+            let news_title = document.querySelector('#title').getAttribute('data-title');
+            let news_description = document.querySelector('#desc').getAttribute('data-description');
+            let news_image = site_url + document.querySelector('#image').getAttribute('data-image');
+
+            // console.log(news_url + '\n' + news_title + '\n' + news_description + '\n' + news_image);
+
             new ShareButton({
+                
                 networks: {
                     whatsapp: {
                         enabled: false
@@ -214,16 +224,22 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
                         enabled: false
                     },
                     facebook: {
-                        url: 'http://facebook.com',
-                        title: 'testing',
-                        description: 'testing the share button',
-                        image: 'hello'
+                        url: news_url,
+                        title: news_title,
+                        description: news_description,
+                        image: news_image
                     },
                     twitter: {
-                        url: 'http://twitter.com',
-                        title: 'testing',
-                        description: 'testing the share button',
-                        image: 'test'
+                        before : function(){
+                            this.url = news_url,
+                            this.title = news_title,
+                            this.description = news_description,
+                            this.image = news_image
+                        },
+                        after : function (){
+                            console.log(this.image);
+                        }
+                        
                     }
                 },
                 ui: {

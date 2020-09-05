@@ -1,3 +1,8 @@
+<?php
+
+use App\Models\Role;
+
+?>
 
 <style>
     #bg{
@@ -32,18 +37,14 @@
         color: white !important;
     }
 </style>
-<img src="App/Assets/Images/b1.jpeg" alt="" id="bg">
 
-<?php
-
-use App\Models\Role;
-
-?>
-
+<div class="content">
 <h1>Sponsored Posts</h1>
 <hr>
         <section class="section lb">
-            <div class="container">
+            
+        <div class="container">
+            
                 <div class="row">
                 
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -55,7 +56,7 @@ use App\Models\Role;
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
                                         <a href="<?php echo READNEWSPAGE.$news['id']; ?>" title="<?php echo $news['title']; ?>">
-                                            <img src="<?php echo '/'.$news['image']; ?>" alt="" class="img-fluid post-img">
+                                            <img src="<?php echo '/'.$news['image']; ?>" id="image" class="img-fluid post-img" data-image="<?php echo '/'.$news['image']; ?>">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -67,9 +68,9 @@ use App\Models\Role;
                                         <div class="post-sharing">
                                             <share-button>Share</share-button>
                                         </div><!-- end post-sharing -->
-                                        <h4 id="title" data-description=""><?php echo $news['title']; ?></h4>
-                                        <p><?php echo substr($news['body'], 0, 200); ?></p>
-                                        <a href="<?php echo READNEWSPAGE.$news['id']; ?>" class="btn" data-url="<?php echo READNEWSPAGE.$news['id']; ?>" id="read">Read more</a>
+                                        <h4 id="title" data-title="<?php echo $news['title']; ?>"><?php echo $news['title']; ?></h4>
+                                        <p id="desc" data-description="<?php echo substr($news['body'], 0, 200); ?>"><?php echo substr($news['body'], 0, 200); ?></p>
+                                        <a href="<?php echo READNEWSPAGE.$news['id']; ?>" class="btn" data-url="<?php echo READNEWSPAGE.$news['id'].'/'.USERID; ?>" id="read">Read more</a>
                                         <hr class="invis">
 
                                         <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
@@ -116,3 +117,4 @@ use App\Models\Role;
             </div><!-- end container -->
         </section>
 
+</div>

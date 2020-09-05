@@ -64,7 +64,10 @@ class Controller
         if ($this->method() === 'post') {
             $this->postData = $_POST;
             $this->getData = $_GET;
-            $this->fileData = $_FILES['image'];
+            if (isset($_FILES['image'])) {
+                $this->fileData = $_FILES['image'];
+            }
+            
         }
     }
 
