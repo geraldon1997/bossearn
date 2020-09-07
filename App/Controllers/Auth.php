@@ -56,6 +56,7 @@ class Auth extends Controller
             $previousPoint = Earning::bpoint();
             $newPoint = $point + $previousPoint;
             Earning::updateEarning('bpoint', $newPoint, $userId);
+            User::updateLastLogin($userId);
             header('location:'.HOME);
             return;
         }

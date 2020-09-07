@@ -77,4 +77,10 @@ class User extends QueryBuilder
     {
         return self::exists(self::$table, 'id', $id);
     }
+
+    public static function updateLastLogin($userId)
+    {
+        $date = date('Y-m-d');
+        return self::update(self::$table, "last_login = '$date' ", 'id', $userId);
+    }
 }
