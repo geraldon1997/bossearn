@@ -42,7 +42,7 @@ class Coupon extends QueryBuilder
         $letters_length = strlen($letters);
         $random_string = '';
 
-        for($i = 0; $i < 16; $i++) {
+        for ($i = 0; $i < 16; $i++) {
             $random_character = $letters[mt_rand(0, $letters_length - 1)];
             $random_string .= $random_character;
         }
@@ -67,6 +67,4 @@ class Coupon extends QueryBuilder
     {
         return self::update(self::$table, "user_id = $userId, is_used = TRUE", 'coupon', $coupon);
     }
-
-    
 }

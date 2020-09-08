@@ -9,7 +9,7 @@ class Database
 
     public static function init()
     {
-        self::$mysqli = new mysqli('localhost','root','','bossearn_new');
+        self::$mysqli = new mysqli('localhost', 'root', '', 'bossearn_new');
         return self::$mysqli;
     }
 }

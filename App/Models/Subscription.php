@@ -49,5 +49,4 @@ class Subscription extends QueryBuilder
         $subLink = self::find(self::$table, 'id', $subId)[0]['subscription_link'];
         return $subLink;
     }
-
 }

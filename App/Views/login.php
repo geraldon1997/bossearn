@@ -6,7 +6,9 @@
             <div class="col-lg-6">
 
             <h4>Login form</h4>
-            <p><?php if (isset($data['error'])) { echo $data['error']; } ?></p>
+            <p><?php if (isset($data['error'])) {
+                echo $data['error'];
+               } ?></p>
             <form class="form-wrapper" method="POST" action="<?php echo AUTH_LOGIN; ?>">
                 <input type="text" name="username" class="form-control" placeholder="Username">
                 <input type="password" name="password" class="form-control" placeholder="Password">

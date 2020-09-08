@@ -66,7 +66,6 @@ class User extends Controller
                 $_SESSION['uname'] = $this->postData['username'];
                 return;
             }
-            
         }
 
         $register = ModelsUser::addUser($this->postData);
@@ -85,7 +84,6 @@ class User extends Controller
             $_SESSION['uname'] = $this->postData['username'];
             return;
         }
-
     }
 
     public static function generateReferralCode()

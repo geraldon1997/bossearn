@@ -67,7 +67,6 @@ class Controller
             if (isset($_FILES['image'])) {
                 $this->fileData = $_FILES['image'];
             }
-            
         }
     }
 

@@ -21,7 +21,7 @@ class Earning extends QueryBuilder
 
     public static function addEarning(array $col, array $val)
     {
-        return self::insert(self::$table, $col, $val);        
+        return self::insert(self::$table, $col, $val);
     }
 
     public static function bref($user_id)

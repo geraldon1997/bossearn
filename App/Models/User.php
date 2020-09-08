@@ -24,7 +24,7 @@ class User extends QueryBuilder
         $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id) ON UPDATE CASCADE ON DELETE CASCADE, ";
         $data .= "FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
-        return self::create(self::$table,$data);
+        return self::create(self::$table, $data);
     }
 
     public static function addUser($values)

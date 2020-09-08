@@ -76,10 +76,10 @@ if (!isset($_SESSION['uname'])) : ?>
 
                                         <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
                                             <a href="<?php echo EDITNEWSPAGE.$news['id']; ?>" class="btn btn-ep">edit post</a>
-                                            <!-- <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
-                                                <input type="hidden" name="pid" value="">
+                                            <form method="post" action="<?php echo DELETE_POST; ?>"  onsubmit="return confirm('Do you really want to delete this post ?');">
+                                                <input type="hidden" name="pid" value="<?php echo $news['id']; ?>">
                                                 <button type="submit" class="btn btn-ep">delete post</button>
-                                            </form> -->
+                                            </form>
                                         <?php endif; ?>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
@@ -104,7 +104,7 @@ if (!isset($_SESSION['uname'])) : ?>
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                    <?php foreach($data[1] as $recent) : ?>
+                                    <?php foreach ($data[1] as $recent) : ?>
                                         <a href="<?php echo READNEWSPAGE.$recent['id']; ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
                                                 <img src="<?php echo '/'.$recent['image']; ?>" alt="" class="img-fluid float-left recent-post-img">

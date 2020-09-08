@@ -7,11 +7,19 @@ use App\Models\User;
 <h1>Coupons</h1>
 <div class="row">
     <div class="col-md-6 m-auto">
-    <p><?php if (isset($data['gen'])) {echo $data['gen'];} ?></p>
+    <p><?php if (isset($data['gen'])) {
+        echo $data['gen'];
+       } ?></p>
 
         <form action="<?php echo GENERATE_COUPON; ?>" method="post" class="form-wrapper">
             <select name="subscription" id="" class="form-control">
-                <option value="<?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo $data['data']['subscription'];} ?>"><?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {echo Subscription::amount($data['data']['subscription']);} else {echo 'choose subscription amount';} ?></option>
+                <option value="<?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {
+                    echo $data['data']['subscription'];
+                               } ?>"><?php if (isset($data['data']['subscription']) && !empty($data['data']['subscription'])) {
+                               echo Subscription::amount($data['data']['subscription']);
+                               } else {
+                                   echo 'choose subscription amount';
+                               } ?></option>
                 <?php foreach (Subscription::allSubscription() as $key) : ?>
                 <option value="<?php echo $key['id'] ?>"><?php echo $key['amount']; ?></option>
                 <?php endforeach; ?>
@@ -55,10 +63,18 @@ use App\Models\User;
                 <tr>
                     <td><?= $sn++; ?></td>
                     <td><?= $key['coupon'] ?></td>
-                    <td><?php if ($key['user_id'] == 1) {echo 'NULL';} else {echo User::find(User::$table, 'id', $key['user_id'])[0]['username'];} ?></td>
+                    <td><?php if ($key['user_id'] == 1) {
+                        echo 'NULL';
+                        } else {
+                            echo User::find(User::$table, 'id', $key['user_id'])[0]['username'];
+                        } ?></td>
                     <td><?= Subscription::find(Subscription::$table, 'id', $key['subscription_id'])[0]['amount']; ?></td>
                     <td><?= $key['date_generated']; ?></td>
-                    <td><?php if ($key['user_id'] == 1) {echo 'not used';} else {echo $key['date_used'];} ?></td>
+                    <td><?php if ($key['user_id'] == 1) {
+                        echo 'not used';
+                        } else {
+                            echo $key['date_used'];
+                        } ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

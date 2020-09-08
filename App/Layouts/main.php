@@ -17,9 +17,9 @@
     <!-- Site Icons -->
     <link rel="shortcut icon" href="<?php
 
-use App\Models\Role;
+    use App\Models\Role;
 
-echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
+    echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg">
 
     <!-- Design fonts -->
@@ -123,7 +123,7 @@ echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
 
-                          	<li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
 

@@ -86,7 +86,7 @@ use App\Models\Role;
                                 
                             </div>
                             <hr class="invis">
-                            <?php endforeach; ?>
+                    <?php endforeach; ?>
                         
                     </div><!-- end col -->
                     
@@ -98,7 +98,7 @@ use App\Models\Role;
                                 <h2 class="widget-title">Recent Sponsored Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                    <?php foreach($data[1] as $recent) : ?>
+                                    <?php foreach ($data[1] as $recent) : ?>
                                         <a href="<?php echo READNEWSPAGE.$recent['id']; ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
                                                 <img src="<?php echo '/'.$recent['image']; ?>" alt="" class="img-fluid float-left recent-post-img">

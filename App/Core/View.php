@@ -23,7 +23,6 @@ class View
         ob_start();
         include_once $file;
         return ob_get_clean();
-        
     }
 
     public function renderView($view, array $data = null)

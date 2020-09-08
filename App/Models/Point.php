@@ -21,7 +21,6 @@ class Point extends QueryBuilder
         $data .= "FOREIGN KEY (subscription_id) REFERENCES subscriptions(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
         return self::create(self::$table, $data);
-        
     }
 
     public static function point($col, $val)

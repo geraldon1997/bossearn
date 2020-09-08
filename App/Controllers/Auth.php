@@ -47,7 +47,7 @@ class Auth extends Controller
         if ($check[0]['is_active'] == false && $check[0]['rold_id'] !== '1') {
             $_SESSION['uname'] = $username;
             header('location:'.ACTIVATION_PAGE);
-           return;
+            return;
         }
 
         if ($lastLogin !== $today) {
@@ -67,10 +67,9 @@ class Auth extends Controller
     }
 
     public function logout()
-   {
+    {
         $s = $_SESSION['uname'];
         session_unset();
         header('location:'.LOGIN);
-      
-   }
+    }
 }

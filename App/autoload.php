@@ -35,6 +35,8 @@ define('CONTACT_SEND', '/contact/send');
 
 define('ACTIVATION_PAGE', '/user/activation');
 
+define('PREVIOUS_PAGE', $_SERVER['HTTP_REFERER']);
+
 if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
     define('PROFILE', '/page/profile');
@@ -51,8 +53,5 @@ if (isset($_SESSION['uname'])) {
     define('EDITNEWSPAGE', '/news/edit/');
     define('EDITNEWS', '/news/update/');
     define('USERID', User::authid());
+    define('DELETE_POST', '/news/delete');
 }
-
-
-
-

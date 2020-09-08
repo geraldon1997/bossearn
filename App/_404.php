@@ -1,5 +1,4 @@
 <?php foreach ($error as $error) :?>
-
 <style>
 h1{
     margin-top: 100px;

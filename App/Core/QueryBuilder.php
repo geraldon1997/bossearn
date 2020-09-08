@@ -58,7 +58,7 @@ class QueryBuilder extends Gateway
     public static function delete($table, $col, $val)
     {
         $query = "DELETE FROM $table WHERE $col = '$val' ";
-        return self::fetch($query);
+        return self::execute($query);
     }
 
     public static function columns($table)
@@ -67,11 +67,10 @@ class QueryBuilder extends Gateway
         $result = self::fetch($query);
 
         $columns = [];
-        for ($i=0; $i < count($result); $i++) { 
+        for ($i=0; $i < count($result); $i++) {
             array_push($columns, $result[$i]['Field']);
         }
         array_shift($columns);
         return $columns;
     }
-
 }

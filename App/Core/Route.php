@@ -71,6 +71,5 @@ class Route
         $params = array_values($pathArray);
 
         return call_user_func([new $controller, $method], $params);
-        
     }
 }

@@ -44,5 +44,4 @@ class Gateway extends Database
         $result = self::init()->query($query);
         return $result;
     }
-
 }
