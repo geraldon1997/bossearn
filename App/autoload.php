@@ -43,7 +43,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
     define('PROFILE', '/page/profile');
-    define('WITHDRAW', '/page/withdraw');
+    define('WITHDRAWAL', '/page/withdrawals');
     define('SPONSORED', '/page/sponsored');
     define('LOGOUT', '/auth/logout');
     define('VERIFY_COUPON', '/coupon/verify');
@@ -61,4 +61,6 @@ if (isset($_SESSION['uname'])) {
     define('UPDATE_PROFILE', '/user/updateprofile');
     define('ADD_BANK', '/bank/add');
     define('UPDATE_DP', '/user/updatedp');
+    define('EARNINGS', '/page/earnings');
+    define('WITHDRAW', '/withdrawal/add');
 }

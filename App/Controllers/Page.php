@@ -2,10 +2,12 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Earning;
 use App\Models\News;
 use App\Models\Point;
 use App\Models\Referral;
 use App\Models\User;
+use App\Models\Withdrawal;
 
 class Page extends Controller
 {
@@ -70,5 +72,17 @@ class Page extends Controller
         $referrals = Referral::find(Referral::$table, 'referrer', $userid);
 
         return $this->view('referrals', $referrals);
+    }
+
+    public function earnings()
+    {
+        $earnings = Earning::authAll()[0];
+        return $this->view('earnings', $earnings);
+    }
+
+    public function withdrawals()
+    {
+        $withdrawal = Withdrawal::find(Withdrawal::$table, 'users_id', USERID);
+        return $this->view('withdrawals', $withdrawal);
     }
 }

@@ -46,6 +46,7 @@ class QueryBuilder extends Gateway
     {
         $query = "SELECT * FROM $table WHERE $data ";
         return self::fetch($query);
+        // return $query;
     }
 
     public static function exists($table, $col, $val)

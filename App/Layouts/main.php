@@ -1,3 +1,6 @@
+<?php
+use App\Models\User;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,14 +129,28 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">dashboard</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <img src="<?= '/'.User::authdp()['picture']; ?>" alt="" width="100">
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo PROFILE; ?>">profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo REFERRALS; ?>">referrals</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo EARNINGS; ?>">earnings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo WITHDRAWAL; ?>">withdrawals</a>
+                                    </li>
+                                </ul>
+                            </li>
 
                             <?php if (isset($_SESSION['uname'])) : ?>
-                                <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo PROFILE; ?>">profile</a>
-                                </li>
-                                <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo REFERRALS; ?>">referrals</a>
-                                </li>
                                 <?php if (Role::role() === 'admin') : ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>

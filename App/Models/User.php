@@ -64,6 +64,11 @@ class User extends QueryBuilder
         return $result[0];
     }
 
+    public static function authdp()
+    {
+        return self::find(self::$dptable, 'user_id', USERID)[0];
+    }
+
     public static function is_ref_exists($ref)
     {
         $result = self::exists(self::$table, 'ref', $ref);

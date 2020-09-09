@@ -12,6 +12,7 @@ use App\Models\Referral;
 use App\Models\Role;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Withdrawal;
 
 class Seed
 {
@@ -30,5 +31,6 @@ class Seed
         Payment::paymentsTable();
         Bank::banksTable();
         User::usersdpTable();
+        Withdrawal::withdrawalsTable();
     }
 }

@@ -14,7 +14,6 @@ class Transaction extends QueryBuilder
         $data .= "transaction_type VACHAR(10) NOT NULL, ";
         $data .= "amount INT NOT NULL, ";
         $data .= "date_updated TIMSTAMP NOT NULL, ";
-        $data .= "FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
         return self::create(self::$table, $data);
     }

@@ -28,7 +28,10 @@ class Controller
                 'sponsored',
                 'addnews',
                 'referrals',
-                'profile'
+                'profile',
+                'users',
+                'earnings',
+                'withdrawals'
             ],
             'vendor' => [
                 'home',
@@ -39,7 +42,9 @@ class Controller
                 'sponsored',
                 'readnews',
                 'referrals',
-                'profile'
+                'profile',
+                'earnings',
+                'withdrawals'
             ],
             'user' => [
                 'sponsored',
@@ -51,7 +56,9 @@ class Controller
                 'register',
                 'activation',
                 'readnews',
-                'referrals'
+                'referrals',
+                'earnings',
+                'withdrawals'
             ]
         ],
         'nonauth' => [

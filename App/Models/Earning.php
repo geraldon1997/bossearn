@@ -41,4 +41,9 @@ class Earning extends QueryBuilder
     {
         return self::update(self::$table, "$col = $val", 'user_id', $user_id);
     }
+
+    public static function authAll()
+    {
+        return self::find(self::$table, 'user_id', User::authid());
+    }
 }

@@ -16,7 +16,7 @@ if ($dp) {
 
 <div class="row">
     
-    <div class="col">
+    <div class="col-md-6">
     <h5>personal info</h5>
 
     <div class="row">
@@ -50,10 +50,10 @@ if ($dp) {
     </form>
     </div>
     
-    <div class="col">
+    <div class="col-md-6">
         <h5>bank info</h5>
         <?php if (Bank::isBankExist()) : ?>
-            <form class="col form-wrapper">
+            <form class="form-wrapper">
                 <input type="text" class="form-control" value="<?= Bank::info()['bank'] ?>">
                 <input type="number" class="form-control" value="<?= Bank::info()['account'] ?>">
             </form>

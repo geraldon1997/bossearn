@@ -5,6 +5,13 @@ use App\Models\Point;
 use App\Models\Subscription;
 
 ?>
+<style>
+    @media (max-width: 700px){
+        h4{
+            font-size: 0.6em;
+        }
+    }
+</style>
 <div class="content">
     <h1>Referrals</h1>
     <h4>your referral link :  <span style="color:blue;">https://bossearn.com/page/register?ref=<?php echo User::authinfo()['ref'] ?></span></h4>
