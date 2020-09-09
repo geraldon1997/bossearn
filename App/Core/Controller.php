@@ -7,7 +7,7 @@ use App\Models\User;
 
 class Controller
 {
-    public View $view;
+    public $view;
     public $postData;
     public $getData;
     public $fileData;
