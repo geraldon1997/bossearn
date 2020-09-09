@@ -127,16 +127,24 @@
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
 
-                            <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
-                            </li>
+                            <?php if (isset($_SESSION['uname'])) : ?>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo PROFILE; ?>">profile</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo REFERRALS; ?>">referrals</a>
+                                </li>
+                                <?php if (Role::role() === 'admin') : ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
+                                    </li>
+                                <?php endif; ?>
                             <?php endif; ?>
 
                             <?php if (!isset($_SESSION['uname'])) : ?>

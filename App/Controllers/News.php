@@ -32,29 +32,7 @@ class News extends Controller
         return $this->view('addnews', ['data' => $this->postData, 'error' => 'post was not created']);
     }
 
-    public function processImage()
-    {
-        $name = $this->fileData['name'];
-        $tmpname = $this->fileData['tmp_name'];
-        $type = $this->fileData['type'];
-        $error = $this->fileData['error'];
-        $size = $this->fileData['size'];
-
-        if (empty($this->fileData)) {
-            return '';
-        }
-
-        $path = 'App/Assets/Images/Posts/';
-        $path = $path . basename($name);
-
-        $upload = move_uploaded_file($tmpname, $path);
-
-        if ($upload) {
-            return $path;
-        }
-
-        return '';
-    }
+    
 
     public function read($id)
     {

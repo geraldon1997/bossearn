@@ -26,7 +26,9 @@ class Controller
                 'editnews',
                 'readnews',
                 'sponsored',
-                'addnews'
+                'addnews',
+                'referrals',
+                'profile'
             ],
             'vendor' => [
                 'home',
@@ -35,7 +37,9 @@ class Controller
                 'login',
                 'register',
                 'sponsored',
-                'readnews'
+                'readnews',
+                'referrals',
+                'profile'
             ],
             'user' => [
                 'sponsored',
@@ -46,7 +50,8 @@ class Controller
                 'login',
                 'register',
                 'activation',
-                'readnews'
+                'readnews',
+                'referrals'
             ]
         ],
         'nonauth' => [
@@ -102,5 +107,29 @@ class Controller
     public function passwordHash($password)
     {
         return password_hash($password, PASSWORD_BCRYPT);
+    }
+
+    public function processImage()
+    {
+        $name = $this->fileData['name'];
+        $tmpname = $this->fileData['tmp_name'];
+        $type = $this->fileData['type'];
+        $error = $this->fileData['error'];
+        $size = $this->fileData['size'];
+
+        if (empty($this->fileData)) {
+            return '';
+        }
+
+        $path = 'App/Assets/Images/Posts/';
+        $path = $path . basename($name);
+
+        $upload = move_uploaded_file($tmpname, $path);
+
+        if ($upload) {
+            return $path;
+        }
+
+        return '';
     }
 }

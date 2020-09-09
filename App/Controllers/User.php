@@ -53,14 +53,6 @@ class User extends Controller
                 
                 $point = Point::point('id', $this->postData['subscription'])[0]['signup_bonus'];
                 $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
-
-                $subid = ModelsUser::subscriptionId($user_id);
-
-                $refPoint = Point::point('subscription_id', $subid)[0]['referral_point'];
-                $referralCurrentPoint = Earning::bref($referralId);
-                $newReferralPoint = $refPoint + $referralCurrentPoint;
-
-                $updateEarning = Earning::updateEarning('bref', "'$newReferralPoint'", $referralId);
                 
                 header('location:'.ACTIVATION_PAGE);
                 $_SESSION['uname'] = $this->postData['username'];
@@ -96,8 +88,33 @@ class User extends Controller
         return $this->view('activation');
     }
 
-    public function profile()
+    public function updateprofile()
     {
-        return $this->view('profile');
+        $surname = $this->postData['surname'];
+        $othernames = $this->postData['othernames'];
+        $phone = $this->postData['phone'];
+
+        ModelsUser::update(ModelsUser::$table, "surname = '$surname', othernames = '$othernames', phone = '$phone' ", 'id', USERID);
+        
+        header('location:'.PREVIOUS_PAGE);
+        return;
+    }
+
+    public function updatedp()
+    {
+        $check = ModelsUser::exists(ModelsUser::$dptable, 'user_id', USERID);
+        $image = $this->processImage();
+        $columns = ModelsUser::columns(ModelsUser::$dptable);
+        $data = ['userid' => USERID] + ['picture' => $image];
+        
+        if (!$check) {
+            ModelsUser::insert(ModelsUser::$dptable, $columns, $data);
+            header('location:'.PREVIOUS_PAGE);
+            return;
+        }
+
+        ModelsUser::update(ModelsUser::$dptable, "picture = '$image' ", 'user_id', USERID);
+        header('location:'.PREVIOUS_PAGE);
+        return;
     }
 }

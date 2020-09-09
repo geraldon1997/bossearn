@@ -75,10 +75,10 @@ use App\Models\Role;
 
                                         <?php if (isset($_SESSION['uname']) && Role::role() === 'admin') : ?>
                                             <a href="<?php echo EDITNEWSPAGE.$news['id']; ?>" class="btn btn-ep">edit post</a>
-                                            <!-- <form method="post"  onsubmit="return confirm('Do you really want to delete this post ?');">
-                                                <input type="hidden" name="pid" value="">
+                                            <form method="post" action="<?php echo DELETE_POST; ?>"  onsubmit="return confirm('Do you really want to delete this post ?');">
+                                                <input type="hidden" name="pid" value="<?php echo $news['id']; ?>">
                                                 <button type="submit" class="btn btn-ep">delete post</button>
-                                            </form> -->
+                                            </form>
                                         <?php endif; ?>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->

@@ -6,6 +6,7 @@ use App\Core\QueryBuilder;
 class User extends QueryBuilder
 {
     public static $table = 'users';
+    public static $dptable = 'users_dp';
 
     public static function usersTable()
     {
@@ -25,6 +26,16 @@ class User extends QueryBuilder
         $data .= "FOREIGN KEY (role_id) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE";
 
         return self::create(self::$table, $data);
+    }
+
+    public static function usersdpTable()
+    {
+        $data = "id INT PRIMARY KEY AUTO_INCREMENT, ";
+        $data .= "user_id INT, ";
+        $data .= "picture TEXT, ";
+        $data .= "FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE";
+        
+        return self::create(self::$dptable, $data);
     }
 
     public static function addUser($values)

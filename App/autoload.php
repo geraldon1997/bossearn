@@ -35,7 +35,10 @@ define('CONTACT_SEND', '/contact/send');
 
 define('ACTIVATION_PAGE', '/user/activation');
 
-define('PREVIOUS_PAGE', $_SERVER['HTTP_REFERER']);
+if (isset($_SERVER['HTTP_REFERER'])) {
+    define('PREVIOUS_PAGE', $_SERVER['HTTP_REFERER']);
+}
+
 
 if (isset($_SESSION['uname'])) {
     define('ONLINE_ACTIVATION', Subscription::subscriptionLink());
@@ -54,4 +57,8 @@ if (isset($_SESSION['uname'])) {
     define('EDITNEWS', '/news/update/');
     define('USERID', User::authid());
     define('DELETE_POST', '/news/delete');
+    define('REFERRALS', '/page/referrals');
+    define('UPDATE_PROFILE', '/user/updateprofile');
+    define('ADD_BANK', '/bank/add');
+    define('UPDATE_DP', '/user/updatedp');
 }

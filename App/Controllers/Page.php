@@ -3,6 +3,9 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\News;
+use App\Models\Point;
+use App\Models\Referral;
+use App\Models\User;
 
 class Page extends Controller
 {
@@ -47,7 +50,8 @@ class Page extends Controller
 
     public function profile()
     {
-        return $this->view('profile');
+        $profile = User::authinfo();
+        return $this->view('profile', $profile);
     }
 
     public function users()
@@ -58,5 +62,13 @@ class Page extends Controller
     public function addnews()
     {
         return $this->view('addnews');
+    }
+
+    public function referrals()
+    {
+        $userid = User::authid();
+        $referrals = Referral::find(Referral::$table, 'referrer', $userid);
+
+        return $this->view('referrals', $referrals);
     }
 }

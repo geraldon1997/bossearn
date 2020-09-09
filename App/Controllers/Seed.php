@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\Bank;
 use App\Models\Comment;
 use App\Models\Coupon;
 use App\Models\Earning;
@@ -19,7 +20,7 @@ class Seed
         Role::rolesTable();
         Subscription::subscriptionTable();
         Point::pointsTable();
-        $u = User::usersTable();
+        User::usersTable();
         Referral::referralsTable();
         Coupon::couponsTable();
         News::newsTypeTable();
@@ -27,5 +28,7 @@ class Seed
         Comment::commentsTable();
         Earning::earningsTable();
         Payment::paymentsTable();
+        Bank::banksTable();
+        User::usersdpTable();
     }
 }

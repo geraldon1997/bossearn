@@ -34,9 +34,9 @@ class Gateway extends Database
     protected static function check($query)
     {
         $result = self::init()->query($query);
-        $exists = $result->num_rows;
-        
-        return $exists;
+        if ($result) {
+            return $result->num_rows;
+        }
     }
 
     public static function listColumns($query)
