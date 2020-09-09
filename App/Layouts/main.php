@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Earning;
 use App\Models\User;
 ?>
 <!DOCTYPE html>
@@ -109,6 +111,12 @@ use App\Models\User;
         .btn{
             margin-bottom: 10px;
         }
+        .dash{
+            width: 100% !important;
+        }
+        .dash-6{
+            width: 50% !important;
+        }
     }
 </style>
 
@@ -132,12 +140,27 @@ use App\Models\User;
                             <?php if (isset($_SESSION['uname'])) : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">dashboard</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu p-2">
                                     <li>
-                                        <img src="<?= '/'.User::authdp()['picture']; ?>" alt="" width="100">
+                                        <div class="row dash">
+                                            <div class="col-md-6 dash-6">
+                                                <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100">
+                                            </div>
+                                            <div class="col-md-6 dash-6">
+                                                <span>bref : <?= Earning::bref(User::authid()); ?></span>
+                                                <br>
+                                                <span>bpoint : <?= Earning::bpoint(); ?></span>
+                                            </div>
+                                        </div>
+                                        
+                                        
                                     </li>
+                                    <hr>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo PROFILE; ?>">profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo REFERRALS; ?>">referrals</a>
@@ -152,17 +175,15 @@ use App\Models\User;
                             </li>
 
                             
-                                <?php if (Role::role() === 'admin') : ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
-                                    </li>
+                                
+                                    
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
                                     </li>
-                                <?php endif; ?>
+                                
                             <?php endif; ?>
 
                             <?php if (!isset($_SESSION['uname'])) : ?>
