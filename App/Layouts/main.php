@@ -129,6 +129,7 @@ use App\Models\User;
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo HOME; ?>">Home</a>
                             </li>
+                            <?php if (isset($_SESSION['uname'])) : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">dashboard</a>
                                 <ul class="dropdown-menu">
@@ -150,7 +151,7 @@ use App\Models\User;
                                 </ul>
                             </li>
 
-                            <?php if (isset($_SESSION['uname'])) : ?>
+                            
                                 <?php if (Role::role() === 'admin') : ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
