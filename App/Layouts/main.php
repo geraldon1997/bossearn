@@ -147,9 +147,9 @@ use App\Models\User;
                                                 <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100">
                                             </div>
                                             <div class="col-md-6 dash-6">
-                                                <span>bref : <?= Earning::bref(User::authid()); ?></span>
+                                                <b>bref : <?= number_format(Earning::bref(User::authid())); ?></b>
                                                 <br>
-                                                <span>bpoint : <?= Earning::bpoint(); ?></span>
+                                                <b>bpoint : <?= number_format(Earning::bpoint()); ?></b>
                                             </div>
                                         </div>
                                         
