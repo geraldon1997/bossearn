@@ -40,6 +40,8 @@ class Withdrawal extends Controller
                 return $this->view('withdrawals', $data);
             }
         }
+
+        
     }
 
     public function pay()
