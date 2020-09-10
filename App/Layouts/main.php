@@ -144,12 +144,11 @@ use App\Models\User;
                                     <li>
                                         <div class="row dash">
                                             <div class="col-md-6 dash-6">
-                                                <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100">
+                                                <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100" height="80">
                                             </div>
-                                            <div class="col-md-6 dash-6">
-                                                <b>bref : <?= number_format(Earning::bref(User::authid())); ?></b>
-                                                <br>
-                                                <b>bpoint : <?= number_format(Earning::bpoint()); ?></b>
+                                            <div class="col-md-6 dash-6 text-center">
+                                                <p style="margin:0;"><b>bref | bpoint</b></p>
+                                                <p><?= Earning::bref(User::authid()); ?> | <?= Earning::bpoint(); ?></p>
                                             </div>
                                         </div>
                                         

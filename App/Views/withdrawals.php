@@ -1,6 +1,16 @@
 <div class="content">
     <h1>Withdrawals</h1>
     <hr>
+    <form action="" class="form-wrapper m-auto col-md-6">
+        <select name="" id="withdrawal" class="form-control">
+            <option value="">choose withdrawal type</option>
+            <option value="bref">bref</option>
+            <option value="bpoint">bpoint</option>
+        </select>
+        <input type="number" name="" id="amount" class="form-control">
+        <button type="submit">withdraw</button>
+    </form>
+    <hr>
     <div class="row">
         <table border="1" class="m-auto">
             <th>s/n</th>
@@ -37,3 +47,13 @@
         </table>
     </div>
 </div>
+
+<script>
+    var withdraw = $('#withdrawal');
+    var amount = $('#amount');
+    $(withdraw).change(function(){
+        if (withdraw.val() === 'bpoint') {
+            amount.prop('min', '10000')
+        }
+    });
+</script>
