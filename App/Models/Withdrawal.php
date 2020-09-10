@@ -69,4 +69,14 @@ class Withdrawal extends QueryBuilder
         }
         return $amount;
     }
+
+    public static function bref()
+    {
+        return self::findMultiple(self::$table, "type = 'bref' ORDER BY id DESC");
+    }
+
+    public static function bpoint()
+    {
+        return self::findMultiple(self::$table, "type = 'bpoint' ORDER BY id DESC");
+    }
 }

@@ -88,7 +88,8 @@ class Page extends Controller
 
     public function bref()
     {
-        return $this->view('bref');
+        $bref = Withdrawal::bref();
+        return $this->view('bref', $bref);
     }
 
     public function bpoint()
