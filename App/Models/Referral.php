@@ -31,4 +31,10 @@ class Referral extends QueryBuilder
         array_pop($columns);
         return self::insert(self::$table, $columns, $values);
     }
+
+    public static function allRefs()
+    {
+        $referrer = User::authid();
+        return self::find(self::$table, 'referrer', $referrer);
+    }
 }

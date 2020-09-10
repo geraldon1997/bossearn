@@ -1,20 +1,29 @@
+<?php
+if (isset($data['error'])) {
+    echo $data['error'];
+}
+?>
+
 <div class="content">
     <h1>Withdrawals</h1>
     <hr>
-    <form action="" class="form-wrapper m-auto col-md-6">
-        <select name="" id="withdrawal" class="form-control">
+    <form action="<?= WITHDRAW; ?>" method="post" class="form-wrapper m-auto col-md-6">
+        <select name="type" id="withdrawal" class="form-control" required>
             <option value="">choose withdrawal type</option>
             <option value="bref">bref</option>
             <option value="bpoint">bpoint</option>
         </select>
-        <input type="number" name="" id="amount" class="form-control" placeholder="enter current earning to withdraw">
-        <button type="submit">withdraw</button>
+        <input type="number" name="amount" id="amount" class="form-control" placeholder="enter current earning to withdraw">
+        <button type="submit" class="btn">withdraw</button>
     </form>
+
     <hr>
+    
     <div class="row">
         <table border="1" class="m-auto">
             <th>s/n</th>
             <th>Earning</th>
+            <th>points</th>
             <th>Amount</th>
             <th>Status</th>
             <th>date requested</th>
@@ -23,10 +32,16 @@
             use App\Models\Withdrawal;
 
             $sn =1; ?>
+            <?php
+                if (isset($data['error'])) {
+                    array_pop($data);
+                }
+            ?>
             <?php foreach ($data as $withdraw) : ?>
                 <tr>
                     <td><?= $sn++; ?></td>
                     <td><?= $withdraw['type']; ?></td>
+                    <td><?= number_format($withdraw['amount']); ?></td>
                     <td><?= number_format($withdraw['amount'] / 10); ?></td>
                     <td>
                         <?php
@@ -41,8 +56,10 @@
                 </tr>
             <?php endforeach; ?>
             <tr>
-                <td colspan="3"><b>Total withdrawn</b></td>
-                <td colspan="3"><?= Withdrawal::total(); ?></td>
+                <td colspan="2"><b>Total withdrawn</b></td>
+                <td><?= number_format(Withdrawal::total()); ?></td>
+                <td><?= number_format(Withdrawal::total() / 10); ?></td>
+                <td colspan="2"></td>
             </tr>
         </table>
     </div>
