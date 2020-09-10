@@ -140,15 +140,26 @@ use App\Models\User;
                             <?php if (isset($_SESSION['uname'])) : ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">dashboard</a>
-                                <ul class="dropdown-menu p-2">
+                                <ul class="dropdown-menu p-2" style="width: 300px;">
                                     <li>
                                         <div class="row dash">
                                             <div class="col-md-6 dash-6">
                                                 <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100" height="80">
                                             </div>
                                             <div class="col-md-6 dash-6 text-center">
-                                                <p style="margin:0;"><b>bref | bpoint</b></p>
-                                                <p><?= Earning::bref(User::authid()); ?> | <?= Earning::bpoint(); ?></p>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <b>bref</b>
+                                                        <br>
+                                                        <b><?= Earning::bref(User::authid()); ?></b>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <b>bpoint</b>
+                                                        <br>
+                                                        <b><?= Earning::bpoint(); ?></b>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                         
