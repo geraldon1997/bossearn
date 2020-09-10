@@ -63,4 +63,7 @@ if (isset($_SESSION['uname'])) {
     define('UPDATE_DP', '/user/updatedp');
     define('EARNINGS', '/page/earnings');
     define('WITHDRAW', '/withdrawal/add');
+    define('USERS', '/page/users');
+    define('BREF', '/page/bref');
+    define('BPOINT', '/page/bpoint');
 }

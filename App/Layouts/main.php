@@ -175,14 +175,28 @@ use App\Models\User;
                             </li>
 
                             
-                                
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">admin menu</a>
+
+                                    <ul class="dropdown-menu p-2">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo USERS; ?>">users</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo BREF; ?>">bref withdrawals</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo BPOINT; ?>">bpoint withdrawals</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                     
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo COUPONPAGE; ?>">coupons</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo ADDNEWSPAGE; ?>">posts</a>
-                                    </li>
                                 
                             <?php endif; ?>
 
