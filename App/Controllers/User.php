@@ -117,4 +117,11 @@ class User extends Controller
         header('location:'.PREVIOUS_PAGE);
         return;
     }
+
+    public function viewUsers()
+    {
+        $data = $this->postData;
+        $users = ModelsUser::view($data);
+        return $this->view('users', $users);
+    }
 }

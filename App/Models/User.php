@@ -99,4 +99,17 @@ class User extends QueryBuilder
         $date = date('Y-m-d');
         return self::update(self::$table, "last_login = '$date' ", 'id', $userId);
     }
+
+    public static function view($data)
+    {
+        $roleid = $data['role'];
+        $isactive = $data['isactive'];
+        return self::findMultiple(self::$table, "role_id = '$roleid' AND is_active = '$isactive' ORDER BY id DESC ");
+    }
+
+    public static function total()
+    {
+        $all = self::all(self::$table);
+        return count($all);
+    }
 }
