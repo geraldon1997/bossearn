@@ -7,7 +7,7 @@
             <option value="bref">bref</option>
             <option value="bpoint">bpoint</option>
         </select>
-        <input type="number" name="" id="amount" class="form-control">
+        <input type="number" name="" id="amount" class="form-control" placeholder="enter current earning to withdraw">
         <button type="submit">withdraw</button>
     </form>
     <hr>
