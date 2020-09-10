@@ -85,4 +85,14 @@ class Page extends Controller
         $withdrawal = Withdrawal::find(Withdrawal::$table, 'users_id', USERID);
         return $this->view('withdrawals', $withdrawal);
     }
+
+    public function bref()
+    {
+        return $this->view('bref');
+    }
+
+    public function bpoint()
+    {
+        return $this->view('bpoint');
+    }
 }

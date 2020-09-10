@@ -31,7 +31,9 @@ class Controller
                 'profile',
                 'users',
                 'earnings',
-                'withdrawals'
+                'withdrawals',
+                'bref',
+                'bpoint'
             ],
             'vendor' => [
                 'home',
