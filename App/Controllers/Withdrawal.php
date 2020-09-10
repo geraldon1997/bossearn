@@ -27,7 +27,7 @@ class Withdrawal extends Controller
         if ($type === 'bref') {
             
             if (($refs % 3) != 0) {
-                $error = ['error' => "<script>alert('withdrawal was not successful')</script>"];
+                $error = ['error' => "<script>alert('you do not have enough referrals')</script>"];
                 $data = $withdrawal + $error;
                 return $this->view('withdrawals', $data);
             }
