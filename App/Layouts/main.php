@@ -160,7 +160,7 @@ use App\Models\User;
                                         <a class="nav-link" href="<?php echo PROFILE; ?>">profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored</a>
+                                        <a class="nav-link" href="<?php echo SPONSORED; ?>">sponsored posts</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo REFERRALS; ?>">referrals</a>

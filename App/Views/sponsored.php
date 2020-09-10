@@ -5,11 +5,7 @@ use App\Models\Role;
 ?>
 
 <style>
-    #bg{
-        margin-top: 50px;
-        width: 100%;
-        height: 500px;
-    }
+    
     .post-img{
         height: 300px;
         width: 400px !important;
@@ -18,10 +14,7 @@ use App\Models\Role;
         height: 50px
     }
   @media (max-width: 700px){
-    #bg{
-      width: 100%;
-      height: 100%;
-    }
+    
   }
     .btn-news:hover{
         cursor: pointer;
@@ -102,16 +95,17 @@ use App\Models\Role;
                                         <a href="<?php echo READNEWSPAGE.$recent['id']; ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
                                                 <img src="<?php echo '/'.$recent['image']; ?>" alt="" class="img-fluid float-left recent-post-img">
-                                                <h5 class="mb-1"><?php echo $recent['title'] ?></h5>
-                                                <small><?php echo substr($recent['body'], 0, 25); ?></small>
+                                                <i class="mb-1"><?php echo $recent['title'] ?></i>
+                                                
                                             </div>
                                         </a>
+                                        <hr>
                                     <?php endforeach; ?>
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
 
-                        </div><!-- end sidebar -->
+                        </div> <!--end sidebar-->
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
