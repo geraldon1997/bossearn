@@ -32,12 +32,14 @@ $c = new C;
         </div>
     </div>
     <hr>
-    <?php if ($c->postData['role'] == 3 && $c->postData['isactive'] == 1) : ?>
-        <h6><?= count($data); ?> active users</h6>
-    <?php elseif ($c->postData['role'] == 3 && $c->postData['isactive'] == 0) : ?>
-        <h6><?= count($data); ?> inactive users</h6>
-    <?php elseif ($c->postData['role'] == 2 && $c->postData['isactive'] == 1) : ?>
-        <h6><?= count($data); ?> vendors</h6>
+    <?php if (!empty($c->postData)) : ?>
+        <?php if ($c->postData['role'] == 3 && $c->postData['isactive'] == 1) : ?>
+            <h6><?= count($data); ?> active users</h6>
+        <?php elseif ($c->postData['role'] == 3 && $c->postData['isactive'] == 0) : ?>
+            <h6><?= count($data); ?> inactive users</h6>
+        <?php elseif ($c->postData['role'] == 2 && $c->postData['isactive'] == 1) : ?>
+            <h6><?= count($data); ?> vendors</h6>
+        <?php endif; ?>
     <?php endif; ?>
     <hr>
     <div class="row">
@@ -47,6 +49,16 @@ $c = new C;
             <th>email</th>
             <th>phone</th>
             <th>action</th>
+            <?php $sn = 1; ?>
+            <?php foreach ($data as $user) : ?>
+                <tr>
+                    <td><?= $sn++; ?></td>
+                    <td><?= $user['surname'].' '.$user['othernames']; ?></td>
+                    <td><?= $user['email']; ?></td>
+                    <td><?= $user['phone']; ?></td>
+                    <td>edit</td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>
