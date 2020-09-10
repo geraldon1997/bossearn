@@ -13,7 +13,7 @@ if (isset($data['error'])) {
             <option value="bref">bref</option>
             <option value="bpoint">bpoint</option>
         </select>
-        <input type="number" name="amount" id="amount" class="form-control" placeholder="enter current earning to withdraw">
+        <input type="number" name="amount" id="amount" class="form-control" placeholder="enter current earning to withdraw" required>
         <button type="submit" class="btn">withdraw</button>
     </form>
 

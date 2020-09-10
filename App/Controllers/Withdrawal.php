@@ -18,10 +18,22 @@ class Withdrawal extends Controller
         $earning = Earning::authAll()[0];
         $withdrawal = ModelsWithdrawal::find(ModelsWithdrawal::$table, 'users_id', USERID);
         
+        if (empty($amount)) {
+            $error = ['error' => "<script>alert('please choose amount to withdraw')</script>"];
+            $data = $withdrawal + $error;
+            return $this->view('withdrawals', $data);
+        }
 
         if ($type === 'bref') {
+            
             if (($refs % 3) != 0) {
                 $error = ['error' => "<script>alert('withdrawal was not successful')</script>"];
+                $data = $withdrawal + $error;
+                return $this->view('withdrawals', $data);
+            }
+
+            if ($amount > $bref) {
+                $error = ['error' => "<script>alert('you cannot withdraw above your earning')</script>"];
                 $data = $withdrawal + $error;
                 return $this->view('withdrawals', $data);
             }
