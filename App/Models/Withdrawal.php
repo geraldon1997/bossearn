@@ -20,7 +20,7 @@ class Withdrawal extends QueryBuilder
         return self::create(self::$table, $data);
     }
 
-    public static function addWithdrawal($type)
+    public static function addWithdrawal($type, $amount)
     {
         $columns = self::columns(self::$table);
         array_pop($columns);
@@ -28,7 +28,7 @@ class Withdrawal extends QueryBuilder
         $values = [
             'userid' => $earning['user_id'],
             'type' => $type,
-            'amount' => $earning[$type],
+            'amount' => $amount,
             'status' => 0,
             'date_req' => date('Y-m-d')
         ];
@@ -36,9 +36,19 @@ class Withdrawal extends QueryBuilder
         $add = self::insert(self::$table, $columns, $values);
         
         if ($add) {
-            Earning::updateEarning($type, 0, USERID);
-            header('location:'.PREVIOUS_PAGE);
-            return;
+            if ($type === 'bref') {
+                Earning::updateEarning($type, 0, USERID);
+                header('location:'.PREVIOUS_PAGE);
+                return;
+            }
+
+            if ($type === 'bpoint') {
+                $rpoint = $earning['bpoint'] - $amount;
+                Earning::updateEarning($type, $rpoint, USERID);
+                header('location:'.PREVIOUS_PAGE);
+                return;
+            }
+            
         }
 
         header('location:'.PREVIOUS_PAGE);

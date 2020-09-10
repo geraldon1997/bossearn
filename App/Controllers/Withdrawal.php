@@ -15,7 +15,7 @@ class Withdrawal extends Controller
         $amount = $this->postData['amount'];
         $bpoint = Earning::bpoint();
         $bref = Earning::bref(USERID);
-        
+        $earning = Earning::authAll()[0];
         $withdrawal = ModelsWithdrawal::find(ModelsWithdrawal::$table, 'users_id', USERID);
         
 
@@ -39,8 +39,24 @@ class Withdrawal extends Controller
                 $data = $withdrawal + $error;
                 return $this->view('withdrawals', $data);
             }
+
+            if ($amount > $bpoint) {
+                $error = ['error' => "<script>alert('you cannot withdraw above your earning')</script>"];
+                $data = $withdrawal + $error;
+                return $this->view('withdrawals', $data);
+            }
+
+            if (!$earning['is_bpoint']) {
+                $error = ['error' => "<script>alert('your withdrawal was not successful')</script>"];
+                $data = $withdrawal + $error;
+                return $this->view('withdrawals', $data);
+            }
         }
 
+        ModelsWithdrawal::addWithdrawal($type, $amount);
+        $error = ['error' => "<script>alert('your withdrawal was successful')</script>"];
+        $data = $withdrawal + $error;
+        return $this->view('withdrawals', $data);
         
     }
 
