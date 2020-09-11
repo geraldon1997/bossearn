@@ -69,7 +69,8 @@ class Controller
             'how',
             'contact',
             'login',
-            'register'
+            'register',
+            'readnews'
         ]
     ];
 
