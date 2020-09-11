@@ -2,11 +2,15 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Models\Bank;
+use App\Models\Comment;
+use App\Models\Coupon;
 use App\Models\Earning;
 use App\Models\Point;
 use App\Models\Referral;
 use App\Models\Subscription;
 use App\Models\User as ModelsUser;
+use App\Models\Withdrawal;
 
 class User extends Controller
 {
@@ -123,5 +127,56 @@ class User extends Controller
         $data = $this->postData;
         $users = ModelsUser::view($data);
         return $this->view('users', $users);
+    }
+
+    public function edit()
+    {
+        $userid = $this->postData['userid'];
+        $user = ModelsUser::find(ModelsUser::$table, 'id', $userid)[0];
+        return $this->view('edituser', $user);
+    }
+
+    public function update()
+    {
+        $userid = $this->postData['userid'];
+        $username = $this->postData['username'];
+        $email = $this->postData['email'];
+
+        ModelsUser::update(ModelsUser::$table, "username = '$username', email = '$email' ", 'id', "$userid");
+
+        $user = ModelsUser::find(ModelsUser::$table, 'id', $userid)[0];
+        return $this->view('edituser', $user);
+    }
+
+    public function makevendor()
+    {
+        $userid = $this->postData['userid'];
+        ModelsUser::update(ModelsUser::$table, "role_id = '2' ", 'id', "$userid");
+        header('location:'.USERS);
+        return;
+    }
+
+    public function makeuser()
+    {
+        $userid = $this->postData['userid'];
+        ModelsUser::update(ModelsUser::$table, "role_id = '3' ", 'id', "$userid");
+        header('location:'.USERS);
+        return;
+    }
+
+    public function delete()
+    {
+        $userid = $this->postData['userid'];
+        ModelsUser::delete(ModelsUser::$table, 'id', $userid);
+        Earning::delete(Earning::$table, 'user_id', $userid);
+        Bank::delete(Bank::$table, 'user_id', $userid);
+        Referral::delete(Referral::$table, 'referrer', $userid);
+        ModelsUser::delete(ModelsUser::$dptable, 'user_id', $userid);
+        Coupon::delete(Coupon::$table, 'user_id', $userid);
+        Withdrawal::delete(Withdrawal::$table, 'users_id', $userid);
+        Comment::delete(Comment::$table, 'user_id', $userid);
+
+        header('location:'.USERS);
+        return;
     }
 }

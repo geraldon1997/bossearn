@@ -25,7 +25,6 @@ class Withdrawal extends Controller
         }
 
         if ($type === 'bref') {
-            
             if (($refs % 3) != 0) {
                 $error = ['error' => "<script>alert('you do not have enough referrals')</script>"];
                 $data = $withdrawal + $error;
@@ -65,15 +64,21 @@ class Withdrawal extends Controller
             }
         }
 
-        ModelsWithdrawal::addWithdrawal($type, $amount);
-        $error = ['error' => "<script>alert('your withdrawal was successful')</script>"];
-        $data = $withdrawal + $error;
-        return $this->view('withdrawals', $data);
-        
+        $withdraw = ModelsWithdrawal::addWithdrawal($type, $amount);
+
+        if ($withdraw) {
+            $error = ['error' => "<script>alert('your withdrawal was successful')</script>"];
+            $data = $withdrawal + $error;
+            return $this->view('withdrawals', $data);
+        }
     }
 
     public function pay()
     {
-        //
+        $wid = $this->postData['wid'];
+        
+        ModelsWithdrawal::update(ModelsWithdrawal::$table, "status = 1", 'id', $wid);
+        header('location:'.PREVIOUS_PAGE);
+        return;
     }
 }

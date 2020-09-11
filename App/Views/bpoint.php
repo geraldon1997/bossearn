@@ -1,8 +1,24 @@
 <?php
 use App\Models\User;
+use App\Models\Earning;
+
+$earning = Earning::all(Earning::$table)[0];
+
 ?>
 <div class="content">
     <h1>Bpoint Withdrawals</h1>
+    <hr>
+    <?php if ($earning['is_bpoint']) : ?>
+        <form action="<?= DEACTIVATE_BPOINT; ?>" method="post">
+            <input type="hidden" name="status" value="0">
+            <button type="submit" class="btn">Deactivate withdrawal</button>
+        </form>
+    <?php elseif (!$earning['is_bpoint']) : ?>
+        <form action="<?= ACTIVATE_BPOINT; ?>" method="post">
+            <input type="hidden" name="status" value="1">
+            <button type="submit" class="btn">Activate withdrawal</button>
+        </form>
+    <?php endif; ?>
     <hr>
     <div class="row">
         <table border="1" class="m-auto">
@@ -15,25 +31,34 @@ use App\Models\User;
             <th>date requested</th>
             <th>action</th>
             <?php $sn = 1; ?>
-            <?php foreach ($data as $bref) : ?>
-                <?php $name = User::find(User::$table, 'id', $bref['users_id'])[0]; ?>
+            <?php foreach ($data as $bpoint) : ?>
+                <?php $name = User::find(User::$table, 'id', $bpoint['users_id'])[0]; ?>
                 <tr>
                     <td><?= $sn++; ?></td>
                     <td><?= $name['surname'].' '.$name['othernames']; ?></td>
-                    <td><?= $bref['type']; ?></td>
-                    <td><?= number_format($bref['amount']); ?></td>
-                    <td><?= number_format($bref['amount'] / 10); ?></td>
+                    <td><?= $bpoint['type']; ?></td>
+                    <td><?= number_format($bpoint['amount']); ?></td>
+                    <td><?= number_format($bpoint['amount'] / 10); ?></td>
                     <td>
                         <?php
-                            if ($bref['status']) {
-                                echo 'paid';
-                            } else {
-                                echo 'pending';
-                            }
+                        if ($bpoint['status']) {
+                            echo 'paid';
+                        } else {
+                            echo 'pending';
+                        }
                         ?>
                     </td>
-                    <td><?= $bref['date_requested']; ?></td>
-                    <td>pay</td>
+                    <td><?= $bpoint['date_requested']; ?></td>
+                    <td>
+                        <?php if ($bpoint['status']) : ?>
+                                paid
+                        <?php else : ?>
+                                <form action="<?= PAY; ?>" method="post">
+                                <input type="hidden" name="wid" value="<?= $bpoint['id']; ?>">
+                                <button type="submit" class="btn">Pay</button>
+                            </form>
+                        <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

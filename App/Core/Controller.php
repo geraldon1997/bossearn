@@ -33,7 +33,8 @@ class Controller
                 'earnings',
                 'withdrawals',
                 'bref',
-                'bpoint'
+                'bpoint',
+                'edituser'
             ],
             'vendor' => [
                 'home',

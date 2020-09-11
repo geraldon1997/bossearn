@@ -37,22 +37,16 @@ class Withdrawal extends QueryBuilder
         
         if ($add) {
             if ($type === 'bref') {
-                Earning::updateEarning($type, 0, USERID);
-                header('location:'.PREVIOUS_PAGE);
-                return;
+                return Earning::updateEarning($type, 0, USERID);
             }
 
             if ($type === 'bpoint') {
                 $rpoint = $earning['bpoint'] - $amount;
-                Earning::updateEarning($type, $rpoint, USERID);
-                header('location:'.PREVIOUS_PAGE);
-                return;
+                return Earning::updateEarning($type, $rpoint, USERID);
             }
-            
         }
 
-        header('location:'.PREVIOUS_PAGE);
-        return;
+        return false;
     }
 
     public static function paid()
@@ -72,11 +66,11 @@ class Withdrawal extends QueryBuilder
 
     public static function bref()
     {
-        return self::findMultiple(self::$table, "type = 'bref' ORDER BY id DESC");
+        return self::findMultiple(self::$table, "type = 'bref' ");
     }
 
     public static function bpoint()
     {
-        return self::findMultiple(self::$table, "type = 'bpoint' ORDER BY id DESC");
+        return self::findMultiple(self::$table, "type = 'bpoint' ");
     }
 }

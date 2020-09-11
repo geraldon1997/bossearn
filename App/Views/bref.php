@@ -4,7 +4,7 @@ use App\Models\User;
 <div class="content">
     <h1>Bref Withdrawals</h1>
     <hr>
-    <div class="row">
+    <div class="row" style="overflow:auto;">
         <table border="1" class="m-auto">
             <th>s/n</th>
             <th>name</th>
@@ -25,15 +25,24 @@ use App\Models\User;
                     <td><?= number_format($bref['amount'] / 10); ?></td>
                     <td>
                         <?php
-                            if ($bref['status']) {
-                                echo 'paid';
-                            } else {
-                                echo 'pending';
-                            }
+                        if ($bref['status']) {
+                            echo 'paid';
+                        } else {
+                            echo 'pending';
+                        }
                         ?>
                     </td>
                     <td><?= $bref['date_requested']; ?></td>
-                    <td>pay</td>
+                    <td>
+                        <?php if ($bref['status']) : ?>
+                                paid
+                        <?php else : ?>
+                                <form action="<?= PAY; ?>" method="post">
+                                <input type="hidden" name="wid" value="<?= $bref['id']; ?>">
+                                <button type="submit" class="btn">Pay</button>
+                            </form>
+                        <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

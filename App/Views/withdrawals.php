@@ -2,6 +2,7 @@
 if (isset($data['error'])) {
     echo $data['error'];
 }
+
 ?>
 
 <div class="content">
@@ -33,9 +34,9 @@ if (isset($data['error'])) {
 
             $sn =1; ?>
             <?php
-                if (isset($data['error'])) {
-                    array_pop($data);
-                }
+            if (isset($data['error'])) {
+                array_pop($data);
+            }
             ?>
             <?php foreach ($data as $withdraw) : ?>
                 <tr>

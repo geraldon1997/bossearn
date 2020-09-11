@@ -42,23 +42,69 @@ $c = new C;
         <?php endif; ?>
     <?php endif; ?>
     <hr>
-    <div class="row">
+    <div class="row" style="overflow:auto;">
         <table border="1" class="m-auto">
             <th>sn</th>
             <th>name</th>
             <th>email</th>
             <th>phone</th>
+            <th>username</th>
             <th>action</th>
             <?php $sn = 1; ?>
-            <?php foreach ($data as $user) : ?>
-                <tr>
-                    <td><?= $sn++; ?></td>
-                    <td><?= $user['surname'].' '.$user['othernames']; ?></td>
-                    <td><?= $user['email']; ?></td>
-                    <td><?= $user['phone']; ?></td>
-                    <td>edit</td>
-                </tr>
-            <?php endforeach; ?>
+            <?php if (!empty($data)) : ?>
+                <?php foreach ($data as $user) : ?>
+                    <tr>
+                        <td><?= $sn++; ?></td>
+                        <td><?= $user['surname'].' '.$user['othernames']; ?></td>
+                        <td><?= $user['email']; ?></td>
+                        <td><?= $user['phone']; ?></td>
+                        <td><?= $user['username']; ?></td>
+                        <td>
+                            <?php if ($c->postData['role'] == 3 && $c->postData['isactive'] == 1) : ?>
+                                <form action="<?= EDIT_USER; ?>" method="post">
+                                    <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                    <button type="submit" class="btn">edit</button>
+                                </form>
+                                <hr >
+                                <form action="<?= MAKE_VENDOR ?>" method="post">
+                                    <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                    <button type="submit" class="btn">make vendor</button>
+                                </form>
+                                <hr>
+                                <form action="<?= DELETE_USER ?>" method="post">
+                                    <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                    <button type="submit" class="btn">delete</button>
+                                </form>
+                            <?php elseif ($c->postData['role'] == 3 && $c->postData['isactive'] == 0) : ?>
+                                    <form action="<?= EDIT_USER; ?>" method="post">
+                                        <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn">edit</button>
+                                    </form>
+                                <hr >
+                                    <form action="<?= DELETE_USER ?>" method="post">
+                                        <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn">delete</button>
+                                    </form>
+                            <?php elseif ($c->postData['role'] == 2 && $c->postData['isactive'] == 1) : ?>
+                                    <form action="<?= EDIT_USER; ?>" method="post">
+                                        <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn">edit</button>
+                                    </form>
+                                <hr >
+                                    <form action="<?= MAKE_USER; ?>" method="post">
+                                        <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn">make user</button>
+                                    </form>
+                                <hr>
+                                    <form action="<?= DELETE_USER ?>" method="post">
+                                        <input type="hidden" name="userid" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn">delete</button>
+                                    </form>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </table>
     </div>
 </div>

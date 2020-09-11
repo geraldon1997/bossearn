@@ -67,4 +67,12 @@ if (isset($_SESSION['uname'])) {
     define('VIEW_USERS', '/user/viewUsers');
     define('BREF', '/page/bref');
     define('BPOINT', '/page/bpoint');
+    define('EDIT_USER', '/user/edit');
+    define('UPDATE_USER', '/user/update');
+    define('MAKE_VENDOR', '/user/makevendor');
+    define('MAKE_USER', '/user/makeuser');
+    define('DELETE_USER', '/user/delete');
+    define('PAY', '/withdrawal/pay');
+    define('ACTIVATE_BPOINT', '/earning/activatebpoint');
+    define('DEACTIVATE_BPOINT', '/earning/deactivatebpoint');
 }
