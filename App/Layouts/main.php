@@ -2,6 +2,8 @@
 
 use App\Models\Earning;
 use App\Models\User;
+use App\Models\Role;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +17,9 @@ use App\Models\User;
 
     <!-- Site Metas -->
     <title>Bossearn</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="<?php
-
-    use App\Models\Role;
-
-    echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
+    <link rel="shortcut icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo ASSETS; ?>/Images/logo.jpeg">
 
     <!-- Design fonts -->
@@ -284,6 +279,10 @@ use App\Models\User;
         $( document ).ready(function() {
 
             let site_url = 'https://bossearn.com';
+
+            let addshare = site_url + '/share/add';
+            
+            let news_id = document.querySelector('#title').getAttribute('data-id');
             let news_url = site_url + document.querySelector('#read').getAttribute('data-url');
             let news_title = document.querySelector('#title').getAttribute('data-title');
             let news_description = document.querySelector('#desc').getAttribute('data-description');
@@ -295,16 +294,41 @@ use App\Models\User;
                 
                 networks: {
                     whatsapp: {
-                        enabled: false
+                        before : function(){
+                            this.url = news_url,
+                            this.title = news_title,
+                            this.description = news_description,
+                            this.image = news_image
+                        },
+                        after : function (){
+                            $.ajax({
+                            url: addshare,
+                            type: 'POST',
+                            data : { 
+                                nid : news_id
+                                }
+                            })
+                        }
                     },
                     googlePlus: {
                         enabled: false
                     },
                     facebook: {
-                        url: news_url,
-                        title: news_title,
-                        description: news_description,
-                        image: news_image
+                        before : function(){
+                            this.url = news_url,
+                            this.title = news_title,
+                            this.description = news_description,
+                            this.image = news_image
+                        },
+                        after : function (){
+                            $.ajax({
+                            url: addshare,
+                            type: 'POST',
+                            data : { 
+                                nid : news_id
+                                }
+                            })
+                        }
                     },
                     twitter: {
                         before : function(){
@@ -314,7 +338,13 @@ use App\Models\User;
                             this.image = news_image
                         },
                         after : function (){
-                            console.log(this.image);
+                            $.ajax({
+                            url: addshare,
+                            type: 'POST',
+                            data : { 
+                                nid : news_id
+                                }
+                            })
                         }
                         
                     }

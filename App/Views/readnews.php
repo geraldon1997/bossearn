@@ -1,5 +1,8 @@
-<div class="content">
+<meta property="og:title" content="<?= $data['title']; ?>" />
+<meta property="og:description" content="<?= substr($data['body'], 0, 200); ?>" />
+<meta property="og:image" content="<?= 'https://bossearn.com/'.$data['image']; ?>" />
 
+<div class="content">
 
     <div class="blog-box wow fadeIn">
         <div class="post-media">
@@ -22,8 +25,6 @@
             <hr class="invis">
 
         </div><!-- end meta -->
-    </div><!-- end blog-box -->
-                            
-                            
+    </div><!-- end blog-box -->                
 
 </div>

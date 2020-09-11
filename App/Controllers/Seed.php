@@ -10,6 +10,7 @@ use App\Models\Payment;
 use App\Models\Point;
 use App\Models\Referral;
 use App\Models\Role;
+use App\Models\Share;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Withdrawal;
@@ -32,5 +33,6 @@ class Seed
         Bank::banksTable();
         User::usersdpTable();
         Withdrawal::withdrawalsTable();
+        Share::sharesTable();
     }
 }

@@ -59,9 +59,11 @@ use App\Models\Role;
                                     <!-- end media -->
                                     <div class="blog-meta big-meta text-center">
                                         <div class="post-sharing">
+                                        <?php if ($news['date_posted'] > time()) : ?>
                                             <share-button>Share</share-button>
+                                        <?php endif; ?>
                                         </div><!-- end post-sharing -->
-                                        <h4 id="title" data-title="<?php echo $news['title']; ?>"><?php echo $news['title']; ?></h4>
+                                        <h4 id="title" data-title="<?php echo $news['title']; ?>" data-id="<?php echo $news['id']; ?>"><?php echo $news['title']; ?></h4>
                                         <p id="desc" data-description="<?php echo substr($news['body'], 0, 200); ?>"><?php echo substr($news['body'], 0, 200); ?></p>
                                         <a href="<?php echo READNEWSPAGE.$news['id']; ?>" class="btn" data-url="<?php echo READNEWSPAGE.$news['id'].'/'.USERID; ?>" id="read">Read more</a>
                                         <hr class="invis">

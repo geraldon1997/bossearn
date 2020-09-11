@@ -23,8 +23,10 @@ class News extends Controller
             return $this->view('addnews', ['error' => $this->error]);
         }
 
+        $date = time() + (60 * 60 * 24);
+        $this->postData['time'] = $date;
+        
         $news = ModelsNews::addNews($this->postData);
-
 
         if ($news) {
             return $this->view('addnews', ['news' => 'post created successfully']);
