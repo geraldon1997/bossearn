@@ -29,10 +29,12 @@ class Auth extends Controller
         $check = User::find(User::$table, 'username', $username);
 
         $today = date('Y-m-d');
-        $userId = $check[0]['id'];
-        $lastLogin = $check[0]['last_login'];
-        $subId = $check[0]['subscription_id'];
-        $point = Point::point('subscription_id', $subId)[0]['daily_login'];
+        if ($check) {
+            $userId = $check[0]['id'];
+            $lastLogin = $check[0]['last_login'];
+            $subId = $check[0]['subscription_id'];
+            $point = Point::point('subscription_id', $subId)[0]['daily_login'];
+        }
 
         if (count($check) < 1) {
             $this->error = 'User does not exist';

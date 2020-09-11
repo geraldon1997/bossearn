@@ -144,7 +144,13 @@ use App\Models\User;
                                     <li>
                                         <div class="row dash">
                                             <div class="col-md-6 dash-6">
-                                                <img src="<?= '/'.User::authdp()['picture']; ?>" alt="<?= User::authinfo()['username'] ?>" width="100" height="80">
+                                                <img 
+                                                    src="<?php
+                                                    if (!empty(User::authdp()[0]['picture'])) {
+                                                        echo '/'.User::authdp()[0]['picture'];
+                                                    } else {
+                                                        echo ASSETS.'/Images/logo.jpeg';
+                                                    }  ?>" alt="<?= User::authinfo()['username']; ?>" width="100" height="80">
                                             </div>
                                             <div class="col-md-6 dash-6 text-center">
                                                 <div class="row">
@@ -184,7 +190,7 @@ use App\Models\User;
                                 </ul>
                             </li>
 
-                            
+                                <?php if (Role::role() === 'admin') : ?>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">admin menu</a>
 
@@ -206,7 +212,7 @@ use App\Models\User;
                                         </li>
                                     </ul>
                                 </li>
-                                    
+                                <?php endif; ?>      
                                 
                             <?php endif; ?>
 

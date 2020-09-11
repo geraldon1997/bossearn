@@ -146,56 +146,84 @@ Consistent irrelevant post of comments by a user and inappropriate behaviour may
 
 <p>See how people advertise on Facebook groups to get Referrals you too can do the same</p>
 
-* 		Join lots of Facebook group
-* 		Advertise there and collect people WhatsApp number
-* 		Add them to your WhatsApp group or Invite them to your group
-* 		Set your group only Admins to comment to avoid spam.
-* 		Add at least over 150 people to your whatapp group daily trust me you are going to be making over 100k monthly
-* 		Tell them about the business and how it works.
-* 		Show them over 7-10 alert testimonies from our Facebook group.
-* 		You need to be doing it consistently even when you see no result, just know that there’s a beautiful day ahead..
-* 		Register them and start making cool cash daily..
+<p>* 		Join lots of Facebook group</p>
+<p>* 		Advertise there and collect people WhatsApp number</p>
+<p>* 		Add them to your WhatsApp group or Invite them to your group</p>
+<p>* 		Set your group only Admins to comment to avoid spam.</p>
+<p>* 		Add at least over 150 people to your whatapp group daily trust me you are going to be making over 100k monthly</p>
+<p>* 		Tell them about the business and how it works.</p>
+<p>* 		Show them over 7-10 alert testimonies from our Facebook group.</p>
+<p>* 		You need to be doing it consistently even when you see no result, just know that there’s a beautiful day ahead..</p>
+<p>* 		Register them and start making cool cash daily..</p>
+
 <p>
 Today I will be showing you how to get referrals on Bossearn Program. Please note that this write up on how to get referrals on Bossearn Program. This is not something I should have shared online. But for any person that sees it,Kudos!
 If you are a serious minded person, you should start making over 20k every week  on Bossearn after this. Do well to share it as well with whoever you love to see succeed in Bossearn.
-NOW TO THE MAIN BUSINESS OF THE DAY
-First of all, join these facebookgroups
-Are you ready ???.
-Oya …let’s start!
-If you don’t know where to post advert daily
-HERE ARE SOME LIST OF FACEBOOK GROUPS TO POST TO DAILY
+</p>
+
+<h6>NOW TO THE MAIN BUSINESS OF THE DAY</h6>
+
+<p>First of all, join these facebookgroups</p>
+
+<h6>Are you ready ???.</h6>
+
+<h6>Oya …let’s start!</h6>
+
+<p>If you don’t know where to post advert daily</p>
+
+<h6>HERE ARE SOME LIST OF FACEBOOK GROUPS TO POST TO DAILY</h6>
+
+<p>
 Apart from Facebook, you can still head over to forums like nairaland.com warriorforum.com Reddit.com etc and make your adverts as it has many people visiting it. So go and register with them FOR FREE and start driving audiences.
 Also don’t forget to join Students facebook groups. you can find these out by just searching on facebook for any school.
-NOW MAKE ADVERT!!!
+</p>
+
+<h6>NOW MAKE ADVERT!!!</h6>
+
+<p>
 On your WhatsApp status, Facebook stories, groups and timeline… Tag your friends who u know need advert business…. Post something like this: “Partner with a Nigeria News Update Website and get the privilege of being paid each time you share a post on your facebook. view a post on the website, create a post and login to the website. You can start today with a one time registration fee of your choice which is (1500,2500,3500) and stand the chance to earn over 20k everyday Ask me how”.
 After “ask me how”, Put your WhatsApp number. If someone picks interest by asking you “How?” Give the person this brief info about how Bossearn works    With all this you will be earning Like a boss from home.
-FEATURES ARE
-* 		Politics updates
-* 		Education updates
-* 		Business updates
-* 		Sports updates
-* 		Entertainment updates
-Welcome to BOSSEARN !!!
-* 		We pay 100% without referrals;
-* 		We pay the Top  referral bonus (1000,1500,2000) 
-* You will receive your sign up bonus depending on your subscription payment 
-* 		Daily withdrawal of referral earnings, and many more
-OUR SELLING POINTS
-* 		REGISTRATION FEE A ONE TIME PAYMENT OF (₦1500,#2500,#3500)
-* 		WE PAY EVERY DAY
-* 		REFERRING IS OPTIONAL
-* 		WE PAY THE TOP AFFILIATE COMMISSION 
-WAYS TO EARN LIKE A BOSS ON BOSSEARN(B.E)
-Let's calculate your estimated earnings with the 1500 subscription fee 
-* 		Sign up bonus 1500
-* 		You make a comment on posts per week=200 X7=1400point
-* 		You share our sponsored post for a week = N500 X 7 =3500point
-* 		You refer 10persons in a week = N1,000 X 10 =10,000 *(Optional)
-* 		Daily login of 100point per day for 7 days = N100 X 7= 700point
-* 		Each news read gives 5point  per news =5 X 7=35point
-calculate how much you've made so far with just your smartphone
-That's over 20k for the week without referring.
-WITH MY TRICK WHICH I WILL SHOW YOU, YOU SHOULD EARN OVER 30k FOR THE WEEK
+</p>
+
+<h6>FEATURES ARE</h6>
+
+<p>* 		Politics updates</p>
+<p>* 		Education updates</p>
+<p>* 		Business updates</p>
+<p>* 		Sports updates</p>
+<p>* 		Entertainment updates</p>
+
+<h6>Welcome to BOSSEARN !!!</h6>
+
+<p>* 		We pay 100% without referrals;</p>
+<p>* 		We pay the Top  referral bonus (1000,1500,2000)</p>
+<p>* You will receive your sign up bonus depending on your subscription payment </p>
+<p>* 		Daily withdrawal of referral earnings, and many more</p>
+
+<h6>OUR SELLING POINTS</h6>
+
+<p>* 		REGISTRATION FEE A ONE TIME PAYMENT OF (₦1500,#2500,#3500)</p>
+<p>* 		WE PAY EVERY DAY</p>
+<p>* 		REFERRING IS OPTIONAL</p>
+<p>* 		WE PAY THE TOP AFFILIATE COMMISSION</p>
+
+<h6>WAYS TO EARN LIKE A BOSS ON BOSSEARN(B.E)</h6>
+
+<p>Let's calculate your estimated earnings with the 1500 subscription fee </p>
+
+<p>* 		Sign up bonus 1500</p>
+<p>* 		You make a comment on posts per week=200 X7=1400point</p>
+<p>* 		You share our sponsored post for a week = N500 X 7 =3500point</p>
+<p>* 		You refer 10persons in a week = N1,000 X 10 =10,000 *(Optional)</p>
+<p>* 		Daily login of 100point per day for 7 days = N100 X 7= 700point</p>
+<p>* 		Each news read gives 5point  per news =5 X 7=35point</p>
+
+<p>calculate how much you've made so far with just your smartphone</p>
+<p>That's over 20k for the week without referring.</p>
+
+<h6>WITH MY TRICK WHICH I WILL SHOW YOU, YOU SHOULD EARN OVER 30k FOR THE WEEK</h6>
+
+<p>
 Just imagine you, imagine yourself earning this (lets just say 40k) every week..  In a month, you're up with over 100k
 And for withdrawal. That takes no time,  For example u get registered. All u have to do is go to bank details and put your account details. For withdrawal anytime
 legit money
