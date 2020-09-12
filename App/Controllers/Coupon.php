@@ -22,9 +22,11 @@ class Coupon extends Controller
         }
     }
 
-    public function verify()
+    public function verify($coupon = null)
     {
-        $coupon = $this->postData['coupon'];
+        if (isset($this->postData)) {
+            $coupon = $this->postData['coupon'];
+        }
         
         if (ModelsCoupon::coupon_exists($coupon)) {
             $update = ModelsCoupon::updateCoupon($coupon, User::authid());
