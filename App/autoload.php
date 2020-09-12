@@ -22,7 +22,7 @@ define('ASSETS', '/App/Assets');
 define('HOME', '/');
 define('HOW', '/page/how');
 define('CONTACT', '/page/contact');
-
+define('VENDORS', '/page/vendors');
 
 
 define('LOGIN', '/page/login');
@@ -75,4 +75,5 @@ if (isset($_SESSION['uname'])) {
     define('PAY', '/withdrawal/pay');
     define('ACTIVATE_BPOINT', '/earning/activatebpoint');
     define('DEACTIVATE_BPOINT', '/earning/deactivatebpoint');
+    
 }

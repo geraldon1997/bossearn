@@ -48,7 +48,8 @@ class Controller
                 'profile',
                 'earnings',
                 'withdrawals',
-                'activation'
+                'activation',
+                'vendors'
             ],
             'user' => [
                 'sponsored',
@@ -62,7 +63,8 @@ class Controller
                 'readnews',
                 'referrals',
                 'earnings',
-                'withdrawals'
+                'withdrawals',
+                'vendors'
             ]
         ],
         'nonauth' => [
@@ -72,7 +74,8 @@ class Controller
             'login',
             'register',
             'readnews',
-            'activation'
+            'activation',
+            'vendors'
         ]
     ];
 

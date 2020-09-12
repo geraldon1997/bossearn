@@ -97,4 +97,9 @@ class Page extends Controller
         $bpoint = Withdrawal::bpoint();
         return $this->view('bpoint', $bpoint);
     }
+
+    public function vendors()
+    {
+        return $this->view('vendors');
+    }
 }

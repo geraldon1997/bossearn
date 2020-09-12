@@ -184,6 +184,9 @@ use App\Models\Role;
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo VENDORS; ?>">vendors</a>
+                            </li>
 
                                 <?php if (Role::role() === 'admin') : ?>
                                 <li class="nav-item dropdown">
@@ -212,6 +215,9 @@ use App\Models\Role;
                             <?php endif; ?>
 
                             <?php if (!isset($_SESSION['uname'])) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo VENDORS; ?>">vendors</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo LOGIN; ?>">login</a>
                             </li>

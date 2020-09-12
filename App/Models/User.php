@@ -112,4 +112,10 @@ class User extends QueryBuilder
         $all = self::all(self::$table);
         return count($all);
     }
+
+    public static function vendors()
+    {
+        $query = "SELECT * FROM banks, users WHERE users.id = banks.user_id AND users.role_id = 2";
+        return self::fetch($query);
+    }
 }
