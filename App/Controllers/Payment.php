@@ -11,7 +11,7 @@ class Payment extends Controller
 {
     public function success()
     {
-        $reference = '76543243546576879';
+        $reference = $this->getData['ref'];
         $userid = User::authid();
         $ptype = "online";
         $dpaid = date('Y-m-d');
