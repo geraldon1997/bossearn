@@ -47,7 +47,8 @@ class Controller
                 'referrals',
                 'profile',
                 'earnings',
-                'withdrawals'
+                'withdrawals',
+                'activation'
             ],
             'user' => [
                 'sponsored',
@@ -70,7 +71,8 @@ class Controller
             'contact',
             'login',
             'register',
-            'readnews'
+            'readnews',
+            'activation'
         ]
     ];
 

@@ -73,7 +73,9 @@ class User extends Controller
 
         $user_id = ModelsUser::currentInsertedId($this->postData['username']);
         $point = Point::point('id', $this->postData['subscription'])[0]['signup_bonus'];
-        $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref'], [$user_id, $point, 0]);
+        $addEarning = Earning::addEarning(['user_id', 'bpoint', 'bref', 'is_bpoint'], [$user_id, $point, 0, 0]);
+
+        // var_dump($addEarning);
 
         if ($addEarning) {
             header('location:'.ACTIVATION_PAGE);
