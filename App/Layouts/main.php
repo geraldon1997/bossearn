@@ -148,6 +148,7 @@ use App\Models\Role;
                                                     }  ?>" alt="<?= User::authinfo()['username']; ?>" width="100" height="80">
                                             </div>
                                             <div class="col-md-6 dash-6 text-center">
+                                            <b style="color:darkgreen;"><?= strtoupper($_SESSION['uname']); ?></b>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <b>bref</b>
