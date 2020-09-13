@@ -7,7 +7,7 @@
 <h5>Why You Should Join Bossearn Earning Opportunity ?</h5>
 <p>As long as you make expenses everyday, you can take part in Bossearning opportunity.  This equal opportunity is for all. Either you are a Student, Hustler, Youth corp member, Stay-at-home mum, Unemployed, Fresh Graduate, House wife, Blogger, Self employed or anyone who wishes to make money online. Once you have an internet enabled mobile phone, you are good to go. Take advantage of your environment, families and friends, even Facebook, Whatsapp and other social media contact and make money for yourself.
 Don’t allow the economy situation of the country to put your back on the ground. Seize the opportunity and make good use of it. Bossearning  Opportunity has come to stay for those who wish to earn online. Is Bossearning income forum Legitimate And Who is the Founder? For those doubting the legitimacy of this program and are quite on if this is on the fraud/scam way, the answer is capital NO! Bossearning program is not and can never be scam. Bossearning Opportunity is a legitimate system, not a quick rich scheme and it’s registered under Corporate Affairs Commission (CAC) with the registration number 3140896
-Bossearning income forum was created  , by ORJI EUNICE CHIDIMMA under the legal Protection of BOSSEARN INCOME FORUM. A proficient Online business.</p>
+Bossearning income forum was created under the legal Protection of BOSSEARN INCOME FORUM. A proficient Online business.</p>
 
 <h5>What is B.Point ?</h5>
 
