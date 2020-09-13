@@ -49,4 +49,13 @@ use App\Models\Subscription;
             </tr>
         </table>
     </div>
+<hr>
+    <div class="row m">
+        <div class="col">
+          <a href="https://www.instagram.com/BOSSEARN_CEO" class="btn">click to send a message on instagram</a>
+        </div>
+        <div class="col">
+          <a href="https://www.facebook.com/groups/563831221190622/?ref=share" class="btn">click to send a message on facebook</a>
+        </div>
+    </div>
 </div>

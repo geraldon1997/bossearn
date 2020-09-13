@@ -15,7 +15,7 @@
                 <button type="submit" class="btn">Login <i class="fa fa-arrow-right"></i></button>
             </form>
             <hr>
-            <a href="forgotpassword.php" class="btn">Forgot Password ?</a>
+            <a href="#" class="btn">Forgot Password ?</a>
             </div>
 
             <div class="col-lg-3"></div>
