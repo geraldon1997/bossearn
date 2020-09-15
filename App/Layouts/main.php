@@ -322,20 +322,18 @@ use App\Models\Role;
     <script>
         $( document ).ready(function() {
 
-            let site_url = 'https://bossearn.com';
-
-            let addshare = site_url + '/share/add';
-            
-            let news_id = document.querySelector('#title').getAttribute('data-id');
-            let news_url = site_url + document.querySelector('#read').getAttribute('data-url');
-            let news_title = document.querySelector('#title').getAttribute('data-title');
-            let news_description = document.querySelector('#desc').getAttribute('data-description');
-            let news_image = site_url + document.querySelector('#image').getAttribute('data-image');
-
             // console.log(news_url + '\n' + news_title + '\n' + news_description + '\n' + news_image);
 
             new ShareButton({
-                
+                site_url = 'https://bossearn.com',
+
+            addshare = site_url + '/share/add',
+            
+            news_id = document.querySelector('#title').getAttribute('data-id'),
+            news_url = site_url + document.querySelector('#read').getAttribute('data-url'),
+            news_title = document.querySelector('#title').getAttribute('data-title'),
+            news_description = document.querySelector('#desc').getAttribute('data-description'),
+            news_image = site_url + document.querySelector('#image').getAttribute('data-image'),
                 networks: {
                     whatsapp: {
                         before : function(){
