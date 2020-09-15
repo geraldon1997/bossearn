@@ -6,7 +6,7 @@ class View
     public $viewPath = 'App/Views/';
     public $layoutPath = 'App/Layouts/';
     
-    public function importLayout()
+    public function importLayout($data)
     {
         ob_start();
         include_once $this->layoutPath.'main.php';
@@ -27,7 +27,7 @@ class View
 
     public function renderView($view, array $data = null)
     {
-        $layout = $this->importLayout();
+        $layout = $this->importLayout($data);
         $view = $this->importView($view, $data);
         return str_replace('{{content}}', $view, $layout);
     }

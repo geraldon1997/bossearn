@@ -14,7 +14,33 @@ use App\Models\Role;
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta 
+        property="og:title" 
+        content="<?php
+        if (isset($data['title'])) {
+            echo $data['title'];
+        } else {
+            echo "Bossearn";
+        }?>" 
+    />
+    <meta 
+        property="og:description"
+        content="<?php
+        if (isset($data['body'])) {
+            echo substr($data['body'], 0, 200);
+        } else {
+            echo "Bossearn concept is a news sharing platform tiers of Bossearn income forum incorporated with Corporate Affairs Commission with registration number 3140896. We source first hand news on happenings within the country and around the globe from National papers, Google news, local and foreign bloggers to benefit our erudite readers.";
+        }?>" 
+    />
+    <meta
+        property="og:image"
+        content="<?php
+        if (isset($data['image'])) {
+            echo 'https://bossearn.com/'.$data['image'];
+        } else {
+            echo ASSETS."/Images/logo.jpeg";
+        }?>" 
+    />
 
     <!-- Site Metas -->
     <title>Bossearn</title>
