@@ -366,6 +366,8 @@ use App\Models\Role;
                             this.image = site_url + document.querySelector('#image').getAttribute('data-image')
                         },
                         after : function (){
+                            console.log(this.url)
+                            
                             $.ajax({
                             url: addshare,
                             type: 'POST',
