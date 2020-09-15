@@ -320,96 +320,70 @@ use App\Models\Role;
     <script src="<?php echo ASSETS; ?>/Js/custom.js"></script>
 
     <script>
-        $( document ).ready(function() {
-            site_url = 'https://bossearn.com',
-            addshare = site_url + '/share/add'
-
+            $( document ).ready(function() {
+            
             new ShareButton({
-                
                 networks: {
-                    
                     whatsapp: {
-                        before : function(){
-                            site_url = 'https://bossearn.com',
-
-                            addshare = site_url + '/share/add',
-                            
-                            news_id = document.querySelector('#title').getAttribute('data-id'),
-                            news_url = site_url + document.querySelector('#read').getAttribute('data-url'),
-                            news_title = document.querySelector('#title').getAttribute('data-title'),
-                            news_description = document.querySelector('#desc').getAttribute('data-description'),
-                            news_image = site_url + document.querySelector('#image').getAttribute('data-image')
-
-                            this.url = news_url,
-                            this.title = news_title,
-                            this.description = news_description,
-                            this.image = news_image
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description'),
+                            this.image = $(e).attr('data-image')
                         },
-                        after : function (){
+                        after: function(e) {
+                            pid_val = $(e).attr('data-id')
+
                             $.ajax({
-                            url: addshare,
+                            url: 'https://bossearn.com/share/add',
                             type: 'POST',
                             data : { 
-                                nid : news_id
+                                pid : pid_val
                                 }
                             })
                         }
                     },
-                    googlePlus: {
-                        enabled: false
-                    },
                     facebook: {
-                        before : function(){
-                            this.url =  site_url + document.querySelector('#read').getAttribute('data-url'),
-                            this.title = document.querySelector('#title').getAttribute('data-title')
-                            this.description = document.querySelector('#desc').getAttribute('data-description'),
-                            this.image = site_url + document.querySelector('#image').getAttribute('data-image')
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description')
                         },
-                        after : function (){
-                            console.log(this.url)
+                        after: function(e) {
+                            pid_val = $(e).attr('data-id')
                             
                             $.ajax({
-                            url: addshare,
+                            url: 'http://bossearn.com/share/add',
                             type: 'POST',
-                            data : { 
-                                nid : document.querySelector('#title').getAttribute('data-id')
+                            data : {
+                                pid : pid_val
                                 }
                             })
+                            
                         }
                     },
                     twitter: {
-                        before : function(){
-                            site_url = 'https://bossearn.com',
-
-                            addshare = site_url + '/share/add',
+                        before: function(e) {
+                            this.url = $(e).attr('data-url'),
+                            this.description = $(e).attr('data-description')
                             
-                            news_id = document.querySelector('#title').getAttribute('data-id'),
-                            news_url = site_url + document.querySelector('#read').getAttribute('data-url'),
-                            news_title = document.querySelector('#title').getAttribute('data-title'),
-                            news_description = document.querySelector('#desc').getAttribute('data-description'),
-                            news_image = site_url + document.querySelector('#image').getAttribute('data-image')
-
-                            this.url = news_url,
-                            this.title = news_title,
-                            this.description = news_description,
-                            this.image = news_image
                         },
-                        after : function (){
+                        after: function(e) {;
+                            pid_val = $(e).attr('data-id');
+                            
                             $.ajax({
-                            url: addshare,
+                            url: 'https://bossearn.com/share/add',
                             type: 'POST',
-                            data : { 
-                                nid : news_id
+                            data : {
+                                pid : pid_val
                                 }
                             })
+                              
                         }
-                        
                     }
                 },
                 ui: {
-                    flyout: 'bottom middle'
+                    flyout: 'middle bottom'
                     }
-            });     
+            });
         });
     </script>
     
