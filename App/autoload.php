@@ -75,5 +75,4 @@ if (isset($_SESSION['uname'])) {
     define('PAY', '/withdrawal/pay');
     define('ACTIVATE_BPOINT', '/earning/activatebpoint');
     define('DEACTIVATE_BPOINT', '/earning/deactivatebpoint');
-    
 }
