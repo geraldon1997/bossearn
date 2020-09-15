@@ -321,8 +321,8 @@ use App\Models\Role;
 
     <script>
         $( document ).ready(function() {
-
-            // console.log(news_url + '\n' + news_title + '\n' + news_description + '\n' + news_image);
+            site_url = 'https://bossearn.com',
+            addshare = site_url + '/share/add'
 
             new ShareButton({
                 
@@ -360,27 +360,17 @@ use App\Models\Role;
                     },
                     facebook: {
                         before : function(){
-                            site_url = 'https://bossearn.com',
-
-                            addshare = site_url + '/share/add',
-                            
-                            news_id = document.querySelector('#title').getAttribute('data-id'),
-                            news_url = site_url + document.querySelector('#read').getAttribute('data-url'),
-                            news_title = document.querySelector('#title').getAttribute('data-title'),
-                            news_description = document.querySelector('#desc').getAttribute('data-description'),
-                            news_image = site_url + document.querySelector('#image').getAttribute('data-image')
-
-                            this.url = news_url,
-                            this.title = news_title,
-                            this.description = news_description,
-                            this.image = news_image
+                            this.url =  site_url + document.querySelector('#read').getAttribute('data-url'),
+                            this.title = document.querySelector('#title').getAttribute('data-title')
+                            this.description = document.querySelector('#desc').getAttribute('data-description'),
+                            this.image = site_url + document.querySelector('#image').getAttribute('data-image')
                         },
                         after : function (){
                             $.ajax({
                             url: addshare,
                             type: 'POST',
                             data : { 
-                                nid : news_id
+                                nid : document.querySelector('#title').getAttribute('data-id')
                                 }
                             })
                         }
