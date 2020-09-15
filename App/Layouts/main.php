@@ -14,27 +14,7 @@ use App\Models\Role;
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta 
-        property="og:title" 
-        content="<?php
-        if (isset($data['title'])) {
-            echo $data['title'];
-        } ?>" 
-    />
-    <meta 
-        property="og:description"
-        content="<?php
-        if (isset($data['body'])) {
-            echo substr($data['body'], 0, 200);
-        } ?>" 
-    />
-    <meta
-        property="og:image"
-        content="<?php
-        if (isset($data['image'])) {
-            echo 'https://bossearn.com/'.$data['image'];
-        } ?>" 
-    />
+    
 
     <!-- Site Metas -->
     <title>Bossearn</title>
