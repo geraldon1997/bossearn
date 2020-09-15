@@ -41,7 +41,7 @@ class View
 
     public function renderErrorView($error)
     {
-        $layout = $this->importLayout();
+        $layout = $this->importLayout($error);
         $errorView = $this->importErrorView($error);
         return str_replace('{{content}}', $errorView, $layout);
     }

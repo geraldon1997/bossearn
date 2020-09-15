@@ -41,6 +41,16 @@ use App\Models\Role;
             echo ASSETS."/Images/logo.jpeg";
         }?>" 
     />
+    <meta property="og:type" content="website" />
+    <meta
+        property="og:url"
+        content="<?php
+        if (isset($data['title'])) {
+            echo "https://bossearn.com".READNEWSPAGE.$data['id'];
+        } else {
+            echo "https://bossearn.com";
+        }
+        ?>" />
 
     <!-- Site Metas -->
     <title>Bossearn</title>
