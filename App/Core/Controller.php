@@ -34,7 +34,8 @@ class Controller
                 'withdrawals',
                 'bref',
                 'bpoint',
-                'edituser'
+                'edituser',
+                'vendors'
             ],
             'vendor' => [
                 'home',

@@ -348,15 +348,15 @@ use App\Models\Role;
                             this.description = $(e).attr('data-description')
                         },
                         after: function(e) {
-                            pid_val = $(e).attr('data-id')
+                            pid_val = $(e).attr('data-id');
                             
                             $.ajax({
-                            url: 'http://bossearn.com/share/add',
+                            url: 'http://bossearn.test/share/add',
                             type: 'POST',
                             data : {
                                 pid : pid_val
                                 }
-                            })
+                            });
                             
                         }
                     },
