@@ -351,7 +351,7 @@ use App\Models\Role;
                             pid_val = $(e).attr('data-id');
                             
                             $.ajax({
-                            url: 'http://bossearn.test/share/add',
+                            url: 'https://bossearn.com/share/add',
                             type: 'POST',
                             data : {
                                 pid : pid_val
