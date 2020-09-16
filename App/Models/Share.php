@@ -18,6 +18,10 @@ class Share extends QueryBuilder
     public static function addShare($values)
     {
         $columns = self::columns(self::$table);
+        $point = Point::point('subscription_id', User::subscriptionId(USERID))[0]['shared_post'];
+        $previouspoint = Earning::bpoint();
+        $newpoint = $previouspoint + $point;
+        Earning::updateEarning('bpoint', $newpoint, USERID);
         return self::insert(self::$table, $columns, $values);
     }
 
