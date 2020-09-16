@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Core\QueryBuilder;
+use App\Models\Earning;
 
 class Share extends QueryBuilder
 {
@@ -22,7 +23,7 @@ class Share extends QueryBuilder
         $previouspoint = Earning::bpoint();
         $newpoint = $previouspoint + $point;
         Earning::updateEarning('bpoint', $newpoint, USERID);
-        return self::insert(self::$table, $columns, $values);
+        self::insert(self::$table, $columns, $values);
     }
 
     public static function isShared($nid)
